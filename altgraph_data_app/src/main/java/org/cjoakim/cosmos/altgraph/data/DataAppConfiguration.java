@@ -179,7 +179,7 @@ public class DataAppConfiguration extends AbstractCosmosConfiguration
     @Value("${spring.cloud.azure.cosmos.database}")
     public String dbName;
 
-    @Value("${AZURE_COSMOSDB_SQL_REGIONS}")
+    @Value("${azure.cosmos.regions}")
     private String preferredRegionsString;
 
     @Value("${azure.cosmos.queryMetricsEnabled}")

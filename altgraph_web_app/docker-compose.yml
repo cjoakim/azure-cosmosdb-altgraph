@@ -20,6 +20,7 @@ services:
 # docker pull cjoakim/azure-cosmosdb-altgraph-v2
 # docker-compose up -d
 # docker ps
+# docker logs 15f5ed0fa248
 # docker-compose stop
 # docker run -it cjoakim/azure-cosmosdb-altgraph-v2
 # docker image inspect cjoakim/azure-cosmosdb-altgraph-v2
