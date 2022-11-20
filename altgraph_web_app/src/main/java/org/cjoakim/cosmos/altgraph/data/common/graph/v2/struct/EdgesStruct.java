@@ -24,7 +24,7 @@ public class EdgesStruct {
 
     public EdgesStruct() {
         super();
-        date = new Date().toGMTString();
+        date = new Date().toString(); // .toGMTString() is deprecated
         edges = new ArrayList<EdgeStruct>();
         setDoctype("EdgesStruct");
     }

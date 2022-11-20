@@ -54,6 +54,10 @@ dependencyManagement {
 	}
 }
 
+tasks.withType(JavaCompile) {
+    options.compilerArgs += ['-Xlint:deprecation']
+}
+
 tasks.named('test') {
     useJUnitPlatform()
 }
