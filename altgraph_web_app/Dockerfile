@@ -6,7 +6,8 @@ RUN     mkdir -p /app/data/cache
 RUN     mkdir -p /app/data/graph
 RUN     mkdir -p /app/data/struct
 RUN     mkdir -p /app/tmp
-COPY    build/libs/web-0.1.0.jar /app/app.jar
+COPY    build/libs/altgraph_web_app-2.0.0.jar /app/app.jar
+ENV JAVA_OPTS="-Xms1024m -Xmx4096m"
 ENTRYPOINT ["java", "-jar", "app.jar"]
 
-# app.jar runs in the WORKDIR 
+# app.jar runs in the WORKDIR

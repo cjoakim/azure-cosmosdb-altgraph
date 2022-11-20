@@ -16,6 +16,7 @@ services:
     restart: always
 
 # Notes:
+# docker push cjoakim/azure-cosmosdb-altgraph-v2
 # docker pull cjoakim/azure-cosmosdb-altgraph-v2
 # docker-compose up -d
 # docker ps
