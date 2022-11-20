@@ -52,7 +52,6 @@ public class ImdbGraphController implements DataConstants {
 
         String source = DataAppConfiguration.getInstance().imdbGraphSource;
         jgraph = new JGraph(DataConstants.GRAPH_DOMAIN_IMDB, source);
-        jgraph.refresh();
         int[] counts = jgraph.getVertexAndEdgeCounts();
         log.warn("jgraph vertices: " + counts[0]);
         log.warn("jgraph edges:    " + counts[1]);
