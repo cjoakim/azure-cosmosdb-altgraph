@@ -1,0 +1,78 @@
+// Gradle build file for this subproject.
+// Chris Joakim, Microsoft, November 2022
+
+plugins {
+    id 'org.springframework.boot' version '2.7.1'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'application'
+}
+
+group = 'org.cjoakim'
+version = '2.0.0'
+sourceCompatibility = '1.8'
+
+// See https://docs.gradle.org/current/userguide/application_plugin.html
+application {
+    mainClass = 'org.cjoakim.cosmos.altgraph.WebApplication'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    set('springCloudAzureVersion', "4.2.0")
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+
+    implementation 'com.azure.spring:spring-cloud-azure-starter-data-cosmos'
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    // TODO: https://www.baeldung.com/spring-data-redis-tutorial
+
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-devtools'
+
+    implementation 'org.jgrapht:jgrapht-core:1.5.1'
+
+    implementation 'com.google.guava:guava:30.1.1-jre'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "com.azure.spring:spring-cloud-azure-dependencies:${springCloudAzureVersion}"
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+tasks.register('uberJar', Jar) {
+    archiveClassifier = 'altgraph-wrangling'
+    duplicatesStrategy = 'include'
+    manifest {
+        attributes 'Main-Class': "org.cjoakim.cosmos.altgraph.data.DataCommandLineApp"
+    }
+    from sourceSets.main.output
+    dependsOn configurations.runtimeClasspath
+    from {
+        configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
+    }
+}
