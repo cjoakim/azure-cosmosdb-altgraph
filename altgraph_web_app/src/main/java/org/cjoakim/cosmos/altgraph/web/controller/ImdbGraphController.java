@@ -39,17 +39,15 @@ import java.util.ArrayList;
 public class ImdbGraphController implements DataConstants {
     private JGraph jgraph;
 
-    private Cache cache;
     private FileUtil fileUtil = new FileUtil();
 
     ImdbMovieRepository movieRepository = null;
     ImdbPersonRepository personRepository = null;
 
     @Autowired
-    public ImdbGraphController(Cache c, ImdbMovieRepository mr, ImdbPersonRepository pr) {
+    public ImdbGraphController(ImdbMovieRepository mr, ImdbPersonRepository pr) {
         super();
-        cache = c;
-        movieRepository = mr;
+        movieRepository  = mr;
         personRepository = pr;
 
         String source = DataAppConfiguration.getInstance().imdbGraphSource;
