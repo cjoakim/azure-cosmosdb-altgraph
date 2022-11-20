@@ -38,6 +38,7 @@ altgraph_data_app/out/*.txt
 altgraph_data_app/out/*.zip
 
 altgraph_web_app/data/cache/*.json
+altgraph_web_app/data/imdb_refined/movies.json
 altgraph_web_app/data/graph/*.csv
 altgraph_web_app/data/graph/*.json
 
