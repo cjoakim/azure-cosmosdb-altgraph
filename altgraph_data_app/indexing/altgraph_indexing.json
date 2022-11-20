@@ -1,0 +1,68 @@
+{
+  "indexingMode": "consistent",
+  "automatic": true,
+  "includedPaths": [
+    {
+      "path": "/*"
+    }
+  ],
+  "excludedPaths": [
+    {
+      "path": "/\"_etag\"/?"
+    }
+  ],
+  "compositeIndexes": [
+    [
+      {
+        "path": "/pk",
+        "order": "ascending"
+      },
+      {
+        "path": "/tenant",
+        "order": "ascending"
+      }
+    ],
+    [
+      {
+        "path": "/pk",
+        "order": "ascending"
+      },
+      {
+        "path": "/tenant",
+        "order": "ascending"
+      },
+      {
+        "path": "/doctype",
+        "order": "ascending"
+      }
+    ],
+    [
+      {
+        "path": "/tenant",
+        "order": "ascending"
+      },
+      {
+        "path": "/subjectLabel",
+        "order": "ascending"
+      }
+    ],
+    [
+      {
+        "path": "/pk",
+        "order": "ascending"
+      },
+      {
+        "path": "/lob",
+        "order": "ascending"
+      },
+      {
+        "path": "/subjectType",
+        "order": "ascending"
+      },
+      {
+        "path": "/objectType",
+        "order": "ascending"
+      }
+    ]
+  ]
+}

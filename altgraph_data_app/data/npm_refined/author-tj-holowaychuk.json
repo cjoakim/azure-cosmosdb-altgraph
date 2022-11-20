@@ -1,0 +1,16 @@
+{
+  "doctype": "author",
+  "label": "TJ Holowaychuk <tj@vision-media.ca>",
+  "id": "54dff427-35de-4a13-bcad-b3e4124b303a",
+  "pk": "TJ Holowaychuk <tj@vision-media.ca>",
+  "_etag": "\"9c005f09-0000-0100-0000-62d9c5090000\"",
+  "tenant": "123",
+  "lob": "npm",
+  "cacheKey": "author|TJ Holowaychuk <tj@vision-media.ca>",
+  "graphKey": null,
+  "authorName": null,
+  "_rid": "gklzANbLiutiAAAAAAAACA==",
+  "_self": "dbs/gklzAA==/colls/gklzANbLius=/docs/gklzANbLiutiAAAAAAAACA==/",
+  "_attachments": "attachments/",
+  "_ts": 1658438921
+}
