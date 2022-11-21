@@ -1,7 +1,7 @@
 version: '3.7'
 services:
 
-  consumer1:
+  web:
     image: cjoakim/azure-cosmosdb-altgraph-v2
     ports:
       - "8080:8080"

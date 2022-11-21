@@ -71,7 +71,8 @@ public class JGraphBuilder implements DataConstants {
 
         if (directed) {
             graph = new DirectedMultigraph<>(DefaultEdge.class);
-        } else {
+        }
+        else {
             graph = new Multigraph<>(DefaultEdge.class);
         }
         return graph;
@@ -143,7 +144,7 @@ public class JGraphBuilder implements DataConstants {
         long movieNodesCreated = 0;
         long personNodesCreated = 0;
         long edgesCreated = 0;
-        String sql = "select * from c where c.pk = '" + DOCTYPE_MOVIE_SEED + "';";
+        String sql = "select * from c where c.pk = '" + DOCTYPE_MOVIE_SEED + "'";
         int pageSize = 1000;
         String continuationToken = null;
         CosmosQueryRequestOptions queryOptions = new CosmosQueryRequestOptions();
@@ -151,6 +152,7 @@ public class JGraphBuilder implements DataConstants {
         log.warn("uri:    " + uri);
         log.warn("key:    " + key);
         log.warn("dbName: " + dbName);
+        log.warn("sql:    " + sql);
 
         checkMemory(true, true, "loadImdbGraphFromCosmos - start");
         long startMs = System.currentTimeMillis();
