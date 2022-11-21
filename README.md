@@ -41,7 +41,7 @@ This example shows the dependencies for the NPM "tedious" library.
 This example shows "one-degree of Kevin Bacon".
 
 <p align="center">
-    <img src="docs/img/docs/img/network-kevin-bacon-1.png" width="100%">
+    <img src="docs/img/network-kevin-bacon-1.png" width="100%">
 </p>
 
 
@@ -51,7 +51,8 @@ This example shows "one-degree of Kevin Bacon".
 
 ```
 ├── altgraph_data_app       A Java Spring CommandLineRunner (console) application 
-└── altgraph_web_app        A Java Spring Web application
+└── altgraph_web_app        A Java Spring Web application, see docker-compose.yml
+├── az                      az CLI scripts to deploy AltGraph as an Azure Container Instance
 ├── CosmosDB-AltGraph.pdf   Presentation PDF
 ```
 
@@ -62,6 +63,7 @@ This example shows "one-degree of Kevin Bacon".
 - [Presentation PDF](CosmosDB-AltGraph.pdf)
 - [Links](docs/links.md)
 - [Setup](docs/setup.md)
+- [Implementation Notes](docs/impl.md)
 - [AltGraph GitHub Repo](https://github.com/cjoakim/azure-cosmosdb-altgraph)
 - [Previous Gremlin Bill-of-Material Repo](https://github.com/Azure-Samples/azure-cosmos-db-graph-npm-bom-sample)
 - [CosmosDB Live TV Episode #59](https://www.youtube.com/watch?v=SGih_Kj_1yk)
