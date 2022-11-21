@@ -8,7 +8,7 @@
 - Gradle Build tool 
   - https://gradle.org/releases/
 - A Java IDE is recommended, such as JetBrains IntelliJ or Visual Studio Code
-- Docker desktop is recommended as it is the simplest way to run AltGraph yourself
+- Docker desktop is optional, but it may be the simplest way to run AltGraph yourself
 
 ## Azure PaaS Services
 
