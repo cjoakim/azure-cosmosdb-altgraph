@@ -7,7 +7,8 @@
 
 Currently, AltGraph is built with the **Java** programming language, and
 the **Spring Boot** and **Spring Data** frameworks.  **D3.js** is used in 
-the Web UI for visualizations, but you can use any similar JavaScript library.
+the Web UI for visualizations, but you can use any similar JavaScript library
+for your implementations.
 
 At this time, **there are two designs and implementations for your reference**:
 

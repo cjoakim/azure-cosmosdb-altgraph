@@ -89,7 +89,7 @@ you have set your environment variable.
 These files are too large to store in this GitHub, so you need to download them.
 
 Visit https://datasets.imdbws.com/ with your web browser, and download the 
-following three files:
+following three files...
 
 ```
 name.basics.tsv
@@ -97,7 +97,7 @@ title.basics.tsv
 title.principals.tsv
 ```
 
-To directory **altgraph_data_app/data/imdb_raw** within this repository.
+...to directory **altgraph_data_app/data/imdb_raw** within this repository.
 You may have to manually create this directory if it doesn't already exist.
 
 ## Wrangle the Raw Data, load CosmosDB
