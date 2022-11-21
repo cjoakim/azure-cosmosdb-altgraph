@@ -1,21 +1,49 @@
 # AltGraph
 
-An **alternative graph implementation** built on the **Azure CosmosDB SQL API** and 
-**Java** with the **Spring Boot** and **Spring Data** frameworks.
+**AltGraph is a set of alternative graph implementations** built on the 
+**Azure CosmosDB SQL API**.
 
-This working reference application is a **refactored version 2.0** of this original repository:</br>
-https://github.com/Azure-Samples/azure-cosmos-db-graph-npm-bom-sample
+**AltGraph is not a product**.  Instead, it is a general design and set of
+**reference-applications**. 
 
-It uses the **Node.js NPM** ecosystem of libraries as a public-domain dataset and an example of a
-**Bill-of-Materials (BOM)** business application.
+Currently, AltGraph is built with the **Java** programming language, and
+the **Spring Boot** and **Spring Data** frameworks.
+
+At this time, **there are these two designs and implementations for your reference**:
+
+- A **version 1** design uses the concept of "RDF Triples" to implement a Bill-of-Materials
+  using **NPM** data (the Node Package Manager tool in the Node.js ecosystem).
+  The graph of NPM library dependencies can be seen as a bill-of-materials.
+
+- A **version 2** design featuring more in-memory functionality and the **JGraphT**
+  software library.  This implementation used the **IMDb** (Internet Movie Database) 
+  dataset as a very rich social-network.  The large downloadable IMDb datasets
+  encourage the exploration of "the six degrees of Kevin Bacon".
+
+These implementations may be used as-is, or as a starting point for your own implementations.
+Both are designed to showcase the power and efficiency of the **CosmosDB SQL API**
+for graph solutions.
 
 ---
+
+## Example NPM Graph
+
+This example shows the dependencies for the NPM "tedious" library.
 
 <p align="center">
     <img src="docs/img/UI-Tedious-1-No-Cache.png" width="100%">
 </p>
 
-## Chris Joakim, Microsoft, CosmosDB Global Black Belt (GBB)
+---
+
+## Example IMDb Graph
+
+This example shows "one-degree of Kevin Bacon".
+
+<p align="center">
+    <img src="docs/img/docs/img/network-kevin-bacon-1.png" width="100%">
+</p>
+
 
 ---
 
@@ -25,8 +53,9 @@ It uses the **Node.js NPM** ecosystem of libraries as a public-domain dataset an
 ├── altgraph_data_app       A Java Spring CommandLineRunner (console) application 
 └── altgraph_web_app        A Java Spring Web application
 ├── CosmosDB-AltGraph.pdf   Presentation PDF
-
 ```
+
+**Please read the CosmosDB-AltGraph.pdf** document as you first start to explore AltGraph.
 
 ## Links
 
@@ -34,32 +63,11 @@ It uses the **Node.js NPM** ecosystem of libraries as a public-domain dataset an
 - [Links](docs/links.md)
 - [Setup](docs/setup.md)
 - [AltGraph GitHub Repo](https://github.com/cjoakim/azure-cosmosdb-altgraph)
+- [Previous Gremlin Bill-of-Material Repo](https://github.com/Azure-Samples/azure-cosmos-db-graph-npm-bom-sample)
 - [CosmosDB Live TV Episode #59](https://www.youtube.com/watch?v=SGih_Kj_1yk)
-- https://jnbridge.com/
 
-### JGraphT
+## Original Developer
 
-The **v2** AltGraph implementation uses an in-memory graph using the JGraphT library.
-The graph is maintained in the memory of the JVM (Java Virtual Machine), it is
-mutable, and offers excellent built-in algorithms (PageRank, DijkstraShortestPath, Centrality, etc.)
-so that you don't have to create this logic yourself.
-
-- https://jgrapht.org/guide/UserOverview
-- https://jgrapht.org/javadoc/
-- https://jgrapht.org/javadoc/org.jgrapht.core/org/jgrapht/alg/scoring/PageRank.html
-- https://jgrapht.org/javadoc/org.jgrapht.core/org/jgrapht/alg/shortestpath/JohnsonShortestPaths.html
-
-### Guava Graph 
-
-I evaluated the Google Guava library as a possible in-memory graph implementation.
-I compared it to the above JGraphT library.  Though it is more recently maintained,
-I chose not to use Google Guava for the graph because its' graph traversal logic
-was is lacking and the docs were very limited on this.  However, I leave this comment
-here for your reference in case you wish to evaluate Google Guava
-
-- https://github.com/google/guava/wiki/GraphsExplained
-- https://javadoc.io/doc/com.google.guava/guava/latest/index.html
-- https://dzone.com/articles/an-overview-of-google-guava-and-introduction-to-it
-- https://github.com/google/guava/blob/master/guava-tests/test/com/google/common/graph/TraverserTest.java
-- https://www.demo2s.com/java/google-guava-graphbuilder-tutorial-with-examples.html
-- https://github.com/google/guava/tree/master/guava/src/com/google/common/graph
+```
+Chris Joakim, Microsoft, CosmosDB Global Black Belt (GBB)
+```
