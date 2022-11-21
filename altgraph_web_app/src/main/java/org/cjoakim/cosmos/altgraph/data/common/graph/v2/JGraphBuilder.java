@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.cjoakim.cosmos.altgraph.data.DataAppConfiguration;
 import org.cjoakim.cosmos.altgraph.data.common.DataConstants;
 import org.cjoakim.cosmos.altgraph.data.common.io.JsonLoader;
-import org.cjoakim.cosmos.altgraph.data.common.model.imdb.IndexDocument;
+import org.cjoakim.cosmos.altgraph.data.common.model.imdb.SeedDocument;
 import org.cjoakim.cosmos.altgraph.data.common.model.imdb.Movie;
 import org.cjoakim.cosmos.altgraph.data.common.util.MemoryStats;
 import org.jgrapht.graph.DefaultEdge;
@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 /**
- * This class builds/refreshes an in-memory Google Guava Graph "network" (i.e. - graph)
+ * This class builds/refreshes an in-memory JGraphT "network" (i.e. - graph)
  * from either a disk or CosmosDB datasource.
  * <p>
  * It is invoked from the refresh() method of class JGraph.
@@ -143,7 +143,7 @@ public class JGraphBuilder implements DataConstants {
         long movieNodesCreated = 0;
         long personNodesCreated = 0;
         long edgesCreated = 0;
-        String sql = "select * from c where c.pk = 'movie_idx'";
+        String sql = "select * from c where c.pk = '" + DOCTYPE_MOVIE_SEED + "';";
         int pageSize = 1000;
         String continuationToken = null;
         CosmosQueryRequestOptions queryOptions = new CosmosQueryRequestOptions();
@@ -166,19 +166,19 @@ public class JGraphBuilder implements DataConstants {
         database = client.getDatabase(this.dbName);
         log.warn("client connected to database Id: " + database.getId());
 
-        container = database.getContainer(IMDB_INDEX_CONTAINER);
+        container = database.getContainer(IMDB_SEED_CONTAINER);
         log.warn("container: " + container.getId());
 
         long dbConnectMs = System.currentTimeMillis();
 
         try {
             do {
-                Iterable<FeedResponse<IndexDocument>> feedResponseIterator =
-                        container.queryItems(sql, queryOptions, IndexDocument.class).byPage(
+                Iterable<FeedResponse<SeedDocument>> feedResponseIterator =
+                        container.queryItems(sql, queryOptions, SeedDocument.class).byPage(
                                 continuationToken, pageSize).toIterable();  // Convert Asynch Flux to Iterable
 
-                for (FeedResponse<IndexDocument> page : feedResponseIterator) {
-                    for (IndexDocument doc : page.getResults()) {
+                for (FeedResponse<SeedDocument> page : feedResponseIterator) {
+                    for (SeedDocument doc : page.getResults()) {
                         documentsRead++;
                         if ((documentsRead % 10000) == 0) {
                             log.warn("" + documentsRead + " -> " + doc.asJson(false));

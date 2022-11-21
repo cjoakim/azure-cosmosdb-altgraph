@@ -3,7 +3,7 @@ package org.cjoakim.cosmos.altgraph.data.common.io;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.cjoakim.cosmos.altgraph.data.common.DataConstants;
-import org.cjoakim.cosmos.altgraph.data.common.model.imdb.IndexDocument;
+import org.cjoakim.cosmos.altgraph.data.common.model.imdb.SeedDocument;
 import org.cjoakim.cosmos.altgraph.data.common.model.imdb.Movie;
 import org.cjoakim.cosmos.altgraph.data.common.model.imdb.Person;
 import org.cjoakim.cosmos.altgraph.data.common.model.imdb.SmallTriple;
@@ -112,7 +112,7 @@ public class JsonLoader implements DataConstants {
     }
 
     public long readIndexDocuments(
-            String path, ArrayList<IndexDocument> list, boolean intern) throws Exception {
+            String path, ArrayList<SeedDocument> list, boolean intern) throws Exception {
 
         InputStream is = new FileInputStream(path);
         ObjectMapper mapper = new ObjectMapper();
@@ -122,7 +122,7 @@ public class JsonLoader implements DataConstants {
         try {
             while (sc.hasNextLine()) {
                 String line = sc.nextLine().trim();
-                IndexDocument idxDoc = parseIndexDocument(mapper, line);
+                SeedDocument idxDoc = parseIndexDocument(mapper, line);
                 if (idxDoc != null) {
                     if (intern) {
                         idxDoc.intern();
@@ -168,10 +168,10 @@ public class JsonLoader implements DataConstants {
         }
     }
 
-    private IndexDocument parseIndexDocument(ObjectMapper mapper, String line) {
+    private SeedDocument parseIndexDocument(ObjectMapper mapper, String line) {
 
         try {
-            return mapper.readValue(line, IndexDocument.class);
+            return mapper.readValue(line, SeedDocument.class);
         } catch (JsonProcessingException e) {
             return null;
         }

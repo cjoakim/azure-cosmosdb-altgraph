@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.cjoakim.cosmos.altgraph.data.common.DataConstants;
 import org.cjoakim.cosmos.altgraph.data.common.ImdbConstants;
 import org.cjoakim.cosmos.altgraph.data.common.io.JsonLoader;
-import org.cjoakim.cosmos.altgraph.data.common.model.imdb.IndexDocument;
+import org.cjoakim.cosmos.altgraph.data.common.model.imdb.SeedDocument;
 import org.cjoakim.cosmos.altgraph.data.common.model.imdb.Movie;
 import org.cjoakim.cosmos.altgraph.data.common.model.imdb.Person;
 import org.cjoakim.cosmos.altgraph.data.common.model.imdb.SmallTriple;
@@ -88,10 +88,10 @@ public abstract class AbstractConsoleAppProcess implements DataConstants, ImdbCo
         return objects;
     }
 
-    protected ArrayList<IndexDocument> readIndexDocumentsAsList(String path, boolean intern) throws Exception {
+    protected ArrayList<SeedDocument> readIndexDocumentsAsList(String path, boolean intern) throws Exception {
 
         checkMemory(true, true, "readIndexDocumentsAsList start");
-        ArrayList<IndexDocument> objects = new ArrayList<IndexDocument>();
+        ArrayList<SeedDocument> objects = new ArrayList<SeedDocument>();
         JsonLoader loader = new JsonLoader();
         long unparsableLines = loader.readIndexDocuments(path, objects, intern);
         sysout("readIndexDocumentsAsList, documents: " + objects.size() + ", unparsableLines: " + unparsableLines);

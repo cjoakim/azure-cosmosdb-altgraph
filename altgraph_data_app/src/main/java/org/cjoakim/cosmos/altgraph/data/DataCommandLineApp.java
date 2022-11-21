@@ -126,7 +126,7 @@ public class DataCommandLineApp implements CommandLineRunner, DataConstants {
                 case "imdb_bulk_load_movies":
                 case "imdb_bulk_load_people":
                 case "imdb_bulk_load_small_triples":
-                case "imdb_bulk_load_movies_idx":
+                case "imdb_bulk_load_movies_seed":
                     sdkBulkLoaderProcessor.setLoadType(processType);
                     sdkBulkLoaderProcessor.setContainer(args[1]);
                     sdkBulkLoaderProcessor.process();

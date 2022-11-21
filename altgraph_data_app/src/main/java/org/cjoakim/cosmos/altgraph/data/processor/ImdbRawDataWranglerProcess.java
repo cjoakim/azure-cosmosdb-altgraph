@@ -3,7 +3,8 @@ package org.cjoakim.cosmos.altgraph.data.processor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.extern.slf4j.Slf4j;
-import org.cjoakim.cosmos.altgraph.data.common.model.imdb.IndexDocument;
+import org.cjoakim.cosmos.altgraph.data.common.DataConstants;
+import org.cjoakim.cosmos.altgraph.data.common.model.imdb.SeedDocument;
 import org.cjoakim.cosmos.altgraph.data.common.model.imdb.Movie;
 import org.cjoakim.cosmos.altgraph.data.common.model.imdb.Person;
 import org.cjoakim.cosmos.altgraph.data.common.model.imdb.Principal;
@@ -65,8 +66,8 @@ public class ImdbRawDataWranglerProcess extends AbstractConsoleAppProcess {
         writePeople();
         checkMemory(true, true, "after writePeople");
 
-        createWriteMovieIndex();
-        checkMemory(true, true, "after createWriteMovieIndex");
+        createWriteMovieSeed();
+        checkMemory(true, true, "after createWriteMovieSeed");
 
         checkMemory(true, true, "finish");
         displayEojTotals();
@@ -259,16 +260,16 @@ public class ImdbRawDataWranglerProcess extends AbstractConsoleAppProcess {
         }
     }
 
-    private void createWriteMovieIndex() throws Exception {
+    private void createWriteMovieSeed() throws Exception {
 
-        String path = IMDB_MOVIES_INDEX_FILE;
-        ArrayList<IndexDocument> indexDocs = new ArrayList<IndexDocument>();
+        String path = IMDB_MOVIES_SEED_FILE;
+        ArrayList<SeedDocument> indexDocs = new ArrayList<SeedDocument>();
         Iterator<String> moviesIt = movies.keySet().iterator();
         while (moviesIt.hasNext()) {
             String key = moviesIt.next();
             Movie movie = movies.get(key);
-            IndexDocument idxDoc = new IndexDocument(
-                    DOCTYPE_MOVIE_IDX, movie.getId(), movie.getPk());
+            SeedDocument idxDoc = new SeedDocument(
+                    DataConstants.DOCTYPE_MOVIE_SEED, movie.getId(), movie.getPk());
 
             Iterator<String> peopleIt = movie.getPeople().iterator();
             while (peopleIt.hasNext()) {
@@ -281,7 +282,7 @@ public class ImdbRawDataWranglerProcess extends AbstractConsoleAppProcess {
         try (FileOutputStream out = new FileOutputStream(path);
              OutputStreamWriter writer = new OutputStreamWriter(out)) {
             for (int i = 0; i < indexDocs.size(); i++) {
-                IndexDocument idxDoc = indexDocs.get(i);
+                SeedDocument idxDoc = indexDocs.get(i);
                 String json = idxDoc.asJson(false).trim();
                 if (json.startsWith("{")) {
                     if (json.endsWith("}")) {
@@ -291,7 +292,7 @@ public class ImdbRawDataWranglerProcess extends AbstractConsoleAppProcess {
                 }
             }
         }
-        sysout("createWriteMovieIndex, file written: " + path + "  docs: " + indexDocs.size());
+        sysout("createWriteMovieSeed, file written: " + path + "  docs: " + indexDocs.size());
     }
 
     private void displayEojTotals() {

@@ -16,9 +16,8 @@ public interface DataConstants {
     public static final String IMDB_GRAPH_SOURCE_COSMOS = "cosmos";
     public static final String IMDB_GRAPH_SOURCE_DISK = "disk";
 
-    public static final String IMDB_INDEX_CONTAINER = "imdb_index";
+    public static final String IMDB_SEED_CONTAINER = "imdb_seed";
     public static final String GRAPH_DOMAIN_IMDB = "imdb";
-    public static final String GRAPH_DOMAIN_NPM = "npm";
 
     // Document Types
     public static final String DOCTYPE_LIBRARY = "library";
@@ -27,9 +26,8 @@ public interface DataConstants {
     public static final String DOCTYPE_TRIPLE = "triple";
 
     public static final String DOCTYPE_MOVIE = "movie";
-    public static final String DOCTYPE_MOVIE_IDX = "movie_idx";
+    public static final String DOCTYPE_MOVIE_SEED = "movie_seed";
     public static final String DOCTYPE_PERSON = "person";
-    public static final String DOCTYPE_PERSON_IDX = "person_idx";
     public static final String DOCTYPE_PRINCIPAL = "principal";
     public static final String DOCTYPE_SMALL_TRIPLE = "sm_triple";
 
@@ -60,7 +58,7 @@ public interface DataConstants {
     public static final String IMDB_RAW_TITLE_BASICS_FILE = "data/imdb_raw/title.basics.tsv";
     public static final String IMDB_RAW_TITLE_PRINCIPALS_FILE = "data/imdb_raw/title.principals.tsv";
     public static final String IMDB_MOVIES_DOCUMENTS_FILE = "data/imdb_refined/movies.json";
-    public static final String IMDB_MOVIES_INDEX_FILE = "data/imdb_refined/movies_idx.json";
+    public static final String IMDB_MOVIES_SEED_FILE      = "data/imdb_refined/movies_seed.json";
     public static final String IMDB_MOVIES_MAP_FILE = "data/imdb_refined/movies_map.json";
     public static final String IMDB_PEOPLE_DOCUMENTS_FILE = "data/imdb_refined/people.json";
     public static final String IMDB_PEOPLE_MAP_FILE = "data/imdb_refined/people_map.json";

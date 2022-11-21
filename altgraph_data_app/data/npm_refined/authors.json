@@ -1,5 +1,5 @@
 [ {
-  "id" : "3ced5e65-6441-4f75-a828-f0699e575493",
+  "id" : "7c898a8f-404b-452b-a03a-c98440fecdf9",
   "pk" : "",
   "doctype" : "author",
   "label" : "",
@@ -7,7 +7,7 @@
   "lob" : "npm",
   "cacheKey" : "author|"
 }, {
-  "id" : "0ba685c5-605d-4cff-9112-1a292a13108c",
+  "id" : "48d13b25-fde3-4e2b-afec-23bc5e015710",
   "pk" : "\"Cowboy\" Ben Alman (http://benalman.com/)",
   "doctype" : "author",
   "label" : "\"Cowboy\" Ben Alman (http://benalman.com/)",
@@ -15,7 +15,7 @@
   "lob" : "npm",
   "cacheKey" : "author|\"Cowboy\" Ben Alman (http://benalman.com/)"
 }, {
-  "id" : "8d5aacca-84b0-4cae-bab6-880eea95daa4",
+  "id" : "4a531704-3825-4cd2-97f7-2d082c1c6861",
   "pk" : "AJ ONeal <coolaj86@gmail.com>",
   "doctype" : "author",
   "label" : "AJ ONeal <coolaj86@gmail.com>",
@@ -23,7 +23,7 @@
   "lob" : "npm",
   "cacheKey" : "author|AJ ONeal <coolaj86@gmail.com>"
 }, {
-  "id" : "c069b6aa-4333-4dee-9b5f-0520e03960d1",
+  "id" : "6094eec4-1155-4e0b-8ea5-9b99fbfe6587",
   "pk" : "AJ ONeal <coolaj86@gmail.com> (https://coolaj86.com)",
   "doctype" : "author",
   "label" : "AJ ONeal <coolaj86@gmail.com> (https://coolaj86.com)",
@@ -31,7 +31,7 @@
   "lob" : "npm",
   "cacheKey" : "author|AJ ONeal <coolaj86@gmail.com> (https://coolaj86.com)"
 }, {
-  "id" : "bc09cbb3-8808-40db-a51f-b39b5ae8e0a8",
+  "id" : "40243250-abeb-42c9-a690-58f055f490aa",
   "pk" : "AJ ONeal <coolaj86@gmail.com> (https://coolaj86.com/)",
   "doctype" : "author",
   "label" : "AJ ONeal <coolaj86@gmail.com> (https://coolaj86.com/)",
@@ -39,7 +39,7 @@
   "lob" : "npm",
   "cacheKey" : "author|AJ ONeal <coolaj86@gmail.com> (https://coolaj86.com/)"
 }, {
-  "id" : "f51436e6-0b88-4dd7-9a7c-d827af08686f",
+  "id" : "2792e916-7556-44c7-ac14-e74e6c8227be",
   "pk" : "Ahmad Nassri <ahmad@ahmadnassri.com> (https://www.ahmadnassri.com/)",
   "doctype" : "author",
   "label" : "Ahmad Nassri <ahmad@ahmadnassri.com> (https://www.ahmadnassri.com/)",
@@ -47,7 +47,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Ahmad Nassri <ahmad@ahmadnassri.com> (https://www.ahmadnassri.com/)"
 }, {
-  "id" : "c378414c-e2e4-411c-8aae-1df13c5c422b",
+  "id" : "e4746c10-d371-40cc-bd0d-98a25ab3c9f7",
   "pk" : "Alex Bardas <alex.bardas+github@gmail.com>",
   "doctype" : "author",
   "label" : "Alex Bardas <alex.bardas+github@gmail.com>",
@@ -55,7 +55,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Alex Bardas <alex.bardas+github@gmail.com>"
 }, {
-  "id" : "cf1f0b5d-a709-4e23-8b6f-ef13057adbde",
+  "id" : "b55d432c-1ce5-4d73-83ff-ad49f291519e",
   "pk" : "Alex Indigo <iam@alexindigo.com>",
   "doctype" : "author",
   "label" : "Alex Indigo <iam@alexindigo.com>",
@@ -63,7 +63,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Alex Indigo <iam@alexindigo.com>"
 }, {
-  "id" : "74383603-2796-4979-a70d-2ee164494fbc",
+  "id" : "04a1bfa5-f3ff-457a-aa9f-b7a0dd7346b9",
   "pk" : "Alex Wilson <alex.wilson@joyent.com>",
   "doctype" : "author",
   "label" : "Alex Wilson <alex.wilson@joyent.com>",
@@ -71,7 +71,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Alex Wilson <alex.wilson@joyent.com>"
 }, {
-  "id" : "1af9b0d5-8887-48be-b2ce-42dd3478b2b3",
+  "id" : "6285e81a-f4f4-4e09-b583-37ebcb137a8e",
   "pk" : "Alexander Shtuchkin <ashtuchkin@gmail.com>",
   "doctype" : "author",
   "label" : "Alexander Shtuchkin <ashtuchkin@gmail.com>",
@@ -79,7 +79,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Alexander Shtuchkin <ashtuchkin@gmail.com>"
 }, {
-  "id" : "124fa822-62ef-4615-a244-5d0ade70b534",
+  "id" : "24c79426-b3dd-4cd7-86e5-d00674b401c4",
   "pk" : "Alexandru Mărășteanu <hello@alexei.ro>",
   "doctype" : "author",
   "label" : "Alexandru Mărășteanu <hello@alexei.ro>",
@@ -87,7 +87,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Alexandru Mărășteanu <hello@alexei.ro>"
 }, {
-  "id" : "6e6de425-ad1e-423b-b8ce-458bc8c15263",
+  "id" : "2ffb3ad9-a931-4c49-9e5d-27be1fc2b881",
   "pk" : "Andrea Giammarchi",
   "doctype" : "author",
   "label" : "Andrea Giammarchi",
@@ -95,7 +95,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Andrea Giammarchi"
 }, {
-  "id" : "77ec4325-2fd2-4104-934a-9a3bae565528",
+  "id" : "f75b58ce-f452-47e1-b46c-8bca337b4cc8",
   "pk" : "Andres Suarez <zertosh@gmail.com>",
   "doctype" : "author",
   "label" : "Andres Suarez <zertosh@gmail.com>",
@@ -103,7 +103,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Andres Suarez <zertosh@gmail.com>"
 }, {
-  "id" : "5b4fc885-90ec-44c8-959e-9a300b8a0f02",
+  "id" : "80fe2c84-210a-4ba7-95bb-fcf1c265cf81",
   "pk" : "Andrew Kelley <superjoe30@gmail.com>",
   "doctype" : "author",
   "label" : "Andrew Kelley <superjoe30@gmail.com>",
@@ -111,7 +111,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Andrew Kelley <superjoe30@gmail.com>"
 }, {
-  "id" : "40330d20-7b1e-4168-83e2-9582f322d57b",
+  "id" : "53090e31-0086-4680-8024-eebf73b9a8fa",
   "pk" : "Andrey Sidorov <sidorares@yandex.com>",
   "doctype" : "author",
   "label" : "Andrey Sidorov <sidorares@yandex.com>",
@@ -119,7 +119,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Andrey Sidorov <sidorares@yandex.com>"
 }, {
-  "id" : "bf308ee0-0b78-422b-897b-a269f15f9370",
+  "id" : "035bde0e-4bf0-493b-b13c-8a2ad557bb9b",
   "pk" : "Andrey Sidorov <sidorares@yandex.ru>",
   "doctype" : "author",
   "label" : "Andrey Sidorov <sidorares@yandex.ru>",
@@ -127,7 +127,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Andrey Sidorov <sidorares@yandex.ru>"
 }, {
-  "id" : "477f07e8-5d11-4e17-8700-6663ab15163e",
+  "id" : "2110295d-74fa-463b-8f27-a59df87c2c8a",
   "pk" : "André Cruz <andre@moxy.studio>",
   "doctype" : "author",
   "label" : "André Cruz <andre@moxy.studio>",
@@ -135,7 +135,7 @@
   "lob" : "npm",
   "cacheKey" : "author|André Cruz <andre@moxy.studio>"
 }, {
-  "id" : "2d515845-e3b6-4f87-9f84-11d637b5b9e3",
+  "id" : "db345cc5-0602-42fd-8c01-ce2965a70123",
   "pk" : "Anna Henningsen <anna@addaleax.net>",
   "doctype" : "author",
   "label" : "Anna Henningsen <anna@addaleax.net>",
@@ -143,7 +143,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Anna Henningsen <anna@addaleax.net>"
 }, {
-  "id" : "16b82042-c020-4990-a4c4-813a21594626",
+  "id" : "370acb13-6fbe-496a-ba5c-6066e71f1943",
   "pk" : "Apache TinkerPop team",
   "doctype" : "author",
   "label" : "Apache TinkerPop team",
@@ -151,7 +151,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Apache TinkerPop team"
 }, {
-  "id" : "44a0f0d9-42fe-4d6e-bd84-f75c911d87a5",
+  "id" : "d0ef2772-38ee-4c9d-8683-980c27b3e959",
   "pk" : "Ariya Hidayat <ariya.hidayat@gmail.com>",
   "doctype" : "author",
   "label" : "Ariya Hidayat <ariya.hidayat@gmail.com>",
@@ -159,7 +159,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Ariya Hidayat <ariya.hidayat@gmail.com>"
 }, {
-  "id" : "995cca52-d337-49d1-aacc-a8584048f34c",
+  "id" : "b0194038-c798-4689-b4d9-08ca0e582653",
   "pk" : "Arnout Kazemier",
   "doctype" : "author",
   "label" : "Arnout Kazemier",
@@ -167,7 +167,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Arnout Kazemier"
 }, {
-  "id" : "d28a2894-4955-44cd-a72f-51a2fddc9608",
+  "id" : "a5516632-473d-4dab-96c2-0a39af1c531c",
   "pk" : "Ben Coe <ben@npmjs.com>",
   "doctype" : "author",
   "label" : "Ben Coe <ben@npmjs.com>",
@@ -175,7 +175,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Ben Coe <ben@npmjs.com>"
 }, {
-  "id" : "1ced6c2e-e66a-4e32-aac6-e23049e33676",
+  "id" : "5035aca5-f2bc-499a-b880-3286b29e9775",
   "pk" : "Ben Drucker <bvdrucker@gmail.com> (bendrucker.me)",
   "doctype" : "author",
   "label" : "Ben Drucker <bvdrucker@gmail.com> (bendrucker.me)",
@@ -183,7 +183,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Ben Drucker <bvdrucker@gmail.com> (bendrucker.me)"
 }, {
-  "id" : "0be1d9f4-0c8d-43eb-b868-08492c0f6d3d",
+  "id" : "27eefc23-5152-4fad-acd0-1120d4cad532",
   "pk" : "Ben Newman <bn@cs.stanford.edu>",
   "doctype" : "author",
   "label" : "Ben Newman <bn@cs.stanford.edu>",
@@ -191,7 +191,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Ben Newman <bn@cs.stanford.edu>"
 }, {
-  "id" : "9dd0cfb9-df50-4847-83b9-bbeee3ea1bbf",
+  "id" : "9484dc34-7943-4f1f-9f7d-e613bf9348cc",
   "pk" : "Blaine Bublitz <blaine@iceddev.com> (http://iceddev.com/)",
   "doctype" : "author",
   "label" : "Blaine Bublitz <blaine@iceddev.com> (http://iceddev.com/)",
@@ -199,7 +199,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Blaine Bublitz <blaine@iceddev.com> (http://iceddev.com/)"
 }, {
-  "id" : "a12938b7-94c9-41b8-aba3-7793a8db6789",
+  "id" : "0e30b5f5-fc7c-4fd2-a34e-c12c8226d94f",
   "pk" : "Blake Embrey <hello@blakeembrey.com> (http://blakeembrey.me)",
   "doctype" : "author",
   "label" : "Blake Embrey <hello@blakeembrey.com> (http://blakeembrey.me)",
@@ -207,7 +207,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Blake Embrey <hello@blakeembrey.com> (http://blakeembrey.me)"
 }, {
-  "id" : "725c988b-d6eb-44f0-ab15-88df52919abd",
+  "id" : "15cc4fb8-5003-4d99-8916-16ddf255596c",
   "pk" : "Braveg1rl <braveg1rl@outlook.com>",
   "doctype" : "author",
   "label" : "Braveg1rl <braveg1rl@outlook.com>",
@@ -215,7 +215,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Braveg1rl <braveg1rl@outlook.com>"
 }, {
-  "id" : "d574f7d6-586a-4bf7-8ec7-43f1a3a55c6e",
+  "id" : "a34b18cf-a0b1-4c81-8b35-1668cbbeb367",
   "pk" : "Brian Carlson <brian.m.carlson@gmail.com>",
   "doctype" : "author",
   "label" : "Brian Carlson <brian.m.carlson@gmail.com>",
@@ -223,7 +223,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Brian Carlson <brian.m.carlson@gmail.com>"
 }, {
-  "id" : "13db53a1-7066-4b4d-a049-129fa69a725d",
+  "id" : "e38e18d8-0f5b-4edf-ba62-15761d7d6086",
   "pk" : "Brian J Brennan",
   "doctype" : "author",
   "label" : "Brian J Brennan",
@@ -231,7 +231,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Brian J Brennan"
 }, {
-  "id" : "81c5d771-3925-4fa2-a2e1-60d97fa0037e",
+  "id" : "3aab0290-2f3d-4848-8865-78c7429f6bdf",
   "pk" : "Brian J. Brennan <brianloveswords@gmail.com>",
   "doctype" : "author",
   "label" : "Brian J. Brennan <brianloveswords@gmail.com>",
@@ -239,7 +239,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Brian J. Brennan <brianloveswords@gmail.com>"
 }, {
-  "id" : "318bbf1f-7e94-4d00-921f-efdc0c85e3dc",
+  "id" : "81a86748-a84d-4078-9e94-81dd2a607542",
   "pk" : "Brian M. Carlson",
   "doctype" : "author",
   "label" : "Brian M. Carlson",
@@ -247,7 +247,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Brian M. Carlson"
 }, {
-  "id" : "5e44f716-5935-42fb-a2ee-7c9688441036",
+  "id" : "ca2fe993-cd0e-49d9-bc35-ef123cf42b8f",
   "pk" : "Brian Turek <brian.turek@gmail.com>",
   "doctype" : "author",
   "label" : "Brian Turek <brian.turek@gmail.com>",
@@ -255,7 +255,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Brian Turek <brian.turek@gmail.com>"
 }, {
-  "id" : "d4fdf77b-721e-4cd8-bde0-6a204d526c88",
+  "id" : "52999813-fc11-4137-aa36-6eb03d6e4d4b",
   "pk" : "Brian Woodward (https://github.com/doowb)",
   "doctype" : "author",
   "label" : "Brian Woodward (https://github.com/doowb)",
@@ -263,7 +263,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Brian Woodward (https://github.com/doowb)"
 }, {
-  "id" : "073d76bc-64b3-4aaf-a480-691af9ad68a6",
+  "id" : "9eddacd3-b119-425b-8bb8-c9ee7b83e819",
   "pk" : "Cameron McCormack (http://mcc.id.au/xpathjs)",
   "doctype" : "author",
   "label" : "Cameron McCormack (http://mcc.id.au/xpathjs)",
@@ -271,7 +271,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Cameron McCormack (http://mcc.id.au/xpathjs)"
 }, {
-  "id" : "5bd212be-bae0-4610-8ab6-25560275882a",
+  "id" : "af8bca42-dfc0-4da0-9415-6cb3bd16cc82",
   "pk" : "Caolan McMahon",
   "doctype" : "author",
   "label" : "Caolan McMahon",
@@ -279,7 +279,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Caolan McMahon"
 }, {
-  "id" : "f93816d0-0cb0-4441-a87d-df07958fe05e",
+  "id" : "2f44360a-df27-4098-8eb3-209b0c78d984",
   "pk" : "Chris Joakim",
   "doctype" : "author",
   "label" : "Chris Joakim",
@@ -287,7 +287,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Chris Joakim"
 }, {
-  "id" : "4635cf2a-96ce-4452-a65f-625f24af5861",
+  "id" : "26f3f755-2990-499f-bf38-eae709945ed4",
   "pk" : "Chris O'Hara <cohara87@gmail.com>",
   "doctype" : "author",
   "label" : "Chris O'Hara <cohara87@gmail.com>",
@@ -295,7 +295,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Chris O'Hara <cohara87@gmail.com>"
 }, {
-  "id" : "01f0769e-3f59-4b87-a01e-2fc6ac208c32",
+  "id" : "a9bf59b8-1e09-4e0b-b436-a1b2c91900cc",
   "pk" : "Christopher Hiller <boneskull@boneskull.com> (https://boneskull.com/)",
   "doctype" : "author",
   "label" : "Christopher Hiller <boneskull@boneskull.com> (https://boneskull.com/)",
@@ -303,7 +303,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Christopher Hiller <boneskull@boneskull.com> (https://boneskull.com/)"
 }, {
-  "id" : "9b417f92-f767-441c-b470-951390bb3283",
+  "id" : "8d8efaa4-f121-43d5-94de-48e8b8fe57ab",
   "pk" : "Christopher Joakim (http://www.chrisjoakim.com)",
   "doctype" : "author",
   "label" : "Christopher Joakim (http://www.chrisjoakim.com)",
@@ -311,7 +311,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Christopher Joakim (http://www.chrisjoakim.com)"
 }, {
-  "id" : "92b63aa6-5719-44e8-a25b-02e52523ade8",
+  "id" : "b6bd9178-dc7a-432f-9747-5f95567a8c9b",
   "pk" : "Conrad Pankoff <deoxxa@fknsrs.biz> (http://www.fknsrs.biz/)",
   "doctype" : "author",
   "label" : "Conrad Pankoff <deoxxa@fknsrs.biz> (http://www.fknsrs.biz/)",
@@ -319,7 +319,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Conrad Pankoff <deoxxa@fknsrs.biz> (http://www.fknsrs.biz/)"
 }, {
-  "id" : "908aed6a-d590-4f26-9b67-acec06fe8173",
+  "id" : "39ff14b4-4d36-49c3-896c-5d71567045d1",
   "pk" : "D2L Corporation",
   "doctype" : "author",
   "label" : "D2L Corporation",
@@ -327,7 +327,7 @@
   "lob" : "npm",
   "cacheKey" : "author|D2L Corporation"
 }, {
-  "id" : "2a57c14c-2988-4bd5-9fd7-23390d17a7f5",
+  "id" : "b0923a13-aa89-4c0e-b5b1-80d3bcc49e18",
   "pk" : "DY <dfcreative@gmail.com>",
   "doctype" : "author",
   "label" : "DY <dfcreative@gmail.com>",
@@ -335,7 +335,7 @@
   "lob" : "npm",
   "cacheKey" : "author|DY <dfcreative@gmail.com>"
 }, {
-  "id" : "d9069954-2f61-4b71-97ec-1bb22653ac43",
+  "id" : "c284ef5b-b8b6-4b51-8211-a6ca6517b911",
   "pk" : "Dane Springmeyer <dane@mapbox.com>",
   "doctype" : "author",
   "label" : "Dane Springmeyer <dane@mapbox.com>",
@@ -343,7 +343,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Dane Springmeyer <dane@mapbox.com>"
 }, {
-  "id" : "3a2f3c83-1963-4ea7-9daa-785aae5267b3",
+  "id" : "54f27eee-3561-4a3d-9425-933076866b3c",
   "pk" : "Dang Mai",
   "doctype" : "author",
   "label" : "Dang Mai",
@@ -351,7 +351,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Dang Mai"
 }, {
-  "id" : "adfc22ef-d4b1-48d2-a943-671e33be0567",
+  "id" : "dea630d7-d3e7-422f-bf0c-27c40fe648db",
   "pk" : "Daniel Wirtz <dcode@dcode.io>",
   "doctype" : "author",
   "label" : "Daniel Wirtz <dcode@dcode.io>",
@@ -359,7 +359,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Daniel Wirtz <dcode@dcode.io>"
 }, {
-  "id" : "71c9c40f-6381-4df2-aa86-b1fa4f5e5fdc",
+  "id" : "c9f48059-d5e8-4b3d-aedc-180e13fb21e4",
   "pk" : "David Frank",
   "doctype" : "author",
   "label" : "David Frank",
@@ -367,7 +367,7 @@
   "lob" : "npm",
   "cacheKey" : "author|David Frank"
 }, {
-  "id" : "582de196-df24-46d2-9811-5bb8cbd3b46c",
+  "id" : "65ef5a96-5c60-44e5-a111-c9e7c1beabbc",
   "pk" : "David Mark Clements <david.clements@nearform.com>",
   "doctype" : "author",
   "label" : "David Mark Clements <david.clements@nearform.com>",
@@ -375,7 +375,7 @@
   "lob" : "npm",
   "cacheKey" : "author|David Mark Clements <david.clements@nearform.com>"
 }, {
-  "id" : "ead14730-a4ef-401a-94c8-32e5f33ffae2",
+  "id" : "c6ccdfbe-b00a-4e8d-a2dd-568281b77af1",
   "pk" : "David Worms <david@adaltas.com>",
   "doctype" : "author",
   "label" : "David Worms <david@adaltas.com>",
@@ -383,7 +383,7 @@
   "lob" : "npm",
   "cacheKey" : "author|David Worms <david@adaltas.com>"
 }, {
-  "id" : "a6e5d8f4-1b50-4a02-a090-1559893dd945",
+  "id" : "0f9b192c-9052-46ac-8041-cef46c0779ed",
   "pk" : "David Worms <david@adaltas.com> (http://www.adaltas.com)",
   "doctype" : "author",
   "label" : "David Worms <david@adaltas.com> (http://www.adaltas.com)",
@@ -391,7 +391,7 @@
   "lob" : "npm",
   "cacheKey" : "author|David Worms <david@adaltas.com> (http://www.adaltas.com)"
 }, {
-  "id" : "61bb53c5-1e40-4389-9087-f56ac90bfc0f",
+  "id" : "9986f181-519a-443d-af85-79df2bb3b9b4",
   "pk" : "Devon Govett <devongovett@gmail.com>",
   "doctype" : "author",
   "label" : "Devon Govett <devongovett@gmail.com>",
@@ -399,7 +399,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Devon Govett <devongovett@gmail.com>"
 }, {
-  "id" : "6f18c4c0-fbb5-45af-ba6b-eb0f27217549",
+  "id" : "2302ca49-fc07-4883-b39f-f5ab7c1eea43",
   "pk" : "Devon Govett <devongovett@gmail.com> (http://badassjs.com/)",
   "doctype" : "author",
   "label" : "Devon Govett <devongovett@gmail.com> (http://badassjs.com/)",
@@ -407,7 +407,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Devon Govett <devongovett@gmail.com> (http://badassjs.com/)"
 }, {
-  "id" : "69a37463-71d1-488f-ac72-85b230034387",
+  "id" : "3087c147-a8f8-4cb8-afb2-5c1672d0d282",
   "pk" : "Dominic Tarr <dominic.tarr@gmail.com> (dominictarr.com)",
   "doctype" : "author",
   "label" : "Dominic Tarr <dominic.tarr@gmail.com> (dominictarr.com)",
@@ -415,7 +415,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Dominic Tarr <dominic.tarr@gmail.com> (dominictarr.com)"
 }, {
-  "id" : "dc6555fb-4bfe-44f3-b70d-87296e80cb4e",
+  "id" : "e2d57b13-bb56-4cbf-abb9-75f73efc0058",
   "pk" : "Dominic Tarr <dominic.tarr@gmail.com> (http://bit.ly/dominictarr)",
   "doctype" : "author",
   "label" : "Dominic Tarr <dominic.tarr@gmail.com> (http://bit.ly/dominictarr)",
@@ -423,7 +423,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Dominic Tarr <dominic.tarr@gmail.com> (http://bit.ly/dominictarr)"
 }, {
-  "id" : "770d27ac-404a-4f79-a98f-40f2914e0907",
+  "id" : "de6fa576-eb77-432c-8087-a766758d7a94",
   "pk" : "Dominic Tarr <dominic.tarr@gmail.com> (http://dominictarr.com)",
   "doctype" : "author",
   "label" : "Dominic Tarr <dominic.tarr@gmail.com> (http://dominictarr.com)",
@@ -431,7 +431,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Dominic Tarr <dominic.tarr@gmail.com> (http://dominictarr.com)"
 }, {
-  "id" : "592f1202-ab3c-4e45-a06b-fbb7a9c7c168",
+  "id" : "bd1b1718-e39d-42dd-af42-6e3b805ddeb7",
   "pk" : "Douglas Christopher Wilson <doug@somethingdoug.com>",
   "doctype" : "author",
   "label" : "Douglas Christopher Wilson <doug@somethingdoug.com>",
@@ -439,7 +439,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Douglas Christopher Wilson <doug@somethingdoug.com>"
 }, {
-  "id" : "604e8f8f-356c-4504-9e3a-c2bf703f0030",
+  "id" : "05393bfa-d08f-4dc3-b7d3-ddcc6ceabadf",
   "pk" : "Einar Otto Stangvik <einaros@gmail.com> (http://2x.io)",
   "doctype" : "author",
   "label" : "Einar Otto Stangvik <einaros@gmail.com> (http://2x.io)",
@@ -447,7 +447,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Einar Otto Stangvik <einaros@gmail.com> (http://2x.io)"
 }, {
-  "id" : "cbec160b-dbb6-4666-bf5c-ec71056d1fc5",
+  "id" : "9a524ff4-9895-45ca-86df-e323d6d32d0e",
   "pk" : "Elan Shanker (https://github.com/es128)",
   "doctype" : "author",
   "label" : "Elan Shanker (https://github.com/es128)",
@@ -455,7 +455,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Elan Shanker (https://github.com/es128)"
 }, {
-  "id" : "d6dc924a-bc8a-4a4d-9a4a-5d3c8bbd63f1",
+  "id" : "3542700a-fee6-4240-bbfd-334a89070515",
   "pk" : "Electron Community",
   "doctype" : "author",
   "label" : "Electron Community",
@@ -463,7 +463,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Electron Community"
 }, {
-  "id" : "2daff3b5-9ea6-4f80-a640-784167b8161b",
+  "id" : "f4be6e64-f1c5-4072-8cd3-2355076d56f8",
   "pk" : "Espen Hovlandsdal <espen@hovlandsdal.com>",
   "doctype" : "author",
   "label" : "Espen Hovlandsdal <espen@hovlandsdal.com>",
@@ -471,7 +471,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Espen Hovlandsdal <espen@hovlandsdal.com>"
 }, {
-  "id" : "8313a982-6e7b-458b-8e2d-30724612861f",
+  "id" : "98b60491-ddcb-482f-bd3c-f5a895accdb0",
   "pk" : "Evan Vosberg (http://github.com/evanvosberg)",
   "doctype" : "author",
   "label" : "Evan Vosberg (http://github.com/evanvosberg)",
@@ -479,7 +479,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Evan Vosberg (http://github.com/evanvosberg)"
 }, {
-  "id" : "6d16bf49-9dce-4e11-8c25-9699e3e6384c",
+  "id" : "fb39cdd5-1763-4102-87ea-197fa487f9a3",
   "pk" : "Evgeny Poberezkin",
   "doctype" : "author",
   "label" : "Evgeny Poberezkin",
@@ -487,7 +487,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Evgeny Poberezkin"
 }, {
-  "id" : "c14101f1-3a34-4615-9fac-ffa3a7788baf",
+  "id" : "f0da6b44-31fa-492e-9e96-f7cd60f41398",
   "pk" : "Felix Becker",
   "doctype" : "author",
   "label" : "Felix Becker",
@@ -495,7 +495,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Felix Becker"
 }, {
-  "id" : "4cbe1994-dc6f-4418-ba4f-d55c4ebc27eb",
+  "id" : "b6e1ba79-88ff-4eff-aaf1-142274cb2059",
   "pk" : "Felix Geisendörfer <felix@debuggable.com> (http://debuggable.com/)",
   "doctype" : "author",
   "label" : "Felix Geisendörfer <felix@debuggable.com> (http://debuggable.com/)",
@@ -503,7 +503,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Felix Geisendörfer <felix@debuggable.com> (http://debuggable.com/)"
 }, {
-  "id" : "596494fe-3359-4e0a-8944-ff46ceee2d0a",
+  "id" : "d2a6220e-dfc8-48c5-9611-d16d55d5d2b7",
   "pk" : "Feross Aboukhadijeh <feross@feross.org> (http://feross.org)",
   "doctype" : "author",
   "label" : "Feross Aboukhadijeh <feross@feross.org> (http://feross.org)",
@@ -511,7 +511,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Feross Aboukhadijeh <feross@feross.org> (http://feross.org)"
 }, {
-  "id" : "dc486a6b-aa98-49d1-83a7-7c996d1a687f",
+  "id" : "1153e422-b0ee-461e-ae07-643d8e20e944",
   "pk" : "Feross Aboukhadijeh <feross@feross.org> (http://feross.org/)",
   "doctype" : "author",
   "label" : "Feross Aboukhadijeh <feross@feross.org> (http://feross.org/)",
@@ -519,7 +519,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Feross Aboukhadijeh <feross@feross.org> (http://feross.org/)"
 }, {
-  "id" : "be2e468a-0e76-42b4-aeb0-7e7a851502a1",
+  "id" : "c73737d1-4be8-4c1f-921f-25ad38f0ad17",
   "pk" : "Feross Aboukhadijeh <feross@feross.org> (https://feross.org)",
   "doctype" : "author",
   "label" : "Feross Aboukhadijeh <feross@feross.org> (https://feross.org)",
@@ -527,7 +527,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Feross Aboukhadijeh <feross@feross.org> (https://feross.org)"
 }, {
-  "id" : "29a179c1-c29e-45c5-bcec-8b6dc0010f8d",
+  "id" : "1ccefc8c-e41b-4ee0-9c5a-63f7f2cc53a2",
   "pk" : "Forbes Lindesay",
   "doctype" : "author",
   "label" : "Forbes Lindesay",
@@ -535,7 +535,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Forbes Lindesay"
 }, {
-  "id" : "a02ab3e4-ee17-4f20-b714-ddd6cfd58c3b",
+  "id" : "ec335dae-c50c-4299-aee9-85e378379eee",
   "pk" : "ForbesLindesay",
   "doctype" : "author",
   "label" : "ForbesLindesay",
@@ -543,7 +543,7 @@
   "lob" : "npm",
   "cacheKey" : "author|ForbesLindesay"
 }, {
-  "id" : "5f354cc2-2921-4b56-9f32-3d3895da3514",
+  "id" : "780db8e0-df8e-4894-953e-206ac1fd705c",
   "pk" : "Gal Koren",
   "doctype" : "author",
   "label" : "Gal Koren",
@@ -551,7 +551,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Gal Koren"
 }, {
-  "id" : "d945fcd0-bcdd-40bd-b80d-38df54797c9a",
+  "id" : "85e562cf-cd0d-4c67-9c7d-7af7978be17d",
   "pk" : "Gareth Jones <gareth.nomiddlename@gmail.com>",
   "doctype" : "author",
   "label" : "Gareth Jones <gareth.nomiddlename@gmail.com>",
@@ -559,7 +559,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Gareth Jones <gareth.nomiddlename@gmail.com>"
 }, {
-  "id" : "5b6d4401-44fb-4fe1-8d19-f0681822a3c4",
+  "id" : "8d895211-9447-4a57-bd61-6f5e83a77024",
   "pk" : "Gary Court <gary.court@gmail.com>",
   "doctype" : "author",
   "label" : "Gary Court <gary.court@gmail.com>",
@@ -567,7 +567,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Gary Court <gary.court@gmail.com>"
 }, {
-  "id" : "da5c1814-9c74-4724-94ce-3fb58fef6c96",
+  "id" : "dead57e5-c681-426a-a6bf-f5274f0e31e9",
   "pk" : "George Zahariev <z@georgezahariev.com>",
   "doctype" : "author",
   "label" : "George Zahariev <z@georgezahariev.com>",
@@ -575,7 +575,7 @@
   "lob" : "npm",
   "cacheKey" : "author|George Zahariev <z@georgezahariev.com>"
 }, {
-  "id" : "a351c203-e396-46e9-a7ed-d3b8703d25a8",
+  "id" : "6b6be652-e562-43e9-ae90-9e395367c1d7",
   "pk" : "GoInstant Inc., a salesforce.com company",
   "doctype" : "author",
   "label" : "GoInstant Inc., a salesforce.com company",
@@ -583,7 +583,7 @@
   "lob" : "npm",
   "cacheKey" : "author|GoInstant Inc., a salesforce.com company"
 }, {
-  "id" : "f47242ad-9318-4699-812d-b36d1724015d",
+  "id" : "e893b1ba-796c-4b95-8f5a-624637abef90",
   "pk" : "Gregor Martynus (https://github.com/gr2m)",
   "doctype" : "author",
   "label" : "Gregor Martynus (https://github.com/gr2m)",
@@ -591,7 +591,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Gregor Martynus (https://github.com/gr2m)"
 }, {
-  "id" : "7e990811-1167-43c5-b992-d11c84bef213",
+  "id" : "fbc310ed-d38b-4d3b-a140-24cad1e47112",
   "pk" : "Grunt Development Team (http://gruntjs.com/development-team)",
   "doctype" : "author",
   "label" : "Grunt Development Team (http://gruntjs.com/development-team)",
@@ -599,7 +599,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Grunt Development Team (http://gruntjs.com/development-team)"
 }, {
-  "id" : "9cdda252-4361-4ade-9160-ee580a2cc1a7",
+  "id" : "1a55ea2e-7957-4a48-94d9-7469eb2a5377",
   "pk" : "Grunt Development Team (https://gruntjs.com/development-team)",
   "doctype" : "author",
   "label" : "Grunt Development Team (https://gruntjs.com/development-team)",
@@ -607,7 +607,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Grunt Development Team (https://gruntjs.com/development-team)"
 }, {
-  "id" : "a9bcab7f-4887-483e-826e-f17e241120d1",
+  "id" : "690be5da-5d61-4ee4-b13d-07f7a5963815",
   "pk" : "Guillermo Rauch <guillermo@learnboost.com>",
   "doctype" : "author",
   "label" : "Guillermo Rauch <guillermo@learnboost.com>",
@@ -615,7 +615,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Guillermo Rauch <guillermo@learnboost.com>"
 }, {
-  "id" : "baae3738-0909-4356-8dd3-fef6a03bde1a",
+  "id" : "08a41975-0f95-473b-aef8-88be48bd1b3d",
   "pk" : "Gulp Team <team@gulpjs.com> (http://gulpjs.com/)",
   "doctype" : "author",
   "label" : "Gulp Team <team@gulpjs.com> (http://gulpjs.com/)",
@@ -623,7 +623,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Gulp Team <team@gulpjs.com> (http://gulpjs.com/)"
 }, {
-  "id" : "42303c6b-dabe-4fa6-b05d-38913624974e",
+  "id" : "1b62a067-1c8a-4a56-a5b3-20d466fac528",
   "pk" : "Gulp Team <team@gulpjs.com> (https://gulpjs.com/)",
   "doctype" : "author",
   "label" : "Gulp Team <team@gulpjs.com> (https://gulpjs.com/)",
@@ -631,7 +631,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Gulp Team <team@gulpjs.com> (https://gulpjs.com/)"
 }, {
-  "id" : "cdad6fa3-9ac5-41e4-88f6-45ff3845f246",
+  "id" : "bf4ac49a-2e8e-4263-b558-6fc7c4630582",
   "pk" : "Hannes Hörl <hannes.hoerl+pgpass@snowreporter.com>",
   "doctype" : "author",
   "label" : "Hannes Hörl <hannes.hoerl+pgpass@snowreporter.com>",
@@ -639,7 +639,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Hannes Hörl <hannes.hoerl+pgpass@snowreporter.com>"
 }, {
-  "id" : "68d6968f-c8c8-40ac-a42a-37a8a925189f",
+  "id" : "82dc1f37-acf1-43ba-ae57-c6d5526109db",
   "pk" : "Heather Arthur <fayearthur@gmail.com>",
   "doctype" : "author",
   "label" : "Heather Arthur <fayearthur@gmail.com>",
@@ -647,7 +647,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Heather Arthur <fayearthur@gmail.com>"
 }, {
-  "id" : "634bd92e-34d0-41ed-9e8f-f0f8915cf347",
+  "id" : "fefeca34-4e1e-440e-af98-9e99874b58cf",
   "pk" : "Hugh Kennedy <hughskennedy@gmail.com> (http://hughsk.io/)",
   "doctype" : "author",
   "label" : "Hugh Kennedy <hughskennedy@gmail.com> (http://hughsk.io/)",
@@ -655,7 +655,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Hugh Kennedy <hughskennedy@gmail.com> (http://hughsk.io/)"
 }, {
-  "id" : "09808f00-9a56-401d-b602-08ebc40d9252",
+  "id" : "a66c39ad-0fa1-47e1-96b4-a4e8cd08f71d",
   "pk" : "Hugh Kennedy <hughskennedy@gmail.com> (http://hughskennedy.com)",
   "doctype" : "author",
   "label" : "Hugh Kennedy <hughskennedy@gmail.com> (http://hughskennedy.com)",
@@ -663,7 +663,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Hugh Kennedy <hughskennedy@gmail.com> (http://hughskennedy.com)"
 }, {
-  "id" : "453d7e4b-053e-489e-adda-5b718d25c8dc",
+  "id" : "51b27b1f-217a-47e0-a21d-603b40063e4f",
   "pk" : "Invertase <oss@invertase.io> (http://github.com/invertase/)",
   "doctype" : "author",
   "label" : "Invertase <oss@invertase.io> (http://github.com/invertase/)",
@@ -671,7 +671,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Invertase <oss@invertase.io> (http://github.com/invertase/)"
 }, {
-  "id" : "72aff43e-81a8-429b-8f22-61e4c85bd2ed",
+  "id" : "9ef87a08-a35c-401e-acd7-c14a9b61d26b",
   "pk" : "Irakli Gozalishvili <rfobic@gmail.com>",
   "doctype" : "author",
   "label" : "Irakli Gozalishvili <rfobic@gmail.com>",
@@ -679,7 +679,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Irakli Gozalishvili <rfobic@gmail.com>"
 }, {
-  "id" : "d38a4d99-b005-4929-a47a-0b9d467dd0a1",
+  "id" : "9a4771d1-6fbf-437b-8f59-8c7463a2e4f4",
   "pk" : "Irakli Gozalishvili <rfobic@gmail.com> (http://jeditoolkit.com)",
   "doctype" : "author",
   "label" : "Irakli Gozalishvili <rfobic@gmail.com> (http://jeditoolkit.com)",
@@ -687,7 +687,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Irakli Gozalishvili <rfobic@gmail.com> (http://jeditoolkit.com)"
 }, {
-  "id" : "951d3943-cdf5-4dd9-b01b-c95e83c599a8",
+  "id" : "b2fb84f4-db0d-4db7-86c5-0930c5908b39",
   "pk" : "Isaac Z. Schlueter <i@izs.me>",
   "doctype" : "author",
   "label" : "Isaac Z. Schlueter <i@izs.me>",
@@ -695,7 +695,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Isaac Z. Schlueter <i@izs.me>"
 }, {
-  "id" : "fbe00de8-3aea-4d74-9509-274a9df42bc8",
+  "id" : "96e11a7a-e372-4a87-a3a2-ca13690198e2",
   "pk" : "Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me)",
   "doctype" : "author",
   "label" : "Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me)",
@@ -703,7 +703,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me)"
 }, {
-  "id" : "c2775f4e-915a-4bd8-af7b-1cc4927bcbaf",
+  "id" : "66298d8c-ddb3-4913-ace5-721a4c0e7ca1",
   "pk" : "Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me/)",
   "doctype" : "author",
   "label" : "Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me/)",
@@ -711,7 +711,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me/)"
 }, {
-  "id" : "048e63d5-67f7-478a-9155-737302a60156",
+  "id" : "a97e869b-927a-4011-8a12-cdc56f1f8050",
   "pk" : "Iskren Ivov Chernev <iskren.chernev@gmail.com> (https://github.com/ichernev)",
   "doctype" : "author",
   "label" : "Iskren Ivov Chernev <iskren.chernev@gmail.com> (https://github.com/ichernev)",
@@ -719,7 +719,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Iskren Ivov Chernev <iskren.chernev@gmail.com> (https://github.com/ichernev)"
 }, {
-  "id" : "f8f60d0a-b91b-4c7b-aa40-a356b8585bf6",
+  "id" : "8e550eeb-14c0-43c9-8af4-2e0571b5fc90",
   "pk" : "JP Richardson <jprichardson@gmail.com>",
   "doctype" : "author",
   "label" : "JP Richardson <jprichardson@gmail.com>",
@@ -727,7 +727,7 @@
   "lob" : "npm",
   "cacheKey" : "author|JP Richardson <jprichardson@gmail.com>"
 }, {
-  "id" : "e4ea0a5a-dc02-4be5-ab03-ca225f991887",
+  "id" : "88480807-2581-4b61-9d7d-c88c9cf10542",
   "pk" : "Jakub Pawlowicz <contact@jakubpawlowicz.com> (http://twitter.com/jakubpawlowicz)",
   "doctype" : "author",
   "label" : "Jakub Pawlowicz <contact@jakubpawlowicz.com> (http://twitter.com/jakubpawlowicz)",
@@ -735,7 +735,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Jakub Pawlowicz <contact@jakubpawlowicz.com> (http://twitter.com/jakubpawlowicz)"
 }, {
-  "id" : "b2442f52-9afd-4519-bae3-0684f188262d",
+  "id" : "a42c6c27-cbd7-46f7-bbaa-766f84afd4ca",
   "pk" : "James Cooper <james@bitmechanic.com>",
   "doctype" : "author",
   "label" : "James Cooper <james@bitmechanic.com>",
@@ -743,7 +743,7 @@
   "lob" : "npm",
   "cacheKey" : "author|James Cooper <james@bitmechanic.com>"
 }, {
-  "id" : "1dceffb3-11fe-48eb-89da-29446393b35e",
+  "id" : "46d73f65-7a4a-4507-863e-19a6bc67f8b8",
   "pk" : "James Halliday <mail@substack.net> (http://substack.net)",
   "doctype" : "author",
   "label" : "James Halliday <mail@substack.net> (http://substack.net)",
@@ -751,7 +751,7 @@
   "lob" : "npm",
   "cacheKey" : "author|James Halliday <mail@substack.net> (http://substack.net)"
 }, {
-  "id" : "b82d3dbd-fd9e-4a28-ae5c-56d07f0b60c9",
+  "id" : "b12bb4e7-dc97-428b-9a15-b19245432afd",
   "pk" : "Jano González <info@janogonzalez.com>",
   "doctype" : "author",
   "label" : "Jano González <info@janogonzalez.com>",
@@ -759,7 +759,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Jano González <info@janogonzalez.com>"
 }, {
-  "id" : "bac5df7b-7727-4c06-95ed-d724f7fbebb2",
+  "id" : "63b8e62b-07bd-4bbe-95a3-0e6d73525003",
   "pk" : "Jared Hanson <jaredhanson@gmail.com> (http://www.jaredhanson.net/)",
   "doctype" : "author",
   "label" : "Jared Hanson <jaredhanson@gmail.com> (http://www.jaredhanson.net/)",
@@ -767,7 +767,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Jared Hanson <jaredhanson@gmail.com> (http://www.jaredhanson.net/)"
 }, {
-  "id" : "6756acec-ee37-4b2e-aa6b-3d7d9a0e2aa0",
+  "id" : "67e463af-5dbf-4513-b36b-c48ad1c79e8a",
   "pk" : "Jason Mulligan <jason.mulligan@avoidwork.com>",
   "doctype" : "author",
   "label" : "Jason Mulligan <jason.mulligan@avoidwork.com>",
@@ -775,7 +775,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Jason Mulligan <jason.mulligan@avoidwork.com>"
 }, {
-  "id" : "65fdb8ae-e448-410b-9246-d5e6bcf9eb99",
+  "id" : "62cf0d83-85c9-4ec1-98bb-02672465a53f",
   "pk" : "Javier Blanco <http://jbgutierrez.info>",
   "doctype" : "author",
   "label" : "Javier Blanco <http://jbgutierrez.info>",
@@ -783,7 +783,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Javier Blanco <http://jbgutierrez.info>"
 }, {
-  "id" : "8e1a5066-ad0d-43b4-86d8-61c6cb5decf9",
+  "id" : "c00cfe52-dae0-4652-a5ec-d20ec54c1a63",
   "pk" : "Jeff Wilcox <jeffwilcox+github@gmail.com>",
   "doctype" : "author",
   "label" : "Jeff Wilcox <jeffwilcox+github@gmail.com>",
@@ -791,7 +791,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Jeff Wilcox <jeffwilcox+github@gmail.com>"
 }, {
-  "id" : "1fd78582-fc84-405d-95a7-c760475077c7",
+  "id" : "d6c45d5f-8c25-4391-9505-fd65e03c4742",
   "pk" : "Jens Taylor <jensyt@gmail.com> (https://github.com/homebrewing)",
   "doctype" : "author",
   "label" : "Jens Taylor <jensyt@gmail.com> (https://github.com/homebrewing)",
@@ -799,7 +799,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Jens Taylor <jensyt@gmail.com> (https://github.com/homebrewing)"
 }, {
-  "id" : "a7e5130a-9654-4a1a-be22-513f5a4a2d73",
+  "id" : "4ca54420-6034-404d-8b90-09f19d3b3bce",
   "pk" : "Jeremie Miller <jeremie@jabber.org> (http://jeremie.com/)",
   "doctype" : "author",
   "label" : "Jeremie Miller <jeremie@jabber.org> (http://jeremie.com/)",
@@ -807,7 +807,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Jeremie Miller <jeremie@jabber.org> (http://jeremie.com/)"
 }, {
-  "id" : "81fc88fc-a2ca-4ad6-ae67-e0b292a804ba",
+  "id" : "3837142d-a849-467e-8d9e-fc50c9ba164a",
   "pk" : "Jeremy Ashkenas",
   "doctype" : "author",
   "label" : "Jeremy Ashkenas",
@@ -815,7 +815,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Jeremy Ashkenas"
 }, {
-  "id" : "64d7971f-d8aa-40f3-8a3e-ccd9f9ba7ffa",
+  "id" : "eb94fbcb-e257-4b80-9509-8d3e4e60c848",
   "pk" : "Jeremy Ashkenas <jeremy@documentcloud.org>",
   "doctype" : "author",
   "label" : "Jeremy Ashkenas <jeremy@documentcloud.org>",
@@ -823,7 +823,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Jeremy Ashkenas <jeremy@documentcloud.org>"
 }, {
-  "id" : "6e9883b5-fe36-440d-b2f3-c446287ce24b",
+  "id" : "e05b7159-0c44-4873-ac41-6bf2640d6f80",
   "pk" : "Jeremy Stashewsky <jstash@gmail.com>",
   "doctype" : "author",
   "label" : "Jeremy Stashewsky <jstash@gmail.com>",
@@ -831,7 +831,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Jeremy Stashewsky <jstash@gmail.com>"
 }, {
-  "id" : "a73fe3aa-d9e9-4364-8c97-f83dab9fe5f6",
+  "id" : "5060dd6e-ad07-4feb-b1e1-1d8ab2e2f945",
   "pk" : "Jerry Sievert <code@legitimatesounding.com> (http://legitimatesounding.com/blog/)",
   "doctype" : "author",
   "label" : "Jerry Sievert <code@legitimatesounding.com> (http://legitimatesounding.com/blog/)",
@@ -839,7 +839,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Jerry Sievert <code@legitimatesounding.com> (http://legitimatesounding.com/blog/)"
 }, {
-  "id" : "c3fed5aa-8ad4-46ca-8f6b-effecd20eb2f",
+  "id" : "b17c7399-4a74-437f-903a-2d00c6e09f3b",
   "pk" : "Jim Palmer (based on chunking idea from Dave Koelle, packaged by @khous of Bill4Time)",
   "doctype" : "author",
   "label" : "Jim Palmer (based on chunking idea from Dave Koelle, packaged by @khous of Bill4Time)",
@@ -847,7 +847,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Jim Palmer (based on chunking idea from Dave Koelle, packaged by @khous of Bill4Time)"
 }, {
-  "id" : "a0d3f783-11ee-44f1-90ac-19ed8fd179ae",
+  "id" : "a2ee2327-d671-4f1d-9718-a55ba4c27dbd",
   "pk" : "John-David Dalton <john.david.dalton@gmail.com>",
   "doctype" : "author",
   "label" : "John-David Dalton <john.david.dalton@gmail.com>",
@@ -855,7 +855,7 @@
   "lob" : "npm",
   "cacheKey" : "author|John-David Dalton <john.david.dalton@gmail.com>"
 }, {
-  "id" : "979dc50c-8aa4-4019-9e74-1a76f435d1b6",
+  "id" : "c0fb89e3-b82c-4e97-8f2c-4d7e772a5b32",
   "pk" : "John-David Dalton <john.david.dalton@gmail.com> (http://allyoucanleet.com/)",
   "doctype" : "author",
   "label" : "John-David Dalton <john.david.dalton@gmail.com> (http://allyoucanleet.com/)",
@@ -863,7 +863,7 @@
   "lob" : "npm",
   "cacheKey" : "author|John-David Dalton <john.david.dalton@gmail.com> (http://allyoucanleet.com/)"
 }, {
-  "id" : "20defa9b-9cd7-458a-a171-56c99a4088cf",
+  "id" : "a1a91142-6b1a-402a-915d-ee62c6616bf3",
   "pk" : "Jon Schlinkert (https://github.com/jonschlinkert)",
   "doctype" : "author",
   "label" : "Jon Schlinkert (https://github.com/jonschlinkert)",
@@ -871,7 +871,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Jon Schlinkert (https://github.com/jonschlinkert)"
 }, {
-  "id" : "c26a2f27-4ff9-4f38-a7d2-62f4d94a60bd",
+  "id" : "2148f421-4e67-4f03-be35-55dc671aafbb",
   "pk" : "Jonathan Ong <me@jongleberry.com> (http://jongleberry.com)",
   "doctype" : "author",
   "label" : "Jonathan Ong <me@jongleberry.com> (http://jongleberry.com)",
@@ -879,7 +879,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Jonathan Ong <me@jongleberry.com> (http://jongleberry.com)"
 }, {
-  "id" : "ca38d9ae-81b7-4c6e-855a-d27e834e83a2",
+  "id" : "7d77ecf2-c1dd-4fcd-afad-8a689abb6511",
   "pk" : "Jordan Harband",
   "doctype" : "author",
   "label" : "Jordan Harband",
@@ -887,7 +887,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Jordan Harband"
 }, {
-  "id" : "411fb750-dc34-4cec-a768-c8c43bcfa3cc",
+  "id" : "9cc1b6cd-556b-4f45-88cb-ec53ad824576",
   "pk" : "Jordan Harband <ljharb@gmail.com> (http://ljharb.codes)",
   "doctype" : "author",
   "label" : "Jordan Harband <ljharb@gmail.com> (http://ljharb.codes)",
@@ -895,7 +895,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Jordan Harband <ljharb@gmail.com> (http://ljharb.codes)"
 }, {
-  "id" : "f99bdffc-5031-4477-a947-a483541db7f3",
+  "id" : "9da89cbe-649c-4a44-a2d9-7a09e5fb1e8a",
   "pk" : "Jos de Jong <wjosdejong@gmail.com> (https://github.com/josdejong)",
   "doctype" : "author",
   "label" : "Jos de Jong <wjosdejong@gmail.com> (https://github.com/josdejong)",
@@ -903,7 +903,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Jos de Jong <wjosdejong@gmail.com> (https://github.com/josdejong)"
 }, {
-  "id" : "033554b5-4f0a-4905-a8c2-c6522355b584",
+  "id" : "6c1d5023-d0ac-487f-8d2c-505387e7fc1c",
   "pk" : "Josh Wolfe <thejoshwolfe@gmail.com>",
   "doctype" : "author",
   "label" : "Josh Wolfe <thejoshwolfe@gmail.com>",
@@ -911,7 +911,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Josh Wolfe <thejoshwolfe@gmail.com>"
 }, {
-  "id" : "4c93541a-d7a4-4bb2-be21-ef57769427bb",
+  "id" : "b57f9b23-308f-4e9e-918d-2e80ac165e5c",
   "pk" : "Joyent (http://www.joyent.com)",
   "doctype" : "author",
   "label" : "Joyent (http://www.joyent.com)",
@@ -919,7 +919,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Joyent (http://www.joyent.com)"
 }, {
-  "id" : "6dae806e-79b6-4538-a3d8-5022c924be5b",
+  "id" : "c06c1acb-ed85-44d0-9417-722be82e5235",
   "pk" : "Joyent (joyent.com)",
   "doctype" : "author",
   "label" : "Joyent (joyent.com)",
@@ -927,7 +927,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Joyent (joyent.com)"
 }, {
-  "id" : "c1bfbadd-16a7-4c9f-b9a1-3c6215dd65a1",
+  "id" : "a9ddf7da-e25d-4ccc-984e-83970444a6f3",
   "pk" : "Joyent, Inc",
   "doctype" : "author",
   "label" : "Joyent, Inc",
@@ -935,7 +935,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Joyent, Inc"
 }, {
-  "id" : "24a08b9d-9d53-42eb-ab55-2821afac0997",
+  "id" : "e2452475-06d7-46cf-b197-fdb7ab3968d3",
   "pk" : "Julian Gruber <mail@juliangruber.com> (http://juliangruber.com)",
   "doctype" : "author",
   "label" : "Julian Gruber <mail@juliangruber.com> (http://juliangruber.com)",
@@ -943,7 +943,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Julian Gruber <mail@juliangruber.com> (http://juliangruber.com)"
 }, {
-  "id" : "d70374d1-9054-4471-bba3-ab2c01c2295e",
+  "id" : "69afb19b-9923-49a8-a049-813b93c2227b",
   "pk" : "Kevin Martensson <kevinmartensson@gmail.com> (github.com/kevva)",
   "doctype" : "author",
   "label" : "Kevin Martensson <kevinmartensson@gmail.com> (github.com/kevva)",
@@ -951,7 +951,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Kevin Martensson <kevinmartensson@gmail.com> (github.com/kevva)"
 }, {
-  "id" : "4822cd4b-041b-4125-a068-90a7cb8930a4",
+  "id" : "e18ffcb8-d06e-4ba7-9564-b6dc3d5918fb",
   "pk" : "Kevin Roark",
   "doctype" : "author",
   "label" : "Kevin Roark",
@@ -959,7 +959,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Kevin Roark"
 }, {
-  "id" : "e2736c88-4a13-43a1-b35a-9fd49ebafcd3",
+  "id" : "98d6e3f4-77fc-4bb8-a84d-9c163636409e",
   "pk" : "Koichi Kobayashi <koichik@improvement.jp>",
   "doctype" : "author",
   "label" : "Koichi Kobayashi <koichik@improvement.jp>",
@@ -967,7 +967,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Koichi Kobayashi <koichik@improvement.jp>"
 }, {
-  "id" : "7e6847fe-988d-4690-9e87-76a061bcd40f",
+  "id" : "9898930d-c519-4b38-914e-3b8fbe7a3402",
   "pk" : "Kornel Lesiński <kornel@geekhood.net> (https://kornel.ski/)",
   "doctype" : "author",
   "label" : "Kornel Lesiński <kornel@geekhood.net> (https://kornel.ski/)",
@@ -975,7 +975,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Kornel Lesiński <kornel@geekhood.net> (https://kornel.ski/)"
 }, {
-  "id" : "0abd4b01-2dcd-4924-bdc5-fad2142cb675",
+  "id" : "cd051128-6d8c-4ffb-bd00-cf7628782a89",
   "pk" : "Kriasoft <hello@kriasoft.com> (https://www.kriasoft.com)",
   "doctype" : "author",
   "label" : "Kriasoft <hello@kriasoft.com> (https://www.kriasoft.com)",
@@ -983,7 +983,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Kriasoft <hello@kriasoft.com> (https://www.kriasoft.com)"
 }, {
-  "id" : "b69f13f3-c454-4521-bd20-c48a5566e10b",
+  "id" : "276e1446-5d4e-4732-a03b-26f2b58f4f52",
   "pk" : "Kris Zyp",
   "doctype" : "author",
   "label" : "Kris Zyp",
@@ -991,7 +991,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Kris Zyp"
 }, {
-  "id" : "7c7f3244-dffa-41fc-b029-525e9d1a1c23",
+  "id" : "98e80fe9-90bc-47d9-88f1-c23d3e570650",
   "pk" : "Kristian Faeldt <faeldt_kristian@cyberagent.co.jp>",
   "doctype" : "author",
   "label" : "Kristian Faeldt <faeldt_kristian@cyberagent.co.jp>",
@@ -999,7 +999,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Kristian Faeldt <faeldt_kristian@cyberagent.co.jp>"
 }, {
-  "id" : "30b654db-b930-47e8-987c-abb708cb1eac",
+  "id" : "1779905d-e001-40f6-8f8f-cd47c23e0257",
   "pk" : "LitoMore (litomore@gmail.com)",
   "doctype" : "author",
   "label" : "LitoMore (litomore@gmail.com)",
@@ -1007,7 +1007,7 @@
   "lob" : "npm",
   "cacheKey" : "author|LitoMore (litomore@gmail.com)"
 }, {
-  "id" : "f07a5cc4-4043-4356-abc5-e643414d8eb0",
+  "id" : "76d688f6-72a6-42ec-ae6a-1a1232c29af2",
   "pk" : "Lovell Fuller <npm@lovell.info>",
   "doctype" : "author",
   "label" : "Lovell Fuller <npm@lovell.info>",
@@ -1015,7 +1015,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Lovell Fuller <npm@lovell.info>"
 }, {
-  "id" : "89524611-0d84-4eb3-9331-fe06ab3e2d6f",
+  "id" : "b54dcf85-128e-4b9f-89b6-7659fcce67e6",
   "pk" : "Luke Childs <lukechilds123@gmail.com> (http://lukechilds.co.uk)",
   "doctype" : "author",
   "label" : "Luke Childs <lukechilds123@gmail.com> (http://lukechilds.co.uk)",
@@ -1023,7 +1023,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Luke Childs <lukechilds123@gmail.com> (http://lukechilds.co.uk)"
 }, {
-  "id" : "9633bfe6-b4e9-46d5-ba76-32cab86845ef",
+  "id" : "25b85f69-0318-45b1-ba68-b68e153ace63",
   "pk" : "Lupo Montero <lupomontero@gmail.com> (https://lupomontero.com/)",
   "doctype" : "author",
   "label" : "Lupo Montero <lupomontero@gmail.com> (https://lupomontero.com/)",
@@ -1031,7 +1031,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Lupo Montero <lupomontero@gmail.com> (https://lupomontero.com/)"
 }, {
-  "id" : "5db9067f-1412-4bbe-86d4-55a640bb614d",
+  "id" : "33ce8954-96b1-4275-bac2-f0a534517781",
   "pk" : "MapBox (https://mapbox.com/)",
   "doctype" : "author",
   "label" : "MapBox (https://mapbox.com/)",
@@ -1039,7 +1039,7 @@
   "lob" : "npm",
   "cacheKey" : "author|MapBox (https://mapbox.com/)"
 }, {
-  "id" : "19bbc6bb-86f6-4efc-a413-c4b8f81821c5",
+  "id" : "00703548-353d-4210-9403-bdf76d2f9b26",
   "pk" : "Marak Squires",
   "doctype" : "author",
   "label" : "Marak Squires",
@@ -1047,7 +1047,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Marak Squires"
 }, {
-  "id" : "af8c4637-076d-4861-966b-04c64d0dd1e6",
+  "id" : "9f2ff119-18cc-40b7-8197-3206ea00c7fe",
   "pk" : "Marek Kubica <marek@xivilization.net> (https://xivilization.net)",
   "doctype" : "author",
   "label" : "Marek Kubica <marek@xivilization.net> (https://xivilization.net)",
@@ -1055,7 +1055,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Marek Kubica <marek@xivilization.net> (https://xivilization.net)"
 }, {
-  "id" : "05cc8afb-2d3d-4be6-ba96-72b40277ead6",
+  "id" : "49bc8c13-208d-4c6d-bfe0-75a217fd6b61",
   "pk" : "Mariusz Nowak <medyk@medikoo.com> (http://www.medikoo.com/)",
   "doctype" : "author",
   "label" : "Mariusz Nowak <medyk@medikoo.com> (http://www.medikoo.com/)",
@@ -1063,7 +1063,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Mariusz Nowak <medyk@medikoo.com> (http://www.medikoo.com/)"
 }, {
-  "id" : "a3b0a1cb-90ac-49a0-be38-c9c2ba4d01df",
+  "id" : "9562423a-8932-4919-96a6-c7e7098baa1e",
   "pk" : "Mariusz Nowak <medyk@medikoo.com> (https://www.medikoo.com/)",
   "doctype" : "author",
   "label" : "Mariusz Nowak <medyk@medikoo.com> (https://www.medikoo.com/)",
@@ -1071,7 +1071,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Mariusz Nowak <medyk@medikoo.com> (https://www.medikoo.com/)"
 }, {
-  "id" : "92643e72-9dea-43c5-a87c-f6acfb299056",
+  "id" : "0ef56b87-fab4-45a0-ac31-f6515bd07b53",
   "pk" : "Mark Cavage <mcavage@gmail.com>",
   "doctype" : "author",
   "label" : "Mark Cavage <mcavage@gmail.com>",
@@ -1079,7 +1079,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Mark Cavage <mcavage@gmail.com>"
 }, {
-  "id" : "e3b59b2e-25b4-430d-9492-7fd00485b155",
+  "id" : "574fd1e1-433f-4a47-84fb-b9528c203981",
   "pk" : "Mark Lee",
   "doctype" : "author",
   "label" : "Mark Lee",
@@ -1087,7 +1087,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Mark Lee"
 }, {
-  "id" : "099ef985-df39-4b8a-b080-b897df2355bd",
+  "id" : "dd714c9d-654d-45f0-bbe9-5a698ab1ab93",
   "pk" : "Mark Wubben (https://novemberborn.net/)",
   "doctype" : "author",
   "label" : "Mark Wubben (https://novemberborn.net/)",
@@ -1095,7 +1095,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Mark Wubben (https://novemberborn.net/)"
 }, {
-  "id" : "6bc5787f-7d37-4c83-9f37-b28eb3713553",
+  "id" : "6f1fa055-5889-4f65-b9e8-42409dc2aa17",
   "pk" : "Mathias Buus",
   "doctype" : "author",
   "label" : "Mathias Buus",
@@ -1103,7 +1103,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Mathias Buus"
 }, {
-  "id" : "2491a429-b971-4e7e-8b24-fa8be725e416",
+  "id" : "5984102b-e1af-46be-8902-acc10257aab4",
   "pk" : "Mathias Buus <mathiasbuus@gmail.com>",
   "doctype" : "author",
   "label" : "Mathias Buus <mathiasbuus@gmail.com>",
@@ -1111,7 +1111,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Mathias Buus <mathiasbuus@gmail.com>"
 }, {
-  "id" : "77092faf-674d-49a9-9673-200ae1d4f793",
+  "id" : "67f1a8bd-6335-4a66-96cb-1bbd7f9c89ad",
   "pk" : "Mathias Buus Madsen <mathiasbuus@gmail.com>",
   "doctype" : "author",
   "label" : "Mathias Buus Madsen <mathiasbuus@gmail.com>",
@@ -1119,7 +1119,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Mathias Buus Madsen <mathiasbuus@gmail.com>"
 }, {
-  "id" : "7f006e63-33e2-4fb5-b47b-f010cf2c416d",
+  "id" : "8593ec9e-3739-4db4-a399-0207277a48e5",
   "pk" : "Mathias Bynens (https://mathiasbynens.be/)",
   "doctype" : "author",
   "label" : "Mathias Bynens (https://mathiasbynens.be/)",
@@ -1127,7 +1127,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Mathias Bynens (https://mathiasbynens.be/)"
 }, {
-  "id" : "9c206f79-e1eb-47a7-82b7-eb52572309aa",
+  "id" : "e3a05cb9-59ba-4854-832a-ba3ff238860d",
   "pk" : "Matt Ranney <mjr@ranney.com>",
   "doctype" : "author",
   "label" : "Matt Ranney <mjr@ranney.com>",
@@ -1135,7 +1135,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Matt Ranney <mjr@ranney.com>"
 }, {
-  "id" : "f8b0cc4c-d6b9-4fe6-b8f9-5715ec401e65",
+  "id" : "29f7b1dd-0a0a-491d-b1b7-6745de009bf7",
   "pk" : "Max Ogden <max@maxogden.com>",
   "doctype" : "author",
   "label" : "Max Ogden <max@maxogden.com>",
@@ -1143,7 +1143,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Max Ogden <max@maxogden.com>"
 }, {
-  "id" : "8949328f-d8a3-440b-824e-b079cc2ffa75",
+  "id" : "c84b2040-a33c-48e4-9f95-8b562621bf3d",
   "pk" : "Michael Hart <michael.hart.au@gmail.com> (http://github.com/mhart)",
   "doctype" : "author",
   "label" : "Michael Hart <michael.hart.au@gmail.com> (http://github.com/mhart)",
@@ -1151,7 +1151,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Michael Hart <michael.hart.au@gmail.com> (http://github.com/mhart)"
 }, {
-  "id" : "63d299bc-e8ce-485f-b4b9-cfd24ca5d610",
+  "id" : "63ff4de7-44d4-4f79-a3f4-e00aa4fb0c17",
   "pk" : "Michael Mclaughlin <M8ch88l@gmail.com>",
   "doctype" : "author",
   "label" : "Michael Mclaughlin <M8ch88l@gmail.com>",
@@ -1159,7 +1159,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Michael Mclaughlin <M8ch88l@gmail.com>"
 }, {
-  "id" : "2a82e53c-7971-4cb2-93f9-19206d698560",
+  "id" : "6c5fcb2c-40f8-425f-988b-299f4b376f12",
   "pk" : "Michael de Wit",
   "doctype" : "author",
   "label" : "Michael de Wit",
@@ -1167,7 +1167,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Michael de Wit"
 }, {
-  "id" : "829785db-0b50-4dbb-b269-d1b067ac2f7e",
+  "id" : "b61c1755-8660-4033-aef3-6a17b40040e2",
   "pk" : "Microsoft Corp.",
   "doctype" : "author",
   "label" : "Microsoft Corp.",
@@ -1175,7 +1175,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Microsoft Corp."
 }, {
-  "id" : "74cc2ae5-cffa-4faf-9ecd-b49363d0c6c4",
+  "id" : "24c01c6b-a182-4540-9fd7-93c0ee8fd269",
   "pk" : "Microsoft Corporation",
   "doctype" : "author",
   "label" : "Microsoft Corporation",
@@ -1183,7 +1183,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Microsoft Corporation"
 }, {
-  "id" : "a8ca1771-3317-48e2-86e5-745a1d15352a",
+  "id" : "9f3c4dac-05e0-421c-b1a9-6ad9649f671b",
   "pk" : "Microsoft Corporation <azsdkteam@microsoft.com> (https://github.com/Azure/ms-rest-azure-env)",
   "doctype" : "author",
   "label" : "Microsoft Corporation <azsdkteam@microsoft.com> (https://github.com/Azure/ms-rest-azure-env)",
@@ -1191,7 +1191,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Microsoft Corporation <azsdkteam@microsoft.com> (https://github.com/Azure/ms-rest-azure-env)"
 }, {
-  "id" : "cf776b3e-2cdd-4535-ab6d-fa47a2122593",
+  "id" : "adbdb383-8092-49f7-84e9-060f17df1119",
   "pk" : "Microsoft Corporation <azsdkteam@microsoft.com> (https://github.com/Azure/ms-rest-js)",
   "doctype" : "author",
   "label" : "Microsoft Corporation <azsdkteam@microsoft.com> (https://github.com/Azure/ms-rest-js)",
@@ -1199,7 +1199,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Microsoft Corporation <azsdkteam@microsoft.com> (https://github.com/Azure/ms-rest-js)"
 }, {
-  "id" : "a74213e3-8d9d-4f9e-bb5e-cfd6db37b803",
+  "id" : "afdd8177-66b9-4b8c-893b-852414e4a722",
   "pk" : "Microsoft Corporation <azsdkteam@microsoft.com> (https://github.com/Azure/ms-rest-nodeauth)",
   "doctype" : "author",
   "label" : "Microsoft Corporation <azsdkteam@microsoft.com> (https://github.com/Azure/ms-rest-nodeauth)",
@@ -1207,7 +1207,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Microsoft Corporation <azsdkteam@microsoft.com> (https://github.com/Azure/ms-rest-nodeauth)"
 }, {
-  "id" : "a1e6fe3d-e0f9-4d2f-af5f-e84d98bcca36",
+  "id" : "599d66be-d1fe-4e81-99f3-b7aa9cc9f955",
   "pk" : "Microsoft Open Technologies Inc <msopentech@microsoft.com> (http://msopentech.com/)",
   "doctype" : "author",
   "label" : "Microsoft Open Technologies Inc <msopentech@microsoft.com> (http://msopentech.com/)",
@@ -1215,7 +1215,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Microsoft Open Technologies Inc <msopentech@microsoft.com> (http://msopentech.com/)"
 }, {
-  "id" : "530b597a-348c-4ef1-b18c-be047d081f22",
+  "id" : "8d740021-ac97-4a47-a7b9-c144e45c22d7",
   "pk" : "Mihai Bazon <mihai.bazon@gmail.com> (http://lisperator.net/)",
   "doctype" : "author",
   "label" : "Mihai Bazon <mihai.bazon@gmail.com> (http://lisperator.net/)",
@@ -1223,7 +1223,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Mihai Bazon <mihai.bazon@gmail.com> (http://lisperator.net/)"
 }, {
-  "id" : "346a8fd5-224a-47b4-bc18-dd3bc5b8da2f",
+  "id" : "cf8eb353-3fb8-4400-8f97-4de94f822d50",
   "pk" : "Mike D Pilsbury <mike.pilsbury@gmail.com>",
   "doctype" : "author",
   "label" : "Mike D Pilsbury <mike.pilsbury@gmail.com>",
@@ -1231,7 +1231,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Mike D Pilsbury <mike.pilsbury@gmail.com>"
 }, {
-  "id" : "0f3a8b1c-c93e-4efa-9cee-e830e55985ec",
+  "id" : "faae022d-9067-4407-a569-b1f1d1b14def",
   "pk" : "Mikeal Rogers <mikeal.rogers@gmail.com>",
   "doctype" : "author",
   "label" : "Mikeal Rogers <mikeal.rogers@gmail.com>",
@@ -1239,7 +1239,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Mikeal Rogers <mikeal.rogers@gmail.com>"
 }, {
-  "id" : "19b511d2-1ad4-455e-9e7f-f1b87069f862",
+  "id" : "5158f060-e217-4bec-8a7b-e605a8ab23a0",
   "pk" : "Mikeal Rogers <mikeal.rogers@gmail.com> (http://www.futurealoof.com)",
   "doctype" : "author",
   "label" : "Mikeal Rogers <mikeal.rogers@gmail.com> (http://www.futurealoof.com)",
@@ -1247,7 +1247,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Mikeal Rogers <mikeal.rogers@gmail.com> (http://www.futurealoof.com)"
 }, {
-  "id" : "ebebbef1-9704-43b3-8ea8-ef1df55df959",
+  "id" : "e5c53203-4216-4c05-9872-5bc5e279b39a",
   "pk" : "Mikola Lysenko",
   "doctype" : "author",
   "label" : "Mikola Lysenko",
@@ -1255,7 +1255,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Mikola Lysenko"
 }, {
-  "id" : "93bbd1da-44de-40e2-a073-6d239093680a",
+  "id" : "2772a9e2-0205-4017-8fea-08fbf6bd1d49",
   "pk" : "Nathan Rajlich <nathan@tootallnate.net> (http://n8.io/)",
   "doctype" : "author",
   "label" : "Nathan Rajlich <nathan@tootallnate.net> (http://n8.io/)",
@@ -1263,7 +1263,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Nathan Rajlich <nathan@tootallnate.net> (http://n8.io/)"
 }, {
-  "id" : "084171bb-fe64-4dd8-85e2-315b82e50b92",
+  "id" : "23204f63-4aa6-46d0-8e48-35fcdd628920",
   "pk" : "Nick Fitzgerald <nfitzgerald@mozilla.com>",
   "doctype" : "author",
   "label" : "Nick Fitzgerald <nfitzgerald@mozilla.com>",
@@ -1271,7 +1271,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Nick Fitzgerald <nfitzgerald@mozilla.com>"
 }, {
-  "id" : "83555d06-e079-4b92-a289-ba40cd72e8d1",
+  "id" : "ca192bb5-8835-487a-8f11-ee73488d7c2e",
   "pk" : "Nikita Skovoroda <chalkerx@gmail.com> (https://github.com/ChALkeR)",
   "doctype" : "author",
   "label" : "Nikita Skovoroda <chalkerx@gmail.com> (https://github.com/ChALkeR)",
@@ -1279,7 +1279,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Nikita Skovoroda <chalkerx@gmail.com> (https://github.com/ChALkeR)"
 }, {
-  "id" : "04ae24a4-5133-4075-9b6c-d9e39703d14a",
+  "id" : "60a833cf-3b93-4c7a-b717-40ac3f2cf4b8",
   "pk" : "Niklas von Hertzen <niklasvh@gmail.com> (https://hertzen.com)",
   "doctype" : "author",
   "label" : "Niklas von Hertzen <niklasvh@gmail.com> (https://hertzen.com)",
@@ -1287,7 +1287,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Niklas von Hertzen <niklasvh@gmail.com> (https://hertzen.com)"
 }, {
-  "id" : "7d900cec-2902-49b7-81f9-895ca0b720fd",
+  "id" : "b688b758-385a-4444-9b13-d77e54821c81",
   "pk" : "Ozgur Ozcitak <oozcitak@gmail.com>",
   "doctype" : "author",
   "label" : "Ozgur Ozcitak <oozcitak@gmail.com>",
@@ -1295,7 +1295,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Ozgur Ozcitak <oozcitak@gmail.com>"
 }, {
-  "id" : "0b87d08c-0bcf-4406-998b-f9f7e3398dd2",
+  "id" : "dfa31adf-b168-4636-a770-82089210cdc3",
   "pk" : "Patrik Simek (https://patriksimek.cz)",
   "doctype" : "author",
   "label" : "Patrik Simek (https://patriksimek.cz)",
@@ -1303,7 +1303,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Patrik Simek (https://patriksimek.cz)"
 }, {
-  "id" : "7905e91a-efb4-4e4f-8395-9273e9b4dda2",
+  "id" : "e2e5acae-1333-465c-93f8-460ae6e6eea9",
   "pk" : "Paul Miller (https://paulmillr.com)",
   "doctype" : "author",
   "label" : "Paul Miller (https://paulmillr.com)",
@@ -1311,7 +1311,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Paul Miller (https://paulmillr.com)"
 }, {
-  "id" : "6eac5c06-5fba-41fa-bdb0-33653394fbae",
+  "id" : "6039b057-8a7c-4226-beab-f6ead7b803cd",
   "pk" : "Paul Vorbach <paul@vorba.ch> (http://paul.vorba.ch/)",
   "doctype" : "author",
   "label" : "Paul Vorbach <paul@vorba.ch> (http://paul.vorba.ch/)",
@@ -1319,7 +1319,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Paul Vorbach <paul@vorba.ch> (http://paul.vorba.ch/)"
 }, {
-  "id" : "6807ae63-af3f-42c1-9d25-5e5670287f2c",
+  "id" : "8b62be17-0440-4b39-826d-07b0c18cce39",
   "pk" : "Petka Antonov <petka_antonov@hotmail.com> (http://github.com/petkaantonov/)",
   "doctype" : "author",
   "label" : "Petka Antonov <petka_antonov@hotmail.com> (http://github.com/petkaantonov/)",
@@ -1327,7 +1327,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Petka Antonov <petka_antonov@hotmail.com> (http://github.com/petkaantonov/)"
 }, {
-  "id" : "3301c2ec-9466-44e2-bf20-c88c8f008c34",
+  "id" : "bdbd9326-6639-4905-857d-97da88f52b19",
   "pk" : "Ramesh Nair <ram@hiddentao.com> (http://www.hiddentao.com/)",
   "doctype" : "author",
   "label" : "Ramesh Nair <ram@hiddentao.com> (http://www.hiddentao.com/)",
@@ -1335,7 +1335,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Ramesh Nair <ram@hiddentao.com> (http://www.hiddentao.com/)"
 }, {
-  "id" : "62ba4ed0-40fc-491a-a098-e5425778d288",
+  "id" : "6d3932d0-980e-451a-afd6-bb0efd1888d8",
   "pk" : "Raynos <raynos2@gmail.com>",
   "doctype" : "author",
   "label" : "Raynos <raynos2@gmail.com>",
@@ -1343,7 +1343,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Raynos <raynos2@gmail.com>"
 }, {
-  "id" : "ab6931bf-9fe8-49b1-b0a6-36d284d4117f",
+  "id" : "e9ff4f3b-7042-42bc-93bd-b8743a7c8339",
   "pk" : "Rebecca Turner (http://re-becca.org)",
   "doctype" : "author",
   "label" : "Rebecca Turner (http://re-becca.org)",
@@ -1351,7 +1351,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Rebecca Turner (http://re-becca.org)"
 }, {
-  "id" : "5015d0ca-0a98-4428-9b36-f58869e94859",
+  "id" : "2c30559e-87d0-4367-b77a-cd7c6f7e6fe3",
   "pk" : "Rebecca Turner <me@re-becca.org>",
   "doctype" : "author",
   "label" : "Rebecca Turner <me@re-becca.org>",
@@ -1359,7 +1359,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Rebecca Turner <me@re-becca.org>"
 }, {
-  "id" : "69b68c7c-91fb-48c8-8861-cbe50f18c084",
+  "id" : "df2eed76-2841-4494-ab96-224be0432e88",
   "pk" : "Rebecca Turner <me@re-becca.org> (http://re-becca.org)",
   "doctype" : "author",
   "label" : "Rebecca Turner <me@re-becca.org> (http://re-becca.org)",
@@ -1367,7 +1367,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Rebecca Turner <me@re-becca.org> (http://re-becca.org)"
 }, {
-  "id" : "99e0412f-8cad-4fd0-b193-dfec965ed265",
+  "id" : "9e27401c-e634-4020-b4a4-73655cbb1a7e",
   "pk" : "Rebecca Turner <me@re-becca.org> (http://re-becca.org/)",
   "doctype" : "author",
   "label" : "Rebecca Turner <me@re-becca.org> (http://re-becca.org/)",
@@ -1375,7 +1375,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Rebecca Turner <me@re-becca.org> (http://re-becca.org/)"
 }, {
-  "id" : "6d1b4648-23c2-41b4-bcb2-66f98a8de3b0",
+  "id" : "17e9b465-0753-4557-a820-95b96cd33994",
   "pk" : "Remy Sharp",
   "doctype" : "author",
   "label" : "Remy Sharp",
@@ -1383,7 +1383,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Remy Sharp"
 }, {
-  "id" : "30a8a990-81ea-4fcf-8efa-40b7e117dec8",
+  "id" : "4a093561-fd3c-4959-8845-02b298b23f11",
   "pk" : "Remy Sharp (http://github.com/remy)",
   "doctype" : "author",
   "label" : "Remy Sharp (http://github.com/remy)",
@@ -1391,7 +1391,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Remy Sharp (http://github.com/remy)"
 }, {
-  "id" : "3b34a030-6cc4-4280-b3de-f4a9c15d3571",
+  "id" : "30534a91-ecfa-4675-9dda-a2299276faf5",
   "pk" : "Renée Kooi <renee@kooi.me>",
   "doctype" : "author",
   "label" : "Renée Kooi <renee@kooi.me>",
@@ -1399,7 +1399,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Renée Kooi <renee@kooi.me>"
 }, {
-  "id" : "67981d51-39d8-444e-8190-993c43d24628",
+  "id" : "01f2f49d-ba2c-4842-94a8-2d9a4b5793b4",
   "pk" : "Rich Harris",
   "doctype" : "author",
   "label" : "Rich Harris",
@@ -1407,7 +1407,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Rich Harris"
 }, {
-  "id" : "b1b3b6d9-6ec5-4f6a-bbd1-4781612f684f",
+  "id" : "5a6baed5-c090-4c88-9076-7a6c96ac7a95",
   "pk" : "Robert Eisele <robert@xarg.org> (http://www.xarg.org/)",
   "doctype" : "author",
   "label" : "Robert Eisele <robert@xarg.org> (http://www.xarg.org/)",
@@ -1415,7 +1415,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Robert Eisele <robert@xarg.org> (http://www.xarg.org/)"
 }, {
-  "id" : "9df710ad-c894-4015-98aa-cc2e4a90c473",
+  "id" : "927e7ed4-5f58-4231-904f-820724976f4c",
   "pk" : "Robert Kieffer <robert@broofa.com> (http://github.com/broofa)",
   "doctype" : "author",
   "label" : "Robert Kieffer <robert@broofa.com> (http://github.com/broofa)",
@@ -1423,7 +1423,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Robert Kieffer <robert@broofa.com> (http://github.com/broofa)"
 }, {
-  "id" : "6279edb9-6183-45fd-bedc-bfc5431b0b2f",
+  "id" : "44647cbb-9188-43e8-aea5-916eda483f02",
   "pk" : "Rod Vagg <r@va.gg> (https://github.com/rvagg)",
   "doctype" : "author",
   "label" : "Rod Vagg <r@va.gg> (https://github.com/rvagg)",
@@ -1431,7 +1431,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Rod Vagg <r@va.gg> (https://github.com/rvagg)"
 }, {
-  "id" : "f5b43ad6-dedb-4c25-a41e-75d9fc6deeff",
+  "id" : "3f958cb9-1429-467a-bc09-b8c901398cad",
   "pk" : "Rod Vagg <rod@vagg.org>",
   "doctype" : "author",
   "label" : "Rod Vagg <rod@vagg.org>",
@@ -1439,7 +1439,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Rod Vagg <rod@vagg.org>"
 }, {
-  "id" : "3407aeac-437b-4df5-a7df-65e6188a58e5",
+  "id" : "e87818ad-134a-48e9-b854-27bbfdbfe342",
   "pk" : "Rogier Schouten <github@workingcode.ninja> (https://github.com/rogierschouten/)",
   "doctype" : "author",
   "label" : "Rogier Schouten <github@workingcode.ninja> (https://github.com/rogierschouten/)",
@@ -1447,7 +1447,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Rogier Schouten <github@workingcode.ninja> (https://github.com/rogierschouten/)"
 }, {
-  "id" : "fa59fef8-ab0d-44e7-8978-bc840d0384e5",
+  "id" : "fa7fe00d-e8bc-4196-a5bb-696f684904eb",
   "pk" : "Roman Shtylman <shtylman@gmail.com>",
   "doctype" : "author",
   "label" : "Roman Shtylman <shtylman@gmail.com>",
@@ -1455,7 +1455,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Roman Shtylman <shtylman@gmail.com>"
 }, {
-  "id" : "140c818e-2d83-4c24-aa60-9ba0699f5906",
+  "id" : "b00833c7-8cf4-4e17-af33-70710a9c99a7",
   "pk" : "Ruben Bridgewater",
   "doctype" : "author",
   "label" : "Ruben Bridgewater",
@@ -1463,7 +1463,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Ruben Bridgewater"
 }, {
-  "id" : "ebd477b5-5168-4665-9604-f71f80700021",
+  "id" : "a3450cf6-b401-476e-a52a-dfc1e94992d7",
   "pk" : "Ryan Zimmerman <opensrc@ryanzim.com>",
   "doctype" : "author",
   "label" : "Ryan Zimmerman <opensrc@ryanzim.com>",
@@ -1471,7 +1471,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Ryan Zimmerman <opensrc@ryanzim.com>"
 }, {
-  "id" : "6472c590-f84c-4a9c-ac1b-29e6c4cdbb06",
+  "id" : "45e5ad1e-6b19-4877-a05e-d8897929ced3",
   "pk" : "Samuel Reed",
   "doctype" : "author",
   "label" : "Samuel Reed",
@@ -1479,7 +1479,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Samuel Reed"
 }, {
-  "id" : "06405d2e-6909-4a9d-aa1d-44eba1b6f100",
+  "id" : "5e5ceea6-de0c-45b7-85a2-df0cc02982ee",
   "pk" : "Scott Corgan",
   "doctype" : "author",
   "label" : "Scott Corgan",
@@ -1487,7 +1487,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Scott Corgan"
 }, {
-  "id" : "eb43d8c4-1e3a-4c90-9d9b-247c74055429",
+  "id" : "2424005c-a199-40c7-b73d-5e7872e612df",
   "pk" : "Sebastian McKenzie <sebmck@gmail.com>",
   "doctype" : "author",
   "label" : "Sebastian McKenzie <sebmck@gmail.com>",
@@ -1495,7 +1495,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Sebastian McKenzie <sebmck@gmail.com>"
 }, {
-  "id" : "6781c528-3daf-4208-81ef-b24a231544ce",
+  "id" : "90f9953f-7842-48d9-a1d6-48dcbcb50c84",
   "pk" : "Simon Lydell",
   "doctype" : "author",
   "label" : "Simon Lydell",
@@ -1503,7 +1503,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Simon Lydell"
 }, {
-  "id" : "f03af8f5-5f59-4d52-9d54-3546d1cb5dec",
+  "id" : "5500dd7e-183d-446f-a571-dc83ad7756ec",
   "pk" : "Sindre Sorhus <sindresorhus@gmail.com> (https://sindresorhus.com)",
   "doctype" : "author",
   "label" : "Sindre Sorhus <sindresorhus@gmail.com> (https://sindresorhus.com)",
@@ -1511,7 +1511,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Sindre Sorhus <sindresorhus@gmail.com> (https://sindresorhus.com)"
 }, {
-  "id" : "4892a4fd-b424-46d5-85a4-1cd2543e6790",
+  "id" : "6bef76f1-6d54-43c5-86db-1a7d68bd4ee3",
   "pk" : "Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)",
   "doctype" : "author",
   "label" : "Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)",
@@ -1519,7 +1519,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)"
 }, {
-  "id" : "1ecf06de-2259-4cae-b989-019cc7661a2f",
+  "id" : "be504dd2-ff78-42d9-97d0-5bf6d4819352",
   "pk" : "Stefan Penner",
   "doctype" : "author",
   "label" : "Stefan Penner",
@@ -1527,7 +1527,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Stefan Penner"
 }, {
-  "id" : "d60cabb7-ac74-4b0e-a266-6c289edb82f3",
+  "id" : "b7ba8e4d-e2a6-40e1-8a98-d2952a74a3ad",
   "pk" : "Stefan Thomas <justmoon@members.fsf.org> (http://www.justmoon.net)",
   "doctype" : "author",
   "label" : "Stefan Thomas <justmoon@members.fsf.org> (http://www.justmoon.net)",
@@ -1535,7 +1535,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Stefan Thomas <justmoon@members.fsf.org> (http://www.justmoon.net)"
 }, {
-  "id" : "88c1cfc4-8ee8-4d4a-a3c1-570b78a1f950",
+  "id" : "059ce162-7fb3-49c0-a71b-44c8b82b9f7f",
   "pk" : "Stephen Sugden <me@stephensugden.com>",
   "doctype" : "author",
   "label" : "Stephen Sugden <me@stephensugden.com>",
@@ -1543,7 +1543,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Stephen Sugden <me@stephensugden.com>"
 }, {
-  "id" : "052a4204-a616-4391-be57-66860795f2de",
+  "id" : "4b6a37a2-dfc4-4c33-975f-efb7d84bb358",
   "pk" : "Steve Faulkner <southpolesteve@gmail.com>",
   "doctype" : "author",
   "label" : "Steve Faulkner <southpolesteve@gmail.com>",
@@ -1551,7 +1551,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Steve Faulkner <southpolesteve@gmail.com>"
 }, {
-  "id" : "63b114a1-0e6e-4f9a-a717-79c14a2c0347",
+  "id" : "ac67397a-2fcd-4bd9-a574-0ec7eb0e3b73",
   "pk" : "Steven Levithan",
   "doctype" : "author",
   "label" : "Steven Levithan",
@@ -1559,7 +1559,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Steven Levithan"
 }, {
-  "id" : "55c93d39-e52c-49ee-b1ae-ec42744361fd",
+  "id" : "5c54a317-999c-4ddc-a221-ba48da8a5243",
   "pk" : "Steven Levithan <steves_list@hotmail.com>",
   "doctype" : "author",
   "label" : "Steven Levithan <steves_list@hotmail.com>",
@@ -1567,7 +1567,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Steven Levithan <steves_list@hotmail.com>"
 }, {
-  "id" : "1e1348e8-c12e-423d-8a2e-209e271bf395",
+  "id" : "b65e80cd-830d-4cac-acff-8fa4bd8c5689",
   "pk" : "Szymon Marczak",
   "doctype" : "author",
   "label" : "Szymon Marczak",
@@ -1575,7 +1575,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Szymon Marczak"
 }, {
-  "id" : "f91ee913-1711-4c1f-b848-c776f0c0179e",
+  "id" : "7ade0052-0fe1-46c5-9c3a-398854d314eb",
   "pk" : "T. Jameson Little <t.jameson.little@gmail.com>",
   "doctype" : "author",
   "label" : "T. Jameson Little <t.jameson.little@gmail.com>",
@@ -1583,7 +1583,7 @@
   "lob" : "npm",
   "cacheKey" : "author|T. Jameson Little <t.jameson.little@gmail.com>"
 }, {
-  "id" : "f1b428c2-8cc7-4ebd-9ada-40981b809e1a",
+  "id" : "778df881-4059-426a-8a5c-55b2e51ed3ad",
   "pk" : "TJ Holowaychuk <tj@learnboost.com>",
   "doctype" : "author",
   "label" : "TJ Holowaychuk <tj@learnboost.com>",
@@ -1591,7 +1591,7 @@
   "lob" : "npm",
   "cacheKey" : "author|TJ Holowaychuk <tj@learnboost.com>"
 }, {
-  "id" : "bfa15c75-c838-4ba6-8328-2fa26322e504",
+  "id" : "487a2b7e-943c-4791-a3d1-d73c0db664fd",
   "pk" : "TJ Holowaychuk <tj@vision-media.ca>",
   "doctype" : "author",
   "label" : "TJ Holowaychuk <tj@vision-media.ca>",
@@ -1599,7 +1599,7 @@
   "lob" : "npm",
   "cacheKey" : "author|TJ Holowaychuk <tj@vision-media.ca>"
 }, {
-  "id" : "f3079d25-cea1-44d7-a01a-23e32f97901e",
+  "id" : "517b351e-7f2a-4d77-b594-393fa22cef56",
   "pk" : "TJ Holowaychuk <tj@vision-media.ca> (http://tjholowaychuk.com)",
   "doctype" : "author",
   "label" : "TJ Holowaychuk <tj@vision-media.ca> (http://tjholowaychuk.com)",
@@ -1607,7 +1607,7 @@
   "lob" : "npm",
   "cacheKey" : "author|TJ Holowaychuk <tj@vision-media.ca> (http://tjholowaychuk.com)"
 }, {
-  "id" : "4fdcea6d-2e3f-4063-83ce-cc4bd9e029f3",
+  "id" : "256f8a8a-adf3-433f-aa1e-0fff2e256b90",
   "pk" : "Thiago de Arruda <tpadilha84@gmail.com>",
   "doctype" : "author",
   "label" : "Thiago de Arruda <tpadilha84@gmail.com>",
@@ -1615,7 +1615,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Thiago de Arruda <tpadilha84@gmail.com>"
 }, {
-  "id" : "3bc9c71f-9450-49b5-acc3-0809592bb504",
+  "id" : "b7c5e526-eda2-40d3-ae2c-d079902b1a72",
   "pk" : "Thomas Watson Steen <w@tson.dk> (https://twitter.com/wa7son)",
   "doctype" : "author",
   "label" : "Thomas Watson Steen <w@tson.dk> (https://twitter.com/wa7son)",
@@ -1623,7 +1623,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Thomas Watson Steen <w@tson.dk> (https://twitter.com/wa7son)"
 }, {
-  "id" : "2dc9003c-1405-425e-9358-e9fcf08da732",
+  "id" : "19a4e3ac-1f72-42cf-849a-fe89a832b4b6",
   "pk" : "Thorsten Lorenz <thlorenz@gmx.de> (http://thlorenz.com)",
   "doctype" : "author",
   "label" : "Thorsten Lorenz <thlorenz@gmx.de> (http://thlorenz.com)",
@@ -1631,7 +1631,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Thorsten Lorenz <thlorenz@gmx.de> (http://thlorenz.com)"
 }, {
-  "id" : "0ac1d1ae-bbb3-4dc9-acc8-f086b4ebe54d",
+  "id" : "b1113b40-9e5b-4533-abb7-5f4c8e7c707b",
   "pk" : "Thorsten Lorenz <thlorenz@gmx.de> (thlorenz.com)",
   "doctype" : "author",
   "label" : "Thorsten Lorenz <thlorenz@gmx.de> (thlorenz.com)",
@@ -1639,7 +1639,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Thorsten Lorenz <thlorenz@gmx.de> (thlorenz.com)"
 }, {
-  "id" : "2cad8446-d1e4-4cdf-8315-792108277cb3",
+  "id" : "9e26dca2-a754-4b21-b91a-44c2b367e01a",
   "pk" : "Tim Wood <washwithcare@gmail.com> (http://timwoodcreates.com/)",
   "doctype" : "author",
   "label" : "Tim Wood <washwithcare@gmail.com> (http://timwoodcreates.com/)",
@@ -1647,7 +1647,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Tim Wood <washwithcare@gmail.com> (http://timwoodcreates.com/)"
 }, {
-  "id" : "6fd8afda-6ff3-4f38-8c0e-4aae122e5fdc",
+  "id" : "00110814-6ed5-4d1a-bedc-74c25b9ae515",
   "pk" : "Timothy Gu <timothygu99@gmail.com>",
   "doctype" : "author",
   "label" : "Timothy Gu <timothygu99@gmail.com>",
@@ -1655,7 +1655,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Timothy Gu <timothygu99@gmail.com>"
 }, {
-  "id" : "58fb2de3-5ed4-45a4-87ac-07c35991d652",
+  "id" : "8e608d15-d3f7-4cf7-8cef-dbed4bc7b363",
   "pk" : "Tobias Baunbæk <freeall@gmail.com>",
   "doctype" : "author",
   "label" : "Tobias Baunbæk <freeall@gmail.com>",
@@ -1663,7 +1663,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Tobias Baunbæk <freeall@gmail.com>"
 }, {
-  "id" : "d0b16dd0-8cbe-4f0a-8443-ebcad445743f",
+  "id" : "46e51045-a98b-4d7c-8c5d-8e72133bb487",
   "pk" : "Tom Wu",
   "doctype" : "author",
   "label" : "Tom Wu",
@@ -1671,7 +1671,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Tom Wu"
 }, {
-  "id" : "560a5755-7418-4136-8fdf-80605f5235ea",
+  "id" : "3aa9f7e4-0469-4590-b158-3d9332396c63",
   "pk" : "Tomasz Janczuk <tomasz@janczuk.org> (http://tomasz.janczuk.org)",
   "doctype" : "author",
   "label" : "Tomasz Janczuk <tomasz@janczuk.org> (http://tomasz.janczuk.org)",
@@ -1679,7 +1679,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Tomasz Janczuk <tomasz@janczuk.org> (http://tomasz.janczuk.org)"
 }, {
-  "id" : "8bfe32a8-4f91-43d4-ac4a-3dc4a1cfdc13",
+  "id" : "e4c771db-6820-4447-8149-4563f66ccc37",
   "pk" : "Tomás Pollak <tomas@forkhq.com>",
   "doctype" : "author",
   "label" : "Tomás Pollak <tomas@forkhq.com>",
@@ -1687,7 +1687,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Tomás Pollak <tomas@forkhq.com>"
 }, {
-  "id" : "8e1de69a-ac0d-497a-9fa9-f8158f58ad6b",
+  "id" : "78f74067-0216-49fa-b682-c1ddceba7f47",
   "pk" : "Toru Nagashima",
   "doctype" : "author",
   "label" : "Toru Nagashima",
@@ -1695,7 +1695,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Toru Nagashima"
 }, {
-  "id" : "2680093a-b85c-44e8-a846-853f6dbd7640",
+  "id" : "50945714-56a3-49d4-a9d1-d546b19864ff",
   "pk" : "Toru Nagashima (https://github.com/mysticatea)",
   "doctype" : "author",
   "label" : "Toru Nagashima (https://github.com/mysticatea)",
@@ -1703,7 +1703,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Toru Nagashima (https://github.com/mysticatea)"
 }, {
-  "id" : "9b517fe7-0d20-449e-9992-f57761209007",
+  "id" : "39ca1713-70f6-4c72-b90d-cdb33d59680d",
   "pk" : "Trent Mick <trentm@gmail.com> (http://trentm.com)",
   "doctype" : "author",
   "label" : "Trent Mick <trentm@gmail.com> (http://trentm.com)",
@@ -1711,7 +1711,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Trent Mick <trentm@gmail.com> (http://trentm.com)"
 }, {
-  "id" : "79c3f2dd-756e-4356-affe-56d4efcfbe7d",
+  "id" : "b8a5653d-1123-4211-a5ed-16fce3e8560c",
   "pk" : "Troy Goode <troygoode@gmail.com> (http://github.com/troygoode/)",
   "doctype" : "author",
   "label" : "Troy Goode <troygoode@gmail.com> (http://github.com/troygoode/)",
@@ -1719,7 +1719,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Troy Goode <troygoode@gmail.com> (http://github.com/troygoode/)"
 }, {
-  "id" : "9dfef7e6-caa3-4607-93a7-a603e4078791",
+  "id" : "351b326c-9a33-48d1-af03-80516f854913",
   "pk" : "TweetNaCl-js contributors",
   "doctype" : "author",
   "label" : "TweetNaCl-js contributors",
@@ -1727,7 +1727,7 @@
   "lob" : "npm",
   "cacheKey" : "author|TweetNaCl-js contributors"
 }, {
-  "id" : "78710406-da55-4f8a-9605-55366080cfe9",
+  "id" : "749eea9f-a5ff-48c3-b6d2-79c490a65b62",
   "pk" : "Tyler Kellen (http://goingslowly.com/)",
   "doctype" : "author",
   "label" : "Tyler Kellen (http://goingslowly.com/)",
@@ -1735,7 +1735,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Tyler Kellen (http://goingslowly.com/)"
 }, {
-  "id" : "bae6af39-3389-4483-bcbf-c22f7d141ff2",
+  "id" : "b101d3f2-2f10-4daa-8c3f-565e055e80bd",
   "pk" : "Viacheslav Lotsmanov <lotsmanov89@gmail.com>",
   "doctype" : "author",
   "label" : "Viacheslav Lotsmanov <lotsmanov89@gmail.com>",
@@ -1743,7 +1743,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Viacheslav Lotsmanov <lotsmanov89@gmail.com>"
 }, {
-  "id" : "d66b7f13-60e8-465f-b550-3c6b2db8793e",
+  "id" : "c5bbd381-cf20-4545-9387-a787839ff116",
   "pk" : "Vladimir Zapparov <dervus.grim@gmail.com>",
   "doctype" : "author",
   "label" : "Vladimir Zapparov <dervus.grim@gmail.com>",
@@ -1751,7 +1751,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Vladimir Zapparov <dervus.grim@gmail.com>"
 }, {
-  "id" : "12ef5ce3-2429-472e-928b-426d5d06b280",
+  "id" : "0029541e-10f1-4925-8cff-6e2c93136a64",
   "pk" : "Wes Todd",
   "doctype" : "author",
   "label" : "Wes Todd",
@@ -1759,7 +1759,7 @@
   "lob" : "npm",
   "cacheKey" : "author|Wes Todd"
 }, {
-  "id" : "7a5ad71b-e9b5-407f-a041-851c924d2180",
+  "id" : "fcee8d3c-dac3-46eb-a4d4-0d4589134198",
   "pk" : "changchang <changchang005@gmail.com>",
   "doctype" : "author",
   "label" : "changchang <changchang005@gmail.com>",
@@ -1767,7 +1767,7 @@
   "lob" : "npm",
   "cacheKey" : "author|changchang <changchang005@gmail.com>"
 }, {
-  "id" : "9cb165c2-7fa3-4794-81b3-e4336b4397d6",
+  "id" : "8e416faf-21ed-4933-95dd-1f0241e2c347",
   "pk" : "freeall <freeall@gmail.com>",
   "doctype" : "author",
   "label" : "freeall <freeall@gmail.com>",
@@ -1775,7 +1775,7 @@
   "lob" : "npm",
   "cacheKey" : "author|freeall <freeall@gmail.com>"
 }, {
-  "id" : "333385c0-9103-412b-b68a-791d93c81eca",
+  "id" : "e0a9d201-2cd6-4b26-afcf-454595358eb1",
   "pk" : "hemanth.hm",
   "doctype" : "author",
   "label" : "hemanth.hm",
@@ -1783,7 +1783,7 @@
   "lob" : "npm",
   "cacheKey" : "author|hemanth.hm"
 }, {
-  "id" : "86f344d9-16ee-4d0b-a88b-83112c24ea27",
+  "id" : "f48be834-1170-4d42-9663-40900f176dc0",
   "pk" : "hij1nx <paolo@async.ly>",
   "doctype" : "author",
   "label" : "hij1nx <paolo@async.ly>",
@@ -1791,7 +1791,7 @@
   "lob" : "npm",
   "cacheKey" : "author|hij1nx <paolo@async.ly>"
 }, {
-  "id" : "3cdb9c85-2a94-485e-bd98-1586e2c86ce3",
+  "id" : "521de0a5-cda1-48ef-89f0-2f47c0030fe0",
   "pk" : "jindw <jindw@xidea.org> (http://www.xidea.org)",
   "doctype" : "author",
   "label" : "jindw <jindw@xidea.org> (http://www.xidea.org)",
@@ -1799,7 +1799,7 @@
   "lob" : "npm",
   "cacheKey" : "author|jindw <jindw@xidea.org> (http://www.xidea.org)"
 }, {
-  "id" : "b0de90bf-bcdd-4d16-948a-f8aa1f6d2c7b",
+  "id" : "6797950b-2c25-4825-a800-8ccb6c5646cf",
   "pk" : "keik <k4t0.kei@gmail.com>",
   "doctype" : "author",
   "label" : "keik <k4t0.kei@gmail.com>",
@@ -1807,7 +1807,7 @@
   "lob" : "npm",
   "cacheKey" : "author|keik <k4t0.kei@gmail.com>"
 }, {
-  "id" : "e0708475-1965-4219-8b4b-66a074237224",
+  "id" : "c9ad894b-67fa-490b-93bf-d6fe037490b2",
   "pk" : "kumavis",
   "doctype" : "author",
   "label" : "kumavis",
@@ -1815,7 +1815,7 @@
   "lob" : "npm",
   "cacheKey" : "author|kumavis"
 }, {
-  "id" : "1dd16048-58e3-4f7b-bae3-f76a7ad37ac3",
+  "id" : "fe80fbcb-145c-44d1-923b-b4cbb929c130",
   "pk" : "lsong",
   "doctype" : "author",
   "label" : "lsong",
@@ -1823,7 +1823,7 @@
   "lob" : "npm",
   "cacheKey" : "author|lsong"
 }, {
-  "id" : "0f2272d5-51c9-4636-98f1-2168384bc2db",
+  "id" : "c156025f-41fd-489d-9e7f-8cfbcc9e4c74",
   "pk" : "luin <i@zihua.li> (http://zihua.li)",
   "doctype" : "author",
   "label" : "luin <i@zihua.li> (http://zihua.li)",
@@ -1831,7 +1831,7 @@
   "lob" : "npm",
   "cacheKey" : "author|luin <i@zihua.li> (http://zihua.li)"
 }, {
-  "id" : "acacae66-2ca5-41ea-8498-a8cc731389eb",
+  "id" : "f079cfbc-c298-4098-b2b6-a765c08ec368",
   "pk" : "lukechilds",
   "doctype" : "author",
   "label" : "lukechilds",
@@ -1839,7 +1839,7 @@
   "lob" : "npm",
   "cacheKey" : "author|lukechilds"
 }, {
-  "id" : "8b9fdd17-d582-47ce-9858-9e67ef292fea",
+  "id" : "46c8106a-b877-4c7a-aa6a-0a83b0175ddd",
   "pk" : "max ogden",
   "doctype" : "author",
   "label" : "max ogden",
@@ -1847,7 +1847,7 @@
   "lob" : "npm",
   "cacheKey" : "author|max ogden"
 }, {
-  "id" : "57953dd4-68b0-47ba-944b-60ea262e9f3a",
+  "id" : "315a23c9-ce18-4ddb-bf6b-eb4e860e4bc7",
   "pk" : "nexdrew",
   "doctype" : "author",
   "label" : "nexdrew",
@@ -1855,7 +1855,7 @@
   "lob" : "npm",
   "cacheKey" : "author|nexdrew"
 }, {
-  "id" : "0652547e-6054-4ce5-9ba7-9322fe3ffc74",
+  "id" : "03b4547f-10fb-4a0e-a316-c9bb16c7ab5c",
   "pk" : "whitequark <whitequark@whitequark.org>",
   "doctype" : "author",
   "label" : "whitequark <whitequark@whitequark.org>",

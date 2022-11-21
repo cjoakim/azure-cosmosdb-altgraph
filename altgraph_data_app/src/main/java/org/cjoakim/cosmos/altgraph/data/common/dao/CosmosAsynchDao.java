@@ -6,7 +6,7 @@ import com.azure.cosmos.models.CosmosItemOperation;
 import com.azure.cosmos.models.PartitionKey;
 import lombok.extern.slf4j.Slf4j;
 import org.cjoakim.cosmos.altgraph.data.DataAppConfiguration;
-import org.cjoakim.cosmos.altgraph.data.common.model.imdb.IndexDocument;
+import org.cjoakim.cosmos.altgraph.data.common.model.imdb.SeedDocument;
 import org.cjoakim.cosmos.altgraph.data.common.model.imdb.Movie;
 import org.cjoakim.cosmos.altgraph.data.common.model.imdb.Person;
 import org.cjoakim.cosmos.altgraph.data.common.model.imdb.SmallTriple;
@@ -115,7 +115,7 @@ public class CosmosAsynchDao {
         container.executeBulkOperations(cosmosItemOperations).blockLast();
     }
 
-    public void bulkLoadIndexDocuments(Flux<IndexDocument> idxDocs) {
+    public void bulkLoadIndexDocuments(Flux<SeedDocument> idxDocs) {
 
         Flux<CosmosItemOperation> cosmosItemOperations = idxDocs.map(
                 idxDoc -> CosmosBulkOperations.getCreateItemOperation(

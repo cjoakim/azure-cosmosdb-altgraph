@@ -11,12 +11,12 @@
         <delete file="data/imdb_refined/movies.zip" />
         <delete file="data/imdb_refined/people.zip" />
         <delete file="data/imdb_refined/triples.zip" />
-        <delete file="data/imdb_refined/movies_idx.zip" />
+        <delete file="data/imdb_refined/movies_seed.zip" />
 
         <zip zipfile="data/imdb_refined/movies.zip"      basedir="data/imdb_refined"  includes="movies.json" />
         <zip zipfile="data/imdb_refined/people.zip"      basedir="data/imdb_refined"  includes="people.json" />
         <zip zipfile="data/imdb_refined/sm_triples.zip"  basedir="data/imdb_refined"  includes="sm_triples.json" />
-        <zip zipfile="data/imdb_refined/movies_idx.zip"  basedir="data/imdb_refined"  includes="movies_idx.json" />
+        <zip zipfile="data/imdb_refined/movies_seed.zip" basedir="data/imdb_refined"  includes="movies_seed.json" />
 
         <echo message="done." />
     </target>

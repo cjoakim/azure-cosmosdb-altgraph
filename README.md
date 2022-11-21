@@ -39,12 +39,23 @@ It uses the **Node.js NPM** ecosystem of libraries as a public-domain dataset an
 
 ### JGraphT
 
+The **v2** AltGraph implementation uses an in-memory graph using the JGraphT library.
+The graph is maintained in the memory of the JVM (Java Virtual Machine), it is
+mutable, and offers excellent built-in algorithms (PageRank, DijkstraShortestPath, Centrality, etc.)
+so that you don't have to create this logic yourself.
+
 - https://jgrapht.org/guide/UserOverview
 - https://jgrapht.org/javadoc/
 - https://jgrapht.org/javadoc/org.jgrapht.core/org/jgrapht/alg/scoring/PageRank.html
 - https://jgrapht.org/javadoc/org.jgrapht.core/org/jgrapht/alg/shortestpath/JohnsonShortestPaths.html
 
 ### Guava Graph 
+
+I evaluated the Google Guava library as a possible in-memory graph implementation.
+I compared it to the above JGraphT library.  Though it is more recently maintained,
+I chose not to use Google Guava for the graph because its' graph traversal logic
+was is lacking and the docs were very limited on this.  However, I leave this comment
+here for your reference in case you wish to evaluate Google Guava
 
 - https://github.com/google/guava/wiki/GraphsExplained
 - https://javadoc.io/doc/com.google.guava/guava/latest/index.html

@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.cjoakim.cosmos.altgraph.data.DataAppConfiguration;
 import org.cjoakim.cosmos.altgraph.data.common.dao.CosmosAsynchDao;
-import org.cjoakim.cosmos.altgraph.data.common.model.imdb.IndexDocument;
+import org.cjoakim.cosmos.altgraph.data.common.model.imdb.SeedDocument;
 import org.cjoakim.cosmos.altgraph.data.common.model.imdb.Movie;
 import org.cjoakim.cosmos.altgraph.data.common.model.imdb.Person;
 import org.cjoakim.cosmos.altgraph.data.common.model.imdb.SmallTriple;
@@ -71,8 +71,8 @@ public class SdkBulkLoaderProcessor extends AbstractConsoleAppProcess {
                 bulkLoadImdbPeople();
             } else if (loadType.equalsIgnoreCase("imdb_bulk_load_small_triples")) {
                 bulkLoadImdbSmallTriples();
-            } else if (loadType.equalsIgnoreCase("imdb_bulk_load_movies_idx")) {
-                bulkLoadImdbMovieIdx();
+            } else if (loadType.equalsIgnoreCase("imdb_bulk_load_movies_seed")) {
+                bulkLoadImdbMovieSeed();
             }
         } finally {
             dao.close();
@@ -112,14 +112,14 @@ public class SdkBulkLoaderProcessor extends AbstractConsoleAppProcess {
         log.warn("bulkLoadImdbSmallTriples complete in: " + elapsedMs + "ms");
     }
 
-    private void bulkLoadImdbMovieIdx() throws Exception {
+    private void bulkLoadImdbMovieSeed() throws Exception {
 
-        log.warn("bulkLoadImdbMovieIdx...");
-        ArrayList<IndexDocument> idxDocs = readIndexDocumentsAsList(IMDB_MOVIES_INDEX_FILE, true);
+        log.warn("bulkLoadImdbMovieSeed...");
+        ArrayList<SeedDocument> idxDocs = readIndexDocumentsAsList(IMDB_MOVIES_SEED_FILE, true);
         log.warn("idxDocs read from disk: " + idxDocs.size());
         long startMs = System.currentTimeMillis();
         dao.bulkLoadIndexDocuments(Flux.fromIterable(idxDocs));
         long elapsedMs = System.currentTimeMillis() - startMs;
-        log.warn("bulkLoadImdbMovieIdx complete in: " + elapsedMs + "ms");
+        log.warn("bulkLoadImdbMovieSeed complete in: " + elapsedMs + "ms");
     }
 }
