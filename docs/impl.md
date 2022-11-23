@@ -38,6 +38,7 @@ it may be implemented in other programming languages in the future.
 For DotNet, the JNBridgePro software is one possible implementation. 
 
 - https://jnbridge.com/
+- https://www.nuget.org/packages/QuikGraph
 
 ### Python 
 
