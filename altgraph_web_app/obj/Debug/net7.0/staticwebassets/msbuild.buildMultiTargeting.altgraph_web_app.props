@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\altgraph_web_app.props" />
+</Project>
