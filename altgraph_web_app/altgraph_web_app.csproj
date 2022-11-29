@@ -6,4 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="IEvangelist.Azure.CosmosRepository" Version="3.7.0" />
+    <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.31.2" />
+  </ItemGroup>
+
 </Project>
