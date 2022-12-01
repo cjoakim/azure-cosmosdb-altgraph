@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 namespace altgraph_web_app.Services.Graph
 {
   public class GraphNode
@@ -8,17 +11,17 @@ namespace altgraph_web_app.Services.Graph
 
     public Dictionary<string, string>? AdjacentNodes { get; set; } = new Dictionary<string, string>();
 
-    public GraphNode(String key)
+    public GraphNode(string key)
     {
       TripleKey = key;
     }
 
-    public GraphNode(bool root, String key)
+    public GraphNode(bool root, string key)
     {
       TripleKey = key;
     }
 
-    public int AddAdjacent(GraphNode neighbor, String predicate)
+    public int AddAdjacent(GraphNode neighbor, string predicate)
     {
       if (AdjacentNodes.ContainsKey(neighbor.TripleKey))
       {
@@ -34,7 +37,7 @@ namespace altgraph_web_app.Services.Graph
       }
     }
 
-    public String AsJson(bool pretty)
+    public string AsJson(bool pretty)
     {
       throw new NotImplementedException();
       // try {

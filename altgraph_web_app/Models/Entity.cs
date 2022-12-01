@@ -1,3 +1,4 @@
+using System;
 using System.Text;
 using Microsoft.Azure.CosmosRepository;
 
@@ -20,7 +21,7 @@ namespace altgraph_web_app.Models
       CacheKey = "" + Doctype + "|" + Label;
     }
 
-    public String CalculateGraphKey()
+    public string CalculateGraphKey()
     {
       StringBuilder sb = new StringBuilder();
       sb.Append(this.Doctype);
@@ -34,7 +35,7 @@ namespace altgraph_web_app.Models
       return GraphKey;
     }
 
-    public String AsJson(bool pretty)
+    public string AsJson(bool pretty)
     {
       throw new NotImplementedException();
       // try {

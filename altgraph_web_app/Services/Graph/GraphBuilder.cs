@@ -1,15 +1,15 @@
+using System;
+using System.Collections.Generic;
 using altgraph_web_app.Models;
 
 namespace altgraph_web_app.Services.Graph
 {
   public class GraphBuilder
   {
-
     public Entity? RootEntity { get; set; }  // the starting point of the graph
     public TripleQueryStruct? Struct { get; set; } // DB query results of the pertinent Triples
     public Graph Graph { get; set; } // the resulting graph given the above two
     public int structIterations { get; set; } = 0;
-
 
     public GraphBuilder(Entity rootEntity, TripleQueryStruct tripleQueryStruct)
     {
@@ -23,9 +23,9 @@ namespace altgraph_web_app.Services.Graph
     {
       RootEntity.PopulateCacheKey();
       RootEntity.CalculateGraphKey();
-      String rootKey = RootEntity.GraphKey;
+      string rootKey = RootEntity.GraphKey;
       //log.warn("buildLibraryGraph, rootKey: " + rootKey);
-      Graph.RootNode = rootKey;
+      Graph.SetRootNode(rootKey);
       CollectLibraryGraph(maxIterations);  // iterate the triples and build the graph from them
       Graph.Finish();
       return Graph;
@@ -35,18 +35,18 @@ namespace altgraph_web_app.Services.Graph
     {
       author.PopulateCacheKey();
       author.CalculateGraphKey();
-      String authorLabel = author.Label;
-      String rootKey = author.GraphKey;
-      Graph.RootNode = author.GraphKey;
+      string authorLabel = author.Label;
+      string rootKey = author.GraphKey;
+      Graph.SetRootNode(author.GraphKey);
       //log.warn("buildAuthorGraph, author: " + authorLabel + ", rootKey: " + rootKey);
 
       for (int i = 0; i < Struct.Documents.Count; i++)
       {
         Triple t = Struct.Documents[i];
-        List<String> tags = t.SubjectTags;
+        List<string> tags = t.SubjectTags;
         for (int tidx = 0; tidx < tags.Count; tidx++)
         {
-          String value = tags[tidx];
+          string value = tags[tidx];
           if (value.StartsWith("author"))
           {
             if (value.Contains(authorLabel))
@@ -71,7 +71,7 @@ namespace altgraph_web_app.Services.Graph
       {
         iterations++;
         newNodesThisIteration = 0;
-        List<String> currentKeys = Graph.CurrentKeys;
+        List<string> currentKeys = Graph.GetCurrentKeys();
         for (int i = 0; i < Struct.Documents.Count; i++)
         {
           // match for subject key, add object key
@@ -80,7 +80,7 @@ namespace altgraph_web_app.Services.Graph
           {
             if (t.ObjectType.Equals("library"))
             {
-              String subjectKey = t.SubjectKey;
+              string subjectKey = t.SubjectKey;
               if (currentKeys.Contains(subjectKey))
               {
                 int changes = Graph.UpdateForLibrary(subjectKey, t.ObjectKey, t.Predicate);
@@ -106,7 +106,7 @@ namespace altgraph_web_app.Services.Graph
       }
     }
 
-    public String AsJson(bool pretty)
+    public string AsJson(bool pretty)
     {
       throw new NotImplementedException();
     }

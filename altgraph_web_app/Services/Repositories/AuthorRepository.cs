@@ -10,5 +10,6 @@ namespace altgraph_web_app.Services.Repositories
   public class AuthorRepository
   {
     public IRepository<Author>? Authors { get; set; }
+
   }
 }

@@ -1,6 +1,10 @@
+using System;
+using System.Collections.Generic;
+using Microsoft.Azure.CosmosRepository;
+
 namespace altgraph_web_app.Models
 {
-  public class Triple
+  public class Triple : Item
   {
     public string? Id { get; set; }
     public string? Pk { get; set; }
@@ -29,27 +33,25 @@ namespace altgraph_web_app.Models
       ObjectKey = ObjectType + "^" + ObjectLabel + "^" + ObjectId + "^" + ObjectPk;
     }
 
-    public void AddSubjectTag(String tag)
+    public void AddSubjectTag(string tag)
     {
-
       if (tag != null)
       {
         SubjectTags.Add(tag.Trim());
       }
     }
 
-    public void AddObjectTag(String tag)
+    public void AddObjectTag(string tag)
     {
-
       if (tag != null)
       {
         ObjectTags.Add(tag.Trim());
       }
     }
 
-    public String AsJson(bool pretty)
+    public string AsJson(bool pretty)
     {
-      throw new Exception();
+      throw new NotImplementedException();
     }
   }
 }

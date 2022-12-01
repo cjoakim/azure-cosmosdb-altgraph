@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using altgraph_web_app.Models;
 
 namespace altgraph_web_app.Services.Graph
@@ -5,9 +7,9 @@ namespace altgraph_web_app.Services.Graph
   public class TripleQueryStruct
   {
 
-    public String StructType { get; set; } = typeof(TripleQueryStruct).Name;
-    public String ContainerName { get; set; }
-    public String Sql { get; set; }
+    public string StructType { get; set; } = typeof(TripleQueryStruct).Name;
+    public string ContainerName { get; set; }
+    public string Sql { get; set; }
     public long StartTime { get; set; }// = System.DateTime.Now.currentTimeMillis();
     public long EndTime { get; set; }
     public long ElapsedMs { get; set; }
@@ -56,7 +58,7 @@ namespace altgraph_web_app.Services.Graph
       // return elapsedMs;
     }
 
-    public Triple Find(String id, String pk, String tenant)
+    public Triple Find(string id, string pk, string tenant)
     {
 
       for (int i = 0; i < Documents.Count; i++)
@@ -74,7 +76,7 @@ namespace altgraph_web_app.Services.Graph
       return null;
     }
 
-    public String AsJson(bool pretty)
+    public string AsJson(bool pretty)
     {
 
       throw new NotImplementedException();
