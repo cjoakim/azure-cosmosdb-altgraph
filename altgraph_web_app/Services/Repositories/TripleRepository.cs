@@ -72,5 +72,11 @@ namespace altgraph_web_app.Services.Repositories
     {
       return await Triples.GetAsync(x => x.Pk == pk && x.Tenant == tenant && subjectTypes.Contains(x.SubjectType));
     }
+
+    public async Task<IEnumerable<Triple>> FindByTenantAndLobAndSubjectLabelsIn(string tenant, string lob, List<string> values)
+    {
+      string pk = "triple|" + tenant;
+      return await Triples.GetAsync(x => x.Pk == pk && values.Contains(x.SubjectLabel));
+    }
   }
 }

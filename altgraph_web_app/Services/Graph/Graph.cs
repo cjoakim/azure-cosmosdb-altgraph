@@ -106,10 +106,5 @@ namespace altgraph_web_app.Services.Graph
       // log.warn("finish() elapsedMs: " + elapsedMs);
       // return elapsedMs;
     }
-
-    public string AsJson(bool pretty)
-    {
-      throw new NotImplementedException();
-    }
   }
 }

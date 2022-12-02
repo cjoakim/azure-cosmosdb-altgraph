@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="IEvangelist.Azure.CosmosRepository" Version="3.7.0" />
     <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.31.2" />
+    <PackageReference Include="StackExchange.Redis" Version="2.6.80" />
   </ItemGroup>
 
 </Project>

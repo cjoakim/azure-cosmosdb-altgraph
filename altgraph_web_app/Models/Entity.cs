@@ -35,23 +35,6 @@ namespace altgraph_web_app.Models
       return GraphKey;
     }
 
-    public string AsJson(bool pretty)
-    {
-      throw new NotImplementedException();
-      // try {
-      //     ObjectMapper mapper = new ObjectMapper();
-      //     if (pretty) {
-      //         return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(this);
-      //     }
-      //     else {
-      //         return mapper.writeValueAsString(this);
-      //     }
-      // }
-      // catch (JsonProcessingException e) {
-      //     return null;
-      // }
-    }
-
     protected override string GetPartitionKeyValue()
     {
       return Pk;

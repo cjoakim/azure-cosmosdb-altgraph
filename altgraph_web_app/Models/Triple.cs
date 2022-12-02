@@ -27,7 +27,7 @@ namespace altgraph_web_app.Models
     public string? ObjectKey { get; set; }
     public List<string>? ObjectTags { get; set; }
 
-    public void setKeyFields()
+    public void SetKeyFields()
     {
       SubjectKey = SubjectType + "^" + SubjectLabel + "^" + SubjectId + "^" + SubjectPk;
       ObjectKey = ObjectType + "^" + ObjectLabel + "^" + ObjectId + "^" + ObjectPk;
@@ -47,11 +47,6 @@ namespace altgraph_web_app.Models
       {
         ObjectTags.Add(tag.Trim());
       }
-    }
-
-    public string AsJson(bool pretty)
-    {
-      throw new NotImplementedException();
     }
   }
 }

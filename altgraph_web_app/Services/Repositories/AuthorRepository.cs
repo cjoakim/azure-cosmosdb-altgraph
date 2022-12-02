@@ -10,6 +10,13 @@ namespace altgraph_web_app.Services.Repositories
   public class AuthorRepository
   {
     public IRepository<Author>? Authors { get; set; }
-
+    public AuthorRepository(IRepository<Author> authors)
+    {
+      Authors = authors;
+    }
+    public async Task<IEnumerable<Author>> FindByLabel(string label)
+    {
+      return await Authors.GetAsync(x => x.Label == label);
+    }
   }
 }

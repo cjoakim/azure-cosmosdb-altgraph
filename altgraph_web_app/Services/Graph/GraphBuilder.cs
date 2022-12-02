@@ -105,10 +105,5 @@ namespace altgraph_web_app.Services.Graph
         }
       }
     }
-
-    public string AsJson(bool pretty)
-    {
-      throw new NotImplementedException();
-    }
   }
 }
