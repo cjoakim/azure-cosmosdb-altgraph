@@ -2,10 +2,7 @@
     <img src="docs/img/AltGraph-Key.png" width="20%">
 </p>
 
-**AltGraph is a set of alternative graph implementations built on the Azure CosmosDB SQL API**.
-
-**AltGraph is not a product**.  Instead, it is a general design and set of
-**reference-applications**. 
+**AltGraph is a set of reference applications that demonstrate how to build “graph applications” with Cosmos DB for NoSQL and leverage its’ features to achieve a performant, integrated, and low-cost solution.  It currently demonstrates two different graph use-cases, with two different implementations.**
 
 Currently, AltGraph is built with the **Java** programming language, and
 the **Spring Boot** and **Spring Data** frameworks.  **D3.js** is used in 
@@ -25,9 +22,8 @@ At this time, **there are two designs and implementations for your reference**:
   The wrangled AltGraph IMDb data contains over **1-million vertices and 3.9 million edges**,
   all stored in-memory in the JVM (Java Virtual Machine) with JGraphT.
 
-These implementations may be used as-is, or as a starting point for your own implementations.
-Both are designed to showcase the power and efficiency of the **CosmosDB SQL API**
-for graph solutions.
+These implementations may be used as-is, or as a starting point for your own implementations.  Both are designed to showcase the power and efficiency of the
+**Cosmos DB NoSQL API** for graph solutions.
 
 ---
 
@@ -48,7 +44,6 @@ This example shows "one-degree of Kevin Bacon".
 <p align="center">
     <img src="docs/img/network-kevin-bacon-1.png" width="100%">
 </p>
-
 
 ---
 
@@ -71,10 +66,11 @@ This example shows "one-degree of Kevin Bacon".
 - [Implementation Notes](docs/impl.md)
 - [AltGraph GitHub Repo](https://github.com/cjoakim/azure-cosmosdb-altgraph)
 - [Previous Gremlin Bill-of-Material Repo](https://github.com/Azure-Samples/azure-cosmos-db-graph-npm-bom-sample)
-- [CosmosDB Live TV Episode #59](https://www.youtube.com/watch?v=SGih_Kj_1yk)
+- [Cosmos DB Live TV Episode #59](https://www.youtube.com/watch?v=SGih_Kj_1yk)
+- [Cosmos DB Blog](https://devblogs.microsoft.com/cosmosdb/) 
 
-## Original Developer
+## Primary Developer
 
 ```
-Chris Joakim, Microsoft, CosmosDB Global Black Belt (GBB)
+Chris Joakim, Microsoft, Cosmos DB Global Black Belt (GBB)
 ```
