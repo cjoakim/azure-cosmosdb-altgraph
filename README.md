@@ -1,5 +1,9 @@
 # AltGraph
 
+<p align="center">
+    <img src="docs/img/AltGraph-Key.png">
+</p>
+
 **AltGraph is a set of alternative graph implementations built on the Azure CosmosDB SQL API**.
 
 **AltGraph is not a product**.  Instead, it is a general design and set of
