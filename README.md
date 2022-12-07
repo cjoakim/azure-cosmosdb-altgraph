@@ -1,7 +1,7 @@
 # AltGraph
 
 <p align="center">
-    <img src="docs/img/AltGraph-Key.png">
+    <img src="docs/img/AltGraph-Key.png" width="20%">
 </p>
 
 **AltGraph is a set of alternative graph implementations built on the Azure CosmosDB SQL API**.
