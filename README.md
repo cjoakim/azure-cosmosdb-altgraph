@@ -1,5 +1,3 @@
-# AltGraph
-
 <p align="center">
     <img src="docs/img/AltGraph-Key.png" width="20%">
 </p>
