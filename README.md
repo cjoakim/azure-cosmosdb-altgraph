@@ -2,7 +2,7 @@
     <img src="docs/img/AltGraph-Key.png" width="20%">
 </p>
 
-**AltGraph is a set of reference applications that demonstrate how to build “graph applications” with Cosmos DB for NoSQL and leverage its’ features to achieve a performant, integrated, and low-cost solution.  It currently demonstrates two different graph use-cases, with two different implementations.**
+**AltGraph is a set of reference applications that demonstrate how to build “graph applications” with Cosmos DB for NoSQL and leverage its’ features to achieve a performant, integrated, and low-cost solutions.  It currently demonstrates two different graph use-cases, with two different implementations.**
 
 Currently, AltGraph is built with the **Java** programming language, and
 the **Spring Boot** and **Spring Data** frameworks.  **D3.js** is used in 
@@ -11,9 +11,9 @@ for your implementations.
 
 At this time, **there are two designs and implementations for your reference**:
 
-- A **version 1** design uses the concept of "RDF Triples" to implement a Bill-of-Materials
+- A **version 1** design uses the concept of "RDF Triples" to implement a **Bill-of-Materials**
   graph using **NPM** data (the Node Package Manager tool in the Node.js ecosystem).
-  The graph of NPM library dependencies can be seen as a bill-of-materials.
+  The graph of dependencies for a library can be seen as a bill-of-materials.
 
 - A **version 2** design featuring more in-memory functionality and the **JGraphT**
   software library.  This implementation used the **IMDb** (Internet Movie Database) 
