@@ -45,17 +45,15 @@ namespace altgraph_web_app.Services.Graph
 
     public long Start()
     {
-      throw new NotImplementedException();
-      // startTime = System.currentTimeMillis();
-      // return startTime;
+      StartTime = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+      return StartTime;
     }
     public long Stop()
     {
-      throw new NotImplementedException();
-      // endTime = System.currentTimeMillis();
-      // elapsedMs = endTime - startTime;
-      // documentCount = documents.size();
-      // return elapsedMs;
+      EndTime = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+      ElapsedMs = EndTime - StartTime;
+      DocumentCount = Documents.Count;
+      return ElapsedMs;
     }
 
     public Triple Find(string id, string pk, string tenant)

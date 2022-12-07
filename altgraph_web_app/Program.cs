@@ -1,3 +1,4 @@
+using altgraph_web_app.Models;
 using altgraph_web_app.Services.Cache;
 using StackExchange.Redis;
 
@@ -9,6 +10,27 @@ builder.Services.AddCosmosRepository(options =>
   options.CosmosConnectionString = builder.Configuration["Cosmos:ConnectionString"];
   options.ContainerId = builder.Configuration["Cosmos:ContainerId"];
   options.DatabaseId = builder.Configuration["Cosmos:DatabaseId"];
+  options.ContainerPerItemType = true;
+  options.ContainerBuilder.Configure<Author>(containerOptions =>
+  {
+    containerOptions.WithContainer("altgraph");
+    containerOptions.WithPartitionKey("/pk");
+  });
+  options.ContainerBuilder.Configure<Library>(containerOptions =>
+  {
+    containerOptions.WithContainer("altgraph");
+    containerOptions.WithPartitionKey("/pk");
+  });
+  options.ContainerBuilder.Configure<Maintainer>(containerOptions =>
+  {
+    containerOptions.WithContainer("altgraph");
+    containerOptions.WithPartitionKey("/pk");
+  });
+  options.ContainerBuilder.Configure<Triple>(containerOptions =>
+  {
+    containerOptions.WithContainer("altgraph");
+    containerOptions.WithPartitionKey("/pk");
+  });
 });
 builder.Services.AddSingleton<Cache>();
 builder.Services.AddDistributedMemoryCache();
@@ -42,5 +64,7 @@ app.UseSession();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+app.MapControllers();
 
 app.Run();

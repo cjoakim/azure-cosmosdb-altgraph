@@ -1,6 +1,5 @@
 using altgraph_web_app.Models;
 using altgraph_web_app.Services.Graph;
-using altgraph_web_app.Services.IO;
 using StackExchange.Redis;
 using System.Text.Json;
 
@@ -13,8 +12,6 @@ namespace altgraph_web_app.Services.Cache
 
     private IConnectionMultiplexer _redis;
     private IDatabase _db;
-
-    private FileUtil _fileUtil = new FileUtil();
 
     public Cache(IConnectionMultiplexer redis)
     {
@@ -42,7 +39,8 @@ namespace altgraph_web_app.Services.Cache
         string filename = GetLibraryCacheFilename(lib.Name);
         try
         {
-          _fileUtil.WriteJson(lib, filename, true, true);
+          Directory.CreateDirectory(Path.GetDirectoryName(filename));
+          File.WriteAllText(filename, JsonSerializer.Serialize<Library>(lib));
           return true;
         }
         catch (Exception ex)
@@ -72,7 +70,7 @@ namespace altgraph_web_app.Services.Cache
         try
         {
           string cacheFilename = GetLibraryCacheFilename(libName);
-          return _fileUtil.ReadLibrary(cacheFilename);
+          return JsonSerializer.Deserialize<Library>(File.ReadAllText(cacheFilename));
         }
         catch (Exception ex)
         {
@@ -101,7 +99,8 @@ namespace altgraph_web_app.Services.Cache
         string filename = GetTripleQueryStructCacheFilename();
         try
         {
-          _fileUtil.WriteJson(tripleQueryStruct, filename, true, true);
+          Directory.CreateDirectory(Path.GetDirectoryName(filename));
+          File.WriteAllText(filename, JsonSerializer.Serialize<TripleQueryStruct>(tripleQueryStruct));
           return true;
         }
         catch (Exception ex)
@@ -131,7 +130,7 @@ namespace altgraph_web_app.Services.Cache
         try
         {
           string cacheFilename = GetTripleQueryStructCacheFilename();
-          return _fileUtil.ReadTripleQueryStruct(cacheFilename);
+          return JsonSerializer.Deserialize<TripleQueryStruct>(File.ReadAllText(cacheFilename));
         }
         catch (Exception ex)
         {

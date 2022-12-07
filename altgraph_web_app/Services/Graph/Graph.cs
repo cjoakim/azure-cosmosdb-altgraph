@@ -8,13 +8,13 @@ namespace altgraph_web_app.Services.Graph
     public string? RootKey { get; set; }
     public Dictionary<string, GraphNode>? GraphMap { get; set; }
 
-    public long? StartTime { get; set; } //= System.currentTimeMillis();
-    public long? EndTime { get; set; }
-    public long? ElapsedMs { get; set; }
+    public long StartTime { get; set; } = 0;
+    public long EndTime { get; set; } = 0;
+    public long ElapsedMs { get; set; } = 0;
 
     public Graph()
     {
-      //startTime = System.currentTimeMillis();
+      StartTime = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
       GraphMap = new Dictionary<string, GraphNode>();
     }
 
@@ -100,11 +100,10 @@ namespace altgraph_web_app.Services.Graph
 
     public long Finish()
     {
-      throw new NotImplementedException();
-      // endTime = System.currentTimeMillis();
-      // elapsedMs = endTime - startTime;
+      EndTime = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+      ElapsedMs = EndTime - StartTime;
       // log.warn("finish() elapsedMs: " + elapsedMs);
-      // return elapsedMs;
+      return ElapsedMs;
     }
   }
 }

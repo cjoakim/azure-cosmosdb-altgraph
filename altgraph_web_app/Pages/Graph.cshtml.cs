@@ -1,11 +1,11 @@
 ﻿using altgraph_web_app.Models;
 using altgraph_web_app.Services.Cache;
 using altgraph_web_app.Services.Graph;
-using altgraph_web_app.Services.IO;
 using altgraph_web_app.Services.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Azure.CosmosRepository;
+using System.IO;
 
 namespace altgraph_web_app.Pages;
 
@@ -13,18 +13,27 @@ public class GraphModel : PageModel
 {
   private readonly ILogger<GraphModel> _logger;
   private static int DEFAULT_DEPTH = 1;
+  [BindProperty]
   public string SubjectName { get; set; }
-  public bool AuthorCheckBox { get; set; }
-  public string GraphDepth { get; set; }
-  public string CacheOpts { get; set; }
-  public string ElapsedMs { get; set; }
-  public string SessionId { get; set; }
+  [BindProperty]
+  public bool AuthorCheckBox { get; set; } = false;
+  [BindProperty]
+  public string? GraphDepth { get; set; } = "1";
+  [BindProperty]
+  public string? CacheOpts { get; set; }
+  [BindProperty]
+  public string? ElapsedMs { get; set; }
+  [BindProperty]
+  public string? SessionId { get; set; }
+  [BindProperty(SupportsGet = true)]
+  public string? NodesCsv { get; set; }
+  [BindProperty(SupportsGet = true)]
+  public string? EdgesCsv { get; set; }
 
   private LibraryRepository _libraryRepository;
   private AuthorRepository _authorRepository;
   private TripleRepository _tripleRepository;
   private Cache _cache;
-  private FileUtil _fileUtil = new FileUtil();
 
   private IConfiguration _configuration;
 
@@ -43,7 +52,7 @@ public class GraphModel : PageModel
   {
     SubjectName = "";
     AuthorCheckBox = false;
-    GraphDepth = "";
+    GraphDepth = "1";
     CacheOpts = "";
     ElapsedMs = "";
     SessionId = HttpContext.Session.Id;
@@ -84,7 +93,7 @@ public class GraphModel : PageModel
 
     }
 
-    return RedirectToPage("./Index");
+    return RedirectToPage("Graph");
   }
 
   private async Task HandleAuthorSearch()
@@ -98,7 +107,7 @@ public class GraphModel : PageModel
         TripleQueryStruct tripleQueryStruct = ReadTriples(UseCachedTriples(CacheOpts), SessionId);
         GraphBuilder graphBuilder = new GraphBuilder(author, tripleQueryStruct);
         Graph graph = graphBuilder.BuildAuthorGraph(author);
-        D3CsvBuilder d3CsvBuilder = new D3CsvBuilder(graph);
+        D3CsvBuilder d3CsvBuilder = new D3CsvBuilder(graph, _configuration);
         d3CsvBuilder.BuildBillOfMaterialCsv(SessionId, GetDepthAsInt());
         d3CsvBuilder.Finish();
       }
@@ -120,7 +129,7 @@ public class GraphModel : PageModel
         TripleQueryStruct tripleQueryStruct = ReadTriples(UseCachedTriples(CacheOpts), SessionId);
         GraphBuilder graphBuilder = new GraphBuilder(library, tripleQueryStruct);
         Graph graph = graphBuilder.BuildLibraryGraph(GetDepthAsInt());
-        D3CsvBuilder d3CsvBuilder = new D3CsvBuilder(graph);
+        D3CsvBuilder d3CsvBuilder = new D3CsvBuilder(graph, _configuration);
         d3CsvBuilder.BuildBillOfMaterialCsv(SessionId, GetDepthAsInt());
         d3CsvBuilder.Finish();
       }
@@ -210,20 +219,7 @@ public class GraphModel : PageModel
     return tripleQueryStruct;
   }
 
-  public void NodesCsv()
-  {
 
-  }
-
-  public void EdgesCsv()
-  {
-
-  }
-
-  private string ReadCsv(string path)
-  {
-    throw new NotImplementedException();
-  }
 
   private bool UseCachedLibrary(string cacheOpts)
   {

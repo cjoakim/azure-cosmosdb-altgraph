@@ -17,11 +17,14 @@ namespace altgraph_web_app.Services.Graph
 
     int iterationCount = 0;
 
-    public D3CsvBuilder(Graph g)
+    IConfiguration? _configuration;
+
+    public D3CsvBuilder(Graph g, IConfiguration configuration)
     {
       Graph = g;
-      //NodesCsvFile = GRAPH_NODES_CSV_FILE;
-      //EdgesCsvFile = GRAPH_EDGES_CSV_FILE;
+      _configuration = configuration;
+      NodesCsvFile = _configuration["NodesCsvFile"];
+      EdgesCsvFile = _configuration["EdgesCsvFile"];
     }
 
     public void BuildBillOfMaterialCsv(string sessionId, int depth)
@@ -44,23 +47,27 @@ namespace altgraph_web_app.Services.Graph
       string rootEdgeKey = EdgeKey(rootLib, rootLib);
       //log.warn("collectLibrariesDataFromGraph rootHashKey: " + rootEdgeKey);
 
-      CollectedNodesHash.Add(rootKey, "pending");
-      CollectedEdgesHash.Add(rootEdgeKey, "");
+      CollectedNodesHash[rootKey] = "pending";
+      CollectedEdgesHash[rootEdgeKey] = "";
 
       while (continueToCollect)
       {
         iterationCount++;
 
-        foreach (string currKey in CollectedNodesHash.Keys)
+        var currentKeys = CollectedNodesHash.Keys.ToList();
+        for (int i = 0; i < currentKeys.Count; i++)
         {
+          string currKey = currentKeys[i];
           string currVal = CollectedNodesHash[currKey];
           string currLib = ExtractNameFromKey(currKey);
 
           if (currVal.Equals("pending", StringComparison.OrdinalIgnoreCase))
           {
             GraphNode node = Graph.GraphMap[currKey];
-            foreach (string depKey in node.AdjacentNodes.Keys)
+            var dependencyKeys = node.AdjacentNodes.Keys.ToList();
+            for (int d = 0; d < dependencyKeys.Count; d++)
             {
+              string depKey = dependencyKeys[d];
               if (depKey.StartsWith("library"))
               {
                 if (CollectedNodesHash.ContainsKey(depKey))
@@ -69,14 +76,14 @@ namespace altgraph_web_app.Services.Graph
                 }
                 else
                 {
-                  CollectedNodesHash.Add(depKey, "pending");
+                  CollectedNodesHash[depKey] = "pending";
                   string depLib = ExtractNameFromKey(depKey);
                   string depEdgeKey = EdgeKey(currLib, depLib);
-                  CollectedEdgesHash.Add(depEdgeKey, "");
+                  CollectedEdgesHash[depEdgeKey] = "";
                 }
               }
             }
-            CollectedNodesHash.Add(currKey, "processed");
+            CollectedNodesHash[currKey] = "processed";
           }
         }
 
@@ -152,28 +159,13 @@ namespace altgraph_web_app.Services.Graph
     private void WriteCsvFiles()
     {
       // GRAPH_NODES_CSV_FILE
+      Directory.CreateDirectory(Path.GetDirectoryName(NodesCsvFile));
+      Directory.CreateDirectory(Path.GetDirectoryName(EdgesCsvFile));
+      File.WriteAllLines(NodesCsvFile, NodesCsvLines);
+      File.WriteAllLines(EdgesCsvFile, EdgeCsvLines);
       //   FileUtil fu = new FileUtil();
       // fu.writeLines(nodesCsvFile, nodesCsvLines, true);
       //     fu.writeLines(edgesCsvFile, edgeCsvLines, true);
-    }
-
-    public string AsJson(bool pretty)
-    {
-      throw new NotImplementedException();
-      //       try {
-      //   ObjectMapper mapper = new ObjectMapper();
-      //   if (pretty)
-      //   {
-      //     return mapper.writerWithDefaultPrettyPrinter().writeValueAsstring(this);
-      //   }
-      //   else
-      //   {
-      //     return mapper.writeValueAsstring(this);
-      //   }
-      // }
-      //       catch (JsonProcessingException e) {
-      //   return null;
-      // }
     }
 
     public void Finish()
