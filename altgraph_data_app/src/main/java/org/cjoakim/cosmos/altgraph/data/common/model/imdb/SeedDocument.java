@@ -16,7 +16,7 @@ import java.util.UUID;
  * to IMDb Movie documents.
  *
  * See method 'loadImdbGraphFromCosmos' of class JGraphBuilder where these documents
- * are read from CosmosDB to load the in-memory graph.
+ * are read from Cosmos DB to load the in-memory graph.
  *
  * Chris Joakim, November, November 2022
  */

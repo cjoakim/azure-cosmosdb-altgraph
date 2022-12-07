@@ -13,7 +13,7 @@ import org.cjoakim.cosmos.altgraph.data.common.model.npm.Triple;
 import java.util.ArrayList;
 
 /**
- * This is a Data Access Object (DAO) which uses the CosmosDB SDK for Java
+ * This is a Data Access Object (DAO) which uses the Cosmos DB SDK for Java
  * rather than Spring Data.  This class isn't used in the web application,
  * it is just for ad-hoc and exploratory purposes.
  * <p>

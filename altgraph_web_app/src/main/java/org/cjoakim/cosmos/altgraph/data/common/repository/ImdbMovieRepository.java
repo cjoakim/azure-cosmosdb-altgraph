@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 /**
- * This class is a Spring Data Repository for CosmosDB IMDb Movie documents.
+ * This class is a Spring Data Repository for Cosmos DB IMDb Movie documents.
  * Chris Joakim, Microsoft, November 2022
  */
 

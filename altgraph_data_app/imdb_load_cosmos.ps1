@@ -1,4 +1,4 @@
-# Bulk load the IMDb data in CosmosDB - into the imdb_graph and imdb_seed containers
+# Bulk load the IMDb data in Cosmos DB - into the imdb_graph and imdb_seed containers
 # Chris Joakim, Microsoft, November 2022
 
 invoke-expression -Command .\build.ps1

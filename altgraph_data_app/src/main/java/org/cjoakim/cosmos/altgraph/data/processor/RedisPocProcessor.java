@@ -58,7 +58,7 @@ public class RedisPocProcessor extends AbstractConsoleAppProcess {
             String key = keys.get(k);
             String value = syncCommands.get(key);
             log.warn("key: " + key + " -> " + value);
-            // TODO - write the hourly totals to CosmosDB
+            // TODO - write the hourly totals to Cosmos DB
         }
     }
 }

@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.lang.Nullable;
 
 /**
- * This class is optionally capture and log CosmosDB response information.
+ * This class is optionally capture and log Cosmos DB response information.
  * Chris Joakim, Microsoft, November 2022
  */
 

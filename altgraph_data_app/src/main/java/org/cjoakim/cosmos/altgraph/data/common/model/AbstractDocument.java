@@ -14,7 +14,7 @@ import java.util.UUID;
 
 /**
  * This is the abstract superclass for the several model classes - Movie, Person, Triple, etc.
- * It has variables and methods for CosmosDB id and pk attributes, and also JSON serialization.
+ * It has variables and methods for Cosmos DB id and pk attributes, and also JSON serialization.
  * <p>
  * Chris Joakim, Microsoft, November 2022
  */

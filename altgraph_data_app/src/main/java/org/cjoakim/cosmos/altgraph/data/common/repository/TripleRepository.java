@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * This class is a Spring Data Repository for CosmosDB NPM Triple documents.
+ * This class is a Spring Data Repository for Cosmos DB NPM Triple documents.
  * Chris Joakim, Microsoft, November 2022
  */
 

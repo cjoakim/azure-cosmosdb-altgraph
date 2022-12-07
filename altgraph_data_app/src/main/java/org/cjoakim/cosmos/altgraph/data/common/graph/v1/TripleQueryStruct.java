@@ -13,7 +13,7 @@ import java.util.ArrayList;
 /**
  * This is the primary data structure in AltGraph V1.  It contains a set of RDF-like "Triples"
  * that describe the structure of a business graph.  The Triples can be read efficiently from
- * CosmosDB as they are small documents and reside in the same logical partition.
+ * Cosmos DB as they are small documents and reside in the same logical partition.
  * <p>
  * They can be kept in-memory, and/or cached to either local disk or Redis cache.  The Triples can be
  * navigated/traversed in-memory in an orders-of-magnitide faster manner than reading from a database.

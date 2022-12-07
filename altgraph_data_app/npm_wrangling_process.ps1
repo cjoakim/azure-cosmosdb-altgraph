@@ -1,4 +1,4 @@
-# Wrangle/transform the raw npm data into files for loading into CosmosDB.
+# Wrangle/transform the raw npm data into files for loading into Cosmos DB.
 # Chris Joakim, Microsoft, November 2022
 
 invoke-expression -Command .\build.ps1

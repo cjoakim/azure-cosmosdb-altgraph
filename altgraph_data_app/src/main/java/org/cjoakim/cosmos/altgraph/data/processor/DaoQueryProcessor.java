@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * Instances of this class are used for ad-hoc testing and development
- * of Data Access Object (CosmosDB Java SDK) functionality within the
+ * of Data Access Object (Cosmos DB Java SDK) functionality within the
  * (batch) DataCommandLineApp,
  * <p>
  * Chris Joakim, Microsoft, November 2022

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 /**
- * This class is a Spring Data Repository for CosmosDB NPM Library documents.
+ * This class is a Spring Data Repository for Cosmos DB NPM Library documents.
  * Chris Joakim, Microsoft, November 2022
  */
 

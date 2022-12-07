@@ -17,7 +17,7 @@ import reactor.core.publisher.Flux;
 import java.util.ArrayList;
 
 /**
- * Execute CosmosDB bulk loading with the SDK and Asynch methods.
+ * Execute Cosmos DB bulk loading with the SDK and Asynch methods.
  * <p>
  * Chris Joakim, Microsoft, November 2022
  */

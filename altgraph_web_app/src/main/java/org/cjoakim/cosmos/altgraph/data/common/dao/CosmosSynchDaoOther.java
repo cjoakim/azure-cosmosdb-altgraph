@@ -9,7 +9,7 @@ import org.cjoakim.cosmos.altgraph.data.DataAppConfiguration;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * This is a Data Access Object (DAO) which uses the CosmosDB SDK for Java
+ * This is a Data Access Object (DAO) which uses the Cosmos DB SDK for Java
  * rather than Spring Data.
  * <p>
  * Chris Joakim, Microsoft, November 2022

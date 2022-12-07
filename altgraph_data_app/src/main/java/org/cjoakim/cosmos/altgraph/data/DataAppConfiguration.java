@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 /**
  * This class is a Spring Boot @Configuration class that also provides configuration
- * values for the Spring Data CosmosDB repositories.
+ * values for the Spring Data Cosmos DB repositories.
  *
  * Chris Joakim, Microsoft, November 2022
  */
@@ -165,7 +165,7 @@ public class DataAppConfiguration extends AbstractCosmosConfiguration
         return singleton.cacheMethod.trim().equalsIgnoreCase(CACHE_WITH_REDIS);
     }
 
-    // CosmosDB Spring Data Config below:
+    // Cosmos DB Spring Data Config below:
     // See https://docs.microsoft.com/en-us/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb
 
     @Value("${spring.cloud.azure.cosmos.endpoint}")

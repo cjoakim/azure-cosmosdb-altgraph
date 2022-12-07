@@ -19,7 +19,7 @@ import java.util.Iterator;
 
 /**
  * This class builds/refreshes an in-memory JGraphT "network" (i.e. - graph)
- * from either a disk or CosmosDB datasource.
+ * from either a disk or Cosmos DB datasource.
  * <p>
  * It is invoked from the refresh() method of class JGraph.
  * <p>

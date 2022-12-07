@@ -23,8 +23,8 @@ import java.util.List;
 
 /**
  * An instance of this class is created and executed from the DataCommandLineApp
- * main class to load CosmosDB from the previously transformed data.
- * Spring Data, rather than the CosmosDB SDK, is used to load the documents.
+ * main class to load Cosmos DB from the previously transformed data.
+ * Spring Data, rather than the Cosmos DB SDK, is used to load the documents.
  * <p>
  * Chris Joakim, Microsoft, November 2022
  */

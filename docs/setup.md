@@ -12,7 +12,7 @@
 
 ## Azure PaaS Services
 
-- **Azure CosmosDB SQL API Account**
+- **Azure Cosmos DB SQL API Account**
   - Database named **dev**
 
   - Container named **npm_graph**
@@ -54,7 +54,7 @@ spring.redis.port=${AZURE_REDISCACHE_PORT}
 spring.redis.password=${AZURE_REDISCACHE_KEY}
 spring.redis.ssl=true
 
-# Spring Data CosmosDB
+# Spring Data Cosmos DB
 spring.cloud.azure.cosmos.endpoint=${AZURE_COSMOSDB_SQL_URI}
 spring.cloud.azure.cosmos.key=${AZURE_COSMOSDB_SQL_RW_KEY1}
 spring.cloud.azure.cosmos.database=${AZURE_COSMOSDB_SQL_DB}
@@ -100,10 +100,10 @@ title.principals.tsv
 ...to directory **altgraph_data_app/data/imdb_raw** within this repository.
 You may have to manually create this directory if it doesn't already exist.
 
-## Wrangle the Raw Data, load CosmosDB
+## Wrangle the Raw Data, load Cosmos DB
 
 This process transforms the raw data into a format suitable for loading
-into CosmosDB for the AltGraph reference applications.
+into Cosmos DB for the AltGraph reference applications.
 
 ```
 > cd altgraph_data_app
@@ -133,7 +133,7 @@ your Azure resources, have set your environment variables, and have wrangled/loa
 the data as described above.
 
 In all cases, it may take approximately 50-seconds for the IMDb in-memory graph data
-to be loaded from your CosmosDB.
+to be loaded from your Cosmos DB.
 
 Once the AltGraph web application is running, see file **CosmosDB-AltGraph.pdf**
 regarding web application UI usage.

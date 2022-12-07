@@ -1,4 +1,4 @@
-# Load CosmosDB with the wrangled NPM files.
+# Load Cosmos DB with the wrangled NPM files.
 # Chris Joakim, Microsoft, November 2022
 
 invoke-expression -Command .\build.ps1

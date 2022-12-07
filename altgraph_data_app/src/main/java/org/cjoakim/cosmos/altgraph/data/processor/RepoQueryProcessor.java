@@ -17,7 +17,7 @@ import java.util.Iterator;
 
 /**
  * Instances of this class are used for ad-hoc testing and development
- * of CosmosDB Spring Data Repository functionality within the (batch)
+ * of Cosmos DB Spring Data Repository functionality within the (batch)
  * DataCommandLineApp,
  * <p>
  * Chris Joakim, Microsoft, November 2022
