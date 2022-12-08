@@ -6,17 +6,19 @@ namespace altgraph_web_app.Services.Graph
 {
   public class GraphBuilder
   {
-    public Entity? RootEntity { get; set; }  // the starting point of the graph
-    public TripleQueryStruct? Struct { get; set; } // DB query results of the pertinent Triples
+    public Entity RootEntity { get; set; }  // the starting point of the graph
+    public TripleQueryStruct Struct { get; set; } // DB query results of the pertinent Triples
     public Graph Graph { get; set; } // the resulting graph given the above two
-    public int structIterations { get; set; } = 0;
+    public int structIterations { get; set; }
+    private readonly ILogger _logger;
 
-    public GraphBuilder(Entity rootEntity, TripleQueryStruct tripleQueryStruct)
+    public GraphBuilder(Entity rootEntity, TripleQueryStruct tripleQueryStruct, ILogger logger)
     {
+      _logger = logger;
       RootEntity = rootEntity;
       Struct = tripleQueryStruct;
-      Graph = new Graph();
       RootEntity.PopulateCacheKey();
+      Graph = new Graph(logger);
     }
 
     public Graph BuildLibraryGraph(int maxIterations)
@@ -24,7 +26,7 @@ namespace altgraph_web_app.Services.Graph
       RootEntity.PopulateCacheKey();
       RootEntity.CalculateGraphKey();
       string rootKey = RootEntity.GraphKey;
-      //log.warn("buildLibraryGraph, rootKey: " + rootKey);
+      _logger.LogWarning($"buildLibraryGraph, rootKey: {rootKey}");
       Graph.SetRootNode(rootKey);
       CollectLibraryGraph(maxIterations);  // iterate the triples and build the graph from them
       Graph.Finish();
@@ -38,7 +40,7 @@ namespace altgraph_web_app.Services.Graph
       string authorLabel = author.Label;
       string rootKey = author.GraphKey;
       Graph.SetRootNode(author.GraphKey);
-      //log.warn("buildAuthorGraph, author: " + authorLabel + ", rootKey: " + rootKey);
+      _logger.LogWarning($"buildAuthorGraph, author: {authorLabel}, rootKey: {rootKey}");
 
       for (int i = 0; i < Struct.Documents.Count; i++)
       {
@@ -62,7 +64,7 @@ namespace altgraph_web_app.Services.Graph
 
     private void CollectLibraryGraph(int maxIterations)
     {
-      //log.warn("collectLibraryGraph, maxIterations: " + maxIterations);
+      _logger.LogWarning($"collectLibraryGraph, maxIterations: {maxIterations}");
       bool continueToCollect = true;
       int iterations = 0;
       int newNodesThisIteration = 0;
@@ -93,14 +95,14 @@ namespace altgraph_web_app.Services.Graph
         if (newNodesThisIteration < 1)
         {
           continueToCollect = false;
-          //log.error("collect() terminating with no new nodes");
+          _logger.LogError("collect() terminating with no new nodes");
         }
         else
         {
           if (iterations >= maxIterations)
           {
             continueToCollect = false;  // possible infinite loop, eject!
-            //log.error("collect() bailing out at maxIterations " + maxIterations);
+            _logger.LogError($"collect() bailing out at maxIterations {maxIterations}");
           }
         }
       }

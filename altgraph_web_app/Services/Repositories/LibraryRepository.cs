@@ -5,7 +5,7 @@ namespace altgraph_web_app.Services.Repositories
 {
   public class LibraryRepository
   {
-    IRepository<Library>? Libraries { get; set; }
+    IRepository<Library> Libraries { get; set; }
     public LibraryRepository(IRepository<Library> libraries)
     {
       Libraries = libraries;

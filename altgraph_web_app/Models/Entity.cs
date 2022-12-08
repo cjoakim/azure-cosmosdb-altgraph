@@ -6,15 +6,14 @@ namespace altgraph_web_app.Models
 {
   public class Entity : Item
   {
-    public string? Doctype { get; set; }
-    public string? Label { get; set; }
-    public string? Pk { get; set; }
-    public string? ETag { get; set; }
-    public string? Tenant { get; set; }
-
-    public string? Lob { get; set; }
-    public string? CacheKey { get; set; }
-    public string? GraphKey { get; set; }
+    public string Doctype { get; set; } = "";
+    public string Label { get; set; } = "";
+    public string Pk { get; set; } = "";
+    public string ETag { get; set; } = "";
+    public string Tenant { get; set; } = "";
+    public string Lob { get; set; } = "";
+    public string CacheKey { get; set; } = "";
+    public string GraphKey { get; set; } = "";
 
     public void PopulateCacheKey()
     {

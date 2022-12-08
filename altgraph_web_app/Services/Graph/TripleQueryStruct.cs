@@ -8,9 +8,9 @@ namespace altgraph_web_app.Services.Graph
   {
 
     public string StructType { get; set; } = typeof(TripleQueryStruct).Name;
-    public string ContainerName { get; set; }
-    public string Sql { get; set; }
-    public long StartTime { get; set; }// = System.DateTime.Now.currentTimeMillis();
+    public string ContainerName { get; set; } = "";
+    public string Sql { get; set; } = "";
+    public long StartTime { get; set; } = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
     public long EndTime { get; set; }
     public long ElapsedMs { get; set; }
     public long PageCount { get; set; }
@@ -25,7 +25,7 @@ namespace altgraph_web_app.Services.Graph
       {
         Documents = new List<Triple>();
       }
-      //startTime = System.currentTimeMillis();
+      StartTime = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
     }
 
     public void IncrementPageCount()

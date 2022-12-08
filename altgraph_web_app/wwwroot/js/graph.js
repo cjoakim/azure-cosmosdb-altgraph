@@ -1,56 +1,4 @@
-﻿@page
-@model GraphModel
-@{
-  ViewData["Title"] = "Graph";
-}
-
-<div>
-  <div th:fragment="page_title">
-    <h1 class="text-center text-danger"> AltGraph </h1>
-    <h3 class="text-center text-muted"> Graph Solutions with the Azure CosmosDB SQL API</h3>
-  </div>
-  <div th:fragment="search_form" class="d-flex justify-content-center">
-    <form class="d-flex align-items-center" id="searchForm" name="searchForm" method="POST">
-      <span>&nbsp;&nbsp;&nbsp;</span>
-      <a href="https://docs.microsoft.com/en-us/azure/?product=featured" target="_blank">
-        <img th:src="~/images/cosmos-logo-110.png" alt="CosmosDB Logo">
-      </a>
-
-      <input type="text" asp-for="SubjectName" class="form-control me-2" placeholder="Library Name" aria-label="Search">
-      <input type="checkbox" asp-for="AuthorCheckBox" class="form-control form-check-input me-2"
-        aria-label="Author Checkbox">
-      <label class="form-check-label me-2" for="authorCheckbox">Author</label>
-      <input type="text" asp-for="GraphDepth" class="form-control me-2" placeholder="Graph Depth"
-        aria-label="Graph Depth">
-      <input type="text" asp-for="CacheOpts" class="form-control me-2" placeholder="Cache Opts L T"
-        aria-label="Cache Opts">
-      <button class="btn btn-outline-primary" type="submit">Search</button>
-      <span>&nbsp;&nbsp;</span>
-      <input type="text" asp-for="ElapsedMs" class="form-control me-3" placeholder="Elapsed ms"
-        aria-label="readonly Elapsed ms" readonly>
-      <input type="hidden" asp-for="SessionId">
-
-      <a href="https://docs.microsoft.com/en-us/azure/?product=featured" target="_blank">
-        <img th:src="~/images/cosmos-logo-110.png" alt="CosmosDB Logo">
-      </a>
-      <span>&nbsp;&nbsp;</span>
-    </form>
-  </div>
-  <h5 class="d-flex justify-content-center" id="libraryInfo" name="libraryInfo"></h5>
-  <div id="graphData" data-nodes-csv="@Model.NodesCsv" data-edges-csv="@Model.EdgesCsv"
-    data-library-as-json="@Model.LibraryAsJson" />
-  <div id="viz">
-    <svg style="width:95%;height:1024px;">
-      <g></g>
-    </svg>
-  </div>
-</div>
-
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="~/lib/d3/d3.min.js"></script>
-<script>
-  $(document).ready(function () {
+﻿$(document).ready(function () {
     console.log("graph.html onready");
 
     function nodeClicked(e, d) {
@@ -221,4 +169,3 @@
       initZoom();
     }
   });
-</script>

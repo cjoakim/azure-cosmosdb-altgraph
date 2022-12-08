@@ -1,15 +1,11 @@
-using System.Linq.Expressions;
 using altgraph_web_app.Models;
-using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.CosmosRepository;
-using Microsoft.Azure.CosmosRepository.Builders;
-using Microsoft.Azure.CosmosRepository.Paging;
 
 namespace altgraph_web_app.Services.Repositories
 {
   public class TripleRepository
   {
-    public IRepository<Triple>? Triples { get; set; }
+    public IRepository<Triple> Triples { get; set; }
     public TripleRepository(IRepository<Triple> triples)
     {
       Triples = triples;

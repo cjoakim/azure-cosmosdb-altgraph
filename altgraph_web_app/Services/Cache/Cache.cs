@@ -1,152 +1,171 @@
 using altgraph_web_app.Models;
 using altgraph_web_app.Services.Graph;
 using StackExchange.Redis;
+using System.Text;
 using System.Text.Json;
 
 namespace altgraph_web_app.Services.Cache
 {
   public class Cache
   {
-    public string CacheMethod { get; set; }
-    public bool UseRedis { get; set; }
+    public string CacheMethod { get; set; } = "";
+    public bool UseRedis { get; set; } = false;
 
     private IConnectionMultiplexer _redis;
     private IDatabase _db;
+    private readonly IConfiguration _configuration;
+    private readonly ILogger<Cache> _logger;
 
-    public Cache(IConnectionMultiplexer redis)
+    public Cache(IConnectionMultiplexer redis, IConfiguration configuration, ILogger<Cache> logger)
     {
       _redis = redis;
       _db = _redis.GetDatabase();
+      _configuration = configuration;
+      _logger = logger;
     }
 
-    public bool PutLibrary(Library lib)
+    public async Task<bool> PutLibraryAsync(Library lib)
     {
       if (UseRedis)
       {
         string key = "library|" + lib.Name;
         try
         {
-          _db.StringSet(key, JsonSerializer.Serialize(lib));
+          await _db.StringSetAsync(key, JsonSerializer.Serialize(lib));
           return true;
         }
         catch (Exception e)
         {
+          _logger.LogError(e, $"Error putting library {lib} in cache");
           return false;
         }
       }
       else
       {
-        string filename = GetLibraryCacheFilename(lib.Name);
+        string filename = string.Format(_configuration["Paths:LibraryCacheFileTemplate"], lib.Name);
         try
         {
           Directory.CreateDirectory(Path.GetDirectoryName(filename));
-          File.WriteAllText(filename, JsonSerializer.Serialize<Library>(lib));
+          await File.WriteAllTextAsync(filename, JsonSerializer.Serialize<Library>(lib));
           return true;
         }
         catch (Exception ex)
         {
+          _logger.LogError(ex, $"Error putting library {lib} in cache");
           return false;
         }
       }
     }
 
-    public Library GetLibrary(string libName)
+    public async Task<Library>? GetLibraryAsync(string libName)
     {
       if (UseRedis)
       {
         string key = "library|" + libName;
-        string json = _db.StringGet(key);
+        string? json = await _db.StringGetAsync(key);
+        if (json == null)
+        {
+          return null;
+        }
+        else
+        {
+          try
+          {
+            return JsonSerializer.Deserialize<Library>(json);
+          }
+          catch (Exception ex)
+          {
+            _logger.LogError(ex, $"Error getting library {libName} from cache");
+            return null;
+          }
+        }
+      }
+      else
+      {
         try
         {
+          string cacheFilename = string.Format(_configuration["Paths:LibraryCacheFileTemplate"], libName);
+          var json = await File.ReadAllTextAsync(cacheFilename);
           return JsonSerializer.Deserialize<Library>(json);
         }
         catch (Exception ex)
         {
-          return null;
-        }
-      }
-      else
-      {
-        try
-        {
-          string cacheFilename = GetLibraryCacheFilename(libName);
-          return JsonSerializer.Deserialize<Library>(File.ReadAllText(cacheFilename));
-        }
-        catch (Exception ex)
-        {
+          _logger.LogError(ex, $"Error getting library {libName} from cache");
           return null;
         }
       }
     }
 
-    public bool PutTriples(TripleQueryStruct tripleQueryStruct)
+    public async Task<bool> PutTriplesAsync(TripleQueryStruct tripleQueryStruct)
     {
       if (UseRedis)
       {
         string key = "triples";
         try
         {
-          _db.StringSet(key, JsonSerializer.Serialize(tripleQueryStruct));
+          await _db.StringSetAsync(key, JsonSerializer.Serialize(tripleQueryStruct));
           return true;
         }
         catch (Exception e)
         {
+          _logger.LogError(e, $"Error putting triples in cache");
           return false;
         }
       }
       else
       {
-        string filename = GetTripleQueryStructCacheFilename();
+        string filename = _configuration["Paths:TripleQueryStructCacheFile"];
         try
         {
           Directory.CreateDirectory(Path.GetDirectoryName(filename));
-          File.WriteAllText(filename, JsonSerializer.Serialize<TripleQueryStruct>(tripleQueryStruct));
+          await File.WriteAllTextAsync(filename, JsonSerializer.Serialize<TripleQueryStruct>(tripleQueryStruct));
           return true;
         }
         catch (Exception ex)
         {
+          _logger.LogError(ex, $"Error putting triples in cache");
           return false;
         }
       }
     }
 
-    public TripleQueryStruct GetTriples()
+    public async Task<TripleQueryStruct> GetTriplesAsync()
     {
       if (UseRedis)
       {
         string key = "triples";
-        string json = _db.StringGet(key);
-        try
-        {
-          return JsonSerializer.Deserialize<TripleQueryStruct>(json);
-        }
-        catch (Exception ex)
+        string? json = await _db.StringGetAsync(key);
+        if (json == null)
         {
           return null;
+        }
+        else
+        {
+          try
+          {
+            return JsonSerializer.Deserialize<TripleQueryStruct>(json);
+          }
+          catch (Exception ex)
+          {
+            _logger.LogError(ex, $"Error getting triples from cache");
+            return null;
+          }
         }
       }
       else
       {
         try
         {
-          string cacheFilename = GetTripleQueryStructCacheFilename();
-          return JsonSerializer.Deserialize<TripleQueryStruct>(File.ReadAllText(cacheFilename));
+          string cacheFilename = _configuration["Paths:TripleQueryStructCacheFile"];
+          var json = await File.ReadAllTextAsync(cacheFilename);
+          return JsonSerializer.Deserialize<TripleQueryStruct>(json);
         }
         catch (Exception ex)
         {
+          _logger.LogError(ex, $"Error getting triples from cache");
           return null;
         }
       }
-    }
-
-    private string GetLibraryCacheFilename(string libName)
-    {
-      return "data/cache/" + libName + ".json";
-    }
-
-    private string GetTripleQueryStructCacheFilename()
-    {
-      return "data/cache/TripleQueryStruct.json";
     }
   }
 }
