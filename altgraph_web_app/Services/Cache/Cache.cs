@@ -22,6 +22,11 @@ namespace altgraph_web_app.Services.Cache
       _db = _redis.GetDatabase();
       _configuration = configuration;
       _logger = logger;
+      CacheMethod = _configuration["AppCacheMethod"];
+      if (CacheMethod == "redis")
+      {
+        UseRedis = true;
+      }
     }
 
     public async Task<bool> PutLibraryAsync(Library lib)

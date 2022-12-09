@@ -10,12 +10,12 @@ namespace altgraph_web_app.Services.Repositories
     {
       Libraries = libraries;
     }
-    public async Task<IEnumerable<Library>> FindByPkAndTenant(string pk, string tenant)
+    public async Task<IEnumerable<Library>> FindByPkAndTenantAsync(string pk, string tenant)
     {
       return await Libraries.GetAsync(x => x.Pk == pk && x.Tenant == tenant);
     }
 
-    public async Task<IEnumerable<Library>> FindByPkAndTenantAndDoctype(string pk, string tenant, string doctype)
+    public async Task<IEnumerable<Library>> FindByPkAndTenantAndDoctypeAsync(string pk, string tenant, string doctype)
     {
       return await Libraries.GetAsync(x => x.Pk == pk && x.Tenant == tenant && x.Doctype == doctype);
     }

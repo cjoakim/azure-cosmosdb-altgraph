@@ -6,7 +6,6 @@ namespace altgraph_web_app.Services.Graph
 {
   public class TripleQueryStruct
   {
-
     public string StructType { get; set; } = typeof(TripleQueryStruct).Name;
     public string ContainerName { get; set; } = "";
     public string Sql { get; set; } = "";
@@ -58,13 +57,11 @@ namespace altgraph_web_app.Services.Graph
 
     public Triple Find(string id, string pk, string tenant)
     {
-
       for (int i = 0; i < Documents.Count; i++)
       {
         Triple t = Documents[i];
         if (t.Id.Equals(id))
         {
-
           if (t.Tenant.Equals(tenant))
           {
             return t;

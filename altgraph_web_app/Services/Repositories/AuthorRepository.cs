@@ -14,7 +14,7 @@ namespace altgraph_web_app.Services.Repositories
     {
       Authors = authors;
     }
-    public async Task<IEnumerable<Author>> FindByLabel(string label)
+    public async Task<IEnumerable<Author>> FindByLabelAsync(string label)
     {
       return await Authors.GetAsync(x => x.Label == label);
     }

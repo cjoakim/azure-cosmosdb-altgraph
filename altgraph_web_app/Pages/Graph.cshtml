@@ -5,18 +5,18 @@
 }
 
 <div>
-  <div th:fragment="page_title">
+  <div asp-fragment="page_title">
     <h1 class="text-center text-danger"> AltGraph </h1>
     <h3 class="text-center text-muted"> Graph Solutions with the Azure CosmosDB SQL API</h3>
   </div>
-  <div th:fragment="search_form" class="d-flex justify-content-center">
-    <form class="d-flex align-items-center" id="searchForm" name="searchForm" method="POST">
+  <div asp-fragment="search_form" class="d-flex justify-content-center">
+    <form class="d-flex align-items-center" id="searchForm" name="searchForm" method="POST" defaultfocus="subjectName">
       <span>&nbsp;&nbsp;&nbsp;</span>
       <a href="https://docs.microsoft.com/en-us/azure/?product=featured" target="_blank">
-        <img th:src="~/images/cosmos-logo-110.png" alt="CosmosDB Logo">
+        <img src="~/images/cosmos-logo-110.png" alt="CosmosDB Logo">
       </a>
-
-      <input type="text" asp-for="SubjectName" class="form-control me-2" placeholder="Library Name" aria-label="Search">
+      <input type="text" id="subjectName" asp-for="SubjectName" class="form-control me-2" placeholder="Library Name"
+        aria-label="Search">
       <input type="checkbox" asp-for="AuthorCheckBox" class="form-control form-check-input me-2"
         aria-label="Author Checkbox">
       <label class="form-check-label me-2" for="authorCheckbox">Author</label>
@@ -31,7 +31,7 @@
       <input type="hidden" asp-for="SessionId">
 
       <a href="https://docs.microsoft.com/en-us/azure/?product=featured" target="_blank">
-        <img th:src="~/images/cosmos-logo-110.png" alt="CosmosDB Logo">
+        <img src="~/images/cosmos-logo-110.png" alt="CosmosDB Logo">
       </a>
       <span>&nbsp;&nbsp;</span>
     </form>
@@ -58,12 +58,12 @@
       var libName = d.name;
       $("#libraryInfo").text(libName + " ...");
       var httpRequestPromise = [
-        fetch(`?handler=LibraryAsJsonAsync&libraryName=${libName}`)
+        fetch(`?handler=LibraryAsJson&libraryName=${libName}`)
       ];
       Promise.all(httpRequestPromise).then(function (responses) {
         const dataElement = document.querySelector("#graphData");
 
-        dataElement.dataset.nodesCsv.map(function (data) {
+        dataElement.dataset.libraryAsJson.map(function (data) {
           console.log(data);
           var author = data.author.trim();
           var desc = data.desc.trim();

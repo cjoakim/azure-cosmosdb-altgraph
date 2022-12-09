@@ -1,6 +1,5 @@
 namespace altgraph_web_app.Services.Graph
 {
-
   public class D3CsvBuilder
   {
     public Graph? Graph { get; set; }
@@ -24,7 +23,6 @@ namespace altgraph_web_app.Services.Graph
       NodesCsvFile = _configuration["Paths:NodesCsvFile"];
       EdgesCsvFile = _configuration["Paths:EdgesCsvFile"];
     }
-
     public void BuildBillOfMaterialCsv(string sessionId, int depth)
     {
       CollectDataFromGraph(depth);
@@ -170,5 +168,4 @@ namespace altgraph_web_app.Services.Graph
       CollectedEdgesCount = CollectedEdgesHash.Count();
     }
   }
-
 }

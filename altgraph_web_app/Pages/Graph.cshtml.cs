@@ -148,7 +148,7 @@ public class GraphModel : PageModel
   private Author ReadAuthorByLabel(string label, bool useCache)
   {
     Author? author = null;
-    IEnumerable<Author> authors = _authorRepository.FindByLabel(label).Result;
+    IEnumerable<Author> authors = _authorRepository.FindByLabelAsync(label).Result;
     foreach (Author a in authors)
     {
       author = a;
@@ -175,7 +175,7 @@ public class GraphModel : PageModel
     tripleQueryStruct.Start();
 
     string pk = "triple|" + _configuration["Tenant"];
-    IEnumerable<Triple> triples = _tripleRepository.GetByPkLobAndSubjects(pk, lob, subject, subject).Result;
+    IEnumerable<Triple> triples = _tripleRepository.GetByPkLobAndSubjectsAsync(pk, lob, subject, subject).Result;
     foreach (Triple triple in triples)
     {
       Triple t = triple;
@@ -224,7 +224,7 @@ public class GraphModel : PageModel
     EdgesCsv = await ReadCsvAsync(_configuration["Paths:EdgesCsvFile"]);
   }
 
-  public async void OnGetLibraryAsJsonAsync(string libraryName)
+  public async Task OnGetLibraryAsJsonAsync(string libraryName)
   {
     _logger.LogWarning($"getLibraryAsJson, libraryName: {libraryName}");
 
@@ -260,7 +260,7 @@ public class GraphModel : PageModel
       }
     }
 
-    IEnumerable<Library> libraries = _libraryRepository.FindByPkAndTenantAndDoctype(libName, _configuration["Tenant"], "library").Result;
+    IEnumerable<Library> libraries = _libraryRepository.FindByPkAndTenantAndDoctypeAsync(libName, _configuration["Tenant"], "library").Result;
     foreach (Library library in libraries)
     {
       lib = library;
