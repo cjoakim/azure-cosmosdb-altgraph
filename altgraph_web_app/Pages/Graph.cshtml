@@ -102,6 +102,23 @@
       d3.select('svg g').attr('transform', e.transform);
     }
 
+    function csvToArr(stringVal) {
+      if (stringVal == null)
+        return null;
+
+      const [keys, ...rest] = stringVal
+        .trim()
+        .split("\r\n")
+        .map((item) => item.split(","));
+
+      const formedArr = rest.map((item) => {
+        const object = {};
+        keys.forEach((key, index) => (object[key] = item.at(index)));
+        return object;
+      });
+      return formedArr;
+    }
+
     let zoom = d3.zoom().on('zoom', handleZoom);
 
     var typeScale = d3.scaleOrdinal()
@@ -115,11 +132,13 @@
     const dataElement = document.querySelector("#graphData");
 
     console.log("csv data should now be loaded");
-    (dataElement.dataset.nodesCsv == "" ? null : dataElement.dataset.nodesCsv)?.trim().split("\n").map((item) => item.split(",")).map(function (n) {
+    const nodesCsv = csvToArr(dataElement.dataset.nodesCsv == "" ? null : dataElement.dataset.nodesCsv);
+    nodesCsv?.map(function (n) {
       console.log(n);
       nodes.push(n);
     });
-    (dataElement.dataset.edgesCsv == "" ? null : dataElement.dataset.edgesCsv)?.trim().split("\n").map((item) => item.split(",")).map(function (e) {
+    const edgesCsv = csvToArr(dataElement.dataset.edgesCsv == "" ? null : dataElement.dataset.edgesCsv);
+    edgesCsv?.map(function (e) {
       console.log(e);
       edges.push(e);
     });
