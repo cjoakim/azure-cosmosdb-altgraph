@@ -2,7 +2,7 @@ namespace altgraph_web_app.Services.Graph
 {
   public class Graph
   {
-    public string RootKey { get; set; } = "";
+    public string RootKey { get; set; } = string.Empty;
     public Dictionary<string, GraphNode> GraphMap { get; set; } = new Dictionary<string, GraphNode>();
     public long StartTime { get; set; }
     public long EndTime { get; set; }
@@ -18,15 +18,15 @@ namespace altgraph_web_app.Services.Graph
     public void SetRootNode(string key)
     {
       RootKey = key;
-      GraphNode node = new GraphNode(true, key, _logger);
+      GraphNode node = new GraphNode(key, _logger);
       GraphMap[key] = node;
     }
 
     public int UpdateForLibrary(string subjectKey, string objectKey, string predicate)
     {
       int changeCount = 0;
-      GraphNode? subjectNode = null;
-      GraphNode? objectNode = null;
+      GraphNode subjectNode;
+      GraphNode objectNode;
 
       if (GraphMap.ContainsKey(objectKey))
       {
@@ -48,8 +48,8 @@ namespace altgraph_web_app.Services.Graph
     public int UpdateForAuthor(string subjectKey, string objectKey, string predicate)
     {
       int changeCount = 0;
-      GraphNode? subjectNode = null;
-      GraphNode? objectNode = null;
+      GraphNode subjectNode;
+      GraphNode objectNode;
 
       if (GraphMap.ContainsKey(objectKey))
       {
@@ -70,7 +70,7 @@ namespace altgraph_web_app.Services.Graph
 
     public GraphNode CreateNewNode(string key)
     {
-      GraphNode node = new GraphNode(false, key, _logger);
+      GraphNode node = new GraphNode(key, _logger);
       GraphMap[key] = node;
       return node;
     }
@@ -78,7 +78,6 @@ namespace altgraph_web_app.Services.Graph
     public List<string> GetCurrentKeys()
     {
       List<string> values = new List<string>();
-      var objArray = GraphMap.Keys;
       foreach (string key in GraphMap.Keys)
       {
         values.Add(key);

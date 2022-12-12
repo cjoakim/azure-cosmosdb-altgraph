@@ -86,7 +86,7 @@ namespace altgraph_web_app.Services.Graph
               if (currentKeys.Contains(subjectKey))
               {
                 int changes = Graph.UpdateForLibrary(subjectKey, t.ObjectKey, t.Predicate);
-                newNodesThisIteration = newNodesThisIteration + changes;
+                newNodesThisIteration += changes;
               }
             }
           }

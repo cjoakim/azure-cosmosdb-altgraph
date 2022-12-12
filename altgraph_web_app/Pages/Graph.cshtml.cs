@@ -1,44 +1,44 @@
 ﻿using System.Text.Json;
 using altgraph_web_app.Models;
+using altgraph_web_app.Options;
 using altgraph_web_app.Services.Cache;
 using altgraph_web_app.Services.Graph;
 using altgraph_web_app.Services.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Azure.CosmosRepository;
+using Microsoft.Extensions.Options;
 
 namespace altgraph_web_app.Pages;
 
 public class GraphModel : PageModel
 {
   private readonly ILogger<GraphModel> _logger;
-  private static int DEFAULT_DEPTH = 1;
   [BindProperty]
-  public string SubjectName { get; set; } = "";
+  public string SubjectName { get; set; } = string.Empty;
   [BindProperty]
   public bool AuthorCheckBox { get; set; } = false;
   [BindProperty]
-  public string GraphDepth { get; set; } = "1";
+  public int GraphDepth { get; set; } = 1;
   [BindProperty]
-  public string? CacheOpts { get; set; } = "";
+  public string? CacheOpts { get; set; } = string.Empty;
   [BindProperty]
-  public string? ElapsedMs { get; set; } = "";
-  [BindProperty]
-  public string? SessionId { get; set; } = "";
+  public string? ElapsedMs { get; set; } = string.Empty;
   [BindProperty(SupportsGet = true)]
-  public string? NodesCsv { get; set; } = "";
+  public string? NodesCsv { get; set; } = string.Empty;
   [BindProperty(SupportsGet = true)]
-  public string? EdgesCsv { get; set; } = "";
+  public string? EdgesCsv { get; set; } = string.Empty;
   [BindProperty(SupportsGet = true)]
   public string? LibraryAsJson { get; set; } = "{}";
-  public string? GraphJson { get; set; } = "";
-  private LibraryRepository _libraryRepository;
-  private AuthorRepository _authorRepository;
-  private TripleRepository _tripleRepository;
-  private Cache _cache;
-  private IConfiguration _configuration;
+  public string? GraphJson { get; set; } = string.Empty;
+  private readonly LibraryRepository _libraryRepository;
+  private readonly AuthorRepository _authorRepository;
+  private readonly TripleRepository _tripleRepository;
+  private readonly Cache _cache;
+  private readonly CacheOptions _cacheOptions;
+  private readonly PathsOptions _pathsOptions;
 
-  public GraphModel(ILogger<GraphModel> logger, IRepository<Library> libraryRepository, IRepository<Author> authorRepository, IRepository<Triple> tripleRepository, Cache cache, IConfiguration configuration)
+  public GraphModel(ILogger<GraphModel> logger, IRepository<Library> libraryRepository, IRepository<Author> authorRepository, IRepository<Triple> tripleRepository, Cache cache, IOptions<CacheOptions> cacheOptions, IOptions<PathsOptions> pathsOptions)
   {
     _logger = logger;
     _libraryRepository = new LibraryRepository(libraryRepository);
@@ -46,30 +46,12 @@ public class GraphModel : PageModel
     _tripleRepository = new TripleRepository(tripleRepository);
     _cache = cache;
     _logger = logger;
-    _configuration = configuration;
+    _cacheOptions = cacheOptions.Value;
+    _pathsOptions = pathsOptions.Value;
   }
 
   public void OnGet()
   {
-    SubjectName = "";
-    AuthorCheckBox = false;
-    GraphDepth = "1";
-    CacheOpts = "";
-    ElapsedMs = "";
-    SessionId = HttpContext.Session.Id;
-  }
-
-  public int GetDepthAsInt()
-  {
-    try
-    {
-      return int.Parse(GraphDepth);
-    }
-    catch (Exception e)
-    {
-      _logger.LogError($"non-integer depth value: {GraphDepth}. returning the default");
-      return DEFAULT_DEPTH;
-    }
   }
 
   public async Task<IActionResult> OnPostAsync()
@@ -88,15 +70,15 @@ public class GraphModel : PageModel
       {
         await HandleLibrarySearchAsync();
       }
+    
+      Task[] tasks = { GetNodesCsvAsync(), GetEdgesCsvAsync() };
+
+    Task.WaitAll(tasks);
     }
     catch (Exception ex)
     {
-
+      _logger.LogError(ex.Message);
     }
-
-    Task[] tasks = { GetNodesCsvAsync(), GetEdgesCsvAsync() };
-
-    Task.WaitAll(tasks);
 
     return Page();
   }
@@ -106,20 +88,20 @@ public class GraphModel : PageModel
     try
     {
       string libName = SubjectName;
-      Author author = ReadAuthorByLabel(libName, UseCachedLibrary(CacheOpts));
+      Author? author = ReadAuthorByLabel(libName);
       if (author != null)
       {
-        TripleQueryStruct tripleQueryStruct = await ReadTriplesAsync(UseCachedTriples(CacheOpts), SessionId);
+        TripleQueryStruct tripleQueryStruct = await ReadTriplesAsync(UseCachedTriples(CacheOpts));
         GraphBuilder graphBuilder = new GraphBuilder(author, tripleQueryStruct, _logger);
         Graph graph = graphBuilder.BuildAuthorGraph(author);
-        D3CsvBuilder d3CsvBuilder = new D3CsvBuilder(graph, _configuration, _logger);
-        await d3CsvBuilder.BuildBillOfMaterialCsvAsync(SessionId, GetDepthAsInt());
+        D3CsvBuilder d3CsvBuilder = new D3CsvBuilder(graph, _pathsOptions, _logger);
+        await d3CsvBuilder.BuildBillOfMaterialCsvAsync(GraphDepth);
         d3CsvBuilder.Finish();
       }
     }
     catch (Exception ex)
     {
-
+      _logger.LogError(ex.Message);
     }
   }
 
@@ -128,24 +110,24 @@ public class GraphModel : PageModel
     try
     {
       string libName = SubjectName;
-      Library library = await ReadLibraryAsync(libName, UseCachedLibrary(CacheOpts));
+      Library? library = await ReadLibraryAsync(libName, UseCachedLibrary(CacheOpts));
       if (library != null)
       {
-        TripleQueryStruct tripleQueryStruct = await ReadTriplesAsync(UseCachedTriples(CacheOpts), SessionId);
+        TripleQueryStruct tripleQueryStruct = await ReadTriplesAsync(UseCachedTriples(CacheOpts));
         GraphBuilder graphBuilder = new GraphBuilder(library, tripleQueryStruct, _logger);
-        Graph graph = graphBuilder.BuildLibraryGraph(GetDepthAsInt());
-        D3CsvBuilder d3CsvBuilder = new D3CsvBuilder(graph, _configuration, _logger);
-        d3CsvBuilder.BuildBillOfMaterialCsvAsync(SessionId, GetDepthAsInt());
+        Graph graph = graphBuilder.BuildLibraryGraph(GraphDepth);
+        D3CsvBuilder d3CsvBuilder = new D3CsvBuilder(graph, _pathsOptions, _logger);
+        await d3CsvBuilder.BuildBillOfMaterialCsvAsync(GraphDepth);
         d3CsvBuilder.Finish();
       }
     }
     catch (Exception ex)
     {
-
+      _logger.LogError(ex.Message);
     }
   }
 
-  private Author ReadAuthorByLabel(string label, bool useCache)
+  private Author? ReadAuthorByLabel(string label)
   {
     Author? author = null;
     IEnumerable<Author> authors = _authorRepository.FindByLabelAsync(label).Result;
@@ -156,12 +138,11 @@ public class GraphModel : PageModel
     return author;
   }
 
-  private async Task<TripleQueryStruct> ReadTriplesAsync(bool useCache, string sessionId)
+  private async Task<TripleQueryStruct> ReadTriplesAsync(bool useCache)
   {
-    string cacheFilename = _configuration["Paths:TripleQueryCacheStructCacheFile"];
     if (useCache)
     {
-      TripleQueryStruct returnValue = await _cache.GetTriplesAsync();
+      TripleQueryStruct? returnValue = await _cache.GetTriplesAsync();
       if (returnValue != null)
       {
         return returnValue;
@@ -174,7 +155,7 @@ public class GraphModel : PageModel
     tripleQueryStruct.Sql = "dynamic";
     tripleQueryStruct.Start();
 
-    string pk = "triple|" + _configuration["Tenant"];
+    string pk = "triple|" + _cacheOptions.Tenant;
     IEnumerable<Triple> triples = _tripleRepository.GetByPkLobAndSubjectsAsync(pk, lob, subject, subject).Result;
     foreach (Triple triple in triples)
     {
@@ -189,51 +170,51 @@ public class GraphModel : PageModel
     }
     catch (Exception ex)
     {
-
+      _logger.LogError(ex.Message);
     }
     return tripleQueryStruct;
   }
 
-  private bool UseCachedLibrary(string cacheOpts)
+  private static bool UseCachedLibrary(string? cacheOpts)
   {
     if (cacheOpts == null)
     {
       return false;
     }
 
-    return cacheOpts.ToUpper().Contains("L");
+    return cacheOpts.ToUpper().Contains('L');
   }
 
-  private bool UseCachedTriples(string cacheOpts)
+  private static bool UseCachedTriples(string? cacheOpts)
   {
     if (cacheOpts == null)
     {
       return false;
     }
 
-    return cacheOpts.ToUpper().Contains("T");
+    return cacheOpts.ToUpper().Contains('T');
   }
 
   private async Task GetNodesCsvAsync()
   {
-    NodesCsv = await ReadCsvAsync(_configuration["Paths:NodesCsvFile"]);
+    NodesCsv = await ReadCsvAsync(_pathsOptions.NodesCsvFile);
   }
 
   private async Task GetEdgesCsvAsync()
   {
-    EdgesCsv = await ReadCsvAsync(_configuration["Paths:EdgesCsvFile"]);
+    EdgesCsv = await ReadCsvAsync(_pathsOptions.EdgesCsvFile);
   }
 
   public async Task OnGetLibraryAsJsonAsync(string libraryName)
   {
     _logger.LogWarning($"getLibraryAsJson, libraryName: {libraryName}");
 
-    Library library = await ReadLibraryAsync(libraryName, false);
+    Library? library = await ReadLibraryAsync(libraryName, false);
     if (library != null)
     {
       try
       {
-        LibraryAsJson = JsonSerializer.Serialize<Library>(library);
+        LibraryAsJson = JsonSerializer.Serialize(library);
       }
       catch (Exception e)
       {
@@ -247,7 +228,7 @@ public class GraphModel : PageModel
     }
   }
 
-  private async Task<Library> ReadLibraryAsync(string libName, bool useCache)
+  private async Task<Library?> ReadLibraryAsync(string libName, bool useCache)
   {
     Library? lib = null;
 
@@ -260,7 +241,7 @@ public class GraphModel : PageModel
       }
     }
 
-    IEnumerable<Library> libraries = _libraryRepository.FindByPkAndTenantAndDoctypeAsync(libName, _configuration["Tenant"], "library").Result;
+    IEnumerable<Library> libraries = _libraryRepository.FindByPkAndTenantAndDoctypeAsync(libName, _cacheOptions.Tenant, "library").Result;
     foreach (Library library in libraries)
     {
       lib = library;
@@ -271,13 +252,13 @@ public class GraphModel : PageModel
       }
       catch (Exception ex)
       {
-
+        _logger.LogError(ex.Message);
       }
     }
     return lib;
   }
 
-  private async Task<string> ReadCsvAsync(string path)
+  private static async Task<string> ReadCsvAsync(string path)
   {
     if (System.IO.File.Exists(path))
     {
@@ -285,7 +266,7 @@ public class GraphModel : PageModel
     }
     else
     {
-      return "";
+      return string.Empty;
     }
   }
 }

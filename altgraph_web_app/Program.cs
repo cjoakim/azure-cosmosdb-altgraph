@@ -1,15 +1,21 @@
 using altgraph_web_app.Models;
+using altgraph_web_app.Options;
 using altgraph_web_app.Services.Cache;
 using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(builder.Configuration["Redis:ConnectionString"]));
+builder.Services.Configure<CacheOptions>(builder.Configuration.GetSection(CacheOptions.Cache));
+builder.Services.Configure<CosmosOptions>(builder.Configuration.GetSection(CosmosOptions.Cosmos));
+builder.Services.Configure<PathsOptions>(builder.Configuration.GetSection(PathsOptions.Paths));
+builder.Services.Configure<RedisOptions>(builder.Configuration.GetSection(RedisOptions.Redis));
+
+builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(builder.Configuration.GetSection(RedisOptions.Redis).Get<RedisOptions>().ConnectionString));
 builder.Services.AddCosmosRepository(options =>
 {
-  options.CosmosConnectionString = builder.Configuration["Cosmos:ConnectionString"];
-  options.ContainerId = builder.Configuration["Cosmos:ContainerId"];
-  options.DatabaseId = builder.Configuration["Cosmos:DatabaseId"];
+  options.CosmosConnectionString = builder.Configuration.GetSection(CosmosOptions.Cosmos).Get<CosmosOptions>().ConnectionString;
+  options.ContainerId = builder.Configuration.GetSection(CosmosOptions.Cosmos).Get<CosmosOptions>().ContainerId;
+  options.DatabaseId = builder.Configuration.GetSection(CosmosOptions.Cosmos).Get<CosmosOptions>().DatabaseId;
   options.ContainerPerItemType = true;
   options.ContainerBuilder.Configure<Author>(containerOptions =>
   {

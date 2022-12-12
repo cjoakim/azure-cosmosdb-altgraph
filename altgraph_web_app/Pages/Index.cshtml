@@ -14,17 +14,15 @@
         </div>
       </div>
     </div>
-
     <div class="row">
       <div class="col text-center">
         <h1 class="text-center text-danger"> AltGraph </h1>
         <h3 class="text-center text-muted"> Graph Solutions with the Azure CosmosDB SQL API</h3>
         <div class="col text-center">
-          <p th:text="${sessionId}" class="d-inline p-2 text-white"></p>
+          <p class="d-inline p-2 text-white">@HttpContext.Session.Id</p>
         </div>
       </div>
     </div>
-
     <div class="row">
       <div class="col text-center">
         <div class="mx-auto" style="height: 50px;">
@@ -32,7 +30,6 @@
         </div>
       </div>
     </div>
-
     <div class="row">
       <div class="col text-center">
         <nav class="nav justify-content-center">
@@ -42,5 +39,3 @@
     </div>
   </div>
 </div>
-
-<div th:replace="fragments/body_js_scripts :: javascripts_from_cdn"></div>

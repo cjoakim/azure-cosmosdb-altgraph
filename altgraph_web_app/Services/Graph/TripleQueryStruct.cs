@@ -7,8 +7,8 @@ namespace altgraph_web_app.Services.Graph
   public class TripleQueryStruct
   {
     public string StructType { get; set; } = typeof(TripleQueryStruct).Name;
-    public string ContainerName { get; set; } = "";
-    public string Sql { get; set; } = "";
+    public string ContainerName { get; set; } = string.Empty;
+    public string Sql { get; set; } = string.Empty;
     public long StartTime { get; set; } = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
     public long EndTime { get; set; }
     public long ElapsedMs { get; set; }
@@ -34,7 +34,7 @@ namespace altgraph_web_app.Services.Graph
 
     public void IncrementRuCharge(double ru)
     {
-      RequestCharge = RequestCharge + ru;
+      RequestCharge += ru;
     }
 
     public void AddDocument(Triple t)
@@ -55,7 +55,7 @@ namespace altgraph_web_app.Services.Graph
       return ElapsedMs;
     }
 
-    public Triple Find(string id, string pk, string tenant)
+    public Triple? Find(string id, string tenant)
     {
       for (int i = 0; i < Documents.Count; i++)
       {

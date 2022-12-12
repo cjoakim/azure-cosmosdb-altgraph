@@ -15,22 +15,16 @@ namespace altgraph_web_app.Services.Graph
       _logger = logger;
     }
 
-    public GraphNode(bool root, string key, ILogger logger)
-    {
-      TripleKey = key;
-      _logger = logger;
-    }
-
     public int AddAdjacent(GraphNode neighbor, string predicate)
     {
       if (AdjacentNodes.ContainsKey(neighbor.TripleKey))
       {
-        _logger.LogWarning($"addAdjacent()_present: {neighbor.TripleKey} to {this.TripleKey}");
+        _logger.LogWarning($"addAdjacent()_present: {neighbor.TripleKey} to {TripleKey}");
         return 0;
       }
       else
       {
-        _logger.LogWarning($"addAdjacent()_adding:  {neighbor.TripleKey} to {this.TripleKey}");
+        _logger.LogWarning($"addAdjacent()_adding:  {neighbor.TripleKey} to {TripleKey}");
         AdjacentNodes[neighbor.TripleKey] = predicate;
         AdjacentNodeCount = AdjacentNodes.Count;
         return 1;

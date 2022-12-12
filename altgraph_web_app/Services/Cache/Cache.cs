@@ -1,5 +1,7 @@
 using altgraph_web_app.Models;
+using altgraph_web_app.Options;
 using altgraph_web_app.Services.Graph;
+using Microsoft.Extensions.Options;
 using StackExchange.Redis;
 using System.Text;
 using System.Text.Json;
@@ -8,21 +10,22 @@ namespace altgraph_web_app.Services.Cache
 {
   public class Cache
   {
-    public string CacheMethod { get; set; } = "";
+    public string CacheMethod { get; set; } = string.Empty;
     public bool UseRedis { get; set; } = false;
-
     private IConnectionMultiplexer _redis;
-    private IDatabase _db;
-    private readonly IConfiguration _configuration;
+    private readonly IDatabase _db;
+    private readonly CacheOptions _cacheOptions;
+    private readonly PathsOptions _pathsOptions;
     private readonly ILogger<Cache> _logger;
 
-    public Cache(IConnectionMultiplexer redis, IConfiguration configuration, ILogger<Cache> logger)
+    public Cache(IConnectionMultiplexer redis, IOptions<CacheOptions> cacheOptions, IOptions<PathsOptions> pathsOptions, ILogger<Cache> logger)
     {
       _redis = redis;
       _db = _redis.GetDatabase();
-      _configuration = configuration;
+      _cacheOptions = cacheOptions.Value;
+      _pathsOptions = pathsOptions.Value;
       _logger = logger;
-      CacheMethod = _configuration["AppCacheMethod"];
+      CacheMethod = _cacheOptions.AppCacheMethod;
       if (CacheMethod == "redis")
       {
         UseRedis = true;
@@ -47,11 +50,11 @@ namespace altgraph_web_app.Services.Cache
       }
       else
       {
-        string filename = string.Format(_configuration["Paths:LibraryCacheFileTemplate"], lib.Name);
+        string filename = string.Format(_pathsOptions.LibraryCacheFileTemplate, lib.Name);
         try
         {
           Directory.CreateDirectory(Path.GetDirectoryName(filename));
-          await File.WriteAllTextAsync(filename, JsonSerializer.Serialize<Library>(lib));
+          await File.WriteAllTextAsync(filename, JsonSerializer.Serialize(lib));
           return true;
         }
         catch (Exception ex)
@@ -62,7 +65,7 @@ namespace altgraph_web_app.Services.Cache
       }
     }
 
-    public async Task<Library>? GetLibraryAsync(string libName)
+    public async Task<Library?> GetLibraryAsync(string libName)
     {
       if (UseRedis)
       {
@@ -89,7 +92,7 @@ namespace altgraph_web_app.Services.Cache
       {
         try
         {
-          string cacheFilename = string.Format(_configuration["Paths:LibraryCacheFileTemplate"], libName);
+          string cacheFilename = string.Format(_pathsOptions.LibraryCacheFileTemplate, libName);
           var json = await File.ReadAllTextAsync(cacheFilename);
           return JsonSerializer.Deserialize<Library>(json);
         }
@@ -119,11 +122,11 @@ namespace altgraph_web_app.Services.Cache
       }
       else
       {
-        string filename = _configuration["Paths:TripleQueryStructCacheFile"];
+        string filename = _pathsOptions.TripleQueryStructCacheFile;
         try
         {
           Directory.CreateDirectory(Path.GetDirectoryName(filename));
-          await File.WriteAllTextAsync(filename, JsonSerializer.Serialize<TripleQueryStruct>(tripleQueryStruct));
+          await File.WriteAllTextAsync(filename, JsonSerializer.Serialize(tripleQueryStruct));
           return true;
         }
         catch (Exception ex)
@@ -134,7 +137,7 @@ namespace altgraph_web_app.Services.Cache
       }
     }
 
-    public async Task<TripleQueryStruct> GetTriplesAsync()
+    public async Task<TripleQueryStruct?> GetTriplesAsync()
     {
       if (UseRedis)
       {
@@ -161,8 +164,7 @@ namespace altgraph_web_app.Services.Cache
       {
         try
         {
-          string cacheFilename = _configuration["Paths:TripleQueryStructCacheFile"];
-          var json = await File.ReadAllTextAsync(cacheFilename);
+          var json = await File.ReadAllTextAsync(_pathsOptions.TripleQueryStructCacheFile);
           return JsonSerializer.Deserialize<TripleQueryStruct>(json);
         }
         catch (Exception ex)

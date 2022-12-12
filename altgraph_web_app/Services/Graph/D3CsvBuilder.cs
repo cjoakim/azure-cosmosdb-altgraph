@@ -1,3 +1,5 @@
+using altgraph_web_app.Options;
+
 namespace altgraph_web_app.Services.Graph
 {
   public class D3CsvBuilder
@@ -9,21 +11,19 @@ namespace altgraph_web_app.Services.Graph
     public int CollectedNodesCount { get; set; }
     public Dictionary<string, string> CollectedEdgesHash { get; set; } = new Dictionary<string, string>();
     public int CollectedEdgesCount { get; set; }
-    public string NodesCsvFile { get; set; } = "";
-    public string EdgesCsvFile { get; set; } = "";
+    public string NodesCsvFile { get; set; } = string.Empty;
+    public string EdgesCsvFile { get; set; } = string.Empty;
     private int iterationCount = 0;
-    private readonly IConfiguration? _configuration;
     private readonly ILogger _logger;
 
-    public D3CsvBuilder(Graph g, IConfiguration configuration, ILogger logger)
+    public D3CsvBuilder(Graph g, PathsOptions pathsOptions, ILogger logger)
     {
-      Graph = g;
-      _configuration = configuration;
+      Graph = g;      
       _logger = logger;
-      NodesCsvFile = _configuration["Paths:NodesCsvFile"];
-      EdgesCsvFile = _configuration["Paths:EdgesCsvFile"];
+      NodesCsvFile = pathsOptions.NodesCsvFile;
+      EdgesCsvFile = pathsOptions.EdgesCsvFile;
     }
-    public async Task BuildBillOfMaterialCsvAsync(string sessionId, int depth)
+    public async Task BuildBillOfMaterialCsvAsync(int depth)
     {
       CollectDataFromGraph(depth);
       BuildNodesCsv();
@@ -34,6 +34,12 @@ namespace altgraph_web_app.Services.Graph
     private void CollectDataFromGraph(int depth)
     {
       bool continueToCollect = true;
+
+      if(Graph == null)
+      {
+        throw new NullReferenceException("D3CsvBuilder.Graph is NULL");
+      }
+
       string rootKey = Graph.RootKey;
       _logger.LogWarning($"collectLibrariesDataFromGraph rootKey: {rootKey}");
 
@@ -44,7 +50,7 @@ namespace altgraph_web_app.Services.Graph
       _logger.LogWarning($"collectLibrariesDataFromGraph rootHashKey: {rootEdgeKey}");
 
       CollectedNodesHash[rootKey] = "pending";
-      CollectedEdgesHash[rootEdgeKey] = "";
+      CollectedEdgesHash[rootEdgeKey] = string.Empty;
 
       while (continueToCollect)
       {
@@ -75,7 +81,7 @@ namespace altgraph_web_app.Services.Graph
                   CollectedNodesHash[depKey] = "pending";
                   string depLib = ExtractNameFromKey(depKey);
                   string depEdgeKey = EdgeKey(currLib, depLib);
-                  CollectedEdgesHash[depEdgeKey] = "";
+                  CollectedEdgesHash[depEdgeKey] = string.Empty;
                 }
               }
             }
@@ -105,6 +111,12 @@ namespace altgraph_web_app.Services.Graph
       {
         string key = keys[i];
         string libName = ExtractNameFromKey(key);
+
+        if (Graph == null)
+        {
+          throw new NullReferenceException("D3CsvBuilder.Graph is NULL");
+        }
+
         GraphNode node = Graph.GraphMap[key];
         NodesCsvLines.Add(libName + ",library," + node.AdjacentNodes.Count);
       }
@@ -124,25 +136,27 @@ namespace altgraph_web_app.Services.Graph
       _logger.LogWarning($"buildEdgesCsv count: {EdgeCsvLines.Count}");
     }
 
-    private List<string> SortedArray(string[] array)
+    private static List<string> SortedArray(string[] array)
     {
       List<string> strings = new List<string>();
       for (int i = 0; i < array.Length; i++)
       {
-        strings.Add((string)array[i]);
+        strings.Add(array[i]);
       }
       strings.Sort();
       return strings;
     }
 
-    private string EdgeKey(string parentLibName, string childLibName)
+    private static string EdgeKey(string parentLibName, string childLibName)
     {
       return parentLibName + " " + childLibName;
     }
 
     private string ExtractNameFromKey(string key)
     {
-      string name = key.Replace("^", ":").Split(":")[1].Replace(" ", "_");
+      string name = key.Replace("^", ":")
+                .Split(":")[1]
+                .Replace(" ", "_");
 
       _logger.LogWarning($"extractNameFromKey: {key} -> {name}");
       // library^express^bf8cff83-5f7c-4995-8484-d2f405bcbce7^express -> express
@@ -164,8 +178,8 @@ namespace altgraph_web_app.Services.Graph
     public void Finish()
     {
       Graph = null;
-      CollectedNodesCount = CollectedNodesHash.Count();
-      CollectedEdgesCount = CollectedEdgesHash.Count();
+      CollectedNodesCount = CollectedNodesHash.Count;
+      CollectedEdgesCount = CollectedEdgesHash.Count;
     }
   }
 }
