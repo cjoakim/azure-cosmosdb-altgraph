@@ -23,12 +23,12 @@ namespace altgraph_web_app.Services.Graph
       NodesCsvFile = _configuration["Paths:NodesCsvFile"];
       EdgesCsvFile = _configuration["Paths:EdgesCsvFile"];
     }
-    public void BuildBillOfMaterialCsv(string sessionId, int depth)
+    public async Task BuildBillOfMaterialCsvAsync(string sessionId, int depth)
     {
       CollectDataFromGraph(depth);
       BuildNodesCsv();
       BuildEdgesCsv();
-      WriteCsvFilesAsync();
+      await WriteCsvFilesAsync();
     }
 
     private void CollectDataFromGraph(int depth)
@@ -151,14 +151,14 @@ namespace altgraph_web_app.Services.Graph
       return name;
     }
 
-    private async void WriteCsvFilesAsync()
+    private async Task WriteCsvFilesAsync()
     {
       // GRAPH_NODES_CSV_FILE
       Directory.CreateDirectory(Path.GetDirectoryName(NodesCsvFile));
       Directory.CreateDirectory(Path.GetDirectoryName(EdgesCsvFile));
 
-      await File.WriteAllLinesAsync(NodesCsvFile, NodesCsvLines);
-      await File.WriteAllLinesAsync(EdgesCsvFile, EdgeCsvLines);
+      Task[] tasks = { File.WriteAllLinesAsync(NodesCsvFile, NodesCsvLines), File.WriteAllLinesAsync(EdgesCsvFile, EdgeCsvLines) };
+      await Task.WhenAll(tasks);
     }
 
     public void Finish()

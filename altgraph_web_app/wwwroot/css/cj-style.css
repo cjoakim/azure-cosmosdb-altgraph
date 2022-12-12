@@ -166,3 +166,11 @@ body {
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
 }
+
+.link {
+  stroke: #93c464;
+}
+
+marker {
+  fill: #93c464;
+}

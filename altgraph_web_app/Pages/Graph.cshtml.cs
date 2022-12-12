@@ -113,7 +113,7 @@ public class GraphModel : PageModel
         GraphBuilder graphBuilder = new GraphBuilder(author, tripleQueryStruct, _logger);
         Graph graph = graphBuilder.BuildAuthorGraph(author);
         D3CsvBuilder d3CsvBuilder = new D3CsvBuilder(graph, _configuration, _logger);
-        d3CsvBuilder.BuildBillOfMaterialCsv(SessionId, GetDepthAsInt());
+        await d3CsvBuilder.BuildBillOfMaterialCsvAsync(SessionId, GetDepthAsInt());
         d3CsvBuilder.Finish();
       }
     }
@@ -135,7 +135,7 @@ public class GraphModel : PageModel
         GraphBuilder graphBuilder = new GraphBuilder(library, tripleQueryStruct, _logger);
         Graph graph = graphBuilder.BuildLibraryGraph(GetDepthAsInt());
         D3CsvBuilder d3CsvBuilder = new D3CsvBuilder(graph, _configuration, _logger);
-        d3CsvBuilder.BuildBillOfMaterialCsv(SessionId, GetDepthAsInt());
+        d3CsvBuilder.BuildBillOfMaterialCsvAsync(SessionId, GetDepthAsInt());
         d3CsvBuilder.Finish();
       }
     }
