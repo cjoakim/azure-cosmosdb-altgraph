@@ -1,6 +1,6 @@
-using altgraph_web_app.Options;
+using altgraph_shared_app.Options;
 
-namespace altgraph_shared_app.Services.Graph
+namespace altgraph_web_app.Services.Graph
 {
   public class D3CsvBuilder
   {

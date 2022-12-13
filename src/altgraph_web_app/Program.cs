@@ -1,6 +1,6 @@
-using altgraph_web_app.Models;
-using altgraph_web_app.Options;
-using altgraph_web_app.Services.Cache;
+using altgraph_shared_app.Models;
+using altgraph_shared_app.Options;
+using altgraph_shared_app.Services.Cache;
 using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);

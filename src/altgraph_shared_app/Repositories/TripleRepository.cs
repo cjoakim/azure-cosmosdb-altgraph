@@ -1,7 +1,7 @@
-using altgraph_web_app.Models;
+using altgraph_shared_app.Models;
 using Microsoft.Azure.CosmosRepository;
 
-namespace altgraph_web_app.Services.Repositories
+namespace altgraph_shared_app.Services.Repositories
 {
   public class TripleRepository
   {
