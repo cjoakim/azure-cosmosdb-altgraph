@@ -5,7 +5,7 @@ namespace altgraph_shared_app.Services.Repositories
 {
   public class TripleRepository
   {
-    public IRepository<Triple> Triples { get; set; }
+    public IRepository<Triple> Triples { get; private set; }
     public TripleRepository(IRepository<Triple> triples)
     {
       Triples = triples;

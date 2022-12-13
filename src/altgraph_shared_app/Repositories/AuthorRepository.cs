@@ -9,7 +9,7 @@ namespace altgraph_shared_app.Services.Repositories
 {
   public class AuthorRepository
   {
-    public IRepository<Author> Authors { get; set; }
+    public IRepository<Author> Authors { get; private set; }
     public AuthorRepository(IRepository<Author> authors)
     {
       Authors = authors;

@@ -1,31 +1,56 @@
-﻿string processType = args[0];
-ConsoleAppProcess processor = null;
+﻿using System.Reflection;
+using altgraph_data_app.processor;
+using altgraph_shared_app.Models;
+using altgraph_shared_app.Options;
+using altgraph_shared_app.Services.Cache;
+using altgraph_shared_app.Services.Repositories;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using StackExchange.Redis;
 
-try
+await Host.CreateDefaultBuilder(args)
+.UseContentRoot(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location))
+.ConfigureLogging(logging =>
 {
-  switch (processType)
+
+})
+.ConfigureServices((hostContext, services) =>
+{
+  services.Configure<CacheOptions>(hostContext.Configuration.GetSection(CacheOptions.Cache));
+  services.Configure<CosmosOptions>(hostContext.Configuration.GetSection(CosmosOptions.Cosmos));
+  services.Configure<PathsOptions>(hostContext.Configuration.GetSection(PathsOptions.Paths));
+  services.Configure<RedisOptions>(hostContext.Configuration.GetSection(RedisOptions.Redis));
+
+  services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(hostContext.Configuration.GetSection(RedisOptions.Redis).Get<RedisOptions>().ConnectionString));
+  services.AddCosmosRepository(options =>
   {
-    case "transform_raw_data":
-      break;
-    case "load_cosmos":
-      break;
-    case "springdata_queries":
-      break;
-    case "dao_queries":
-      break;
-    case "build_graph":
-      break;
-    case "build_d3_csv":
-      break;
-    case "test_cache":
-      break;
-    case "test_redis":
-      break;
-    default:
-      break;
-  }
-}
-catch (Exception ex)
-{
-
-}
+    options.CosmosConnectionString = hostContext.Configuration.GetSection(CosmosOptions.Cosmos).Get<CosmosOptions>().ConnectionString;
+    options.ContainerId = hostContext.Configuration.GetSection(CosmosOptions.Cosmos).Get<CosmosOptions>().ContainerId;
+    options.DatabaseId = hostContext.Configuration.GetSection(CosmosOptions.Cosmos).Get<CosmosOptions>().DatabaseId;
+    options.ContainerPerItemType = true;
+    options.ContainerBuilder.Configure<Author>(containerOptions =>
+    {
+      containerOptions.WithContainer("altgraph");
+      containerOptions.WithPartitionKey("/pk");
+    });
+    options.ContainerBuilder.Configure<Library>(containerOptions =>
+    {
+      containerOptions.WithContainer("altgraph");
+      containerOptions.WithPartitionKey("/pk");
+    });
+    options.ContainerBuilder.Configure<Maintainer>(containerOptions =>
+    {
+      containerOptions.WithContainer("altgraph");
+      containerOptions.WithPartitionKey("/pk");
+    });
+    options.ContainerBuilder.Configure<Triple>(containerOptions =>
+    {
+      containerOptions.WithContainer("altgraph");
+      containerOptions.WithPartitionKey("/pk");
+    });
+  });
+  services.AddSingleton<Cache>();
+  services.AddSingleton<CosmosDbLoader>();
+})
+            .RunConsoleAsync();
