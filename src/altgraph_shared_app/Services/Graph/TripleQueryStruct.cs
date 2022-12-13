@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using altgraph_web_app.Models;
+using altgraph_shared_app.Models;
 
-namespace altgraph_web_app.Services.Graph
+namespace altgraph_shared_app.Services.Graph
 {
   public class TripleQueryStruct
   {

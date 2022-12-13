@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Azure.CosmosRepository;
 
-namespace altgraph_web_app.Models
+namespace altgraph_shared_app.Models
 {
   public class Triple : Item
   {

@@ -1,4 +1,4 @@
-namespace altgraph_web_app.Models
+namespace altgraph_shared_app.Models
 {
   public class Maintainer : Entity
   {

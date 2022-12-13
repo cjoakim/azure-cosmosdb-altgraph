@@ -1,6 +1,6 @@
 using altgraph_web_app.Options;
 
-namespace altgraph_web_app.Services.Graph
+namespace altgraph_shared_app.Services.Graph
 {
   public class D3CsvBuilder
   {
@@ -18,7 +18,7 @@ namespace altgraph_web_app.Services.Graph
 
     public D3CsvBuilder(Graph g, PathsOptions pathsOptions, ILogger logger)
     {
-      Graph = g;      
+      Graph = g;
       _logger = logger;
       NodesCsvFile = pathsOptions.NodesCsvFile;
       EdgesCsvFile = pathsOptions.EdgesCsvFile;
@@ -35,7 +35,7 @@ namespace altgraph_web_app.Services.Graph
     {
       bool continueToCollect = true;
 
-      if(Graph == null)
+      if (Graph == null)
       {
         throw new NullReferenceException("D3CsvBuilder.Graph is NULL");
       }

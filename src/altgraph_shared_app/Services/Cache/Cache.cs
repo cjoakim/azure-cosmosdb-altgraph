@@ -1,12 +1,13 @@
-using altgraph_web_app.Models;
-using altgraph_web_app.Options;
-using altgraph_web_app.Services.Graph;
+using altgraph_shared_app.Models;
+using altgraph_shared_app.Options;
+using altgraph_shared_app.Services.Graph;
 using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Logging;
 using StackExchange.Redis;
 using System.Text;
 using System.Text.Json;
 
-namespace altgraph_web_app.Services.Cache
+namespace altgraph_shared_app.Services.Cache
 {
   public class Cache
   {
