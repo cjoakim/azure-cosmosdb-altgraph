@@ -6,6 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../altgraph_shared_app/altgraph_shared_app.csproj"></ProjectReference>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="IEvangelist.Azure.CosmosRepository" Version="3.7.0" />
