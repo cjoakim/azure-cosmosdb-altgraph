@@ -1,3 +1,5 @@
+using Microsoft.Extensions.Logging;
+
 namespace altgraph_shared_app.Services.Graph
 {
   public class Graph
