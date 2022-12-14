@@ -34,25 +34,11 @@ namespace altgraph_data_app
 
               switch (processType)
               {
-                case "transform_raw_data":
-                  break;
                 case "load_cosmos":
                   await _cosmosDbLoader.ProcessAsync();
                   break;
-                case "springdata_queries":
-                  break;
-                case "dao_queries":
-                  break;
-                case "build_graph":
-                  break;
-                case "build_d3_csv":
-                  break;
-                case "test_cache":
-                  break;
-                case "test_redis":
-                  break;
                 default:
-                  break;
+                  throw new NotImplementedException($"Process type {processType} not implemented");
               }
               _exitCode = 0;
             }
