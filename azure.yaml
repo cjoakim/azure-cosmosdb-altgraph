@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+
+name: altgraph-web-app
+metadata:
+  template: altgraph-web-app@0.0.1
+services:
+  web:
+    project: src/altgraph-web-app
+    language: csharp
+    host: containerapp
+    docker:
+      path: src/Dockerfile-web-app
+      context: src
+      
