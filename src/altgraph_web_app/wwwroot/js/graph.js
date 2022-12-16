@@ -55,7 +55,7 @@
 
         const [keys, ...rest] = stringVal
             .trim()
-            .split("\r\n")
+            .split(/\r?\n/) //need to account for both \r\n and \n line endings
             .map((item) => item.split(","));
 
         const formedArr = rest.map((item) => {
