@@ -208,7 +208,7 @@ public class GraphModel : PageModel
 
   public async Task OnGetLibraryAsJsonAsync(string libraryName)
   {
-    _logger.LogWarning($"getLibraryAsJson, libraryName: {libraryName}");
+    _logger.LogDebug($"getLibraryAsJson, libraryName: {libraryName}");
 
     Library? library = await ReadLibraryAsync(libraryName, false);
     if (library != null)

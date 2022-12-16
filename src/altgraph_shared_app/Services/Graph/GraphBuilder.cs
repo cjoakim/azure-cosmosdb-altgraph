@@ -27,7 +27,7 @@ namespace altgraph_shared_app.Services.Graph
       RootEntity.PopulateCacheKey();
       RootEntity.CalculateGraphKey();
       string rootKey = RootEntity.GraphKey;
-      _logger.LogWarning($"buildLibraryGraph, rootKey: {rootKey}");
+      _logger.LogDebug($"buildLibraryGraph, rootKey: {rootKey}");
       Graph.SetRootNode(rootKey);
       CollectLibraryGraph(maxIterations);  // iterate the triples and build the graph from them
       Graph.Finish();
@@ -41,7 +41,7 @@ namespace altgraph_shared_app.Services.Graph
       string authorLabel = author.Label;
       string rootKey = author.GraphKey;
       Graph.SetRootNode(author.GraphKey);
-      _logger.LogWarning($"buildAuthorGraph, author: {authorLabel}, rootKey: {rootKey}");
+      _logger.LogDebug($"buildAuthorGraph, author: {authorLabel}, rootKey: {rootKey}");
 
       for (int i = 0; i < Struct.Documents.Count; i++)
       {
@@ -65,7 +65,7 @@ namespace altgraph_shared_app.Services.Graph
 
     private void CollectLibraryGraph(int maxIterations)
     {
-      _logger.LogWarning($"collectLibraryGraph, maxIterations: {maxIterations}");
+      _logger.LogDebug($"collectLibraryGraph, maxIterations: {maxIterations}");
       bool continueToCollect = true;
       int iterations = 0;
       int newNodesThisIteration = 0;

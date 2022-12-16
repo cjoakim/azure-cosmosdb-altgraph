@@ -42,13 +42,13 @@ namespace altgraph_web_app.Services.Graph
       }
 
       string rootKey = Graph.RootKey;
-      _logger.LogWarning($"collectLibrariesDataFromGraph rootKey: {rootKey}");
+      _logger.LogDebug($"collectLibrariesDataFromGraph rootKey: {rootKey}");
 
       string rootLib = ExtractNameFromKey(rootKey);
-      _logger.LogWarning($"collectLibrariesDataFromGraph rootLib: {rootLib}");
+      _logger.LogDebug($"collectLibrariesDataFromGraph rootLib: {rootLib}");
 
       string rootEdgeKey = EdgeKey(rootLib, rootLib);
-      _logger.LogWarning($"collectLibrariesDataFromGraph rootHashKey: {rootEdgeKey}");
+      _logger.LogDebug($"collectLibrariesDataFromGraph rootHashKey: {rootEdgeKey}");
 
       CollectedNodesHash[rootKey] = "pending";
       CollectedEdgesHash[rootEdgeKey] = string.Empty;
@@ -75,7 +75,7 @@ namespace altgraph_web_app.Services.Graph
               {
                 if (CollectedNodesHash.ContainsKey(depKey))
                 {
-                  _logger.LogWarning($"already in collectedNodesHash: {depKey}");
+                  _logger.LogDebug($"already in collectedNodesHash: {depKey}");
                 }
                 else
                 {
@@ -121,7 +121,7 @@ namespace altgraph_web_app.Services.Graph
         GraphNode node = Graph.GraphMap[key];
         NodesCsvLines.Add(libName + ",library," + node.AdjacentNodes.Count);
       }
-      _logger.LogWarning($"buildNodesCsv count: {NodesCsvLines.Count}");
+      _logger.LogDebug($"buildNodesCsv count: {NodesCsvLines.Count}");
     }
 
     private void BuildEdgesCsv()
@@ -134,7 +134,7 @@ namespace altgraph_web_app.Services.Graph
         string[] tokens = key.Split(" ");
         EdgeCsvLines.Add(tokens[0] + "," + tokens[1] + ",1");
       }
-      _logger.LogWarning($"buildEdgesCsv count: {EdgeCsvLines.Count}");
+      _logger.LogDebug($"buildEdgesCsv count: {EdgeCsvLines.Count}");
     }
 
     private static List<string> SortedArray(string[] array)
@@ -159,7 +159,7 @@ namespace altgraph_web_app.Services.Graph
                 .Split(":")[1]
                 .Replace(" ", "_");
 
-      _logger.LogWarning($"extractNameFromKey: {key} -> {name}");
+      _logger.LogDebug($"extractNameFromKey: {key} -> {name}");
       // library^express^bf8cff83-5f7c-4995-8484-d2f405bcbce7^express -> express
       // author^TJ Holowaychuk <tj@vision-media.ca>^54dff427-35de-4a13-bcad-b3e4124b303a^TJ Holowaychuk <tj@vision-media.ca> -> TJ Holowaychuk <tj@vision-media.ca>
 

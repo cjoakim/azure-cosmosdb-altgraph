@@ -20,12 +20,12 @@ namespace altgraph_shared_app.Services.Graph
     {
       if (AdjacentNodes.ContainsKey(neighbor.TripleKey))
       {
-        _logger.LogWarning($"addAdjacent()_present: {neighbor.TripleKey} to {TripleKey}");
+        _logger.LogDebug($"addAdjacent()_present: {neighbor.TripleKey} to {TripleKey}");
         return 0;
       }
       else
       {
-        _logger.LogWarning($"addAdjacent()_adding:  {neighbor.TripleKey} to {TripleKey}");
+        _logger.LogDebug($"addAdjacent()_adding:  {neighbor.TripleKey} to {TripleKey}");
         AdjacentNodes[neighbor.TripleKey] = predicate;
         AdjacentNodeCount = AdjacentNodes.Count;
         return 1;

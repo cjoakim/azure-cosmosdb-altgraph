@@ -96,7 +96,7 @@ namespace altgraph_shared_app.Services.Graph
     {
       EndTime = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
       ElapsedMs = EndTime - StartTime;
-      _logger.LogWarning($"finish() elapsedMs: {ElapsedMs}");
+      _logger.LogDebug($"finish() elapsedMs: {ElapsedMs}");
       return ElapsedMs;
     }
   }
