@@ -3,25 +3,24 @@
 ## Required Development Desktop Software
 
 - git source control system
-- Java JDK, Microsoft OpenJDK 17 is recommended
-  - https://docs.microsoft.com/en-us/java/openjdk/download
-- Gradle Build tool 
-  - https://gradle.org/releases/
-- A Java IDE is recommended, such as JetBrains IntelliJ or Visual Studio Code
+- .NET 7
 - Docker desktop is optional, but it may be the simplest way to run AltGraph yourself
 
 ## Azure PaaS Services
 
 - **Azure CosmosDB SQL API Account**
+
   - Database named **dev**
 
   - Container named **npm_graph**
+
     - Partition key: **/pk**
     - Indexing Policy:
       - See file default indexing file **altgraph_data_app/indexing/default.json** in this repo
       - See recommended file **altgraph_data_app/indexing/altgraph_indexing.json** in this repo
 
   - Container named **imdb_graph**
+
     - Partition key: **/pk**
 
   - Container named **imdb_seed**
@@ -32,44 +31,20 @@
 - **Azure Container Instance (optional)**
 
 At this time this repo only has provisioning scripts for the Azure Container Instance
-(see the az directory).  It is expected that you manually provision the other resources
+(see the az directory). It is expected that you manually provision the other resources
 in Azure Portal.
 
 ## Environment Variables
 
 - See files:
-  - **altgraph_data_app/src/main/resources/application.properties**
-  - **altgraph_web_app/src/main/resources/application.properties**
-- Set environment variables for all of the **${AZURE_XXX}** names
-- See your Azure Portal for the values of these environment variables
-
-### Example
-
-File altgraph_web_app/src/main/resources/application.properties 
-
-```
-# Spring Data Redis, and Azure Redis Cache
-spring.redis.host=${AZURE_REDISCACHE_HOST}
-spring.redis.port=${AZURE_REDISCACHE_PORT}
-spring.redis.password=${AZURE_REDISCACHE_KEY}
-spring.redis.ssl=true
-
-# Spring Data CosmosDB
-spring.cloud.azure.cosmos.endpoint=${AZURE_COSMOSDB_SQL_URI}
-spring.cloud.azure.cosmos.key=${AZURE_COSMOSDB_SQL_RW_KEY1}
-spring.cloud.azure.cosmos.database=${AZURE_COSMOSDB_SQL_DB}
-spring.cloud.azure.cosmos.populate-query-metrics=true
-azure.cosmos.queryMetricsEnabled=true
-azure.cosmos.maxDegreeOfParallelism=${AZURE_COSMOSDB_SQL_MAX_DEG_PAR}
-azure.cosmos.regions=eastus
-```
-
----
+  - **altgraph_data_app/appsettings.json**
+  - **altgraph_web_app/appsettings.json**
+- See your Azure Portal for the values of these settings
 
 ## Clone the Repo and compile the code
 
 The **>** pefix character in these instructions refer to your shell prompt;
-such as in a PowerShell or macOS Terminal.  These instructions are oriented
+such as in a PowerShell or macOS Terminal. These instructions are oriented
 toward Windows PowerShell; equivalent bash script for linux/macOS may be
 added at a later date.
 
@@ -77,18 +52,18 @@ Note: You will have to open a new PowerShell or linux/macOS terminal **after**
 you have set your environment variable.
 
 ```
-> git clone https://github.com/cjoakim/azure-cosmosdb-altgraph.git
+> git clone https://github.com/jordanbean-msft/azure-cosmosdb-altgraph.git
 
 > cd azure-cosmosdb-altgraph
 
-> gradle clean build            <-- Compiles the Java code with the Gradle build tool
+> dotnet build
 ```
 
 ## Download the Raw IMDb data
 
 These files are too large to store in this GitHub, so you need to download them.
 
-Visit https://datasets.imdbws.com/ with your web browser, and download the 
+Visit https://datasets.imdbws.com/ with your web browser, and download the
 following three files...
 
 ```
@@ -124,12 +99,13 @@ due to the size of the data.
 
 There are multiple ways to do this; the following are instructions
 for the three most common ways:
+
 - The "Software Developer" way with code
 - Docker and Docker Compose
 - Azure Container Instance
 
 All three approaches described below assume that you have first provisioned
-your Azure resources, have set your environment variables, and have wrangled/loaded
+your Azure resources, have updated your `appsettings.json` files and have wrangled/loaded
 the data as described above.
 
 In all cases, it may take approximately 50-seconds for the IMDb in-memory graph data
@@ -143,8 +119,8 @@ regarding web application UI usage.
 ```
 > cd altgraph_web_app
 
-> gradle bootRun               <-- Runs the Web Application locally with Gradle
-                                   Then visit http://localhost:8080 with your browser
+> dotnet run               <-- Runs the Web Application locally
+                               Then visit http://localhost:5224 (note that your port # may be different) with your browser
 ```
 
 ### Running AltGraph - with Docker and Docker Compose locally
