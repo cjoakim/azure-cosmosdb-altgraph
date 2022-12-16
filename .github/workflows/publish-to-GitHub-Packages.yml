@@ -2,7 +2,8 @@ name: Publish altgraph_web_app to GitHub Packages
 
 on:
   push:
-    branches: ['release']
+    branches:
+      - 'release/**'
 
 env:
   REGISTRY: ghcr.io
