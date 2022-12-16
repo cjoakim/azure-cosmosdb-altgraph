@@ -37,9 +37,27 @@ in Azure Portal.
 ## Environment Variables
 
 - See files:
-  - **altgraph_data_app/appsettings.json**
-  - **altgraph_web_app/appsettings.json**
+  - **src/altgraph_data_app/appsettings.json**
+  - **src/altgraph_web_app/appsettings.json**
 - See your Azure Portal for the values of these settings
+
+If you accept the default names for the CosmosDB database & container, the only values you need to specify are the connection strings to Redis & CosmosDB.
+
+### Example - Windows PowerShell
+
+```
+$env:COSMOS__CONNECTIONSTRING="AccountEndpoint=https://cdb-altgraph-ussc-dev.documents.azure.com:443/;AccountKey=GnqEkKYYdNzFakekeyMINkJrmtIm4gng4kQ9J2kB6uhJjkWJkWJOK768tG0WACDbl7wnHw==;"
+
+$env:REDIS__CONNECTIONSTRING="redis-altgraph-ussc-dev.redis.cache.windows.net:6380,password=Gndk9f2kFFakekey66UKVJ3HAzCaFRkYG8=,ssl=True,abortConnect=False"
+```
+
+### Example - Linux
+
+```
+set COSMOS__CONNECTIONSTRING="AccountEndpoint=https://cdb-altgraph-ussc-dev.documents.azure.com:443/;AccountKey=GnqEkKYYdNzFakekeyMINkJrmtIm4gng4kQ9J2kB6uhJjkWJkWJOK768tG0WACDbl7wnHw==;"
+
+set REDIS__CONNECTIONSTRING="redis-altgraph-ussc-dev.redis.cache.windows.net:6380,password=Gndk9f2kFFakekey66UKVJ3HAzCaFRkYG8=,ssl=True,abortConnect=False"
+```
 
 ## Clone the Repo and compile the code
 
@@ -117,7 +135,7 @@ regarding web application UI usage.
 ### Running AltGraph - The Software Development Way
 
 ```
-> cd altgraph_web_app
+> cd src
 
 > dotnet run               <-- Runs the Web Application locally
                                Then visit http://localhost:5224 (note that your port # may be different) with your browser
@@ -126,15 +144,15 @@ regarding web application UI usage.
 ### Running AltGraph - with Docker and Docker Compose locally
 
 ```
-> cd altgraph_web_app
+> cd src
 
 > docker-compose up -d
 ```
 
-This approach downloads Docker container **cjoakim/azure-cosmosdb-altgraph-v2**
+This approach downloads Docker container **ghcr.io/jordanbean-msft/azure-cosmosdb-altgraph**
 from DockerHub and runs it on your host.
 
-See the comments at the end of file **altgraph_web_app/docker-compose.yml**
+See the comments at the end of file **src/docker-compose.yml**
 regarding common docker and docker-compose commands.
 
 ### Running AltGraph - in an Azure Container Instance

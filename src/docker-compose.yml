@@ -1,0 +1,10 @@
+version: '0.0.1'
+services:
+  web:
+    image: ghcr.io/jordanbean-msft/azure-cosmosdb-altgraph:release-0.0.1
+    ports:
+      - "8080:80"
+    environment:
+      REDIS__CONNECTIONSTRING:                  $REDIS__CONNECTIONSTRING
+      COSMOS__CONNECTIONSTRING:                 $COSMOS__CONNECTIONSTRING
+    restart: always
