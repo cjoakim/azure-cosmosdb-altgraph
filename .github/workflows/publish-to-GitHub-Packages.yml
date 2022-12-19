@@ -1,4 +1,4 @@
-name: Publish altgraph_web_app to GitHub Packages
+name: Publish altgraph-web-app to GitHub Packages
 
 on:
   push:

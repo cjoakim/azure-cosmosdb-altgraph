@@ -1,15 +1,14 @@
-param appName string
-param region string
-param env string
+param resourceToken string
 
-output appInsightsName string = 'ai-${appName}-${region}-${env}'
-output containerAppEnvironmentName string = 'cae-${appName}-${region}-${env}'
-output keyVaultName string = 'kv-${appName}-${region}-${env}'
-output logAnalyticsWorkspaceName string = 'la-${appName}-${region}-${env}'
-output managedIdentityName string = 'mi-${appName}-${region}-${env}'
-output redisCacheName string = 'redis-${appName}-${region}-${env}'
-output connectionStringKeySecretName string = 'COSMOS-CONNECTION-STRING'
+output appInsightsName string = 'ai-${resourceToken}'
+output containerAppEnvironmentName string = 'cae-${resourceToken}'
+output keyVaultName string = 'kv-${resourceToken}'
+output logAnalyticsWorkspaceName string = 'la-${resourceToken}'
+output managedIdentityName string = 'mi-${resourceToken}'
+output redisCacheName string = 'redis-${resourceToken}'
+output redisCacheConnectionStringKeySecretName string = 'REDIS-CONNECTION-STRING'
+output cosmosDatabaseAccountConnectionStringKeySecretName string = 'COSMOS-CONNECTION-STRING'
 output cosmosContainerName string = 'altgraph'
 output cosmosContainerPartitionKey string = '/pk'
-output cosmosDatabaseAccountName string = 'cdb-${appName}-${region}-${env}'
+output cosmosDatabaseAccountName string = 'cdb-${resourceToken}'
 output cosmosSqlDatabaseName string = 'dev'

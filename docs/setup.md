@@ -16,8 +16,8 @@
 
     - Partition key: **/pk**
     - Indexing Policy:
-      - See file default indexing file **altgraph_data_app/indexing/default.json** in this repo
-      - See recommended file **altgraph_data_app/indexing/altgraph_indexing.json** in this repo
+      - See file default indexing file **altgraph-data-app/indexing/default.json** in this repo
+      - See recommended file **altgraph-data-app/indexing/altgraph_indexing.json** in this repo
 
   - Container named **imdb_graph**
 
@@ -37,8 +37,8 @@ in Azure Portal.
 ## Environment Variables
 
 - See files:
-  - **src/altgraph_data_app/appsettings.json**
-  - **src/altgraph_web_app/appsettings.json**
+  - **src/altgraph-data-app/appsettings.json**
+  - **src/altgraph-web-app/appsettings.json**
 - See your Azure Portal for the values of these settings
 
 If you accept the default names for the CosmosDB database & container, the only values you need to specify are the connection strings to Redis & CosmosDB.
@@ -90,7 +90,7 @@ title.basics.tsv
 title.principals.tsv
 ```
 
-...to directory **altgraph_data_app/data/imdb_raw** within this repository.
+...to directory **altgraph-data-app/data/imdb_raw** within this repository.
 You may have to manually create this directory if it doesn't already exist.
 
 ## Wrangle the Raw Data, load CosmosDB
@@ -99,7 +99,7 @@ This process transforms the raw data into a format suitable for loading
 into CosmosDB for the AltGraph reference applications.
 
 ```
-> cd altgraph_data_app
+> cd altgraph-data-app
 
 > .\npm_wrangling_process.ps1
 

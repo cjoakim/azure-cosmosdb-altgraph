@@ -2,44 +2,21 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "appName": {
-      "value": "daprTest"
+    "environmentName": {
+      "value": "${AZURE_ENV_NAME}"
     },
-    "region": {
-      "value": "ussc"
+    "location": {
+      "value": "${AZURE_LOCATION}"
     },
-    "environment": {
-      "value": "dev"
+    "principalId": {
+      "value": "${AZURE_PRINCIPAL_ID}"
     },
-    "containerAppTrafficControlServiceObject": {
+    "containerAppObject": {
       "value": {
-        "name": "ca-traffic-control-service",
-        "appId": "trafficcontrolservice",
-        "appPort": 6000,
-        "repositoryName": "trafficcontrolservice",
-        "imageTag": "assignment08",
-        "cpu": 1,
-        "memory": "2.0Gi"
-      }
-    },
-    "containerAppFineCollectionServiceObject": {
-      "value": {
-        "name": "ca-fine-collection-service",
-        "appId": "finecollectionservice",
-        "appPort": 6001,
-        "repositoryName": "finecollectionservice",
-        "imageTag": "assignment08",
-        "cpu": 1,
-        "memory": "2.0Gi"
-      }
-    },
-    "containerAppVehicleRegistrationServiceObject": {
-      "value": {
-        "name": "ca-vehicle-registration-service",
-        "appId": "vehicleregistrationservice",
-        "appPort": 6002,
-        "repositoryName": "vehicleregistrationservice",
-        "imageTag": "assignment08",
+        "name": "altgraph-web-app",
+        "image": "ghcr.io/jordanbean-msft/azure-cosmosdb-altgraph:release-0.0.1",
+        "appId": "altgraph-web-app",
+        "appPort": 80,
         "cpu": 1,
         "memory": "2.0Gi"
       }

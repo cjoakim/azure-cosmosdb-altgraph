@@ -52,8 +52,8 @@ This example shows "one-degree of Kevin Bacon".
 ## Directory Structure of this Repository
 
 ```
-├── altgraph_data_app       A Java Spring CommandLineRunner (console) application
-└── altgraph_web_app        A Java Spring Web application, see docker-compose.yml
+├── altgraph-data-app       A Java Spring CommandLineRunner (console) application
+└── altgraph-web-app        A Java Spring Web application, see docker-compose.yml
 ├── az                      az CLI scripts to deploy AltGraph as an Azure Container Instance
 ├── CosmosDB-AltGraph.pdf   Presentation PDF
 ```

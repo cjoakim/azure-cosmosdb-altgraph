@@ -25,22 +25,22 @@ gradlew.bat
 **/target/
 **/tmp/
 
-altgraph_data_app/data/imdb_raw/*.tsv
-altgraph_data_app/data/imdb_refined/*.json
-altgraph_data_app/data/imdb_refined/*.zip
-altgraph_data_app/data/dg/*.*
+altgraph-data-app/data/imdb_raw/*.tsv
+altgraph-data-app/data/imdb_refined/*.json
+altgraph-data-app/data/imdb_refined/*.zip
+altgraph-data-app/data/dg/*.*
 
-altgraph_data_app/out/*.csv
-altgraph_data_app/out/*.gz
-altgraph_data_app/out/*.json
-altgraph_data_app/out/*.log
-altgraph_data_app/out/*.txt
-altgraph_data_app/out/*.zip
+altgraph-data-app/out/*.csv
+altgraph-data-app/out/*.gz
+altgraph-data-app/out/*.json
+altgraph-data-app/out/*.log
+altgraph-data-app/out/*.txt
+altgraph-data-app/out/*.zip
 
-altgraph_web_app/data/cache/*.json
-altgraph_web_app/data/imdb_refined/movies.json
-altgraph_web_app/data/graph/*.csv
-altgraph_web_app/data/graph/*.json
+altgraph-web-app/data/cache/*.json
+altgraph-web-app/data/imdb_refined/movies.json
+altgraph-web-app/data/graph/*.csv
+altgraph-web-app/data/graph/*.json
 
 **/TripleQueryStruct.json
 
@@ -497,3 +497,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+.azure
