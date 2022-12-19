@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using altgraph_data_app;
 using altgraph_data_app.processor;
 using altgraph_shared_app.Models;
 using altgraph_shared_app.Options;
@@ -10,6 +11,14 @@ using Microsoft.Extensions.Hosting;
 using StackExchange.Redis;
 
 await Host.CreateDefaultBuilder(args)
+.ConfigureAppConfiguration((env, config) =>
+{
+  var appAssembly = Assembly.Load(new AssemblyName(env.HostingEnvironment.ApplicationName));
+  if (appAssembly != null)
+  {
+    config.AddUserSecrets(appAssembly, optional: true);
+  }
+})
 .UseContentRoot(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location))
 .ConfigureLogging(logging =>
 {
@@ -51,6 +60,7 @@ await Host.CreateDefaultBuilder(args)
     });
   });
   services.AddSingleton<Cache>();
-  services.AddSingleton<CosmosDbLoader>();
+  services.AddSingleton<NpmCosmosDbLoader>();
+  services.AddHostedService<ConsoleHostedService>();
 })
             .RunConsoleAsync();

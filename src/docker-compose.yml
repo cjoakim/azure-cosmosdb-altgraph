@@ -1,7 +1,7 @@
 version: '0.0.1'
 services:
   web:
-    image: ghcr.io/jordanbean-msft/azure-cosmosdb-altgraph:release-0.0.1
+    image: ghcr.io/jordanbean-msft/azure-cosmosdb-altgraph:release-0.0.2
     ports:
       - "8080:80"
     environment:

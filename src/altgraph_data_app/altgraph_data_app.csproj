@@ -1,15 +1,20 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>library</OutputType>
+    <OutputType>Exe</OutputType>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <UserSecretsId>1b3d7245-c20e-4ea7-9c29-37b8b6db7533</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../altgraph_shared_app/altgraph_shared_app.csproj"></ProjectReference>
   </ItemGroup>
-
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="IEvangelist.Azure.CosmosRepository" Version="3.7.0" />
     <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.31.2" />
