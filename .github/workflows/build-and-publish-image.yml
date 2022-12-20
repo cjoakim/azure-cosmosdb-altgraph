@@ -1,0 +1,40 @@
+name: "Build and Publish Image"
+description: "Build and publish Docker image to GitHub Packages"
+
+inputs:
+  registry:
+    description: "Container registry to push the image to"
+    required: true
+  githubToken:
+    description: "GitHub token to authenticate with the registry"
+    required: true
+  imageName:
+    description: "Name of the image to build and push"
+    required: true
+  pathToDockerfile:
+    description: "Path to the Dockerfile"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Log in to the Container registry
+      uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+      with:
+        registry: ${{ inputs.registry }}
+        username: ${{ github.actor }}
+        password: ${{ inputs.githubToken }}
+    - name: Extract metadata (tags, labels) for Docker
+      id: meta
+      uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+      with:
+        images: ${{ inputs.registry }}/${{ inputs.imageName }}
+    - name: Build and push Docker image
+      uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+      with:
+        context: ./src
+        file: ${{ inputs.pathToDockerfile }}
+        push: true
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}

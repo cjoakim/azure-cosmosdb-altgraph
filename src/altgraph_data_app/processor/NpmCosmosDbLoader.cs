@@ -69,14 +69,17 @@ namespace altgraph_data_app.processor
       {
         foreach (T document in documents)
         {
-          try
+          if (!await repository.ExistsAsync(document.Id, document.Pk))
           {
-            //TODO: Replace with batch (need to debug input data)
-            await repository.CreateAsync(document);
-          }
-          catch (Exception ex)
-          {
-            _logger.LogError(ex, $"Failed to load {documentType}. ${JsonSerializer.Serialize(document)}");
+            try
+            {
+              //TODO: Replace with batch (need to debug input data)
+              await repository.CreateAsync(document);
+            }
+            catch (Exception ex)
+            {
+              _logger.LogError(ex, $"Failed to load {documentType}. ${JsonSerializer.Serialize(document)}");
+            }
           }
         }
 

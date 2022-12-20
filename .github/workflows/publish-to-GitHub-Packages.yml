@@ -1,4 +1,4 @@
-name: Publish altgraph-web-app to GitHub Packages
+name: Publish altgraph-web-app & altgraph-data-app to GitHub Packages
 
 on:
   push:
@@ -8,37 +8,33 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  WEB_APP_IMAGE_NAME: ${{ github.repository }}/altgraph-web-app
+  DATA_APP_IMAGE_NAME: ${{ github.repository }}/altgraph-data-app
 
 jobs:
-  build-and-push-image:
+  build-and-push-web-app-image:
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Log in to the Container registry
-        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+      - name: Build and publish image
+        uses: ./.github/actions/build-and-publish-image
         with:
+          imageName: ${{ env.WEB_APP_IMAGE_NAME }}
+          pathToDockerfile: src/Dockerfile-web-app
           registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+  build-and-push-web-data-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Build and publish image
+        uses: ./.github/actions/build-and-publish-image
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-
-      - name: Build and push Docker image
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
-        with:
-          context: ./src
-          file: src/Dockerfile-web-app
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          imageName: ${{ env.WEB_DATA_IMAGE_NAME }}
+          pathToDockerfile: src/Dockerfile-data-app
+          registry: ${{ env.REGISTRY }}
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
