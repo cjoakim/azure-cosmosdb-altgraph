@@ -7,13 +7,13 @@ namespace altgraph_shared_app.Services.Graph
 {
   public class GraphBuilder
   {
-    public Entity RootEntity { get; set; }  // the starting point of the graph
+    public NpmDocument RootEntity { get; set; }  // the starting point of the graph
     public TripleQueryStruct Struct { get; set; } // DB query results of the pertinent Triples
     public Graph Graph { get; set; } // the resulting graph given the above two
     public int structIterations { get; set; }
     private readonly ILogger _logger;
 
-    public GraphBuilder(Entity rootEntity, TripleQueryStruct tripleQueryStruct, ILogger logger)
+    public GraphBuilder(NpmDocument rootEntity, TripleQueryStruct tripleQueryStruct, ILogger logger)
     {
       _logger = logger;
       RootEntity = rootEntity;

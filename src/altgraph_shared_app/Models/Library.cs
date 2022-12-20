@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace altgraph_shared_app.Models
 {
-  public class Library : Entity
+  public class Library : NpmDocument
   {
     [JsonPropertyName("name")]
     public string Name { get; set; } = string.Empty;

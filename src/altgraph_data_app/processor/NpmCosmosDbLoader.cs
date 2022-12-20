@@ -16,8 +16,6 @@ namespace altgraph_data_app.processor
     private readonly MaintainerRepository _maintainerRepository;
     private readonly TripleRepository _tripleRepository;
     private readonly PathsOptions _pathsOptions;
-    private bool doWrites = true;
-    private const int COSMOS_DB_BATCH_LIMIT = 100;
 
     public NpmCosmosDbLoader(
         ILogger<NpmCosmosDbLoader> logger,
@@ -50,25 +48,30 @@ namespace altgraph_data_app.processor
       await Task.WhenAll(tasks);
     }
 
-    private async Task Load<T>(string path, IRepository<T> repository, string documentType) where T : Item
+    private async Task Load<T>(string path, IRepository<T> repository, string documentType) where T : NpmDocument
     {
       _logger.LogInformation($"Loading {documentType}...");
 
+      List<T>? documents = new List<T>();
+
       try
       {
-        List<T> documents = JsonSerializer.Deserialize<List<T>>(File.ReadAllText(path), new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-        List<IEnumerable<T>> cosmosBatches = BuildChunksWithLinqAndYield(documents, COSMOS_DB_BATCH_LIMIT).ToList();
+        documents = JsonSerializer.Deserialize<List<T>>(File.ReadAllText(path), new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
-        _logger.LogInformation($"Loaded {documents.Count} of type {documentType}");
+        _logger.LogInformation($"Loaded {(documents != null ? documents.Count : 0)} of type {documentType}");
+      }
+      catch (Exception ex)
+      {
+        _logger.LogError(ex, $"Failed to load {documentType}.");
+      }
 
-        // foreach (IEnumerable<T> batch in cosmosBatches)
-        // {
-        //   await repository.CreateAsBatchAsync(batch);
-        // }
+      if (documents != null)
+      {
         foreach (T document in documents)
         {
           try
           {
+            //TODO: Replace with batch (need to debug input data)
             await repository.CreateAsync(document);
           }
           catch (Exception ex)
@@ -76,10 +79,8 @@ namespace altgraph_data_app.processor
             _logger.LogError(ex, $"Failed to load {documentType}. ${JsonSerializer.Serialize(document)}");
           }
         }
-      }
-      catch (Exception ex)
-      {
-        _logger.LogError(ex, $"Failed to load {documentType}.");
+
+        _logger.LogInformation($"Added {documents.Count} documents of type {documentType} to database.");
       }
     }
 

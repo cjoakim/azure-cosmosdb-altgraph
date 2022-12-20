@@ -5,7 +5,7 @@ using Microsoft.Azure.CosmosRepository;
 
 namespace altgraph_shared_app.Models
 {
-  public class Entity : Item
+  public abstract class NpmDocument : Item
   {
     [JsonPropertyName("doctype")]
     public string Doctype { get; set; } = string.Empty;

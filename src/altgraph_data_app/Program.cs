@@ -10,6 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using StackExchange.Redis;
 
+string? directoryName = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
 await Host.CreateDefaultBuilder(args)
 .ConfigureAppConfiguration((env, config) =>
 {
@@ -19,7 +21,7 @@ await Host.CreateDefaultBuilder(args)
     config.AddUserSecrets(appAssembly, optional: true);
   }
 })
-.UseContentRoot(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location))
+.UseContentRoot(directoryName != null ? directoryName : string.Empty)
 .ConfigureLogging(logging =>
 {
 

@@ -5,18 +5,8 @@ using Microsoft.Azure.CosmosRepository;
 
 namespace altgraph_shared_app.Models
 {
-  public class Triple : Item
+  public class Triple : NpmDocument
   {
-    [JsonPropertyName("pk")]
-    public string Pk { get; set; } = string.Empty;
-    [JsonPropertyName("etag")]
-    public string ETag { get; set; } = string.Empty;
-    [JsonPropertyName("tenant")]
-    public string Tenant { get; set; } = string.Empty;
-    [JsonPropertyName("lob")]
-    public string Lob { get; set; } = string.Empty;
-    [JsonPropertyName("doctype")]
-    public string Doctype { get; set; } = string.Empty;
     [JsonPropertyName("subjectType")]
     public string SubjectType { get; set; } = string.Empty;
     [JsonPropertyName("subjectLabel")]
@@ -64,10 +54,6 @@ namespace altgraph_shared_app.Models
       {
         ObjectTags.Add(tag.Trim());
       }
-    }
-    protected override string GetPartitionKeyValue()
-    {
-      return Pk;
     }
   }
 }
