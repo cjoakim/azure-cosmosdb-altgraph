@@ -50,7 +50,7 @@ namespace altgraph_data_app.processor
       await Task.WhenAll(tasks);
     }
 
-    private async Task Load<T>(string path, IRepository<T> repository, string documentType) where T : IItem
+    private async Task Load<T>(string path, IRepository<T> repository, string documentType) where T : Item
     {
       _logger.LogInformation($"Loading {documentType}...");
 
@@ -67,7 +67,14 @@ namespace altgraph_data_app.processor
         // }
         foreach (T document in documents)
         {
-          await repository.CreateAsync(document);
+          try
+          {
+            await repository.CreateAsync(document);
+          }
+          catch (Exception ex)
+          {
+            _logger.LogError(ex, $"Failed to load {documentType}. ${JsonSerializer.Serialize(document)}");
+          }
         }
       }
       catch (Exception ex)
