@@ -62,7 +62,9 @@ you have set your environment variable.
 
 > cd azure-cosmosdb-altgraph/src
 
-> dotnet build
+> dotnet build altgraph_data_app.sln
+
+> dotnet build altgraph_web_app.sln
 ```
 
 ## Download the Raw IMDb data
@@ -146,10 +148,12 @@ from DockerHub and runs it on your host.
 
 ```
 
-> azd up
+> azd init
 
-... after the Azure Container Apps is provisioned, visit port 8080 at the fqdn
-... shown in the deployment output. Allow one-minute for the ACI to start.
+> azd provision
+
+... after the Azure Container Apps is provisioned, visit the `containerAppFQDN` at the fqdn
+... shown in the deployment output. Allow one-minute for the ACA to start.
 
 ```
 
@@ -158,11 +162,11 @@ from DockerHub and runs it on your host.
 Set the following environment varibles (substitute your environment name (prefix for resource group name), location & UPN for the one shown)
 
 ```
-$env:AZURE_ENV_NAME="altgraphrjb"
+> $env:AZURE_ENV_NAME="altgraphrjb"
 
-$env:AZURE_LOCATION="SouthCentralUS"
+> $env:AZURE_LOCATION="SouthCentralUS"
 
-$env:AZURE_PRINCIPAL_ID=$(az ad user show --id dwight.schrute@dunder-mifflin.com --query id -o tsv)
+> $env:AZURE_PRINCIPAL_ID=$(az ad user show --id dwight.schrute@dunder-mifflin.com --query id -o tsv)
 ```
 
 ```
