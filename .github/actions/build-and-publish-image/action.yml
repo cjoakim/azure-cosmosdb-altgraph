@@ -8,7 +8,7 @@ inputs:
   githubToken:
     description: "GitHub token to authenticate with the registry"
     required: true
-  imageName:
+  image_name:
     description: "Name of the image to build and push"
     required: true
   pathToDockerfile:
@@ -29,7 +29,7 @@ runs:
       id: meta
       uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
       with:
-        images: ${{ inputs.registry }}/${{ inputs.imageName }}
+        images: ${{ inputs.registry }}/${{ inputs.image_name }}
     - name: Build and push Docker image
       uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
       with:
