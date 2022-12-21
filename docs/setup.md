@@ -80,8 +80,13 @@ title.basics.tsv
 title.principals.tsv
 ```
 
+<<<<<<< HEAD
 ...to directory **src/altgraph-data-app/data/imdb_raw** within this repository.
-You may have to manually create this directory if it doesn't already exist.
+=======
+...to directory **altgraph-data-app/data/imdb_raw** within this repository.
+
+> > > > > > > main
+> > > > > > > You may have to manually create this directory if it doesn't already exist.
 
 ## Wrangle the Raw Data, load CosmosDB
 
@@ -89,7 +94,11 @@ This process transforms the raw data into a format suitable for loading
 into CosmosDB for the AltGraph reference applications.
 
 ```
+<<<<<<< HEAD
 > cd src/altgraph_data_app
+=======
+> cd altgraph-data-app
+>>>>>>> main
 
 > .\npm_wrangling_process.ps1
 
