@@ -1,7 +1,8 @@
 version: '0.0.1'
 services:
   web:
-    image: ghcr.io/jordanbean-msft/azure-cosmosdb-altgraph-web-app:release-0.0.3
+    image: ghcr.io/jordanbean-msft/azure-cosmosdb-altgraph/altgraph-web-app:release-0.0.4
+    #image: altgraph-web-app:release-0.0.4
     ports:
       - "8080:80"
     environment:
@@ -12,7 +13,9 @@ services:
       init:
         condition: service_completed_successfully
   init:
-    image: ghcr.io/jordanbean-msft/azure-cosmosdb-altgraph-data:release-0.0.3
+    image: ghcr.io/jordanbean-msft/azure-cosmosdb-altgraph/altgraph-data-app:release-0.0.4
+    #image: altgraph-data-app:release-0.0.4
     environment:
       REDIS__CONNECTIONSTRING:                  $REDIS__CONNECTIONSTRING
       COSMOS__CONNECTIONSTRING:                 $COSMOS__CONNECTIONSTRING
+    command: ["load_cosmos"]

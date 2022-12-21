@@ -22,7 +22,7 @@ namespace altgraph_data_app
 
     public Task StartAsync(CancellationToken cancellationToken)
     {
-      _logger.LogDebug($"Starting with arguments: {string.Join(" ", Environment.GetCommandLineArgs())}");
+      _logger.LogInformation($"Starting with arguments: {string.Join(" ", Environment.GetCommandLineArgs())}");
 
       _appLifetime.ApplicationStarted.Register(() =>
       {

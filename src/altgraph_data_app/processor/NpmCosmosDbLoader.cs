@@ -63,6 +63,7 @@ namespace altgraph_data_app.processor
       catch (Exception ex)
       {
         _logger.LogError(ex, $"Failed to load {documentType}.");
+        throw ex;
       }
 
       if (documents != null)
@@ -84,16 +85,6 @@ namespace altgraph_data_app.processor
         }
 
         _logger.LogInformation($"Added {documents.Count} documents of type {documentType} to database.");
-      }
-    }
-
-    private IEnumerable<IEnumerable<T>> BuildChunksWithLinqAndYield<T>(List<T> fullList, int batchSize)
-    {
-      int total = 0;
-      while (total < fullList.Count)
-      {
-        yield return fullList.Skip(total).Take(batchSize);
-        total += batchSize;
       }
     }
   }
