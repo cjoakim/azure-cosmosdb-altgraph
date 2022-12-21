@@ -18,6 +18,8 @@ jobs:
       contents: read
       packages: write
     steps:
+      - uses: actions/checkout@master
+        name: Checkout Actions
       - name: Build and publish image
         uses: ./.github/actions/build-and-publish-image
         with:
@@ -31,6 +33,8 @@ jobs:
       contents: read
       packages: write
     steps:
+      - uses: actions/checkout@master
+        name: Checkout Actions
       - name: Build and publish image
         uses: ./.github/actions/build-and-publish-image
         with:
