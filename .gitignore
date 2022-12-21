@@ -25,22 +25,22 @@ gradlew.bat
 **/target/
 **/tmp/
 
-altgraph-data-app/data/imdb_raw/*.tsv
-altgraph-data-app/data/imdb_refined/*.json
-altgraph-data-app/data/imdb_refined/*.zip
-altgraph-data-app/data/dg/*.*
+src/altgraph_data_app/data/imdb_raw/*.tsv
+src/altgraph_data_app/data/imdb_refined/*.json
+src/altgraph_data_app/data/imdb_refined/*.zip
+src/altgraph_data_app/data/dg/*.*
 
-altgraph-data-app/out/*.csv
-altgraph-data-app/out/*.gz
-altgraph-data-app/out/*.json
-altgraph-data-app/out/*.log
-altgraph-data-app/out/*.txt
-altgraph-data-app/out/*.zip
+src/altgraph_data_app/out/*.csv
+src/altgraph_data_app/out/*.gz
+src/altgraph_data_app/out/*.json
+src/altgraph_data_app/out/*.log
+src/altgraph_data_app/out/*.txt
+src/altgraph_data_app/out/*.zip
 
-altgraph-web-app/data/cache/*.json
-altgraph-web-app/data/imdb_refined/movies.json
-altgraph-web-app/data/graph/*.csv
-altgraph-web-app/data/graph/*.json
+src/altgraph_web_app/data/cache/*.json
+src/altgraph_web_app/data/imdb_refined/movies.json
+src/altgraph_web_app/data/graph/*.csv
+src/altgraph_web_app/data/graph/*.json
 
 **/TripleQueryStruct.json
 
