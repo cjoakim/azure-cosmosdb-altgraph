@@ -112,11 +112,12 @@ module acaDeployment 'container-app.bicep' = {
   }
 }
 
-// output appInsightsInstrumentationKey string = loggingDeployment.outputs.appInsightsInstrumentationKey
-// output appInsightsName string = loggingDeployment.outputs.appInsightsName
-// output keyVaultName string = keyVaultDeployment.outputs.keyVaultName
-// output keyVaultResourceId string = keyVaultDeployment.outputs.keyVaultResourceId
-// output redisCacheName string = redisCacheDeployment.outputs.redisCacheName
-// output resourceGroupName string = resourceGroup.name
-// output subscriptionId string = subscription().subscriptionId
-// output userAssignedManagedIdentityClientId string = managedIdentityDeployment.outputs.userAssignedManagedIdentityClientId
+output appInsightsInstrumentationKey string = loggingDeployment.outputs.appInsightsInstrumentationKey
+output appInsightsName string = loggingDeployment.outputs.appInsightsName
+output keyVaultName string = keyVaultDeployment.outputs.keyVaultName
+output keyVaultResourceId string = keyVaultDeployment.outputs.keyVaultResourceId
+output redisCacheName string = redisCacheDeployment.outputs.redisCacheName
+output resourceGroupName string = resourceGroup.name
+output subscriptionId string = subscription().subscriptionId
+output userAssignedManagedIdentityClientId string = managedIdentityDeployment.outputs.userAssignedManagedIdentityClientId
+output containerAppFQDN string = acaDeployment.outputs.containerAppFQDN

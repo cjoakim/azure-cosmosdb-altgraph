@@ -11,4 +11,10 @@ services:
     docker:
       path: src/Dockerfile-web-app
       context: src
-      
+  init:
+    project: src/altgraph-data-app
+    language: csharp
+    host: containerapp
+    docker:
+      path: src/Dockerfile-data-app
+      context: src 
