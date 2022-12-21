@@ -8,12 +8,12 @@ namespace altgraph_data_app
   {
     private readonly ILogger _logger;
     private readonly IHostApplicationLifetime _appLifetime;
-    private readonly CosmosDbLoader _cosmosDbLoader;
+    private readonly NpmCosmosDbLoader _cosmosDbLoader;
     private int? _exitCode;
 
     public ConsoleHostedService(
         ILogger<ConsoleHostedService> logger,
-        IHostApplicationLifetime appLifetime, CosmosDbLoader cosmosDbLoader)
+        IHostApplicationLifetime appLifetime, NpmCosmosDbLoader cosmosDbLoader)
     {
       _logger = logger;
       _appLifetime = appLifetime;
@@ -22,7 +22,7 @@ namespace altgraph_data_app
 
     public Task StartAsync(CancellationToken cancellationToken)
     {
-      _logger.LogDebug($"Starting with arguments: {string.Join(" ", Environment.GetCommandLineArgs())}");
+      _logger.LogInformation($"Starting with arguments: {string.Join(" ", Environment.GetCommandLineArgs())}");
 
       _appLifetime.ApplicationStarted.Register(() =>
       {

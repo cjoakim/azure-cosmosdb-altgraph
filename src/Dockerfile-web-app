@@ -2,9 +2,8 @@ FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR "/src"
 
 # copy csproj and restore as distinct layers
-COPY ["*.sln", "."]
+COPY ["altgraph_web_app.sln", "."]
 COPY ["altgraph_shared_app/*.csproj", "altgraph_shared_app/"]
-COPY ["altgraph_data_app/*.csproj", "altgraph_data_app/"]
 COPY ["altgraph_web_app/*.csproj", "altgraph_web_app/"]
 RUN dotnet restore --use-current-runtime  
 

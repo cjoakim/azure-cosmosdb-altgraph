@@ -1,23 +1,22 @@
-# https://hub.docker.com/_/microsoft-dotnet
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR "/src"
 
 # copy csproj and restore as distinct layers
-COPY ["*.sln", "."]
+COPY ["altgraph_data_app.sln", "."]
 COPY ["altgraph_shared_app/*.csproj", "altgraph_shared_app/"]
-COPY ["altgraph_shared_app/*.csproj", "altgraph_web_app/"]
+COPY ["altgraph_data_app/*.csproj", "altgraph_data_app/"]
 RUN dotnet restore --use-current-runtime  
 
 # copy everything else and build app
 COPY ["altgraph_shared_app/.", "altgraph_shared_app/"]
-COPY ["altgraph_web_app/.", "altgraph_web_app/"]
+COPY ["altgraph_data_app/.", "altgraph_data_app/"]
 RUN dotnet publish -c Release -o "/app" --use-current-runtime --self-contained false --no-restore
 
 # final stage/image
-FROM mcr.microsoft.com/dotnet/aspnet:7.0 as runtime
+FROM mcr.microsoft.com/dotnet/runtime:7.0 as runtime
 WORKDIR "/app"
 COPY --from=build ["/app", "."]
 
 EXPOSE 80
 
-ENTRYPOINT ["dotnet", "altgraph_web_app.dll"]
+ENTRYPOINT ["dotnet", "altgraph_data_app.dll"]

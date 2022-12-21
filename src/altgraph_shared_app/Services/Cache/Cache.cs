@@ -54,8 +54,14 @@ namespace altgraph_shared_app.Services.Cache
         string filename = string.Format(_pathsOptions.LibraryCacheFileTemplate, lib.Name);
         try
         {
-          Directory.CreateDirectory(Path.GetDirectoryName(filename));
-          await File.WriteAllTextAsync(filename, JsonSerializer.Serialize(lib));
+          string? directoryName = Path.GetDirectoryName(filename);
+
+          if (directoryName != null)
+          {
+            Directory.CreateDirectory(directoryName);
+            await File.WriteAllTextAsync(filename, JsonSerializer.Serialize(lib));
+          }
+
           return true;
         }
         catch (Exception ex)
@@ -126,8 +132,12 @@ namespace altgraph_shared_app.Services.Cache
         string filename = _pathsOptions.TripleQueryStructCacheFile;
         try
         {
-          Directory.CreateDirectory(Path.GetDirectoryName(filename));
-          await File.WriteAllTextAsync(filename, JsonSerializer.Serialize(tripleQueryStruct));
+          string? directoryName = Path.GetDirectoryName(filename);
+          if (directoryName != null)
+          {
+            Directory.CreateDirectory(directoryName);
+            await File.WriteAllTextAsync(filename, JsonSerializer.Serialize(tripleQueryStruct));
+          }
           return true;
         }
         catch (Exception ex)

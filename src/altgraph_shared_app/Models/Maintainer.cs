@@ -1,6 +1,6 @@
 namespace altgraph_shared_app.Models
 {
-  public class Maintainer : Entity
+  public class Maintainer : NpmDocument
   {
 
   }

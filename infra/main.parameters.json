@@ -1,0 +1,34 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "environmentName": {
+      "value": "${AZURE_ENV_NAME}"
+    },
+    "location": {
+      "value": "${AZURE_LOCATION}"
+    },
+    "principalId": {
+      "value": "${AZURE_PRINCIPAL_ID}"
+    },
+    "containerAppWebAppObject": {
+      "value": {
+        "name": "altgraph-web-app",
+        "image": "ghcr.io/jordanbean-msft/azure-cosmosdb-altgraph/altgraph-web-app:release-0.0.4",
+        "appId": "altgraph-web-app",
+        "appPort": 80,
+        "cpu": 1,
+        "memory": "2.0Gi"
+      }
+    },
+    "containerAppDataAppObject": {
+      "value": {
+        "name": "altgraph-data-app",
+        "image": "ghcr.io/jordanbean-msft/azure-cosmosdb-altgraph/altgraph-data-app:release-0.0.4",
+        "appId": "altgraph-data-app",
+        "cpu": 1,
+        "memory": "2.0Gi"
+      }
+    }
+  }
+}
