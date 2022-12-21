@@ -38,7 +38,7 @@ jobs:
       - name: Build and publish image
         uses: ./.github/actions/build-and-publish-image
         with:
-          image_name: ${{ env.WEB_DATA_IMAGE_NAME }}
+          image_name: ${{ env.DATA_APP_IMAGE_NAME }}
           pathToDockerfile: src/Dockerfile-data-app
           registry: ${{ env.REGISTRY }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
