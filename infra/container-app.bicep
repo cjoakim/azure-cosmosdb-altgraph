@@ -1,4 +1,5 @@
-param containerAppObject object
+param containerAppWebAppObject object
+param containerAppDataAppObject object
 param location string
 param containerAppEnvironmentName string
 param managedIdentityName string
@@ -19,8 +20,8 @@ resource containerAppEnvironment 'Microsoft.App/managedEnvironments@2022-06-01-p
 var cosmosDatabaseAccountConnectionStringKeySecretName = 'cosmos-connectionstring'
 var redisCacheConnectionStringKeySecretName = 'redis-connectionstring'
 
-resource containerApp 'Microsoft.App/containerApps@2022-03-01' = {
-  name: containerAppObject.name
+resource containerApp 'Microsoft.App/containerApps@2022-06-01-preview' = {
+  name: containerAppWebAppObject.name
   location: location
   identity: {
     type: 'UserAssigned'
@@ -51,11 +52,11 @@ resource containerApp 'Microsoft.App/containerApps@2022-03-01' = {
     template: {
       containers: [
         {
-          name: containerAppObject.appId
-          image: containerAppObject.image
+          name: containerAppWebAppObject.appId
+          image: containerAppWebAppObject.image
           resources: {
-            cpu: containerAppObject.cpu
-            memory: containerAppObject.memory
+            cpu: containerAppWebAppObject.cpu
+            memory: containerAppWebAppObject.memory
           }
           env: [
             {
@@ -72,7 +73,7 @@ resource containerApp 'Microsoft.App/containerApps@2022-03-01' = {
               type: 'Readiness'
               httpGet: {
                 path: '/healthz'
-                port: containerAppObject.appPort
+                port: containerAppWebAppObject.appPort
                 scheme: 'HTTP'
               }
               initialDelaySeconds: 30
@@ -84,13 +85,36 @@ resource containerApp 'Microsoft.App/containerApps@2022-03-01' = {
               type: 'Liveness'
               httpGet: {
                 path: '/healthz'
-                port: containerAppObject.appPort
+                port: containerAppWebAppObject.appPort
                 scheme: 'HTTP'
               }
               initialDelaySeconds: 30
               periodSeconds: 10
               timeoutSeconds: 5
               failureThreshold: 3
+            }
+          ]
+        }
+      ]
+      initContainers: [
+        {
+          args: [
+            'load_cosmos'
+          ]
+          name: containerAppDataAppObject.appId
+          image: containerAppDataAppObject.image
+          resources: {
+            cpu: containerAppDataAppObject.cpu
+            memory: containerAppDataAppObject.memory
+          }
+          env: [
+            {
+              name: 'COSMOS__CONNECTIONSTRING'
+              secretRef: cosmosDatabaseAccountConnectionStringKeySecretName
+            }
+            {
+              name: 'REDIS__CONNECTIONSTRING'
+              secretRef: redisCacheConnectionStringKeySecretName
             }
           ]
         }

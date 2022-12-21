@@ -4,10 +4,12 @@ param environmentName string
 param location string
 #disable-next-line no-unused-params
 param principalId string = ''
-param containerAppObject object = {}
+param containerAppWebAppObject object = {}
+param containerAppDataAppObject object = {}
 param resourceGroupName string = ''
+param resourceTokenParam string = ''
 
-var resourceToken = toLower(uniqueString(subscription().id, environmentName, location))
+var resourceToken = resourceTokenParam == '' ? toLower(uniqueString(subscription().id, environmentName, location)) : resourceTokenParam
 
 resource resourceGroup 'Microsoft.Resources/resourceGroups@2022-09-01' = {
   name: !empty(resourceGroupName) ? resourceGroupName : 'rg-${resourceToken}'
@@ -102,18 +104,19 @@ module acaDeployment 'container-app.bicep' = {
     containerAppEnvironmentName: names.outputs.containerAppEnvironmentName
     location: location
     managedIdentityName: managedIdentityDeployment.outputs.managedIdentityName
-    containerAppObject: containerAppObject
+    containerAppWebAppObject: containerAppWebAppObject
+    containerAppDataAppObject: containerAppDataAppObject
     cosmosDatabaseAccountConnectionStringKeySecret: keyVault.getSecret(cosmosDeployment.outputs.cosmosDatabaseAccountConnectionStringKeySecretName)
     redisCacheConnectionStringKeySecret: keyVault.getSecret(redisCacheDeployment.outputs.redisCacheConnectionStringKeySecretName)
     logAnalyticsWorkspaceName: loggingDeployment.outputs.logAnalyticsWorkspaceName
   }
 }
 
-output appInsightsInstrumentationKey string = loggingDeployment.outputs.appInsightsInstrumentationKey
-output appInsightsName string = loggingDeployment.outputs.appInsightsName
-output keyVaultName string = keyVaultDeployment.outputs.keyVaultName
-output keyVaultResourceId string = keyVaultDeployment.outputs.keyVaultResourceId
-output redisCacheName string = redisCacheDeployment.outputs.redisCacheName
-output resourceGroupName string = resourceGroup.name
-output subscriptionId string = subscription().subscriptionId
-output userAssignedManagedIdentityClientId string = managedIdentityDeployment.outputs.userAssignedManagedIdentityClientId
+// output appInsightsInstrumentationKey string = loggingDeployment.outputs.appInsightsInstrumentationKey
+// output appInsightsName string = loggingDeployment.outputs.appInsightsName
+// output keyVaultName string = keyVaultDeployment.outputs.keyVaultName
+// output keyVaultResourceId string = keyVaultDeployment.outputs.keyVaultResourceId
+// output redisCacheName string = redisCacheDeployment.outputs.redisCacheName
+// output resourceGroupName string = resourceGroup.name
+// output subscriptionId string = subscription().subscriptionId
+// output userAssignedManagedIdentityClientId string = managedIdentityDeployment.outputs.userAssignedManagedIdentityClientId

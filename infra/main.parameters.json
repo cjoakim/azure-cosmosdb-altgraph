@@ -11,12 +11,21 @@
     "principalId": {
       "value": "${AZURE_PRINCIPAL_ID}"
     },
-    "containerAppObject": {
+    "containerAppWebAppObject": {
       "value": {
         "name": "altgraph-web-app",
-        "image": "ghcr.io/jordanbean-msft/azure-cosmosdb-altgraph:release-0.0.2",
+        "image": "ghcr.io/jordanbean-msft/azure-cosmosdb-altgraph/altgraph-web-app:release-0.0.4",
         "appId": "altgraph-web-app",
         "appPort": 80,
+        "cpu": 1,
+        "memory": "2.0Gi"
+      }
+    },
+    "containerAppDataAppObject": {
+      "value": {
+        "name": "altgraph-data-app",
+        "image": "ghcr.io/jordanbean-msft/azure-cosmosdb-altgraph/altgraph-data-app:release-0.0.4",
+        "appId": "altgraph-data-app",
         "cpu": 1,
         "memory": "2.0Gi"
       }
