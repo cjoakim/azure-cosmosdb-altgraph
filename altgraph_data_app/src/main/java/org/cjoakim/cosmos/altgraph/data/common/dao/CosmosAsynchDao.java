@@ -12,6 +12,8 @@ import org.cjoakim.cosmos.altgraph.data.common.model.imdb.Person;
 import org.cjoakim.cosmos.altgraph.data.common.model.imdb.SmallTriple;
 import reactor.core.publisher.Flux;
 
+import java.util.ArrayList;
+
 /**
  * This is a Data Access Object (DAO) which uses the Cosmos DB SDK for Java
  * rather than Spring Data.
@@ -52,13 +54,24 @@ public class CosmosAsynchDao {
         }
 
         if (client == null) {
-            client = new CosmosClientBuilder()
-                    .endpoint(uri)
-                    .key(key)
-                    .preferredRegions(DataAppConfiguration.getPreferredRegions())
-                    .consistencyLevel(ConsistencyLevel.SESSION)
-                    .contentResponseOnWriteEnabled(true)
-                    .buildAsyncClient();
+            ArrayList<String> prefRegions = DataAppConfiguration.getPreferredRegions();
+            if (prefRegions.size() > 0) {
+                client = new CosmosClientBuilder()
+                        .endpoint(uri)
+                        .key(key)
+                        .preferredRegions(prefRegions)
+                        .consistencyLevel(ConsistencyLevel.SESSION)
+                        .contentResponseOnWriteEnabled(true)
+                        .buildAsyncClient();
+            }
+            else {
+                client = new CosmosClientBuilder()
+                        .endpoint(uri)
+                        .key(key)
+                        .consistencyLevel(ConsistencyLevel.SESSION)
+                        .contentResponseOnWriteEnabled(true)
+                        .buildAsyncClient();
+            }
             log.warn("client: " + client);
 
             database = client.getDatabase(this.currentDbName);
