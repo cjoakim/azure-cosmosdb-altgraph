@@ -9,30 +9,18 @@
 ## Azure PaaS Services
 
 - **Azure CosmosDB SQL API Account**
-
   - Database named **dev**
-
   - Container named **npm_graph**
-
     - Partition key: **/pk**
     - Indexing Policy:
       - See file default indexing file **altgraph-data-app/indexing/default.json** in this repo
       - See recommended file **altgraph-data-app/indexing/altgraph_indexing.json** in this repo
-
   - Container named **imdb_graph**
-
     - Partition key: **/pk**
-
   - Container named **imdb_seed**
     - Partition key: **/pk**
-
 - **Azure Redis Cache Account**
-
-- **Azure Container Instance (optional)**
-
-At this time this repo only has provisioning scripts for the Azure Container Instance
-(see the az directory). It is expected that you manually provision the other resources
-in Azure Portal.
+- **Azure Container Apps (optional)**
 
 ## Environment Variables
 
@@ -72,9 +60,11 @@ you have set your environment variable.
 ```
 > git clone https://github.com/jordanbean-msft/azure-cosmosdb-altgraph.git
 
-> cd azure-cosmosdb-altgraph
+> cd azure-cosmosdb-altgraph/src
 
-> dotnet build
+> dotnet build altgraph_data_app.sln
+
+> dotnet build altgraph_web_app.sln
 ```
 
 ## Download the Raw IMDb data
@@ -90,8 +80,13 @@ title.basics.tsv
 title.principals.tsv
 ```
 
+<<<<<<< HEAD
+...to directory **src/altgraph-data-app/data/imdb_raw** within this repository.
+=======
 ...to directory **altgraph-data-app/data/imdb_raw** within this repository.
-You may have to manually create this directory if it doesn't already exist.
+
+> > > > > > > main
+> > > > > > > You may have to manually create this directory if it doesn't already exist.
 
 ## Wrangle the Raw Data, load CosmosDB
 
@@ -99,7 +94,11 @@ This process transforms the raw data into a format suitable for loading
 into CosmosDB for the AltGraph reference applications.
 
 ```
+<<<<<<< HEAD
+> cd src/altgraph_data_app
+=======
 > cd altgraph-data-app
+>>>>>>> main
 
 > .\npm_wrangling_process.ps1
 
@@ -120,7 +119,7 @@ for the three most common ways:
 
 - The "Software Developer" way with code
 - Docker and Docker Compose
-- Azure Container Instance
+- Azure Container Apps
 
 All three approaches described below assume that you have first provisioned
 your Azure resources, have updated your `appsettings.json` files and have wrangled/loaded
@@ -135,7 +134,7 @@ regarding web application UI usage.
 ### Running AltGraph - The Software Development Way
 
 ```
-> cd src
+> cd src/altgraph_web_app
 
 > dotnet run               <-- Runs the Web Application locally
                                Then visit http://localhost:5224 (note that your port # may be different) with your browser
@@ -143,27 +142,44 @@ regarding web application UI usage.
 
 ### Running AltGraph - with Docker and Docker Compose locally
 
+**NOTE: You must have already set the environment variables (REDIS\_\_CONNECTIONSTRING & COSMOS_CONNECTIONSTRING) described above.**
+
 ```
 > cd src
 
-> docker-compose up -d
+> docker compose up -d
 ```
 
-This approach downloads Docker container **ghcr.io/jordanbean-msft/azure-cosmosdb-altgraph**
+This approach downloads Docker container **ghcr.io/jordanbean-msft/azure-cosmosdb-altgraph/altgraph-web-app:release-\*.\*.\***
 from DockerHub and runs it on your host.
 
-See the comments at the end of file **src/docker-compose.yml**
-regarding common docker and docker-compose commands.
-
-### Running AltGraph - in an Azure Container Instance
+### Running AltGraph - in an Azure Container App - via Azure Developer CLI
 
 ```
-> cd az
 
-... read and modify the provision-webapp-aci1.ps1 script, as necessary, with your configuration info
+> azd init
 
-> .\provision-webapp-aci1.ps1
+> azd provision
 
-... after the Azure Container Instance is provisioned, visit port 8080 at the fqdn
-... shown in the deployment output.  Allow one-minute for the ACI to start.
+... after the Azure Container Apps is provisioned, visit the `containerAppFQDN` at the fqdn
+... shown in the deployment output. Allow one-minute for the ACA to start.
+
+```
+
+### Running AltGraph - in an Azure Container App - via Az CLI
+
+Set the following environment varibles (substitute your environment name (prefix for resource group name), location & UPN for the one shown)
+
+```
+> $env:AZURE_ENV_NAME="altgraphrjb"
+
+> $env:AZURE_LOCATION="SouthCentralUS"
+
+> $env:AZURE_PRINCIPAL_ID=$(az ad user show --id dwight.schrute@dunder-mifflin.com --query id -o tsv)
+```
+
+```
+> cd infra
+
+> az deployment create --template-file main.bicep --parameters main.parameters.json --location SouthCentralUS --parameters environmentName=$env:AZURE_ENV_NAME location=$env:AZURE_LOCATION principalId=$env:AZURE_PRINCIPAL_ID
 ```

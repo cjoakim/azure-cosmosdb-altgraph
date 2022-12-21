@@ -23,6 +23,9 @@ var redisCacheConnectionStringKeySecretName = 'redis-connectionstring'
 resource containerApp 'Microsoft.App/containerApps@2022-06-01-preview' = {
   name: containerAppWebAppObject.name
   location: location
+  tags: {
+    'azd-service-name': 'web'
+  }
   identity: {
     type: 'UserAssigned'
     userAssignedIdentities: {
@@ -150,3 +153,7 @@ resource diagnosticSettings 'Microsoft.Insights/diagnosticsettings@2017-05-01-pr
 }
 
 output containerAppName string = containerApp.name
+output containerAppFQDN string = containerApp.properties.latestRevisionFqdn
+output containerAppFQDN string = containerApp.properties.latestRevisionFqdn
+=======
+>>>>>>> main
