@@ -1,14 +1,11 @@
 ﻿@page
-@model GraphModel
+@model IndexModel
 @{
-  ViewData["Title"] = "Graph";
+  ViewData["Title"] = "NpmGraph";
 }
 
 <div>
-  <div asp-fragment="page_title">
-    <h1 class="text-center text-danger"> AltGraph </h1>
-    <h3 class="text-center text-muted"> Graph Solutions with the Azure CosmosDB SQL API</h3>
-  </div>
+  <partial name="_PageTitle" />
   <div asp-fragment="search_form" class="d-flex justify-content-center">
     <form class="d-flex align-items-center" id="searchForm" name="searchForm" method="POST" defaultfocus="subjectName"
       defaultButton="search">

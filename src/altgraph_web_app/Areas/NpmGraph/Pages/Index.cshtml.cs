@@ -10,11 +10,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Azure.CosmosRepository;
 using Microsoft.Extensions.Options;
 
-namespace altgraph_web_app.Pages;
+namespace altgraph_web_app.Areas.NpmGraph.Pages;
 
-public class GraphModel : PageModel
+public class IndexModel : PageModel
 {
-  private readonly ILogger<GraphModel> _logger;
+  private readonly ILogger<IndexModel> _logger;
   [BindProperty]
   public string SubjectName { get; set; } = string.Empty;
   [BindProperty]
@@ -39,7 +39,7 @@ public class GraphModel : PageModel
   private readonly CacheOptions _cacheOptions;
   private readonly PathsOptions _pathsOptions;
 
-  public GraphModel(ILogger<GraphModel> logger, IRepository<Library> libraryRepository, IRepository<Author> authorRepository, IRepository<Triple> tripleRepository, Cache cache, IOptions<CacheOptions> cacheOptions, IOptions<PathsOptions> pathsOptions)
+  public IndexModel(ILogger<IndexModel> logger, IRepository<Library> libraryRepository, IRepository<Author> authorRepository, IRepository<Triple> tripleRepository, Cache cache, IOptions<CacheOptions> cacheOptions, IOptions<PathsOptions> pathsOptions)
   {
     _logger = logger;
     _libraryRepository = new LibraryRepository(libraryRepository);
