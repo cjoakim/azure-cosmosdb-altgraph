@@ -154,6 +154,3 @@ resource diagnosticSettings 'Microsoft.Insights/diagnosticsettings@2017-05-01-pr
 
 output containerAppName string = containerApp.name
 output containerAppFQDN string = containerApp.properties.latestRevisionFqdn
-output containerAppFQDN string = containerApp.properties.latestRevisionFqdn
-=======
->>>>>>> main
