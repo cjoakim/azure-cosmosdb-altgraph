@@ -1,20 +1,21 @@
 ﻿using System.Text.Json;
-using altgraph_shared_app.Models;
+using altgraph_shared_app.Models.Npm;
 using altgraph_shared_app.Options;
 using altgraph_shared_app.Services.Cache;
 using altgraph_shared_app.Services.Graph;
 using altgraph_web_app.Services.Graph;
-using altgraph_shared_app.Services.Repositories;
+using altgraph_shared_app.Services.Repositories.Npm;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Azure.CosmosRepository;
 using Microsoft.Extensions.Options;
+using altgraph_shared_app;
 
-namespace altgraph_web_app.Pages;
+namespace altgraph_web_app.Areas.NpmGraph.Pages;
 
-public class GraphModel : PageModel
+public class IndexModel : PageModel
 {
-  private readonly ILogger<GraphModel> _logger;
+  private readonly ILogger<IndexModel> _logger;
   [BindProperty]
   public string SubjectName { get; set; } = string.Empty;
   [BindProperty]
@@ -32,6 +33,8 @@ public class GraphModel : PageModel
   [BindProperty(SupportsGet = true)]
   public string? LibraryAsJson { get; set; } = "{}";
   public string? GraphJson { get; set; } = string.Empty;
+  [BindProperty(SupportsGet = true)]
+  public string? LibraryInfo { get; set; } = string.Empty;
   private readonly LibraryRepository _libraryRepository;
   private readonly AuthorRepository _authorRepository;
   private readonly TripleRepository _tripleRepository;
@@ -39,7 +42,7 @@ public class GraphModel : PageModel
   private readonly CacheOptions _cacheOptions;
   private readonly PathsOptions _pathsOptions;
 
-  public GraphModel(ILogger<GraphModel> logger, IRepository<Library> libraryRepository, IRepository<Author> authorRepository, IRepository<Triple> tripleRepository, Cache cache, IOptions<CacheOptions> cacheOptions, IOptions<PathsOptions> pathsOptions)
+  public IndexModel(ILogger<IndexModel> logger, IRepository<Library> libraryRepository, IRepository<Author> authorRepository, IRepository<Triple> tripleRepository, Cache cache, IOptions<CacheOptions> cacheOptions, IOptions<PathsOptions> pathsOptions)
   {
     _logger = logger;
     _libraryRepository = new LibraryRepository(libraryRepository);
@@ -61,6 +64,9 @@ public class GraphModel : PageModel
     {
       return Page();
     }
+
+    DateTime start = DateTime.Now;
+
     try
     {
       if (AuthorCheckBox)
@@ -80,6 +86,10 @@ public class GraphModel : PageModel
     {
       _logger.LogError(ex.Message);
     }
+
+    DateTime end = DateTime.Now;
+
+    ElapsedMs = $"{Math.Round((end - start).TotalMilliseconds)} ms";
 
     return Page();
   }
@@ -150,19 +160,19 @@ public class GraphModel : PageModel
       }
     }
 
-    string lob = "npm";
+    string lob = Constants.LOB_NPM_LIBRARIES;
     string subject = "library";
-    TripleQueryStruct tripleQueryStruct = new TripleQueryStruct();
+    TripleQueryStruct tripleQueryStruct = new();
     tripleQueryStruct.Sql = "dynamic";
     tripleQueryStruct.Start();
 
-    string pk = "triple|" + _cacheOptions.Tenant;
+    string pk = "triple|" + Constants.DEFAULT_TENANT;
     IEnumerable<Triple> triples = _tripleRepository.GetByPkLobAndSubjectsAsync(pk, lob, subject, subject).Result;
     foreach (Triple triple in triples)
     {
       Triple t = triple;
       t.SetKeyFields();
-      tripleQueryStruct.AddDocument(t);
+      tripleQueryStruct.Documents.Add(t);
     }
     tripleQueryStruct.Stop();
     try

@@ -42,7 +42,7 @@ namespace altgraph_shared_app.Services.Graph
 
       subjectNode = GraphMap[subjectKey];
       int addAdjResult = subjectNode.AddAdjacent(objectNode, predicate);
-      changeCount = changeCount + addAdjResult;
+      changeCount += addAdjResult;
 
       return changeCount;
     }
@@ -65,7 +65,7 @@ namespace altgraph_shared_app.Services.Graph
 
       subjectNode = GraphMap[subjectKey];
       int addAdjResult = subjectNode.AddAdjacent(objectNode, predicate);
-      changeCount = changeCount + addAdjResult;
+      changeCount += addAdjResult;
 
       return changeCount;
     }
@@ -79,17 +79,7 @@ namespace altgraph_shared_app.Services.Graph
 
     public List<string> GetCurrentKeys()
     {
-      List<string> values = new List<string>();
-      foreach (string key in GraphMap.Keys)
-      {
-        values.Add(key);
-      }
-      return values;
-    }
-
-    public void AddNode(string key)
-    {
-
+      return GraphMap.Keys.ToList();
     }
 
     public long Finish()

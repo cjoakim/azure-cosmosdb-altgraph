@@ -1,7 +1,7 @@
-using altgraph_shared_app.Models;
+using altgraph_shared_app.Models.Npm;
 using Microsoft.Azure.CosmosRepository;
 
-namespace altgraph_shared_app.Services.Repositories
+namespace altgraph_shared_app.Services.Repositories.Npm
 {
   public class TripleRepository
   {
@@ -17,22 +17,22 @@ namespace altgraph_shared_app.Services.Repositories
 
     public async Task<long> CountAllTriplesAsync()
     {
-      return await Triples.CountAsync(x => x.Doctype == "triple");
+      return await Triples.CountAsync(x => x.Doctype == Constants.DOCTYPE_TRIPLE);
     }
 
     public async Task<long> CountAllLibrariesAsync()
     {
-      return await Triples.CountAsync(x => x.Doctype == "library");
+      return await Triples.CountAsync(x => x.Doctype == Constants.DOCTYPE_LIBRARY);
     }
 
     public async Task<long> CountAllAuthorsAsync()
     {
-      return await Triples.CountAsync(x => x.Doctype == "author");
+      return await Triples.CountAsync(x => x.Doctype == Constants.DOCTYPE_AUTHOR);
     }
 
     public async Task<long> CountAllMaintainersAsync()
     {
-      return await Triples.CountAsync(x => x.Doctype == "maintainer");
+      return await Triples.CountAsync(x => x.Doctype == Constants.DOCTYPE_MAINTAINER);
     }
 
     public async Task<long> GetNumberOfDocsWithSubjectLabelAsync(string subjectLabel)

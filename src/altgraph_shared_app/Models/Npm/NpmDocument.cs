@@ -3,7 +3,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using Microsoft.Azure.CosmosRepository;
 
-namespace altgraph_shared_app.Models
+namespace altgraph_shared_app.Models.Npm
 {
   public abstract class NpmDocument : Item
   {
@@ -33,11 +33,11 @@ namespace altgraph_shared_app.Models
     {
       StringBuilder sb = new StringBuilder();
       sb.Append(Doctype);
-      sb.Append("^");
+      sb.Append('^');
       sb.Append(Label);
-      sb.Append("^");
+      sb.Append('^');
       sb.Append(Id);
-      sb.Append("^");
+      sb.Append('^');
       sb.Append(Pk);
       GraphKey = sb.ToString();
       return GraphKey;

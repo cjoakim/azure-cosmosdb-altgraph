@@ -139,7 +139,7 @@ namespace altgraph_web_app.Services.Graph
 
     private static List<string> SortedArray(string[] array)
     {
-      List<string> strings = new List<string>();
+      List<string> strings = new();
       for (int i = 0; i < array.Length; i++)
       {
         strings.Add(array[i]);
@@ -168,9 +168,17 @@ namespace altgraph_web_app.Services.Graph
 
     private async Task WriteCsvFilesAsync()
     {
-      // GRAPH_NODES_CSV_FILE
-      Directory.CreateDirectory(Path.GetDirectoryName(NodesCsvFile));
-      Directory.CreateDirectory(Path.GetDirectoryName(EdgesCsvFile));
+      string? nodesCsvDirectory = Path.GetDirectoryName(NodesCsvFile);
+      if (nodesCsvDirectory != null)
+      {
+        Directory.CreateDirectory(nodesCsvDirectory);
+      }
+
+      string? edgesCsvDirectory = Path.GetDirectoryName(EdgesCsvFile);
+      if (edgesCsvDirectory != null)
+      {
+        Directory.CreateDirectory(edgesCsvDirectory);
+      }
 
       Task[] tasks = { File.WriteAllLinesAsync(NodesCsvFile, NodesCsvLines), File.WriteAllLinesAsync(EdgesCsvFile, EdgeCsvLines) };
       await Task.WhenAll(tasks);

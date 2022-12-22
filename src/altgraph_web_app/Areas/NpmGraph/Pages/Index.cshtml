@@ -1,14 +1,11 @@
 ﻿@page
-@model GraphModel
+@model IndexModel
 @{
-  ViewData["Title"] = "Graph";
+  ViewData["Title"] = "NpmGraph";
 }
 
 <div>
-  <div asp-fragment="page_title">
-    <h1 class="text-center text-danger"> AltGraph </h1>
-    <h3 class="text-center text-muted"> Graph Solutions with the Azure CosmosDB SQL API</h3>
-  </div>
+  <partial name="_PageTitle" />
   <div asp-fragment="search_form" class="d-flex justify-content-center">
     <form class="d-flex align-items-center" id="searchForm" name="searchForm" method="POST" defaultfocus="subjectName"
       defaultButton="search">
@@ -28,7 +25,7 @@
       <button id="search" class="btn btn-outline-primary" type="submit">Search</button>
       <span>&nbsp;&nbsp;</span>
       <input type="text" asp-for="ElapsedMs" class="form-control me-3" placeholder="Elapsed ms"
-        aria-label="readonly Elapsed ms" readonly>
+        aria-label="readonly Elapsed ms" readonly value="@Model.ElapsedMs">
       <input type="hidden" asp-for="@HttpContext.Session.Id">
       <a href="https://docs.microsoft.com/en-us/azure/?product=featured" target="_blank">
         <img src="~/images/cosmos-logo-110.png" alt="CosmosDB Logo">
@@ -36,7 +33,7 @@
       <span>&nbsp;&nbsp;</span>
     </form>
   </div>
-  <h5 class="d-flex justify-content-center" id="libraryInfo" name="libraryInfo"></h5>
+  <h5 class="d-flex justify-content-center" id="libraryInfo" name="libraryInfo">@Model.LibraryInfo</h5>
   <div id="graphData" data-nodes-csv="@Model.NodesCsv" data-edges-csv="@Model.EdgesCsv"
     data-library-as-json="@Model.LibraryAsJson" />
   <div id="viz">

@@ -1,4 +1,4 @@
-using altgraph_shared_app.Models;
+using altgraph_shared_app.Models.Npm;
 using altgraph_shared_app.Options;
 using altgraph_shared_app.Services.Cache;
 using StackExchange.Redis;
@@ -10,33 +10,44 @@ builder.Services.Configure<CosmosOptions>(builder.Configuration.GetSection(Cosmo
 builder.Services.Configure<PathsOptions>(builder.Configuration.GetSection(PathsOptions.Paths));
 builder.Services.Configure<RedisOptions>(builder.Configuration.GetSection(RedisOptions.Redis));
 
-builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(builder.Configuration.GetSection(RedisOptions.Redis).Get<RedisOptions>().ConnectionString));
+RedisOptions? redisOptions = builder.Configuration.GetSection(RedisOptions.Redis).Get<RedisOptions>();
+if (redisOptions != null)
+{
+  builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisOptions.ConnectionString));
+}
+else
+{
+  throw new ArgumentNullException("RedisOptions in appsettings.json cannot be null.");
+}
 builder.Services.AddCosmosRepository(options =>
 {
-  options.CosmosConnectionString = builder.Configuration.GetSection(CosmosOptions.Cosmos).Get<CosmosOptions>().ConnectionString;
-  options.ContainerId = builder.Configuration.GetSection(CosmosOptions.Cosmos).Get<CosmosOptions>().ContainerId;
-  options.DatabaseId = builder.Configuration.GetSection(CosmosOptions.Cosmos).Get<CosmosOptions>().DatabaseId;
-  options.ContainerPerItemType = true;
-  options.ContainerBuilder.Configure<Author>(containerOptions =>
+  CosmosOptions? cosmosOptions = builder.Configuration.GetSection(CosmosOptions.Cosmos).Get<CosmosOptions>();
+  if (cosmosOptions != null)
   {
-    containerOptions.WithContainer("altgraph");
-    containerOptions.WithPartitionKey("/pk");
-  });
-  options.ContainerBuilder.Configure<Library>(containerOptions =>
+    options.CosmosConnectionString = cosmosOptions.ConnectionString;
+    options.DatabaseId = cosmosOptions.DatabaseId;
+    options.ContainerPerItemType = true;
+    options.ContainerBuilder.Configure<Author>(containerOptions =>
+    {
+      containerOptions.WithServerlessThroughput();
+    });
+    options.ContainerBuilder.Configure<Library>(containerOptions =>
+    {
+      containerOptions.WithServerlessThroughput();
+    });
+    options.ContainerBuilder.Configure<Maintainer>(containerOptions =>
+    {
+      containerOptions.WithServerlessThroughput();
+    });
+    options.ContainerBuilder.Configure<Triple>(containerOptions =>
+    {
+      containerOptions.WithServerlessThroughput();
+    });
+  }
+  else
   {
-    containerOptions.WithContainer("altgraph");
-    containerOptions.WithPartitionKey("/pk");
-  });
-  options.ContainerBuilder.Configure<Maintainer>(containerOptions =>
-  {
-    containerOptions.WithContainer("altgraph");
-    containerOptions.WithPartitionKey("/pk");
-  });
-  options.ContainerBuilder.Configure<Triple>(containerOptions =>
-  {
-    containerOptions.WithContainer("altgraph");
-    containerOptions.WithPartitionKey("/pk");
-  });
+    throw new ArgumentNullException("CosmosOptions in appsettings.json cannot be null.");
+  }
 });
 builder.Services.AddSingleton<Cache>();
 builder.Services.AddDistributedMemoryCache();

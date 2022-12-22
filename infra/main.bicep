@@ -59,7 +59,7 @@ module cosmosDeployment 'cosmos.bicep' = {
   scope: resourceGroup
   params: {
     cosmosDatabaseAccountConnectionStringKeySecretName: names.outputs.cosmosDatabaseAccountConnectionStringKeySecretName
-    cosmosContainerName: names.outputs.cosmosContainerName
+    cosmosNpmContainerName: names.outputs.cosmosNpmContainerName
     cosmosContainerPartitionKey: names.outputs.cosmosContainerPartitionKey
     cosmosDatabaseAccountName: names.outputs.cosmosDatabaseAccountName
     cosmosSqlDatabaseName: names.outputs.cosmosSqlDatabaseName

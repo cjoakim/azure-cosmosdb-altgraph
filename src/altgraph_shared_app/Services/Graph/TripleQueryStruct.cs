@@ -1,6 +1,4 @@
-using System;
-using System.Collections.Generic;
-using altgraph_shared_app.Models;
+using altgraph_shared_app.Models.Npm;
 
 namespace altgraph_shared_app.Services.Graph
 {
@@ -25,21 +23,6 @@ namespace altgraph_shared_app.Services.Graph
         Documents = new List<Triple>();
       }
       StartTime = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
-    }
-
-    public void IncrementPageCount()
-    {
-      PageCount++;
-    }
-
-    public void IncrementRuCharge(double ru)
-    {
-      RequestCharge += ru;
-    }
-
-    public void AddDocument(Triple t)
-    {
-      Documents.Add(t);
     }
 
     public long Start()

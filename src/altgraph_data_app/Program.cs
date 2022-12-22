@@ -33,34 +33,21 @@ await Host.CreateDefaultBuilder(args)
   services.Configure<PathsOptions>(hostContext.Configuration.GetSection(PathsOptions.Paths));
   services.Configure<RedisOptions>(hostContext.Configuration.GetSection(RedisOptions.Redis));
 
-  services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(hostContext.Configuration.GetSection(RedisOptions.Redis).Get<RedisOptions>().ConnectionString));
   services.AddCosmosRepository(options =>
+{
+  CosmosOptions? cosmosOptions = hostContext.Configuration.GetSection(CosmosOptions.Cosmos).Get<CosmosOptions>();
+  if (cosmosOptions != null)
   {
-    options.CosmosConnectionString = hostContext.Configuration.GetSection(CosmosOptions.Cosmos).Get<CosmosOptions>().ConnectionString;
-    options.ContainerId = hostContext.Configuration.GetSection(CosmosOptions.Cosmos).Get<CosmosOptions>().ContainerId;
-    options.DatabaseId = hostContext.Configuration.GetSection(CosmosOptions.Cosmos).Get<CosmosOptions>().DatabaseId;
+    options.CosmosConnectionString = cosmosOptions.ConnectionString;
+    options.DatabaseId = cosmosOptions.DatabaseId;
     options.ContainerPerItemType = true;
-    options.ContainerBuilder.Configure<Author>(containerOptions =>
-    {
-      containerOptions.WithContainer("altgraph");
-      containerOptions.WithPartitionKey("/pk");
-    });
-    options.ContainerBuilder.Configure<Library>(containerOptions =>
-    {
-      containerOptions.WithContainer("altgraph");
-      containerOptions.WithPartitionKey("/pk");
-    });
-    options.ContainerBuilder.Configure<Maintainer>(containerOptions =>
-    {
-      containerOptions.WithContainer("altgraph");
-      containerOptions.WithPartitionKey("/pk");
-    });
-    options.ContainerBuilder.Configure<Triple>(containerOptions =>
-    {
-      containerOptions.WithContainer("altgraph");
-      containerOptions.WithPartitionKey("/pk");
-    });
-  });
+    options.AllowBulkExecution = true;
+  }
+  else
+  {
+    throw new ArgumentNullException("CosmosOptions in appsettings.json cannot be null.");
+  }
+});
   services.AddSingleton<Cache>();
   services.AddSingleton<NpmCosmosDbLoader>();
   services.AddHostedService<ConsoleHostedService>();
