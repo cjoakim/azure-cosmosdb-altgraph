@@ -3,7 +3,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using Microsoft.Azure.CosmosRepository;
 
-namespace altgraph_shared_app.Models
+namespace altgraph_shared_app.Models.Npm
 {
   public abstract class NpmDocument : Item
   {

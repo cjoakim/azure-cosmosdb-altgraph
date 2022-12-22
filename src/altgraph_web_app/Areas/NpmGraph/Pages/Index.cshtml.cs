@@ -1,10 +1,10 @@
 ﻿using System.Text.Json;
-using altgraph_shared_app.Models;
+using altgraph_shared_app.Models.Npm;
 using altgraph_shared_app.Options;
 using altgraph_shared_app.Services.Cache;
 using altgraph_shared_app.Services.Graph;
 using altgraph_web_app.Services.Graph;
-using altgraph_shared_app.Services.Repositories;
+using altgraph_shared_app.Services.Repositories.Npm;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Azure.CosmosRepository;

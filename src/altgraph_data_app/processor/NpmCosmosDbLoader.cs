@@ -1,6 +1,8 @@
 using altgraph_shared_app.Models;
+using altgraph_shared_app.Models.Npm;
 using altgraph_shared_app.Options;
-using altgraph_shared_app.Services.Repositories;
+using altgraph_shared_app.Services.Repositories.Npm;
+using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.CosmosRepository;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -63,26 +65,32 @@ namespace altgraph_data_app.processor
       catch (Exception ex)
       {
         _logger.LogError(ex, $"Failed to load {documentType}.");
-        throw ex;
+        throw;
       }
 
       if (documents != null)
       {
+        List<Task> tasks = new List<Task>(documents.Count);
         foreach (T document in documents)
         {
-          if (!await repository.ExistsAsync(document.Id, document.Pk))
+          tasks.Add(repository.CreateAsync(document).AsTask().ContinueWith(itemResponse =>
           {
-            try
+            if (!itemResponse.IsCompletedSuccessfully)
             {
-              //TODO: Replace with batch (need to debug input data)
-              await repository.CreateAsync(document);
+              AggregateException innerExceptions = itemResponse.Exception.Flatten();
+              if (innerExceptions.InnerExceptions.FirstOrDefault(innerEx => innerEx is CosmosException) is CosmosException cosmosException)
+              {
+                _logger.LogDebug($"Received {cosmosException.StatusCode} ({cosmosException.Message}).");
+              }
+              else
+              {
+                _logger.LogDebug($"Exception {innerExceptions.InnerExceptions.FirstOrDefault()}.");
+              }
             }
-            catch (Exception ex)
-            {
-              _logger.LogError(ex, $"Failed to load {documentType}. ${JsonSerializer.Serialize(document)}");
-            }
-          }
+          }));
         }
+
+        await Task.WhenAll(tasks);
 
         _logger.LogInformation($"Added {documents.Count} documents of type {documentType} to database.");
       }

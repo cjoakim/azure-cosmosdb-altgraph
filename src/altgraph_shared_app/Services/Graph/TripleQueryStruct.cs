@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using altgraph_shared_app.Models;
+using altgraph_shared_app.Models.Npm;
 
 namespace altgraph_shared_app.Services.Graph
 {

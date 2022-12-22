@@ -1,5 +1,5 @@
 param cosmosDatabaseAccountConnectionStringKeySecretName string
-param cosmosContainerName string
+param cosmosNpmContainerName string
 param cosmosContainerPartitionKey string
 param cosmosDatabaseAccountName string
 param cosmosSqlDatabaseName string
@@ -34,16 +34,15 @@ resource cosmosDatabaseAccount 'Microsoft.DocumentDB/databaseAccounts@2022-08-15
       resource: { id: cosmosSqlDatabaseName }
     }
     resource container 'containers' = {
-      name: cosmosContainerName
+      name: cosmosNpmContainerName
       properties: {
         resource: {
-          id: cosmosContainerName
+          id: cosmosNpmContainerName
           partitionKey: { paths: [ cosmosContainerPartitionKey ] }
         }
         options: {}
       }
     }
-
   }
 }
 
@@ -117,5 +116,5 @@ resource cosmosConnectionString 'Microsoft.KeyVault/vaults/secrets@2022-07-01' =
 
 output cosmosDatabaseAccountName string = cosmosDatabaseAccountName
 output cosmosSqlDatabaseName string = cosmosSqlDatabaseName
-output cosmosContainerName string = cosmosContainerName
+output cosmosNpmContainerName string = cosmosNpmContainerName
 output cosmosDatabaseAccountConnectionStringKeySecretName string = cosmosDatabaseAccountConnectionStringKeySecretName

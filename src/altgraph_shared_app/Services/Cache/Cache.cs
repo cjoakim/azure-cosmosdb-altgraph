@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using StackExchange.Redis;
 using System.Text;
 using System.Text.Json;
+using altgraph_shared_app.Models.Npm;
 
 namespace altgraph_shared_app.Services.Cache
 {
