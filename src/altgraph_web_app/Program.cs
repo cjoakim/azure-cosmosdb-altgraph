@@ -1,6 +1,8 @@
 using altgraph_shared_app.Models;
+using altgraph_shared_app.Models.Npm;
 using altgraph_shared_app.Options;
 using altgraph_shared_app.Services.Cache;
+using Microsoft.Azure.Cosmos.Fluent;
 using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,6 +29,22 @@ builder.Services.AddCosmosRepository(options =>
     options.CosmosConnectionString = cosmosOptions.ConnectionString;
     options.DatabaseId = cosmosOptions.DatabaseId;
     options.ContainerPerItemType = true;
+    options.ContainerBuilder.Configure<Author>(containerOptions =>
+    {
+      containerOptions.WithServerlessThroughput();
+    });
+    options.ContainerBuilder.Configure<Library>(containerOptions =>
+    {
+      containerOptions.WithServerlessThroughput();
+    });
+    options.ContainerBuilder.Configure<Maintainer>(containerOptions =>
+    {
+      containerOptions.WithServerlessThroughput();
+    });
+    options.ContainerBuilder.Configure<Triple>(containerOptions =>
+    {
+      containerOptions.WithServerlessThroughput();
+    });
   }
   else
   {
