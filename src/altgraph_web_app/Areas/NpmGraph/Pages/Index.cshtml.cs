@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Azure.CosmosRepository;
 using Microsoft.Extensions.Options;
+using altgraph_shared_app;
 
 namespace altgraph_web_app.Areas.NpmGraph.Pages;
 
@@ -61,6 +62,9 @@ public class IndexModel : PageModel
     {
       return Page();
     }
+
+    DateTime start = DateTime.Now;
+
     try
     {
       if (AuthorCheckBox)
@@ -80,6 +84,10 @@ public class IndexModel : PageModel
     {
       _logger.LogError(ex.Message);
     }
+
+    DateTime end = DateTime.Now;
+
+    ElapsedMs = $"{Math.Round((end - start).TotalMilliseconds)} ms";
 
     return Page();
   }
@@ -150,19 +158,19 @@ public class IndexModel : PageModel
       }
     }
 
-    string lob = "npm";
+    string lob = Constants.LOB_NPM_LIBRARIES;
     string subject = "library";
-    TripleQueryStruct tripleQueryStruct = new TripleQueryStruct();
+    TripleQueryStruct tripleQueryStruct = new();
     tripleQueryStruct.Sql = "dynamic";
     tripleQueryStruct.Start();
 
-    string pk = "triple|" + _cacheOptions.Tenant;
+    string pk = "triple|" + Constants.DEFAULT_TENANT;
     IEnumerable<Triple> triples = _tripleRepository.GetByPkLobAndSubjectsAsync(pk, lob, subject, subject).Result;
     foreach (Triple triple in triples)
     {
       Triple t = triple;
       t.SetKeyFields();
-      tripleQueryStruct.AddDocument(t);
+      tripleQueryStruct.Documents.Add(t);
     }
     tripleQueryStruct.Stop();
     try

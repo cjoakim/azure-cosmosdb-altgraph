@@ -139,7 +139,7 @@ namespace altgraph_web_app.Services.Graph
 
     private static List<string> SortedArray(string[] array)
     {
-      List<string> strings = new List<string>();
+      List<string> strings = new();
       for (int i = 0; i < array.Length; i++)
       {
         strings.Add(array[i]);

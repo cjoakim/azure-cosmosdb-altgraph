@@ -1,10 +1,8 @@
-using altgraph_shared_app.Models;
 using altgraph_shared_app.Options;
 using altgraph_shared_app.Services.Graph;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Logging;
 using StackExchange.Redis;
-using System.Text;
 using System.Text.Json;
 using altgraph_shared_app.Models.Npm;
 

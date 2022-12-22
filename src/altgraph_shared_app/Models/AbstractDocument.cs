@@ -1,5 +1,3 @@
-using System;
-using System.Text;
 using System.Text.Json.Serialization;
 using Microsoft.Azure.CosmosRepository;
 
@@ -16,13 +14,13 @@ namespace altgraph_shared_app.Models
     [JsonPropertyName("g")]
     public string G { get; set; } = string.Empty; // group, or load-group; a random value from 0 to 99. 
 
-    private Random rnd = new Random();
+    private readonly Random rnd = new();
 
     public void SetCosmosDbCoordinateAttributes(string idPk, string doctype)
     {
       if ((idPk == null) || (idPk.Trim() == string.Empty))
       {
-        Id = System.Guid.NewGuid().ToString();
+        Id = Guid.NewGuid().ToString();
         Pk = "orphan";
         G = "" + rnd.NextInt64(Constants.GROUP_MAX); // range 0 to 99
         return;
@@ -35,7 +33,7 @@ namespace altgraph_shared_app.Models
 
     public void SetCosmosDbSmallTripleCoordinateAttributes()
     {
-      Id = System.Guid.NewGuid().ToString();
+      Id = Guid.NewGuid().ToString();
       Pk = Constants.DOCTYPE_SMALL_TRIPLE;
       Doctype = Constants.DOCTYPE_SMALL_TRIPLE;
       G = "" + rnd.NextInt64(Constants.GROUP_MAX); // range 0 to 99

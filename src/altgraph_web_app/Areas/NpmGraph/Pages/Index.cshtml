@@ -25,7 +25,7 @@
       <button id="search" class="btn btn-outline-primary" type="submit">Search</button>
       <span>&nbsp;&nbsp;</span>
       <input type="text" asp-for="ElapsedMs" class="form-control me-3" placeholder="Elapsed ms"
-        aria-label="readonly Elapsed ms" readonly>
+        aria-label="readonly Elapsed ms" readonly value="@Model.ElapsedMs">
       <input type="hidden" asp-for="@HttpContext.Session.Id">
       <a href="https://docs.microsoft.com/en-us/azure/?product=featured" target="_blank">
         <img src="~/images/cosmos-logo-110.png" alt="CosmosDB Logo">

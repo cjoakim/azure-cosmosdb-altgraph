@@ -33,11 +33,11 @@ namespace altgraph_shared_app.Models.Npm
     {
       StringBuilder sb = new StringBuilder();
       sb.Append(Doctype);
-      sb.Append("^");
+      sb.Append('^');
       sb.Append(Label);
-      sb.Append("^");
+      sb.Append('^');
       sb.Append(Id);
-      sb.Append("^");
+      sb.Append('^');
       sb.Append(Pk);
       GraphKey = sb.ToString();
       return GraphKey;
