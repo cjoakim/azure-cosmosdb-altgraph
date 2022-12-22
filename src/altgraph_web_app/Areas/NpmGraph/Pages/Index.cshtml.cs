@@ -33,6 +33,8 @@ public class IndexModel : PageModel
   [BindProperty(SupportsGet = true)]
   public string? LibraryAsJson { get; set; } = "{}";
   public string? GraphJson { get; set; } = string.Empty;
+  [BindProperty(SupportsGet = true)]
+  public string? LibraryInfo { get; set; } = string.Empty;
   private readonly LibraryRepository _libraryRepository;
   private readonly AuthorRepository _authorRepository;
   private readonly TripleRepository _tripleRepository;
