@@ -33,16 +33,10 @@
       <span>&nbsp;&nbsp;</span>
     </form>
   </div>
-  <h5 class="d-flex justify-content-center" id="libraryInfo" name="libraryInfo">@Model.LibraryInfo</h5>
-  <div id="graphData" data-nodes-csv="@Model.NodesCsv" data-edges-csv="@Model.EdgesCsv"
-    data-library-as-json="@Model.LibraryAsJson" />
-  <div id="viz">
-    <svg style="width:95%;height:1024px;">
-      <g></g>
-    </svg>
-  </div>
+  @{
+    if (!string.IsNullOrEmpty(@Model.SubjectName))
+    {
+      <partial name="_NpmGraph" model="@Model" />
+    }
+  }
 </div>
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="~/lib/d3/d3.min.js"></script>
-<script src="~/js/graph.js"></script>

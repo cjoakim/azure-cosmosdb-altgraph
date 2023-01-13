@@ -1,8 +1,7 @@
-﻿using System.Text.Json;
-using altgraph_shared_app.Models.Npm;
+﻿using altgraph_shared_app.Models.Npm;
 using altgraph_shared_app.Options;
 using altgraph_shared_app.Services.Cache;
-using altgraph_shared_app.Services.Graph;
+using altgraph_shared_app.Services.Graph.v1;
 using altgraph_web_app.Services.Graph;
 using altgraph_shared_app.Services.Repositories.Npm;
 using Microsoft.AspNetCore.Mvc;
@@ -26,23 +25,14 @@ public class IndexModel : PageModel
   public string? CacheOpts { get; set; } = string.Empty;
   [BindProperty]
   public string? ElapsedMs { get; set; } = string.Empty;
-  [BindProperty(SupportsGet = true)]
-  public string? NodesCsv { get; set; } = string.Empty;
-  [BindProperty(SupportsGet = true)]
-  public string? EdgesCsv { get; set; } = string.Empty;
-  [BindProperty(SupportsGet = true)]
-  public string? LibraryAsJson { get; set; } = "{}";
-  public string? GraphJson { get; set; } = string.Empty;
-  [BindProperty(SupportsGet = true)]
-  public string? LibraryInfo { get; set; } = string.Empty;
   private readonly LibraryRepository _libraryRepository;
   private readonly AuthorRepository _authorRepository;
   private readonly TripleRepository _tripleRepository;
-  private readonly Cache _cache;
+  private readonly ICache _cache;
   private readonly CacheOptions _cacheOptions;
   private readonly PathsOptions _pathsOptions;
 
-  public IndexModel(ILogger<IndexModel> logger, IRepository<Library> libraryRepository, IRepository<Author> authorRepository, IRepository<Triple> tripleRepository, Cache cache, IOptions<CacheOptions> cacheOptions, IOptions<PathsOptions> pathsOptions)
+  public IndexModel(ILogger<IndexModel> logger, IRepository<Library> libraryRepository, IRepository<Author> authorRepository, IRepository<Triple> tripleRepository, ICache cache, IOptions<CacheOptions> cacheOptions, IOptions<PathsOptions> pathsOptions)
   {
     _logger = logger;
     _libraryRepository = new LibraryRepository(libraryRepository);
@@ -77,10 +67,6 @@ public class IndexModel : PageModel
       {
         await HandleLibrarySearchAsync();
       }
-
-      Task[] tasks = { GetNodesCsvAsync(), GetEdgesCsvAsync() };
-
-      Task.WaitAll(tasks);
     }
     catch (Exception ex)
     {
@@ -206,17 +192,17 @@ public class IndexModel : PageModel
     return cacheOpts.ToUpper().Contains('T');
   }
 
-  private async Task GetNodesCsvAsync()
+  public async Task<IActionResult> OnGetNodesCsvAsync()
   {
-    NodesCsv = await ReadCsvAsync(_pathsOptions.NodesCsvFile);
+    return Content(await ReadCsvAsync(_pathsOptions.NodesCsvFile), "text/csv");
   }
 
-  private async Task GetEdgesCsvAsync()
+  public async Task<IActionResult> OnGetEdgesCsvAsync()
   {
-    EdgesCsv = await ReadCsvAsync(_pathsOptions.EdgesCsvFile);
+    return Content(await ReadCsvAsync(_pathsOptions.EdgesCsvFile), "text/csv");
   }
 
-  public async Task OnGetLibraryAsJsonAsync(string libraryName)
+  public async Task<JsonResult?> OnGetLibraryAsJson(string libraryName)
   {
     _logger.LogDebug($"getLibraryAsJson, libraryName: {libraryName}");
 
@@ -225,17 +211,17 @@ public class IndexModel : PageModel
     {
       try
       {
-        LibraryAsJson = JsonSerializer.Serialize(library);
+        return new JsonResult(library);
       }
       catch (Exception e)
       {
         _logger.LogError(e.StackTrace);
-        LibraryAsJson = "{}";
+        return null;
       }
     }
     else
     {
-      LibraryAsJson = "{}";
+      return null;
     }
   }
 
