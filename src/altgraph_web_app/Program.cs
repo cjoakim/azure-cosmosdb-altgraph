@@ -1,6 +1,9 @@
+using altgraph_shared_app.Models.Imdb;
 using altgraph_shared_app.Models.Npm;
 using altgraph_shared_app.Options;
 using altgraph_shared_app.Services.Cache;
+using altgraph_shared_app.Services.Graph.v2;
+using altgraph_shared_app.Util;
 using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +12,7 @@ builder.Services.Configure<CacheOptions>(builder.Configuration.GetSection(CacheO
 builder.Services.Configure<CosmosOptions>(builder.Configuration.GetSection(CosmosOptions.Cosmos));
 builder.Services.Configure<PathsOptions>(builder.Configuration.GetSection(PathsOptions.Paths));
 builder.Services.Configure<RedisOptions>(builder.Configuration.GetSection(RedisOptions.Redis));
+builder.Services.Configure<ImdbOptions>(builder.Configuration.GetSection(ImdbOptions.Imdb));
 
 RedisOptions? redisOptions = builder.Configuration.GetSection(RedisOptions.Redis).Get<RedisOptions>();
 if (redisOptions != null)
@@ -43,13 +47,24 @@ builder.Services.AddCosmosRepository(options =>
     {
       containerOptions.WithServerlessThroughput();
     });
+    options.ContainerBuilder.Configure<Movie>(containerOptions =>
+    {
+      containerOptions.WithServerlessThroughput();
+    });
+    options.ContainerBuilder.Configure<Person>(containerOptions =>
+    {
+      containerOptions.WithServerlessThroughput();
+    });
   }
   else
   {
     throw new ArgumentNullException("CosmosOptions in appsettings.json cannot be null.");
   }
 });
-builder.Services.AddSingleton<Cache>();
+builder.Services.AddScoped<IMemoryStats, MemoryStats>();
+builder.Services.AddSingleton<ICache, Cache>();
+builder.Services.AddTransient<IJGraphBuilder, JGraphBuilder>();
+builder.Services.AddSingleton<IJGraph, JGraph>();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {

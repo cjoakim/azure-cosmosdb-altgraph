@@ -1,0 +1,95 @@
+﻿@page
+@model IndexModel
+@{
+  ViewData["Title"] = "ImdbGraph";
+}
+
+<div>
+  <partial name="_PageTitle" />
+  <div asp-fragment="search_form" class="d-flex justify-content-center">
+    <form class="d-flex align-items-center" id="searchForm" name="searchForm" method="POST" defaultfocus="formFunction"
+      defaultButton="searchButton">
+      <span>&nbsp;&nbsp;&nbsp;</span>
+      <a href="https://docs.microsoft.com/en-us/azure/?product=featured" target="_blank">
+        <img src="~/images/cosmos-logo-110.png" alt="Cosmos DB Logo">
+      </a>
+      <select asp-for="FormFunction" name="formFunction" id="formFunction" class="form-select"
+        asp-items="Html.GetEnumSelectList<FormFunctionEnum>()">
+      </select>
+      &nbsp;
+      <input type="text" asp-for="Value1" id="value1" name="value1" class="form-control me-2" placeholder=""
+        aria-label="value 1">
+      <input type="text" asp-for="Value2" id="value2" name="value2" class="form-control me-2" placeholder=""
+        aria-label="value 2">
+      <button id="searchButton" class="btn btn-outline-primary" type="submit">Search</button>
+      <span>&nbsp;&nbsp;</span>
+      <input type="text" asp-for="ElapsedMs" class="form-control me-3" placeholder="Elapsed ms"
+        aria-label="readonly Elapsed ms" readonly value="@Model.ElapsedMs">
+      <input type="hidden" asp-for="@HttpContext.Session.Id">
+      <span>&nbsp;&nbsp;</span>
+    </form>
+  </div>
+  <div>
+    <label id="graphLoadingProgressLabel" for="graphLoadingProgress" style="display: none">Loading Progress:</label>
+    <progress id="graphLoadingProgress" style="display: none"></progress>
+  </div>
+  @{
+    switch (@Model.FormFunction)
+    {
+      case FormFunctionEnum.Network:
+        <partial name="_Network" model="@Model" />
+        break;
+      case FormFunctionEnum.ShortestPath:
+        <partial name="_ShortestPath" model="@Model" />
+        break;
+      case FormFunctionEnum.GraphStats:
+        <partial name="_Stats" model="@Model" />
+        break;
+      case FormFunctionEnum.PageRank:
+        <partial name="_PageRank" model="@Model" />
+        break;
+    }
+  }
+</div>
+<script>
+  $(document).ready(function () {
+    var intervalId;
+
+    $('#searchForm').submit(startGraphLoadingProgress);
+
+    function startGraphLoadingProgress() {
+      $('#graphLoadingProgressLabel').show();
+      $('#graphLoadingProgress').max = "@Model.GraphLoadingMaxProgress";
+      $('#graphLoadingProgress').show();
+      intervalId = setInterval(
+        function () {
+          var myHeaders = new Headers();
+          myHeaders.append('pragma', 'no-cache');
+          myHeaders.append('cache-control', 'no-cache');
+
+          var myInit = {
+            method: 'GET',
+            headers: myHeaders,
+          };
+          fetch("?handler=Progress", myInit)
+            .then((response) => {
+              return response.json();
+            })
+            .then((progress) => {
+              $("#graphLoadingProgress").value = progress;
+              if (progress == "@Model.GraphLoadingMaxProgress") {
+                stopGraphLoadingProgress();
+              }
+            }
+            );
+        },
+        5
+      );
+    }
+    function stopGraphLoadingProgress() {
+      $('#graphLoadingProgressLabel').hide();
+      $('#graphLoadingProgress').hide();
+      clearInterval(intervalId);
+    }
+  })
+</script>

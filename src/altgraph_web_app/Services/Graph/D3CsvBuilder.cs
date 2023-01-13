@@ -1,11 +1,11 @@
 using altgraph_shared_app.Options;
-using altgraph_shared_app.Services.Graph;
+using altgraph_shared_app.Services.Graph.v1;
 
 namespace altgraph_web_app.Services.Graph
 {
   public class D3CsvBuilder
   {
-    public altgraph_shared_app.Services.Graph.Graph? Graph { get; set; }
+    public altgraph_shared_app.Services.Graph.v1.Graph? Graph { get; set; }
     public List<string> NodesCsvLines { get; set; } = new List<string>();
     public List<string> EdgeCsvLines { get; set; } = new List<string>();
     public Dictionary<string, string> CollectedNodesHash { get; set; } = new Dictionary<string, string>();
@@ -17,7 +17,7 @@ namespace altgraph_web_app.Services.Graph
     private int iterationCount = 0;
     private readonly ILogger _logger;
 
-    public D3CsvBuilder(altgraph_shared_app.Services.Graph.Graph g, PathsOptions pathsOptions, ILogger logger)
+    public D3CsvBuilder(altgraph_shared_app.Services.Graph.v1.Graph g, PathsOptions pathsOptions, ILogger logger)
     {
       Graph = g;
       _logger = logger;

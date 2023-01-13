@@ -1,10 +1,7 @@
-using System;
-using System.Collections.Generic;
-using altgraph_shared_app.Models;
 using altgraph_shared_app.Models.Npm;
 using Microsoft.Extensions.Logging;
 
-namespace altgraph_shared_app.Services.Graph
+namespace altgraph_shared_app.Services.Graph.v1
 {
   public class GraphBuilder
   {

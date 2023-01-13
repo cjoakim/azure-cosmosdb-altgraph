@@ -1,0 +1,229 @@
+<div>
+  <pre>
+  </pre>
+  <h4 class="text-center text-muted">Shortest Path between Two Vertices</h4>
+  <h5 class="d-flex justify-content-center" id="vertexInfo" name="vertexInfo"></h5>
+
+  <div id="graph_stats" class="container d-flex align-items-center justify-content-center">
+    <table class="table table-striped" id="pathTable" name="pathTable">
+      <thead>
+        <tr>
+          <th>Vertex 1</th>
+          <th> </th>
+          <th>Vertex 2</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+
+  <partial name="_Graph" />
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    function nodeClicked(e, d) {
+      console.log("nodeClicked: " + d.name);
+      var imdbConst = d.name;
+      $("#vertexInfo").text(imdbConst + " ...");
+      fetch("?handler=ImdbVertex&imdbConst=" + imdbConst)
+        .then((response) => {
+          return response.json();
+        })
+        .then((responseData) => {
+          const data = responseData;
+          $("#vertexInfo").text("");
+          if (imdbConst.startsWith("tt")) {
+            var title = data['titleWords'].join(' ');
+            var year = data['year'];
+            $("#vertexInfo").text("movie: " + title + "   year: " + year);
+          }
+          else if (imdbConst.startsWith("nm")) {
+            $("#vertexInfo").text(data['primaryNameWords'].join(' '));
+            var name = data['primaryNameWords'].join(' ');
+            var year = data['birthYear'];
+            $("#vertexInfo").text("person: " + name + "   born: " + year);
+          }
+        });
+    }
+    function nodeDblClicked(e, d) {
+      console.log("nodeDblClicked: " + d.name);
+      $("#vertexInfo").text("");
+      $("#value1").val(d.name);
+      $("#formFunction").val("imdb_network");
+      d3.select("#viz").style("opacity", 0);  // hide the graph momentarily
+      $("#searchForm").submit();
+    }
+    function nodeMouseOver(e, d) {
+      //console.log("nodeMouseOver: " + d.name);
+    }
+    function nodeMouseOut(e, d) {
+      //console.log("nodeMouseOut: " + d.name);
+    }
+
+    function initZoom() {
+      d3.select('svg').call(zoom);
+    }
+    function handleZoom(e) {
+      console.log('handle zoom');
+      d3.select('svg g').attr('transform', e.transform);
+    }
+    let zoom = d3.zoom().on('zoom', handleZoom);
+
+    var typeScale = d3.scaleOrdinal()
+      .domain(["library", "author", "maintainer"])
+      .range(["#75739F", "#41A368", "#FE9922"]);
+
+    fetch("?handler=ShortestPath&v1=" + "@Model.Value1" + "&v2=" + "@Model.Value2")
+      .then((response) => {
+        return response.json();
+      })
+      .then((responseData) => {
+        const data = responseData;
+        @* $('#elapsedMs').val("" + data['elapsedMs']); *@
+        var dataEdges = data['edges'];
+        console.log("dataEdges length: " + dataEdges.length);
+        var d3NodesSet = new Set();
+        var nodes = Array();
+        var edges = Array();
+
+        for (let i = 0; i < dataEdges.length; i++) {
+          var e = dataEdges[i];
+          var v1 = e['v1Value'];
+          var v2 = e['v2Value'];
+          d3NodesSet.add(v1);
+          d3NodesSet.add(v2);
+          edge = {};
+          edge["source"] = v1;
+          edge["target"] = v2;
+          edge["weight"] = 1.0;
+          edges.push(edge);
+
+          var link1 = '';
+          var link2 = '';
+          if (v1.startsWith("tt")) {
+            link1 = "https://www.imdb.com/title/" + v1;
+          }
+          else {
+            link1 = "https://www.imdb.com/name/" + v1;
+          }
+          if (v2.startsWith("tt")) {
+            link2 = "https://www.imdb.com/title/" + v2;
+          }
+          else {
+            link2 = "https://www.imdb.com/name/" + v2;
+          }
+          var row = "<tr> <td><a href=\"" + link1 + "\">" + v1 + "</td> <td> --> </td> <td><a href=\"" + link2 + "\">" + v2 + "</td> </tr>";
+          $("#pathTable").find('tbody').append($(row));
+        }
+        console.log("d3NodesSet: " + d3NodesSet.size);
+        d3NodesSet.forEach(s => {
+          n = {};
+          n["name"] = s;
+          n["type"] = "vertex";
+          n["adjCount"] = 0;
+          nodes.push(n);
+        });
+
+        nodes.forEach(n => {
+          console.log("node before viz: " + JSON.stringify(n));
+        });
+        edges.forEach(e => {
+          console.log("edge before viz: " + JSON.stringify(e));
+        });
+
+        generateGraphViz(nodes, edges);
+      }
+      );
+
+    function generateGraphViz(nodes, edges) {
+      console.log("generateGraphViz");
+
+      var marker = d3.select("svg").append('defs')
+        .append('marker')
+        .attr("id", "Triangle")
+        .attr("refX", 12)
+        .attr("refY", 6)
+        .attr("markerUnits", 'userSpaceOnUse')
+        .attr("markerWidth", 12)
+        .attr("markerHeight", 18)
+        .attr("orient", 'auto')
+        .append('path')
+        .attr("d", 'M 0 0 12 6 0 12 3 6');
+
+      var nodeHash = {};
+      nodes.forEach(n => {
+        nodeHash[n.name] = n;
+      });
+      edges.forEach(edge => {
+        edge.weight = parseInt(edge.weight);
+        edge.source = nodeHash[edge.source];
+        edge.target = nodeHash[edge.target];
+      });
+
+      var linkForce = d3.forceLink(edges);
+
+      var simulation = d3.forceSimulation()
+        .force("charge", d3.forceManyBody().strength(-2000))
+        .force("center", d3.forceCenter().x(800).y(500))
+        .force("link", linkForce)
+        .nodes(nodes)
+        .on("tick", forceTick);
+
+      simulation.force("link").links(edges);
+
+      d3.select("svg g").selectAll("line.link")
+        .data(edges, d => `${d.source.id}-${d.target.id}`)
+        .enter()
+        .append("line")
+        .attr("class", "link")
+        .style("opacity", 1.0)
+        .style("stroke", "red")
+        .style("stroke-width", d => d.weight);
+
+      d3.selectAll("line").attr("marker-end", "url(#Triangle)");
+
+      var nodeEnter = d3.select("svg g").selectAll("g.node")
+        .data(nodes, d => d.name)
+        .enter()
+        .append("g")
+        .attr("class", "node");
+
+      nodeEnter.append("circle")
+        .attr("r", 5)
+        .style("fill", d => typeScale(d.type));
+      nodeEnter.append("text")
+        .style("text-anchor", "middle")
+        .attr("y", 15)
+        .text(d => d.name);
+
+      // Register mouse event handler functions for each Node
+
+      d3.selectAll("g.node").on("click", function (e, d) {
+        nodeClicked(e, d);
+      });
+      d3.selectAll("g.node").on("dblclick", function (e, d) {
+        nodeDblClicked(e, d);
+      });
+      d3.selectAll("g.node").on("mouseover", function (e, d) {
+        nodeMouseOver(e, d);
+      });
+      d3.selectAll("g.node").on("mouseout", function (e, d) {
+        nodeMouseOut(e, d);
+      });
+
+      function forceTick() {
+        d3.selectAll("line.link")
+          .attr("x1", d => d.source.x)
+          .attr("x2", d => d.target.x)
+          .attr("y1", d => d.source.y)
+          .attr("y2", d => d.target.y);
+        d3.selectAll("g.node")
+          .attr("transform", d => `translate(${d.x},${d.y})`);
+      }
+
+      initZoom();
+    }
+  });
+</script>

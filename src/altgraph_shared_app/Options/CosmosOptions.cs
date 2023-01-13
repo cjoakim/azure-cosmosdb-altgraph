@@ -9,5 +9,6 @@
     public bool QueryMetricsEnabled { get; set; } = false;
     public int MaxDegreeOfParallelism { get; set; } = 1;
     public bool UseAzureADAuthentication { get; set; } = false;
+    public List<string> PreferredLocations { get; set; } = new List<string>();
   }
 }
