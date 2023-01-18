@@ -75,11 +75,8 @@ namespace altgraph_shared_app.Util
       Epoch = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
       using (Process proc = Process.GetCurrentProcess())
       {
-        // TotalMb = (double)Runtime.getRuntime().totalMemory() / Constants.MB;
-        TotalMb = GC.GetTotalMemory(false) / Constants.MB;
-        // FreeMb = (double)Runtime.getRuntime().freeMemory() / Constants.MB;
-        FreeMb = proc.PrivateMemorySize64 / Constants.MB;
-        // MaxMb = (double)Runtime.getRuntime().maxMemory() / Constants.MB;
+        TotalMb = proc.WorkingSet64 / Constants.MB;
+        FreeMb = (proc.WorkingSet64 - GC.GetTotalMemory(false)) / Constants.MB;
         MaxMb = proc.PeakWorkingSet64 / Constants.MB;
       }
       PctFree = FreeMb / TotalMb;

@@ -1,5 +1,4 @@
-﻿using System.Text.Json;
-using altgraph_shared_app.Options;
+﻿using altgraph_shared_app.Options;
 using altgraph_shared_app.Services.Cache;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -11,6 +10,7 @@ using altgraph_shared_app.Services.Graph.v2;
 using altgraph_shared_app.Services.Graph.v2.Structs;
 using altgraph_shared_app.Util;
 using altgraph_web_app.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace altgraph_web_app.Areas.ImdbGraph.Pages;
 
@@ -27,6 +27,8 @@ public class IndexModel : PageModel
   public string? ElapsedMs { get; set; } = string.Empty;
   [BindProperty(SupportsGet = true)]
   public string? EdgesStruct { get; set; } = string.Empty;
+  //[BindProperty(SupportsGet = true)]
+  //public GraphStats? GraphStats { get; set; } = null;
   //[BindProperty(SupportsGet = true)]
   //public string? VertexInfo { get; set; } = string.Empty;
   [BindProperty(SupportsGet = true)]
@@ -72,7 +74,7 @@ public class IndexModel : PageModel
       await _jGraph.RefreshAsync();
     }
 
-    GraphStatsStruct graphStatsStruct = new GraphStatsStruct();
+    GraphStats graphStatsStruct = new GraphStats();
     int[] counts = _jGraph.GetVertexAndEdgeCounts();
     graphStatsStruct.VertexCount = counts[0];
     graphStatsStruct.EdgeCount = counts[1];
@@ -141,6 +143,7 @@ public class IndexModel : PageModel
 
   public async Task<IActionResult> OnPostAsync()
   {
+    ViewData["Method"] = "POST";
     if (!ModelState.IsValid)
     {
       return Page();
