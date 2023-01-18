@@ -17,7 +17,7 @@ namespace altgraph_web_app.Services.Graph
     private int iterationCount = 0;
     private readonly ILogger _logger;
 
-    public D3CsvBuilder(altgraph_shared_app.Services.Graph.v1.Graph g, PathsOptions pathsOptions, ILogger logger)
+    public D3CsvBuilder(altgraph_shared_app.Services.Graph.v1.Graph g, NpmPathsOptions pathsOptions, ILogger logger)
     {
       Graph = g;
       _logger = logger;

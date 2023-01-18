@@ -3,8 +3,6 @@ using Microsoft.Azure.CosmosRepository.Attributes;
 
 namespace altgraph_shared_app.Models.Imdb
 {
-  [Container(Constants.IMDB_GRAPH_CONTAINER_NAME)]
-  [PartitionKeyPath(Constants.PARTITION_KEY)]
   public class Person : AbstractDocument
   {
     [JsonPropertyName("nconst")]
@@ -23,7 +21,7 @@ namespace altgraph_shared_app.Models.Imdb
     public List<string> PrimaryProfessionWords { get; set; } = new List<string>();
     [JsonPropertyName("knownForTitles")]
     public HashSet<string> Titles { get; set; } = new HashSet<string>();
-  [JsonPropertyName("titleCount")]
+    [JsonPropertyName("titleCount")]
     public string TitleCount { get; set; } = "0";
 
     public Person()

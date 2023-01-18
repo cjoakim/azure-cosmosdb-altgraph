@@ -279,7 +279,7 @@ namespace altgraph_shared_app.Services.Graph.v2
       // return kc.getScores();
     }
 
-    public async Task RefreshAsync()
+    public async Task RefreshAsync(bool directed = false)
     {
       long t1 = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
       IMutableGraph<string, Edge<string>>? newGraph = null;
@@ -287,8 +287,9 @@ namespace altgraph_shared_app.Services.Graph.v2
 
       try
       {
-        if (Domain.Equals(Constants.GRAPH_DOMAIN_IMDB, StringComparison.OrdinalIgnoreCase))
+        if (Domain.Equals(_imdbOptions.GraphDomain, StringComparison.OrdinalIgnoreCase))
         {
+          _graphBuilder.Directed = directed;
           newGraph = await _graphBuilder.BuildImdbGraphAsync();
           if (newGraph != null)
           {

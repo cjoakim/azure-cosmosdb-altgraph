@@ -1,8 +1,8 @@
 ﻿namespace altgraph_shared_app.Options
 {
-  public class PathsOptions
+  public class NpmPathsOptions
   {
-    public const string Paths = "Paths";
+    public const string NpmPaths = "NpmPaths";
     public string NodesCsvFile { get; set; } = string.Empty;
     public string EdgesCsvFile { get; set; } = string.Empty;
     public string LibraryCacheFileTemplate { get; set; } = string.Empty;

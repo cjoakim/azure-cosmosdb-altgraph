@@ -23,7 +23,7 @@ namespace altgraph_shared_app.Services.Graph.v2
     bool IsVertexPresent(string v);
     IDictionary<string, double>? PageRankForAll();
     double PageRankForVertex(string v);
-    Task RefreshAsync();
+    Task RefreshAsync(bool directed = false);
     List<JRank> SortedPageRanks(int maxCount);
     JStarNetwork? StarNetworkFor(string rootVertex, int degrees);
 

@@ -39,11 +39,11 @@ public class IndexModel : PageModel
   private readonly PersonRepository _personRepository;
   private readonly ICache _cache;
   private readonly CacheOptions _cacheOptions;
-  private readonly PathsOptions _pathsOptions;
+  private readonly NpmPathsOptions _pathsOptions;
   private readonly ImdbOptions _imdbOptions;
   private readonly IMemoryStats _memoryStats;
 
-  public IndexModel(ILogger<IndexModel> logger, IRepository<Movie> movieRepository, IRepository<Person> personRepository, ICache cache, IOptions<CacheOptions> cacheOptions, IOptions<PathsOptions> pathsOptions, IOptions<ImdbOptions> imdbOptions, IJGraph jgraph, IMemoryStats memoryStats)
+  public IndexModel(ILogger<IndexModel> logger, IRepository<Movie> movieRepository, IRepository<Person> personRepository, ICache cache, IOptions<CacheOptions> cacheOptions, IOptions<NpmPathsOptions> pathsOptions, IOptions<ImdbOptions> imdbOptions, IJGraph jgraph, IMemoryStats memoryStats)
   {
     _logger = logger;
     _movieRepository = new MovieRepository(movieRepository);
@@ -158,10 +158,8 @@ public class IndexModel : PageModel
     _logger.LogWarning($"formObject, getValue2:           {Value2}");
     _logger.LogWarning($"formObject, getSessionId (form): {HttpContext.Session.Id}");
 
-    if (_jGraph.Graph == null)
-    {
-      await _jGraph.RefreshAsync();
-    }
+    bool directed = false;
+
 
     try
     {
@@ -174,6 +172,7 @@ public class IndexModel : PageModel
           {
             Value1 = "100";
           }
+          directed = true;
           break;
         case FormFunctionEnum.Network:
           if (!IsValue2AnInteger())
@@ -190,6 +189,11 @@ public class IndexModel : PageModel
     catch (Exception ex)
     {
       _logger.LogError(ex, ex.Message);
+    }
+
+    if (_jGraph.Graph == null)
+    {
+      await _jGraph.RefreshAsync(directed);
     }
 
     DateTime end = DateTime.Now;
