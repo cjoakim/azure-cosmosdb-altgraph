@@ -150,10 +150,10 @@ namespace altgraph_shared_app.Services.Graph.v2
       int pageSize = 1000;
       string? continuationToken = null;
 
-      _logger.LogWarning("uri:    " + Uri);
-      _logger.LogWarning("key:    " + Key);
-      _logger.LogWarning("dbName: " + DbName);
-      _logger.LogWarning("sql:    " + getDataSql.QueryText);
+      _logger.LogWarning($"uri:    {Uri}");
+      _logger.LogWarning($"key:    {Key}");
+      _logger.LogWarning($"dbName: {DbName}");
+      _logger.LogWarning($"sql:    {getDataSql.QueryText}");
 
       long startMs = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
       JsonSerializerOptions jsonSerializerOptions = new JsonSerializerOptions()
@@ -162,8 +162,7 @@ namespace altgraph_shared_app.Services.Graph.v2
       };
       CosmosSystemTextJsonSerializer cosmosSystemTextJsonSerializer = new CosmosSystemTextJsonSerializer(jsonSerializerOptions);
       client = new CosmosClientBuilder(
-              connectionString: Uri
-
+        connectionString: Uri
       )
               .WithApplicationPreferredRegions(_cosmosOptions.PreferredLocations)
               .WithConsistencyLevel(ConsistencyLevel.Session)
@@ -174,7 +173,7 @@ namespace altgraph_shared_app.Services.Graph.v2
       database = client.GetDatabase(DbName);
       _logger.LogWarning($"client connected to database Id: {database.Id}");
 
-      container = database.GetContainer(Constants.IMDB_SEED_CONTAINER_NAME);
+      container = database.GetContainer(_imdbOptions.SeedContainerName);
       _logger.LogWarning($"container: {container.Id}");
 
       long dbConnectMs = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();

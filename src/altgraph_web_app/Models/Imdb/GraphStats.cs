@@ -1,6 +1,6 @@
 namespace altgraph_web_app.Models
 {
-  public class GraphStatsStruct
+  public class GraphStats
   {
     public string Date { get; set; } = DateTime.Now.ToString();
     public int VertexCount { get; set; }

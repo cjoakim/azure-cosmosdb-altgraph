@@ -28,10 +28,13 @@ await Host.CreateDefaultBuilder(args)
 })
 .ConfigureServices((hostContext, services) =>
 {
-  services.Configure<CacheOptions>(hostContext.Configuration.GetSection(CacheOptions.Cache));
-  services.Configure<CosmosOptions>(hostContext.Configuration.GetSection(CosmosOptions.Cosmos));
-  services.Configure<PathsOptions>(hostContext.Configuration.GetSection(PathsOptions.Paths));
-  services.Configure<RedisOptions>(hostContext.Configuration.GetSection(RedisOptions.Redis));
+  services.Configure<CacheOptions>(builder.Configuration.GetSection(CacheOptions.Cache));
+  services.Configure<CosmosOptions>(builder.Configuration.GetSection(CosmosOptions.Cosmos));
+  services.Configure<NpmPathsOptions>(builder.Configuration.GetSection(NpmPathsOptions.NpmPaths));
+  services.Configure<ImdbPathsOptions>(builder.Configuration.GetSection(ImdbPathsOptions.ImdbPaths));
+  services.Configure<RedisOptions>(builder.Configuration.GetSection(RedisOptions.Redis));
+  services.Configure<ImdbOptions>(builder.Configuration.GetSection(ImdbOptions.Imdb));
+  services.Configure<NpmOptions>(builder.Configuration.GetSection(NpmOptions.Npm));
 
   services.AddCosmosRepository(options =>
 {

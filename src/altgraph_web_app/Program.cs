@@ -10,9 +10,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.Configure<CacheOptions>(builder.Configuration.GetSection(CacheOptions.Cache));
 builder.Services.Configure<CosmosOptions>(builder.Configuration.GetSection(CosmosOptions.Cosmos));
-builder.Services.Configure<PathsOptions>(builder.Configuration.GetSection(PathsOptions.Paths));
+builder.Services.Configure<NpmPathsOptions>(builder.Configuration.GetSection(NpmPathsOptions.NpmPaths));
+builder.Services.Configure<ImdbPathsOptions>(builder.Configuration.GetSection(ImdbPathsOptions.ImdbPaths));
 builder.Services.Configure<RedisOptions>(builder.Configuration.GetSection(RedisOptions.Redis));
 builder.Services.Configure<ImdbOptions>(builder.Configuration.GetSection(ImdbOptions.Imdb));
+builder.Services.Configure<NpmOptions>(builder.Configuration.GetSection(NpmOptions.Npm));
 
 RedisOptions? redisOptions = builder.Configuration.GetSection(RedisOptions.Redis).Get<RedisOptions>();
 if (redisOptions != null)
@@ -26,7 +28,9 @@ else
 builder.Services.AddCosmosRepository(options =>
 {
   CosmosOptions? cosmosOptions = builder.Configuration.GetSection(CosmosOptions.Cosmos).Get<CosmosOptions>();
-  if (cosmosOptions != null)
+  NpmOptions? npmOptions = builder.Configuration.GetSection(NpmOptions.Npm).Get<NpmOptions>();
+  ImdbOptions? imdbOptions = builder.Configuration.GetSection(ImdbOptions.Imdb).Get<ImdbOptions>();
+  if (cosmosOptions != null && npmOptions != null && imdbOptions != null)
   {
     options.CosmosConnectionString = cosmosOptions.ConnectionString;
     options.DatabaseId = cosmosOptions.DatabaseId;
@@ -34,26 +38,38 @@ builder.Services.AddCosmosRepository(options =>
     options.ContainerBuilder.Configure<Author>(containerOptions =>
     {
       containerOptions.WithServerlessThroughput();
+      containerOptions.WithContainer(npmOptions.ContainerName);
+      containerOptions.WithPartitionKey(npmOptions.PartitionKey);
     });
     options.ContainerBuilder.Configure<Library>(containerOptions =>
     {
       containerOptions.WithServerlessThroughput();
+      containerOptions.WithContainer(npmOptions.ContainerName);
+      containerOptions.WithPartitionKey(npmOptions.PartitionKey);
     });
     options.ContainerBuilder.Configure<Maintainer>(containerOptions =>
     {
       containerOptions.WithServerlessThroughput();
+      containerOptions.WithContainer(npmOptions.ContainerName);
+      containerOptions.WithPartitionKey(npmOptions.PartitionKey);
     });
     options.ContainerBuilder.Configure<Triple>(containerOptions =>
     {
       containerOptions.WithServerlessThroughput();
+      containerOptions.WithContainer(npmOptions.ContainerName);
+      containerOptions.WithPartitionKey(npmOptions.PartitionKey);
     });
     options.ContainerBuilder.Configure<Movie>(containerOptions =>
     {
       containerOptions.WithServerlessThroughput();
+      containerOptions.WithContainer(imdbOptions.GraphContainerName);
+      containerOptions.WithPartitionKey(imdbOptions.PartitionKey);
     });
     options.ContainerBuilder.Configure<Person>(containerOptions =>
     {
       containerOptions.WithServerlessThroughput();
+      containerOptions.WithContainer(imdbOptions.GraphContainerName);
+      containerOptions.WithPartitionKey(imdbOptions.PartitionKey);
     });
   }
   else

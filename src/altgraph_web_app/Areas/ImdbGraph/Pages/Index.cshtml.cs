@@ -1,5 +1,4 @@
-﻿using System.Text.Json;
-using altgraph_shared_app.Options;
+﻿using altgraph_shared_app.Options;
 using altgraph_shared_app.Services.Cache;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -11,6 +10,7 @@ using altgraph_shared_app.Services.Graph.v2;
 using altgraph_shared_app.Services.Graph.v2.Structs;
 using altgraph_shared_app.Util;
 using altgraph_web_app.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace altgraph_web_app.Areas.ImdbGraph.Pages;
 
@@ -28,6 +28,8 @@ public class IndexModel : PageModel
   [BindProperty(SupportsGet = true)]
   public string? EdgesStruct { get; set; } = string.Empty;
   //[BindProperty(SupportsGet = true)]
+  //public GraphStats? GraphStats { get; set; } = null;
+  //[BindProperty(SupportsGet = true)]
   //public string? VertexInfo { get; set; } = string.Empty;
   [BindProperty(SupportsGet = true)]
   public long? GraphLoadingMaxProgress { get; set; } = 0;
@@ -37,11 +39,11 @@ public class IndexModel : PageModel
   private readonly PersonRepository _personRepository;
   private readonly ICache _cache;
   private readonly CacheOptions _cacheOptions;
-  private readonly PathsOptions _pathsOptions;
+  private readonly NpmPathsOptions _pathsOptions;
   private readonly ImdbOptions _imdbOptions;
   private readonly IMemoryStats _memoryStats;
 
-  public IndexModel(ILogger<IndexModel> logger, IRepository<Movie> movieRepository, IRepository<Person> personRepository, ICache cache, IOptions<CacheOptions> cacheOptions, IOptions<PathsOptions> pathsOptions, IOptions<ImdbOptions> imdbOptions, IJGraph jgraph, IMemoryStats memoryStats)
+  public IndexModel(ILogger<IndexModel> logger, IRepository<Movie> movieRepository, IRepository<Person> personRepository, ICache cache, IOptions<CacheOptions> cacheOptions, IOptions<NpmPathsOptions> pathsOptions, IOptions<ImdbOptions> imdbOptions, IJGraph jgraph, IMemoryStats memoryStats)
   {
     _logger = logger;
     _movieRepository = new MovieRepository(movieRepository);
@@ -72,7 +74,7 @@ public class IndexModel : PageModel
       await _jGraph.RefreshAsync();
     }
 
-    GraphStatsStruct graphStatsStruct = new GraphStatsStruct();
+    GraphStats graphStatsStruct = new GraphStats();
     int[] counts = _jGraph.GetVertexAndEdgeCounts();
     graphStatsStruct.VertexCount = counts[0];
     graphStatsStruct.EdgeCount = counts[1];
@@ -141,6 +143,7 @@ public class IndexModel : PageModel
 
   public async Task<IActionResult> OnPostAsync()
   {
+    ViewData["Method"] = "POST";
     if (!ModelState.IsValid)
     {
       return Page();
@@ -155,10 +158,8 @@ public class IndexModel : PageModel
     _logger.LogWarning($"formObject, getValue2:           {Value2}");
     _logger.LogWarning($"formObject, getSessionId (form): {HttpContext.Session.Id}");
 
-    if (_jGraph.Graph == null)
-    {
-      await _jGraph.RefreshAsync();
-    }
+    bool directed = false;
+
 
     try
     {
@@ -171,6 +172,7 @@ public class IndexModel : PageModel
           {
             Value1 = "100";
           }
+          directed = true;
           break;
         case FormFunctionEnum.Network:
           if (!IsValue2AnInteger())
@@ -187,6 +189,11 @@ public class IndexModel : PageModel
     catch (Exception ex)
     {
       _logger.LogError(ex, ex.Message);
+    }
+
+    if (_jGraph.Graph == null)
+    {
+      await _jGraph.RefreshAsync(directed);
     }
 
     DateTime end = DateTime.Now;

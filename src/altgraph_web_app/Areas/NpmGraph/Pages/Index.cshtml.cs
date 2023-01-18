@@ -30,9 +30,10 @@ public class IndexModel : PageModel
   private readonly TripleRepository _tripleRepository;
   private readonly ICache _cache;
   private readonly CacheOptions _cacheOptions;
-  private readonly PathsOptions _pathsOptions;
+  private readonly NpmPathsOptions _pathsOptions;
+  private readonly NpmOptions _npmOptions;
 
-  public IndexModel(ILogger<IndexModel> logger, IRepository<Library> libraryRepository, IRepository<Author> authorRepository, IRepository<Triple> tripleRepository, ICache cache, IOptions<CacheOptions> cacheOptions, IOptions<PathsOptions> pathsOptions)
+  public IndexModel(ILogger<IndexModel> logger, IRepository<Library> libraryRepository, IRepository<Author> authorRepository, IRepository<Triple> tripleRepository, ICache cache, IOptions<CacheOptions> cacheOptions, IOptions<NpmPathsOptions> pathsOptions, IOptions<NpmOptions> npmOptions)
   {
     _logger = logger;
     _libraryRepository = new LibraryRepository(libraryRepository);
@@ -42,6 +43,7 @@ public class IndexModel : PageModel
     _logger = logger;
     _cacheOptions = cacheOptions.Value;
     _pathsOptions = pathsOptions.Value;
+    _npmOptions = npmOptions.Value;
   }
 
   public void OnGet()
@@ -152,7 +154,7 @@ public class IndexModel : PageModel
     tripleQueryStruct.Sql = "dynamic";
     tripleQueryStruct.Start();
 
-    string pk = "triple|" + Constants.DEFAULT_TENANT;
+    string pk = "triple|" + _npmOptions.DefaultTenant;
     IEnumerable<Triple> triples = _tripleRepository.GetByPkLobAndSubjectsAsync(pk, lob, subject, subject).Result;
     foreach (Triple triple in triples)
     {

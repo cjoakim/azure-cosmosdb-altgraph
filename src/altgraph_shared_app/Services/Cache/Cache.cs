@@ -17,10 +17,10 @@ namespace altgraph_shared_app.Services.Cache
     private IConnectionMultiplexer _redis;
     private readonly IDatabase _db;
     private readonly CacheOptions _cacheOptions;
-    private readonly PathsOptions _pathsOptions;
+    private readonly NpmPathsOptions _pathsOptions;
     private readonly ILogger<Cache> _logger;
 
-    public Cache(IConnectionMultiplexer redis, IOptions<CacheOptions> cacheOptions, IOptions<PathsOptions> pathsOptions, ILogger<Cache> logger)
+    public Cache(IConnectionMultiplexer redis, IOptions<CacheOptions> cacheOptions, IOptions<NpmPathsOptions> pathsOptions, ILogger<Cache> logger)
     {
       _redis = redis;
       _db = _redis.GetDatabase();

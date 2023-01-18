@@ -29,7 +29,7 @@
       <span>&nbsp;&nbsp;</span>
     </form>
   </div>
-  <div>
+  <div class="d-flex justify-content-center">
     <label id="graphLoadingProgressLabel" for="graphLoadingProgress" style="display: none">Loading Progress:</label>
     <progress id="graphLoadingProgress" style="display: none"></progress>
   </div>
@@ -43,7 +43,10 @@
         <partial name="_ShortestPath" model="@Model" />
         break;
       case FormFunctionEnum.GraphStats:
-        <partial name="_Stats" model="@Model" />
+        if (ViewData["Method"]?.ToString() == "POST")
+        {
+          <partial name="_Stats" model="@Model" />
+        }
         break;
       case FormFunctionEnum.PageRank:
         <partial name="_PageRank" model="@Model" />
@@ -53,43 +56,40 @@
 </div>
 <script>
   $(document).ready(function () {
-    var intervalId;
+    @* var intervalId;
 
-    $('#searchForm').submit(startGraphLoadingProgress);
 
-    function startGraphLoadingProgress() {
-      $('#graphLoadingProgressLabel').show();
-      $('#graphLoadingProgress').max = "@Model.GraphLoadingMaxProgress";
-      $('#graphLoadingProgress').show();
-      intervalId = setInterval(
-        function () {
-          var myHeaders = new Headers();
-          myHeaders.append('pragma', 'no-cache');
-          myHeaders.append('cache-control', 'no-cache');
+    function updateGraphLoadingProgress() {
+      var myHeaders = new Headers();
+      myHeaders.append('pragma', 'no-cache');
+      myHeaders.append('cache-control', 'no-cache');
 
-          var myInit = {
-            method: 'GET',
-            headers: myHeaders,
-          };
-          fetch("?handler=Progress", myInit)
-            .then((response) => {
-              return response.json();
-            })
-            .then((progress) => {
-              $("#graphLoadingProgress").value = progress;
-              if (progress == "@Model.GraphLoadingMaxProgress") {
-                stopGraphLoadingProgress();
-              }
-            }
-            );
-        },
-        5
-      );
+      var myInit = {
+        method: 'GET',
+        headers: myHeaders,
+      };
+      fetch("?handler=Progress", myInit)
+        .then((response) => {
+          return response.json();
+        })
+        .then((progress) => {
+          //$('#graphLoadingProgress').max = "@Model.GraphLoadingMaxProgress";
+          $("#graphLoadingProgress").value = progress;
+          if (progress == "@Model.GraphLoadingMaxProgress") {
+            stopGraphLoadingProgress();
+          }
+        }
+        );
     }
     function stopGraphLoadingProgress() {
       $('#graphLoadingProgressLabel').hide();
       $('#graphLoadingProgress').hide();
       clearInterval(intervalId);
-    }
-  })
+    } *@
+    $('#searchForm').on('submit', function () {
+      $('#graphLoadingProgressLabel').show();
+      $('#graphLoadingProgress').show();
+      intervalId = setInterval(updateGraphLoadingProgress, 5000);
+    });
+  });
 </script>
