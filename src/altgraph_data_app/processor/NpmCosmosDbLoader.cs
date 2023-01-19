@@ -17,7 +17,7 @@ namespace altgraph_data_app.processor
     private readonly LibraryRepository _libraryRepository;
     private readonly MaintainerRepository _maintainerRepository;
     private readonly TripleRepository _tripleRepository;
-    private readonly PathsOptions _pathsOptions;
+    private readonly NpmPathsOptions _npmPathsOptions;
 
     public NpmCosmosDbLoader(
         ILogger<NpmCosmosDbLoader> logger,
@@ -25,14 +25,14 @@ namespace altgraph_data_app.processor
         IRepository<Library> libraryRepository,
         IRepository<Maintainer> maintainerRepository,
         IRepository<Triple> tripleRepository,
-        IOptions<PathsOptions> pathsOptions)
+        IOptions<NpmPathsOptions> npmPathsOptions)
     {
       _logger = logger;
       _authorRepository = new AuthorRepository(authorRepository);
       _libraryRepository = new LibraryRepository(libraryRepository);
       _maintainerRepository = new MaintainerRepository(maintainerRepository);
       _tripleRepository = new TripleRepository(tripleRepository);
-      _pathsOptions = pathsOptions.Value;
+      _npmPathsOptions = npmPathsOptions.Value;
     }
 
     public async Task ProcessAsync()
@@ -41,10 +41,10 @@ namespace altgraph_data_app.processor
 
       Task[] tasks = new Task[]
       {
-        Load<Author>(_pathsOptions.AuthorsFile, _authorRepository.Authors, "Authors"),
-        Load<Maintainer>(_pathsOptions.MaintainersFile, _maintainerRepository.Maintainers, "Maintainers"),
-        Load<Library>(_pathsOptions.LibrariesFile, _libraryRepository.Libraries, "Libraries"),
-        Load<Triple>(_pathsOptions.TriplesFile, _tripleRepository.Triples, "Triples")
+        Load<Author>(_npmPathsOptions.AuthorsFile, _authorRepository.Authors, "Authors"),
+        Load<Maintainer>(_npmPathsOptions.MaintainersFile, _maintainerRepository.Maintainers, "Maintainers"),
+        Load<Library>(_npmPathsOptions.LibrariesFile, _libraryRepository.Libraries, "Libraries"),
+        Load<Triple>(_npmPathsOptions.TriplesFile, _tripleRepository.Triples, "Triples")
       };
 
       await Task.WhenAll(tasks);
