@@ -3,16 +3,16 @@
   public class ImdbPathsOptions
   {
     public const string ImdbPaths = "ImdbPaths";
-    public string ImdbRawNameBasicsFile { get; set; } = string.Empty;
-    public string ImdbRawTitleBasicsFile { get; set; } = string.Empty;
-    public string ImdbRawTitlePrincipalsFile { get; set; } = string.Empty;
-    public string ImdbMoviesDocumentsFile { get; set; } = string.Empty;
-    public string ImdbMoviesSeedFile { get; set; } = string.Empty;
-    public string ImdbMoviesMapFile { get; set; } = string.Empty;
-    public string ImdbPeopleDocumentsFile { get; set; } = string.Empty;
-    public string ImdbPeopleMapFile { get; set; } = string.Empty;
-    public string ImdbMoviesOfInterestFile { get; set; } = string.Empty;
-    public string ImdbPeopleOfInterestFile { get; set; } = string.Empty;
-    public string ImdbSmallTriplesDocumentsFile { get; set; } = string.Empty;
+    public string RawNameBasicsFile { get; set; } = string.Empty;
+    public string RawTitleBasicsFile { get; set; } = string.Empty;
+    public string RawTitlePrincipalsFile { get; set; } = string.Empty;
+    public string MoviesDocumentsFile { get; set; } = string.Empty;
+    public string MoviesSeedFile { get; set; } = string.Empty;
+    public string MoviesMapFile { get; set; } = string.Empty;
+    public string PeopleDocumentsFile { get; set; } = string.Empty;
+    public string PeopleMapFile { get; set; } = string.Empty;
+    public string MoviesOfInterestFile { get; set; } = string.Empty;
+    public string PeopleOfInterestFile { get; set; } = string.Empty;
+    public string SmallTriplesDocumentsFile { get; set; } = string.Empty;
   }
 }

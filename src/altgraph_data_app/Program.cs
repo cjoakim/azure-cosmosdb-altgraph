@@ -7,13 +7,11 @@ using altgraph_shared_app.Models;
 using altgraph_shared_app.Options;
 using altgraph_shared_app.Services.Cache;
 using altgraph_shared_app.Services.Graph.v2;
-using altgraph_shared_app.Services.Repositories;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Cosmos.Fluent;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using StackExchange.Redis;
 
 string? directoryName = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
@@ -82,6 +80,7 @@ await Host.CreateDefaultBuilder(args)
   });
   services.AddSingleton<Cache>();
   services.AddSingleton<NpmCosmosDbLoader>();
+  services.AddSingleton<SdkBulkLoaderProcessor>();
   services.AddHostedService<ConsoleHostedService>();
 })
             .RunConsoleAsync();
