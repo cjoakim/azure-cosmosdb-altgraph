@@ -54,7 +54,7 @@ namespace altgraph_shared_app.Services.Graph.v2
 
     public IEnumerable<Edge<string>>? GetShortestPath(string v1, string v2)
     {
-      _logger.LogWarning($"getShortestPath, v1: {v1} to v2: {v2}");
+      _logger.LogDebug($"GetShortestPath, v1: {v1} to v2: {v2}");
       long start = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
       if (!IsVertexPresent(v1))
       {
@@ -87,10 +87,10 @@ namespace altgraph_shared_app.Services.Graph.v2
         }
         else
         {
-          _logger.LogWarning($"elapsed milliseconds: {elapsed}");
-          _logger.LogWarning($"path Count:       {path.Count()}");
-          _logger.LogWarning($"path StartVertex:  {path.First()}");
-          _logger.LogWarning($"path EndVertex:    {path.Last()}");
+          _logger.LogDebug($"elapsed milliseconds: {elapsed}");
+          _logger.LogDebug($"path Count:       {path.Count()}");
+          _logger.LogDebug($"path StartVertex:  {path.First()}");
+          _logger.LogDebug($"path EndVertex:    {path.Last()}");
         }
       }
       return path;
@@ -167,7 +167,7 @@ namespace altgraph_shared_app.Services.Graph.v2
           List<string> unvisitedList = star.GetUnvisitedList();
           star.ResetUnvisitedSet();
 
-          _logger.LogWarning($"networkFor, unvisitedList size: {unvisitedList.Count} degree: {d}");
+          _logger.LogDebug($"networkFor, unvisitedList size: {unvisitedList.Count} degree: {d}");
           for (int i = 0; i < unvisitedList.Count; i++)
           {
             string v = unvisitedList[i];
@@ -283,7 +283,7 @@ namespace altgraph_shared_app.Services.Graph.v2
     {
       long t1 = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
       IMutableGraph<string, Edge<string>>? newGraph = null;
-      _logger.LogWarning($"JGraph refresh(), domain: {Domain}");
+      _logger.LogDebug($"JGraph refresh(), domain: {Domain}");
 
       try
       {
@@ -295,7 +295,7 @@ namespace altgraph_shared_app.Services.Graph.v2
           {
             RefreshMs = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() - t1;
             RefreshDate = DateTime.Now;
-            _logger.LogWarning($"JGraph refresh() - replacing Graph with newGraph, elapsed ms: {RefreshMs}");
+            _logger.LogDebug($"JGraph refresh() - replacing Graph with newGraph, elapsed ms: {RefreshMs}");
             Graph = newGraph;
           }
         }

@@ -34,8 +34,8 @@ namespace altgraph_shared_app.Services.Graph.v2
 
     public async Task<IMutableGraph<string, Edge<string>>?> BuildImdbGraphAsync()
     {
-      _logger.LogWarning($"buildImdbGraph, source:   {Source}");
-      _logger.LogWarning($"buildImdbGraph, directed: {Directed}");
+      _logger.LogDebug($"buildImdbGraph, source:   {Source}");
+      _logger.LogDebug($"buildImdbGraph, directed: {Directed}");
 
       try
       {
@@ -46,13 +46,13 @@ namespace altgraph_shared_app.Services.Graph.v2
           case Constants.IMDB_GRAPH_SOURCE_COSMOS:
             return await LoadImdbGraphFromCosmosAsync(Directed);
           default:
-            _logger.LogWarning($"undefined graph source: {Source}");
+            _logger.LogError($"undefined graph source: {Source}");
             return null;
         }
       }
       catch (Exception ex)
       {
-        _logger.LogError(ex, $"buildImdbGraph, exception: {ex.Message}");
+        _logger.LogError(ex, $"BuildImdbGraph, exception: {ex.Message}");
         throw;
       }
     }
@@ -150,10 +150,10 @@ namespace altgraph_shared_app.Services.Graph.v2
       int pageSize = 1000;
       string? continuationToken = null;
 
-      _logger.LogWarning($"uri:    {Uri}");
-      _logger.LogWarning($"key:    {Key}");
-      _logger.LogWarning($"dbName: {DbName}");
-      _logger.LogWarning($"sql:    {getDataSql.QueryText}");
+      _logger.LogDebug($"uri:    {Uri}");
+      _logger.LogDebug($"key:    {Key}");
+      _logger.LogDebug($"dbName: {DbName}");
+      _logger.LogDebug($"sql:    {getDataSql.QueryText}");
 
       long startMs = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
       JsonSerializerOptions jsonSerializerOptions = new JsonSerializerOptions()
@@ -171,10 +171,10 @@ namespace altgraph_shared_app.Services.Graph.v2
               .Build();
 
       database = client.GetDatabase(DbName);
-      _logger.LogWarning($"client connected to database Id: {database.Id}");
+      _logger.LogDebug($"client connected to database Id: {database.Id}");
 
       container = database.GetContainer(_imdbOptions.SeedContainerName);
-      _logger.LogWarning($"container: {container.Id}");
+      _logger.LogDebug($"container: {container.Id}");
 
       long dbConnectMs = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
 
@@ -189,7 +189,7 @@ namespace altgraph_shared_app.Services.Graph.v2
         var response = await queryIterator.ReadNextAsync();
         long count = response.Resource.FirstOrDefault();
 
-        _logger.LogWarning($"count: {count}");
+        _logger.LogDebug($"count: {count}");
 
         OnRaiseJGraphBuilderStartedLoadingProgressEvent(new JGraphBuilderStartedLoadingProgressEventArgs(count));
       }
@@ -216,7 +216,7 @@ namespace altgraph_shared_app.Services.Graph.v2
                 documentsRead++;
                 if ((documentsRead % 10000) == 0)
                 {
-                  _logger.LogWarning($"{documentsRead} -> {JsonSerializer.Serialize(doc)}");
+                  _logger.LogDebug($"{documentsRead} -> {JsonSerializer.Serialize(doc)}");
                 }
                 string tconst = doc.TargetId;
                 ((IMutableVertexSet<string>)graph).AddVertex(tconst);
@@ -267,15 +267,15 @@ namespace altgraph_shared_app.Services.Graph.v2
       double ruPerSec = (double)requestCharge / dbReadingSeconds;
 
       //CheckMemory(true, true, "loadImdbGraphFromCosmos - after building graph");
-      _logger.LogWarning($"loadImdbGraphFromCosmos - documentsRead:      {documentsRead}");
-      _logger.LogWarning($"loadImdbGraphFromCosmos - movieNodesCreated:  {movieNodesCreated}");
-      _logger.LogWarning($"loadImdbGraphFromCosmos - personNodesCreated: {personNodesCreated}");
-      _logger.LogWarning($"loadImdbGraphFromCosmos - edgesCreated:       {edgesCreated}");
-      _logger.LogWarning($"loadImdbGraphFromCosmos - requestCharge:      {requestCharge}");
-      _logger.LogWarning($"loadImdbGraphFromCosmos - ru per second:      {ruPerSec}");
-      _logger.LogWarning($"loadImdbGraphFromCosmos - db connect ms:      {dbConnectElapsed}");
-      _logger.LogWarning($"loadImdbGraphFromCosmos - db read ms:         {dbReadingElapsed}");
-      _logger.LogWarning($"loadImdbGraphFromCosmos - total elapsed ms:   {totalElapsed}");
+      _logger.LogDebug($"loadImdbGraphFromCosmos - documentsRead:      {documentsRead}");
+      _logger.LogDebug($"loadImdbGraphFromCosmos - movieNodesCreated:  {movieNodesCreated}");
+      _logger.LogDebug($"loadImdbGraphFromCosmos - personNodesCreated: {personNodesCreated}");
+      _logger.LogDebug($"loadImdbGraphFromCosmos - edgesCreated:       {edgesCreated}");
+      _logger.LogDebug($"loadImdbGraphFromCosmos - requestCharge:      {requestCharge}");
+      _logger.LogDebug($"loadImdbGraphFromCosmos - ru per second:      {ruPerSec}");
+      _logger.LogDebug($"loadImdbGraphFromCosmos - db connect ms:      {dbConnectElapsed}");
+      _logger.LogDebug($"loadImdbGraphFromCosmos - db read ms:         {dbReadingElapsed}");
+      _logger.LogDebug($"loadImdbGraphFromCosmos - total elapsed ms:   {totalElapsed}");
 
       OnRaiseJGraphBuilderFinishedLoadingProgressEvent(new JGraphBuilderFinishedLoadingProgressEventArgs(documentsRead));
 

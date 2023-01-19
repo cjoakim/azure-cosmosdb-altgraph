@@ -8,16 +8,18 @@ namespace altgraph_data_app
   {
     private readonly ILogger _logger;
     private readonly IHostApplicationLifetime _appLifetime;
-    private readonly NpmCosmosDbLoader _cosmosDbLoader;
+    private readonly NpmCosmosDbLoader _npmCosmosDbLoader;
+    private readonly SdkBulkLoaderProcessor _sdkBulkLoaderProcessor;
     private int? _exitCode;
 
     public ConsoleHostedService(
         ILogger<ConsoleHostedService> logger,
-        IHostApplicationLifetime appLifetime, NpmCosmosDbLoader cosmosDbLoader)
+        IHostApplicationLifetime appLifetime, NpmCosmosDbLoader npmCosmosDbLoader, SdkBulkLoaderProcessor sdkBulkLoaderProcessor)
     {
       _logger = logger;
       _appLifetime = appLifetime;
-      _cosmosDbLoader = cosmosDbLoader;
+      _npmCosmosDbLoader = npmCosmosDbLoader;
+      _sdkBulkLoaderProcessor = sdkBulkLoaderProcessor;
     }
 
     public Task StartAsync(CancellationToken cancellationToken)
@@ -34,8 +36,14 @@ namespace altgraph_data_app
 
               switch (processType)
               {
-                case "load_cosmos":
-                  await _cosmosDbLoader.ProcessAsync();
+                case "npm_load_cosmos":
+                  await _npmCosmosDbLoader.ProcessAsync();
+                  break;
+                case "imdb_bulk_load_movies":
+                case "imdb_bulk_load_people":
+                case "imdb_bulk_load_small_triples":
+                case "imdb_bulk_load_movies_seed":
+                  await _sdkBulkLoaderProcessor.ProcessAsync();
                   break;
                 default:
                   throw new NotImplementedException($"Process type {processType} not implemented");

@@ -60,13 +60,13 @@ public class IndexModel : PageModel
     _memoryStats = memoryStats;
 
     int[] counts = _jGraph.GetVertexAndEdgeCounts();
-    _logger.LogWarning($"jgraph vertices: {counts[0]}");
-    _logger.LogWarning($"jgraph edges:    {counts[1]}");
+    _logger.LogDebug($"jgraph vertices: {counts[0]}");
+    _logger.LogDebug($"jgraph edges:    {counts[1]}");
   }
 
   public async Task<JsonResult> OnGetGraphStatsAsync(string flag)
   {
-    _logger.LogWarning($"OnGetGraphStats");
+    _logger.LogDebug($"OnGetGraphStats");
     long startMs = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
 
     if (flag.Equals("reload", StringComparison.OrdinalIgnoreCase))
@@ -93,7 +93,7 @@ public class IndexModel : PageModel
 
   public async Task<JsonResult?> OnGetImdbVertexAsync(string imdbConst)
   {
-    _logger.LogWarning($"OnGetImdbVertexAsync, imdbConst: {imdbConst}");
+    _logger.LogDebug($"OnGetImdbVertexAsync, imdbConst: {imdbConst}");
 
     try
     {
@@ -153,13 +153,12 @@ public class IndexModel : PageModel
 
     TranslateShortcutValues();
 
-    _logger.LogWarning($"formObject, getFormFunction:     {FormFunction}");
-    _logger.LogWarning($"formObject, getValue1:           {Value1}");
-    _logger.LogWarning($"formObject, getValue2:           {Value2}");
-    _logger.LogWarning($"formObject, getSessionId (form): {HttpContext.Session.Id}");
+    _logger.LogDebug($"formObject, getFormFunction:     {FormFunction}");
+    _logger.LogDebug($"formObject, getValue1:           {Value1}");
+    _logger.LogDebug($"formObject, getValue2:           {Value2}");
+    _logger.LogDebug($"formObject, getSessionId (form): {HttpContext.Session.Id}");
 
     bool directed = false;
-
 
     try
     {
@@ -247,7 +246,7 @@ public class IndexModel : PageModel
 
   public JsonResult? OnGetProgress()
   {
-    _logger.LogWarning($"OnGetProgress, getSessionId (form): {HttpContext.Session.Id}");
+    _logger.LogDebug($"OnGetProgress, getSessionId (form): {HttpContext.Session.Id}");
 
     return new JsonResult(graphLoadingProgress);
   }
