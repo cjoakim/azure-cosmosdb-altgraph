@@ -13,5 +13,8 @@
     public string MaintainersFile { get; set; } = string.Empty;
     public string TriplesFile { get; set; } = string.Empty;
     public string TripleQueryStructFile { get; set; } = string.Empty;
+    public string LibraryGraphJsonFile { get; set; } = string.Empty;
+    public string AuthorGraphJsonFile { get; set; } = string.Empty;
+    public string D3CsvBuilderFile { get; set; } = string.Empty;
   }
 }

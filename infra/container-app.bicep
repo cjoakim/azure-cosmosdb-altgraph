@@ -102,7 +102,7 @@ resource containerApp 'Microsoft.App/containerApps@2022-06-01-preview' = {
       initContainers: [
         {
           args: [
-            'load_cosmos'
+            'npm_load_cosmos'
           ]
           name: containerAppDataAppObject.appId
           image: containerAppDataAppObject.image
