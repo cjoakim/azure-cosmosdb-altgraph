@@ -1,5 +1,7 @@
+# README for Java Implementations
+
 <p align="center">
-    <img src="docs/img/AltGraph-Key.png" width="20%">
+    <img src="../docs/img/AltGraph-Key.png" width="20%">
 </p>
 
 **AltGraph is a set of reference applications that demonstrate how to build “graph applications” with Cosmos DB for NoSQL and leverage its’ features to achieve a performant, integrated, and low-cost solutions.  It currently demonstrates two different graph use-cases, with two different implementations.**
@@ -32,7 +34,7 @@ These implementations may be used as-is, or as a starting point for your own imp
 This example shows a graph of the dependencies for the NPM "tedious" library.
 
 <p align="center">
-    <img src="docs/img/UI-Tedious-1-No-Cache.png" width="100%">
+    <img src="../docs/img/UI-Tedious-1-No-Cache.png" width="100%">
 </p>
 
 ---
@@ -42,7 +44,7 @@ This example shows a graph of the dependencies for the NPM "tedious" library.
 This example shows "one-degree of Kevin Bacon".
 
 <p align="center">
-    <img src="docs/img/network-kevin-bacon-1.png" width="100%">
+    <img src="../docs/img/network-kevin-bacon-1.png" width="100%">
 </p>
 
 ---
