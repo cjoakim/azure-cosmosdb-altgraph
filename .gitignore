@@ -25,22 +25,22 @@ gradlew.bat
 **/target/
 **/tmp/
 
-altgraph_data_app/data/imdb_raw/*.tsv
-altgraph_data_app/data/imdb_refined/*.json
-altgraph_data_app/data/imdb_refined/*.zip
-altgraph_data_app/data/dg/*.*
+**/altgraph_data_app/data/imdb_raw/*.tsv
+**/altgraph_data_app/data/imdb_refined/*.json
+**/altgraph_data_app/data/imdb_refined/*.zip
+**/altgraph_data_app/data/dg/*.*
 
-altgraph_data_app/out/*.csv
-altgraph_data_app/out/*.gz
-altgraph_data_app/out/*.json
-altgraph_data_app/out/*.log
-altgraph_data_app/out/*.txt
-altgraph_data_app/out/*.zip
+**/altgraph_data_app/out/*.csv
+**/altgraph_data_app/out/*.gz
+**/altgraph_data_app/out/*.json
+**/altgraph_data_app/out/*.log
+**/altgraph_data_app/out/*.txt
+**/altgraph_data_app/out/*.zip
 
-altgraph_web_app/data/cache/*.json
-altgraph_web_app/data/imdb_refined/movies.json
-altgraph_web_app/data/graph/*.csv
-altgraph_web_app/data/graph/*.json
+**/altgraph_web_app/data/cache/*.json
+**/altgraph_web_app/data/imdb_refined/movies.json
+**/altgraph_web_app/data/graph/*.csv
+**/altgraph_web_app/data/graph/*.json
 
 **/TripleQueryStruct.json
 
