@@ -2,6 +2,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using altgraph_data_app;
+using altgraph_data_app.common.io;
 using altgraph_data_app.processor;
 using altgraph_shared_app.Models;
 using altgraph_shared_app.Options;
@@ -79,6 +80,7 @@ await Host.CreateDefaultBuilder(args)
     }
   });
   services.AddSingleton<Cache>();
+  services.AddTransient<JsonLoader>();
   services.AddSingleton<NpmCosmosDbLoader>();
   services.AddSingleton<SdkBulkLoaderProcessor>();
   services.AddHostedService<ConsoleHostedService>();

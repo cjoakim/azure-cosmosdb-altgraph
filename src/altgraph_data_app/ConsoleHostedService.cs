@@ -43,6 +43,8 @@ namespace altgraph_data_app
                 case "imdb_bulk_load_people":
                 case "imdb_bulk_load_small_triples":
                 case "imdb_bulk_load_movies_seed":
+                  _sdkBulkLoaderProcessor.LoadType = processType;
+                  _sdkBulkLoaderProcessor.Container = Environment.GetCommandLineArgs()[2];
                   await _sdkBulkLoaderProcessor.ProcessAsync();
                   break;
                 default:
