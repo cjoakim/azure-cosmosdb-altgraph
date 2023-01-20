@@ -1,7 +1,7 @@
 // Gradle settings file for this root project.
-// Chris Joakim, Microsoft, November 2022
+// Chris Joakim, Microsoft
 
-rootProject.name = 'altgraph'
+rootProject.name = 'altgraph_java'
 
 include 'altgraph_data_app'  // <-- Data-oriented code - wrangling, Cosmos DB loading, web code proptotypes
 include 'altgraph_web_app'   // <-- Spring-based Web application

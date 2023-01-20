@@ -1,7 +1,7 @@
 <project name="backup" default="copyData" basedir=".">
 
     <description>
-        There are two Java subprojects within the 'altgraph_v2' parent project:
+        There are two Java subprojects within the 'java' parent project:
         1) 'altgraph_data_app'    Data-oriented code; is copied into the web app
         2) 'altgraph_web_app'     Spring-based Web application
 
