@@ -83,6 +83,7 @@ await Host.CreateDefaultBuilder(args)
   services.AddTransient<JsonLoader>();
   services.AddSingleton<NpmCosmosDbLoader>();
   services.AddSingleton<SdkBulkLoaderProcessor>();
+  services.AddSingleton<ImdbRawDataWranglerProcess>();
   services.AddHostedService<ConsoleHostedService>();
 })
             .RunConsoleAsync();

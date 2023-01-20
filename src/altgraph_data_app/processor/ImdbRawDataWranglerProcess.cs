@@ -21,17 +21,20 @@ namespace altgraph_data_app.processor
     private Dictionary<string, Person> people = new Dictionary<string, Person>();
     private HashSet<string> principalSet = new HashSet<string>();
 
+    public int MinYear { get; set; } = 0;
+    public int MinMinutes { get; set; } = 0;
+
     public ImdbRawDataWranglerProcess(ILogger<ImdbRawDataWranglerProcess> logger, IOptions<ImdbPathsOptions> imdbPathsOptions, JsonLoader loader) : base(logger, imdbPathsOptions, loader)
     {
       _logger = logger;
       _imdbPathsOptions = imdbPathsOptions.Value;
     }
 
-    public async Task ProcessAsync(int minYear, int minMinutes)
+    public override async Task ProcessAsync()
     {
       startMs = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
 
-      await ReadFilterMoviesAsync(minYear, minMinutes);
+      await ReadFilterMoviesAsync();
 
       await ReadIdentifyPrincipalsInMoviesAsync();
 
@@ -45,10 +48,10 @@ namespace altgraph_data_app.processor
 
       await CreateWriteMovieSeedAsync();
 
-      DisplayEojTotals(minYear, minMinutes);
+      DisplayEojTotals();
     }
 
-    private async Task ReadFilterMoviesAsync(int minYear, int minMinutes)
+    private async Task ReadFilterMoviesAsync()
     {
       string path = _imdbPathsOptions.RawTitleBasicsFile;
       _logger.LogDebug("ReadFilterMoviesAsync, path: {0}", path);
@@ -61,7 +64,7 @@ namespace altgraph_data_app.processor
           while ((line = await sr.ReadLineAsync()) != null)
           {
             Movie? movie = JsonSerializer.Deserialize<Movie>(line);
-            if (movie != null && movie.Include(minYear, minMinutes))
+            if (movie != null && movie.Include(MinYear, MinMinutes))
             {
               movie.SetCosmosDbCoordinateAttributes(movie.TConst, Constants.DOCTYPE_MOVIE);
               movies.Add(movie.TConst, movie);
@@ -245,31 +248,25 @@ namespace altgraph_data_app.processor
       }
     }
 
-    private void DisplayEojTotals(int minYear, int minMinutes)
+    private void DisplayEojTotals()
     {
       double elapsedMs = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() - startMs;
       double elapsedSec = elapsedMs / 1000;
       double elapsedMin = elapsedSec / 60;
 
       _logger.LogInformation("EOJ Totals:");
-      _logger.LogInformation("Min Year: {0}", minYear);
-      _logger.LogInformation("Min Minutes: {0}", minMinutes);
-      _logger.LogInformation("Total Movie Count: {0}", totalMovieCount);
-      _logger.LogInformation("Included Movie Count: {0}", movies.Count);
-      _logger.LogInformation("Total Principal Count: {0}", totalPrincipalCount);
-      _logger.LogInformation("Included Principal Count: {0}", principalSet.Count);
-      _logger.LogInformation("Total Person Count: {0}", totalPersonCount);
-      _logger.LogInformation("Included Person Count: {0}", people.Count);
-      _logger.LogInformation("Included Movies + People: {0}", people.Count + movies.Count);
-      _logger.LogInformation("Title to Person Count: {0}", titleToPersonCount);
-      _logger.LogInformation("Elapsed Time (ms): {0}", elapsedMs);
-      _logger.LogInformation("Elapsed Time (min): {0}", elapsedMin);
-
-    }
-
-    public override Task ProcessAsync()
-    {
-      throw new NotImplementedException();
+      _logger.LogInformation($"Min Year: ${MinYear}");
+      _logger.LogInformation($"Min Minutes: ${MinMinutes}");
+      _logger.LogInformation($"Total Movie Count: ${totalMovieCount}");
+      _logger.LogInformation($"Included Movie Count: ${movies.Count}");
+      _logger.LogInformation($"Total Principal Count: ${totalPrincipalCount}");
+      _logger.LogInformation($"Included Principal Count: ${principalSet.Count}");
+      _logger.LogInformation($"Total Person Count: ${totalPersonCount}");
+      _logger.LogInformation($"Included Person Count: ${people.Count}");
+      _logger.LogInformation($"Included Movies + People: ${people.Count + movies.Count}");
+      _logger.LogInformation($"Title to Person Count: ${titleToPersonCount}");
+      _logger.LogInformation($"Elapsed Time (ms): ${elapsedMs}");
+      _logger.LogInformation($"Elapsed Time (min): ${elapsedMin}");
     }
   }
 }
