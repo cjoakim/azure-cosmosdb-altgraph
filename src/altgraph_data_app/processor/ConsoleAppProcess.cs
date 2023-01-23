@@ -7,41 +7,40 @@ using Microsoft.Extensions.Options;
 
 namespace altgraph_data_app.processor
 {
-  public abstract class AbstractConsoleAppProcess<T> : IConsoleAppProcess
+  public class ConsoleAppProcess
   {
-    public abstract Task ProcessAsync();
-    private readonly ILogger<T> _logger;
+    private readonly ILogger<ConsoleAppProcess> _logger;
     private readonly JsonLoader _loader;
     private readonly ImdbPathsOptions _imdbPathsOptions;
 
-    protected AbstractConsoleAppProcess(ILogger<T> logger, IOptions<ImdbPathsOptions> imdbPathsOptions, JsonLoader loader)
+    public ConsoleAppProcess(ILogger<ConsoleAppProcess> logger, IOptions<ImdbPathsOptions> imdbPathsOptions, JsonLoader loader)
     {
       _logger = logger;
       _imdbPathsOptions = imdbPathsOptions.Value;
       _loader = loader;
     }
 
-    protected async Task<Dictionary<string, Movie>> ReadMovieDocumentsAsync()
+    public async Task<Dictionary<string, Movie>> ReadMovieDocumentsAsync()
     {
       return await _loader.ReadMovieDocumentsAsync();
     }
 
-    protected async Task<Dictionary<string, Person>> ReadPeopleDocumentsAsync()
+    public async Task<Dictionary<string, Person>> ReadPeopleDocumentsAsync()
     {
       return await _loader.ReadPeopleDocumentsAsync();
     }
 
-    protected async Task<List<SmallTriple>> ReadSmallTriplesDocumentsAsync()
+    public async Task<List<SmallTriple>> ReadSmallTriplesDocumentsAsync()
     {
       return await _loader.ReadSmallTriplesDocumentsAsync();
     }
 
-    protected async Task<List<SeedDocument>> ReadIndexDocumentsAsync()
+    public async Task<List<SeedDocument>> ReadIndexDocumentsAsync()
     {
       return await _loader.ReadIndexDocumentsAsync();
     }
 
-    protected async void WriteMoviesOfInterest(Dictionary<string, Movie> movies)
+    public async void WriteMoviesOfInterest(Dictionary<string, Movie> movies)
     {
       string path = _imdbPathsOptions.MoviesOfInterestFile;
       _logger.LogDebug("WriteMoviesOfInterest, path: {0}", path);
@@ -62,7 +61,7 @@ namespace altgraph_data_app.processor
       }
     }
 
-    protected async void WritePeopleOfInterest(Dictionary<string, Person> people)
+    public async void WritePeopleOfInterest(Dictionary<string, Person> people)
     {
       string path = _imdbPathsOptions.PeopleOfInterestFile;
       _logger.LogDebug("WritePeopleOfInterest, path: {0}", path);
@@ -83,12 +82,12 @@ namespace altgraph_data_app.processor
       }
     }
 
-    // protected async void WriteMovieMapFileAsync(Dictionary<string, Movie> movies)
+    // public async void WriteMovieMapFileAsync(Dictionary<string, Movie> movies)
     // {
     //   throw new NotImplementedException();
     // }
 
-    // protected async void WritePeopleMapFileAsync(Dictionary<string, Person> people)
+    // public async void WritePeopleMapFileAsync(Dictionary<string, Person> people)
     // {
     //   throw new NotImplementedException();
     // }

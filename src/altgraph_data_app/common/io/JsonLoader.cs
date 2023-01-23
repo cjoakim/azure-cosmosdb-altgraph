@@ -2,6 +2,7 @@
 using altgraph_shared_app.Models.Imdb;
 using altgraph_shared_app.Options;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace altgraph_data_app.common.io
 {
@@ -9,10 +10,10 @@ namespace altgraph_data_app.common.io
   {
     private readonly ILogger<JsonLoader> _logger;
     private readonly ImdbPathsOptions _imdbPathsOptions;
-    public JsonLoader(ILogger<JsonLoader> logger, ImdbPathsOptions imdbPathsOptions)
+    public JsonLoader(ILogger<JsonLoader> logger, IOptions<ImdbPathsOptions> imdbPathsOptions)
     {
       _logger = logger;
-      _imdbPathsOptions = imdbPathsOptions;
+      _imdbPathsOptions = imdbPathsOptions.Value;
     }
 
     public async Task<Dictionary<string, Movie>> ReadMovieDocumentsAsync()

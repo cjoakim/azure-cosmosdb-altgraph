@@ -8,26 +8,27 @@ using Microsoft.Extensions.Options;
 
 namespace altgraph_data_app.processor
 {
-  public class SdkBulkLoaderProcessor : AbstractConsoleAppProcess<SdkBulkLoaderProcessor>, IConsoleAppProcess
+  public class SdkBulkLoaderProcessor : IConsoleAppProcess
   {
     private readonly ILogger<SdkBulkLoaderProcessor> _logger;
     private readonly ImdbPathsOptions _imdbPathsOptions;
     private readonly ImdbOptions _imdbOptions;
+    private readonly ConsoleAppProcess _consoleAppProcess;
     private CosmosClient _cosmosClient;
     private CosmosAsyncDao _cosmosAsyncDao;
     public string Container { get; set; } = string.Empty;
     public string LoadType { get; set; } = string.Empty;
 
-    public SdkBulkLoaderProcessor(ILogger<SdkBulkLoaderProcessor> logger, IOptions<ImdbPathsOptions> imdbPathsOptions, CosmosClient cosmosClient, IOptions<ImdbOptions> imdbOptions, JsonLoader jsonLoader) :
-      base(logger, imdbPathsOptions, jsonLoader)
+    public SdkBulkLoaderProcessor(ILogger<SdkBulkLoaderProcessor> logger, IOptions<ImdbPathsOptions> imdbPathsOptions, CosmosClient cosmosClient, IOptions<ImdbOptions> imdbOptions, ConsoleAppProcess consoleAppProcess)
     {
       _logger = logger;
       _imdbPathsOptions = imdbPathsOptions.Value;
       _imdbOptions = imdbOptions.Value;
       _cosmosClient = cosmosClient;
       _cosmosAsyncDao = new CosmosAsyncDao(_cosmosClient);
+      _consoleAppProcess = consoleAppProcess;
     }
-    public override async Task ProcessAsync()
+    public async Task ProcessAsync()
     {
       _cosmosAsyncDao.Initialize();
       _cosmosAsyncDao.CurrentContainer(Container);
@@ -55,7 +56,7 @@ namespace altgraph_data_app.processor
     private async Task BulkLoadImdbMoviesAsync()
     {
       _logger.LogDebug("Bulk loading {0} into {1}", LoadType, Container);
-      List<Movie> items = await ReadMovieDocumentsAsync().ContinueWith(t => t.Result.Values.Cast<Movie>().ToList());
+      List<Movie> items = await _consoleAppProcess.ReadMovieDocumentsAsync().ContinueWith(t => t.Result.Values.Cast<Movie>().ToList());
       _logger.LogDebug("Read {0} documents from disk", items.Count);
       long startMs = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
       await _cosmosAsyncDao.BulkLoadAsync<Movie>(items);
@@ -65,7 +66,7 @@ namespace altgraph_data_app.processor
     private async Task BulkLoadImdbPeopleAsync()
     {
       _logger.LogDebug("Bulk loading {0} into {1}", LoadType, Container);
-      List<Person> items = await ReadPeopleDocumentsAsync().ContinueWith(t => t.Result.Values.Cast<Person>().ToList());
+      List<Person> items = await _consoleAppProcess.ReadPeopleDocumentsAsync().ContinueWith(t => t.Result.Values.Cast<Person>().ToList());
       _logger.LogDebug("Read {0} documents from disk", items.Count);
       long startMs = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
       await _cosmosAsyncDao.BulkLoadAsync<Person>(items);
@@ -75,7 +76,7 @@ namespace altgraph_data_app.processor
     private async Task BulkLoadImdbSmallTriplesAsync()
     {
       _logger.LogDebug("Bulk loading {0} into {1}", LoadType, Container);
-      List<SmallTriple> items = await ReadSmallTriplesDocumentsAsync();
+      List<SmallTriple> items = await _consoleAppProcess.ReadSmallTriplesDocumentsAsync();
       _logger.LogDebug("Read {0} documents from disk", items.Count);
       long startMs = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
       await _cosmosAsyncDao.BulkLoadAsync<SmallTriple>(items);
@@ -85,7 +86,7 @@ namespace altgraph_data_app.processor
     private async Task BulkLoadImdbMovieSeedAsync()
     {
       _logger.LogDebug("Bulk loading {0} into {1}", LoadType, Container);
-      List<SeedDocument> items = await ReadIndexDocumentsAsync();
+      List<SeedDocument> items = await _consoleAppProcess.ReadIndexDocumentsAsync();
       _logger.LogDebug("Read {0} documents from disk", items.Count);
       long startMs = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
       await _cosmosAsyncDao.BulkLoadAsync<SeedDocument>(items);

@@ -11,17 +11,19 @@ namespace altgraph_data_app
     private readonly NpmCosmosDbLoader _npmCosmosDbLoader;
     private readonly SdkBulkLoaderProcessor _sdkBulkLoaderProcessor;
     private readonly ImdbRawDataWranglerProcess _imdbRawDataWranglerProcess;
+    private readonly ImdbTripleBuilderProcess _imdbTripleBuilderProcess;
     private int? _exitCode;
 
     public ConsoleHostedService(
         ILogger<ConsoleHostedService> logger,
-        IHostApplicationLifetime appLifetime, NpmCosmosDbLoader npmCosmosDbLoader, SdkBulkLoaderProcessor sdkBulkLoaderProcessor, ImdbRawDataWranglerProcess imdbRawDataWranglerProcess)
+        IHostApplicationLifetime appLifetime, NpmCosmosDbLoader npmCosmosDbLoader, SdkBulkLoaderProcessor sdkBulkLoaderProcessor, ImdbRawDataWranglerProcess imdbRawDataWranglerProcess, ImdbTripleBuilderProcess imdbTripleBuilderProcess)
     {
       _logger = logger;
       _appLifetime = appLifetime;
       _npmCosmosDbLoader = npmCosmosDbLoader;
       _sdkBulkLoaderProcessor = sdkBulkLoaderProcessor;
       _imdbRawDataWranglerProcess = imdbRawDataWranglerProcess;
+      _imdbTripleBuilderProcess = imdbTripleBuilderProcess;
     }
 
     public Task StartAsync(CancellationToken cancellationToken)
@@ -45,6 +47,9 @@ namespace altgraph_data_app
                   _imdbRawDataWranglerProcess.MinYear = int.Parse(Environment.GetCommandLineArgs()[2]);
                   _imdbRawDataWranglerProcess.MinMinutes = int.Parse(Environment.GetCommandLineArgs()[3]);
                   await _imdbRawDataWranglerProcess.ProcessAsync();
+                  break;
+                case "imdb_build_triples":
+                  await _imdbTripleBuilderProcess.ProcessAsync();
                   break;
                 case "imdb_bulk_load_movies":
                 case "imdb_bulk_load_people":

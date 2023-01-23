@@ -8,10 +8,11 @@ using Microsoft.Extensions.Options;
 
 namespace altgraph_data_app.processor
 {
-  public class ImdbRawDataWranglerProcess : AbstractConsoleAppProcess<ImdbRawDataWranglerProcess>, IConsoleAppProcess
+  public class ImdbRawDataWranglerProcess : IConsoleAppProcess
   {
     private readonly ImdbPathsOptions _imdbPathsOptions;
     private readonly ILogger<ImdbRawDataWranglerProcess> _logger;
+    private readonly ConsoleAppProcess _consoleAppProcess;
     private long totalMovieCount = 0;
     private long totalPersonCount = 0;
     private long totalPrincipalCount = 0;
@@ -24,13 +25,14 @@ namespace altgraph_data_app.processor
     public int MinYear { get; set; } = 0;
     public int MinMinutes { get; set; } = 0;
 
-    public ImdbRawDataWranglerProcess(ILogger<ImdbRawDataWranglerProcess> logger, IOptions<ImdbPathsOptions> imdbPathsOptions, JsonLoader loader) : base(logger, imdbPathsOptions, loader)
+    public ImdbRawDataWranglerProcess(ILogger<ImdbRawDataWranglerProcess> logger, IOptions<ImdbPathsOptions> imdbPathsOptions, ConsoleAppProcess consoleAppProcess)
     {
       _logger = logger;
       _imdbPathsOptions = imdbPathsOptions.Value;
+      _consoleAppProcess = consoleAppProcess;
     }
 
-    public override async Task ProcessAsync()
+    public async Task ProcessAsync()
     {
       startMs = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
 
