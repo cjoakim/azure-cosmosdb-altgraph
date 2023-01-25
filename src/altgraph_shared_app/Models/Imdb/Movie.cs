@@ -5,8 +5,6 @@ namespace altgraph_shared_app.Models.Imdb
 {
   public class Movie : AbstractDocument
   {
-    [JsonPropertyName("minMinutes")]
-    public static int minMinutes { get; set; }
     [JsonPropertyName("tconst")]
     public string TConst { get; set; } = string.Empty;
     [JsonPropertyName("titleType")]
@@ -22,13 +20,8 @@ namespace altgraph_shared_app.Models.Imdb
     public int Year { get; set; }
     [JsonPropertyName("minutes")]
     public int Minutes { get; set; }
-
-    public static void SetMinMinutes(int min)
-    {
-      minMinutes = min;
-    }
-
-    private HashSet<string> people = new HashSet<string>();
+    [JsonPropertyName("people")]
+    public HashSet<string> People { get; set; } = new HashSet<string>();
 
     public Movie()
     {
@@ -45,13 +38,13 @@ namespace altgraph_shared_app.Models.Imdb
           TitleType = lineTokens[1].Trim();
           Title = lineTokens[2].Trim();
           IsAdult = lineTokens[4].Trim();
-          people = new HashSet<string>();
+          People = new HashSet<string>();
           try
           {
             Year = int.Parse(lineTokens[5].Trim());
             Minutes = int.Parse(lineTokens[7].Trim());
           }
-          catch (ArgumentOutOfRangeException)
+          catch (Exception)
           {
             // ignore
           }
@@ -68,7 +61,7 @@ namespace altgraph_shared_app.Models.Imdb
     {
       if (TConst != null)
       {
-        people.Add(nconst.Trim().ToLower());
+        People.Add(nconst.Trim().ToLower());
       }
     }
 
@@ -81,9 +74,9 @@ namespace altgraph_shared_app.Models.Imdb
       return null;
     }
 
-    public bool Include(int y)
+    public bool Include(int minYear, int minMinutes)
     {
-      if (Year < y)
+      if (Year < minYear)
       {
         return false;
       }
