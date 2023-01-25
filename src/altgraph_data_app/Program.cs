@@ -2,6 +2,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using altgraph_data_app;
+using altgraph_data_app.common.dao;
 using altgraph_data_app.common.io;
 using altgraph_data_app.processor;
 using altgraph_shared_app.Models.Imdb;
@@ -11,6 +12,7 @@ using altgraph_shared_app.Services.Cache;
 using altgraph_shared_app.Services.Graph.v2;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Cosmos.Fluent;
+using Microsoft.Azure.CosmosRepository.Options;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -53,6 +55,12 @@ await Host.CreateDefaultBuilder(args)
     options.DatabaseId = cosmosOptions.DatabaseId;
     options.ContainerPerItemType = true;
     options.AllowBulkExecution = true;
+    options.OptimizeBandwidth = false;
+    options.SerializationOptions = new RepositorySerializationOptions()
+    {
+      IgnoreNullValues = true,
+      PropertyNamingPolicy = CosmosPropertyNamingPolicy.CamelCase
+    };
     if (cosmosOptions != null && npmOptions != null && imdbOptions != null)
     {
       options.CosmosConnectionString = cosmosOptions.ConnectionString;
@@ -107,7 +115,8 @@ await Host.CreateDefaultBuilder(args)
     {
       JsonSerializerOptions jsonSerializerOptions = new JsonSerializerOptions()
       {
-        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase
       };
       CosmosSystemTextJsonSerializer cosmosSystemTextJsonSerializer = new CosmosSystemTextJsonSerializer(jsonSerializerOptions);
 
@@ -116,7 +125,7 @@ await Host.CreateDefaultBuilder(args)
         .WithConsistencyLevel(ConsistencyLevel.Session)
         .WithBulkExecution(true)
         .WithCustomSerializer(cosmosSystemTextJsonSerializer)
-        .WithContentResponseOnWrite(true)
+        .WithContentResponseOnWrite(false)
         .Build();
     }
     else
@@ -125,6 +134,7 @@ await Host.CreateDefaultBuilder(args)
     }
   });
   services.AddSingleton<Cache>();
+  services.AddTransient<CosmosAsyncDao>();
   services.AddTransient<JsonLoader>();
   services.AddTransient<ConsoleAppProcess>();
   services.AddSingleton<NpmCosmosDbLoader>();

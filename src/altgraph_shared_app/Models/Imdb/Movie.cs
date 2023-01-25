@@ -44,7 +44,7 @@ namespace altgraph_shared_app.Models.Imdb
             Year = int.Parse(lineTokens[5].Trim());
             Minutes = int.Parse(lineTokens[7].Trim());
           }
-          catch (ArgumentOutOfRangeException)
+          catch (Exception)
           {
             // ignore
           }

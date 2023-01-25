@@ -36,17 +36,17 @@ namespace altgraph_data_app.processor
 
     public async Task ProcessAsync()
     {
-      _logger.LogInformation("Starting CosmosDbLoader");
+      _logger.LogInformation($"Starting CosmosDbLoader");
 
-      Task[] tasks = new Task[]
-      {
-        Load<Author>(_npmPathsOptions.AuthorsFile, _authorRepository.Authors, "Authors"),
-        Load<Maintainer>(_npmPathsOptions.MaintainersFile, _maintainerRepository.Maintainers, "Maintainers"),
-        Load<Library>(_npmPathsOptions.LibrariesFile, _libraryRepository.Libraries, "Libraries"),
-        Load<Triple>(_npmPathsOptions.TriplesFile, _tripleRepository.Triples, "Triples")
-      };
+      //Task[] tasks = new Task[]
+      //{
+      await Load<Author>(_npmPathsOptions.AuthorsFile, _authorRepository.Authors, "Authors");
+      await Load<Maintainer>(_npmPathsOptions.MaintainersFile, _maintainerRepository.Maintainers, "Maintainers");
+      await Load<Library>(_npmPathsOptions.LibrariesFile, _libraryRepository.Libraries, "Libraries");
+      await Load<Triple>(_npmPathsOptions.TriplesFile, _tripleRepository.Triples, "Triples");
+      //};
 
-      await Task.WhenAll(tasks);
+      //await Task.WhenAll(tasks);
     }
 
     private async Task Load<T>(string path, IRepository<T> repository, string documentType) where T : NpmDocument
@@ -69,30 +69,40 @@ namespace altgraph_data_app.processor
 
       if (documents != null)
       {
-        List<Task> tasks = new List<Task>(documents.Count);
+        //List<Task> tasks = new List<Task>(documents.Count);
         foreach (T document in documents)
         {
-          tasks.Add(repository.CreateAsync(document).AsTask().ContinueWith(itemResponse =>
+          try
           {
-            if (!itemResponse.IsCompletedSuccessfully)
-            {
-              AggregateException innerExceptions = itemResponse.Exception.Flatten();
-              if (innerExceptions.InnerExceptions.FirstOrDefault(innerEx => innerEx is CosmosException) is CosmosException cosmosException)
-              {
-                _logger.LogDebug($"Received {cosmosException.StatusCode} ({cosmosException.Message}).");
-              }
-              else
-              {
-                _logger.LogDebug($"Exception {innerExceptions.InnerExceptions.FirstOrDefault()}.");
-              }
-            }
-          }));
-        }
+            await repository.CreateAsync(document).AsTask();
+          }
+          catch (Exception ex)
+          {
+            _logger.LogError(ex, $"Failed to load {documentType}.");
+          }
 
-        await Task.WhenAll(tasks);
-
+          // tasks.Add(repository.CreateAsync(document).AsTask().ContinueWith(itemResponse =>
+          // {
+          //   if (!itemResponse.IsCompletedSuccessfully)
+          //   {
+          //     AggregateException innerExceptions = itemResponse.Exception.Flatten();
+          //     if (innerExceptions.InnerExceptions.FirstOrDefault(innerEx => innerEx is CosmosException) is CosmosException cosmosException)
+          //     {
+          //       _logger.LogDebug($"Received {cosmosException.StatusCode} ({cosmosException.Message}).");
+          //     }
+          //     else
+          //     {
+          //       _logger.LogDebug($"Exception {innerExceptions.InnerExceptions.FirstOrDefault()}.");
+          //     }
+          //   }
+        }//));
         _logger.LogInformation($"Added {documents.Count} documents of type {documentType} to database.");
       }
+
+      //await Task.WhenAll(tasks);
+
+      //_logger.LogInformation($"Added {documents.Count} documents of type {documentType} to database.");
     }
   }
 }
+//}

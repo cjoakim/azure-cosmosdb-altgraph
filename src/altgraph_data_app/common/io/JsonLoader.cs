@@ -21,13 +21,16 @@ namespace altgraph_data_app.common.io
       Dictionary<string, Movie> movies = new Dictionary<string, Movie>();
       using (StreamReader reader = File.OpenText(_imdbPathsOptions.MoviesDocumentsFile))
       {
-        string? line = await reader.ReadLineAsync();
-        if (line != null)
+        string? line = null;
+        while ((line = await reader.ReadLineAsync()) != null)
         {
-          Movie? movie = JsonSerializer.Deserialize<Movie>(line);
-          if (movie != null)
+          if (line != null)
           {
-            movies.Add(movie.TConst, movie);
+            Movie? movie = JsonSerializer.Deserialize<Movie>(line);
+            if (movie != null)
+            {
+              movies.Add(movie.TConst, movie);
+            }
           }
         }
       }
@@ -40,8 +43,8 @@ namespace altgraph_data_app.common.io
       Dictionary<string, Person> people = new Dictionary<string, Person>();
       using (StreamReader reader = File.OpenText(_imdbPathsOptions.PeopleDocumentsFile))
       {
-        string? line = await reader.ReadLineAsync();
-        if (line != null)
+        string? line = null;
+        while ((line = await reader.ReadLineAsync()) != null)
         {
           Person? person = JsonSerializer.Deserialize<Person>(line);
           if (person != null)
@@ -59,8 +62,8 @@ namespace altgraph_data_app.common.io
       List<SmallTriple> smallTriples = new List<SmallTriple>();
       using (StreamReader reader = File.OpenText(_imdbPathsOptions.SmallTriplesDocumentsFile))
       {
-        string? line = await reader.ReadLineAsync();
-        if (line != null)
+        string? line = null;
+        while ((line = await reader.ReadLineAsync()) != null)
         {
           SmallTriple? smallTriple = JsonSerializer.Deserialize<SmallTriple>(line);
           if (smallTriple != null)
@@ -78,8 +81,8 @@ namespace altgraph_data_app.common.io
       List<SeedDocument> seedDocuments = new List<SeedDocument>();
       using (StreamReader reader = File.OpenText(_imdbPathsOptions.MoviesSeedFile))
       {
-        string? line = await reader.ReadLineAsync();
-        if (line != null)
+        string? line = null;
+        while ((line = await reader.ReadLineAsync()) != null)
         {
           SeedDocument? seedDocument = JsonSerializer.Deserialize<SeedDocument>(line);
           if (seedDocument != null)

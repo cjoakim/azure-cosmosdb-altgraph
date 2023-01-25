@@ -71,11 +71,11 @@ namespace altgraph_data_app.processor
       double elapsedMin = elapsedSec / 60;
 
       _logger.LogInformation("EOJ Totals");
-      _logger.LogInformation($"Movies Size: ${movies.Count}");
-      _logger.LogInformation($"People Size: ${people.Count}");
-      _logger.LogInformation($"Triples Written: ${tripleLinesWritten}");
-      _logger.LogInformation($"Elapsed Time: ${elapsedMs} ms");
-      _logger.LogInformation($"Elapsed Time: ${elapsedMin} min");
+      _logger.LogInformation($"Movies Size: {movies.Count}");
+      _logger.LogInformation($"People Size: {people.Count}");
+      _logger.LogInformation($"Triples Written: {tripleLinesWritten}");
+      _logger.LogInformation($"Elapsed Time: {elapsedMs} ms");
+      _logger.LogInformation($"Elapsed Time: {elapsedMin} min");
     }
   }
 }
