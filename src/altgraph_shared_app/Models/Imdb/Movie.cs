@@ -9,11 +9,25 @@ namespace altgraph_shared_app.Models.Imdb
     public string TConst { get; set; } = string.Empty;
     [JsonPropertyName("titleType")]
     public string TitleType { get; set; } = string.Empty;
+    private string _title = string.Empty;
     [JsonPropertyName("title")]
-    public string Title { get; set; } = string.Empty;
+    public string Title
+    {
+      get
+      {
+        return _title;
+      }
+      set
+      {
+        _title = value;
+        if (_title != null)
+        {
+          TitleWords = _title.Split(' ').ToList();
+        }
+      }
+    }
     [JsonPropertyName("titleWords")]
     public List<string> TitleWords { get; set; } = new List<string>();
-    //[JsonPropertyName("isAdult")]
     [JsonIgnore]
     public string IsAdult { get; set; } = string.Empty;
     [JsonPropertyName("year")]

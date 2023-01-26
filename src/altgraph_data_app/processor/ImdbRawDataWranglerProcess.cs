@@ -55,7 +55,7 @@ namespace altgraph_data_app.processor
     private async Task ReadFilterMoviesAsync()
     {
       string path = _imdbPathsOptions.RawTitleBasicsFile;
-      _logger.LogDebug($"ReadFilterMoviesAsync, path: {path}");
+      _logger.LogInformation($"ReadFilterMoviesAsync, path: {path}");
 
       bool isFirstLine = true;
 
@@ -91,7 +91,7 @@ namespace altgraph_data_app.processor
     private async Task ReadIdentifyPrincipalsInMoviesAsync()
     {
       string path = _imdbPathsOptions.RawTitlePrincipalsFile;
-      _logger.LogDebug($"ReadIdentifyPrincipalsInMoviesAsync, path: {path}");
+      _logger.LogInformation($"ReadIdentifyPrincipalsInMoviesAsync, path: {path}");
 
       bool isFirstLine = true;
 
@@ -129,7 +129,7 @@ namespace altgraph_data_app.processor
     private async Task ReadNamesOfPrincipalsAsync()
     {
       string path = _imdbPathsOptions.RawNameBasicsFile;
-      _logger.LogDebug($"ReadIdentifyPrincipalsInMoviesAsync, path: {path}");
+      _logger.LogInformation($"ReadIdentifyPrincipalsInMoviesAsync, path: {path}");
 
       bool isFirstLine = true;
 
@@ -169,7 +169,7 @@ namespace altgraph_data_app.processor
     private async Task WriteMoviesAsync()
     {
       string path = _imdbPathsOptions.MoviesDocumentsFile;
-      _logger.LogDebug($"WriteMoviesAsync, path: {path}");
+      _logger.LogInformation($"WriteMoviesAsync, path: {path}");
       try
       {
         using (StreamWriter sw = new StreamWriter(path))
@@ -189,7 +189,7 @@ namespace altgraph_data_app.processor
     private async Task WritePeopleAsync()
     {
       string path = _imdbPathsOptions.PeopleDocumentsFile;
-      _logger.LogDebug($"WritePeopleAsync, path: {path}");
+      _logger.LogInformation($"WritePeopleAsync, path: {path}");
       try
       {
         using (StreamWriter sw = new StreamWriter(path))
@@ -209,7 +209,7 @@ namespace altgraph_data_app.processor
     private async Task AssociateTitlesToPeopleAsync()
     {
       string path = _imdbPathsOptions.RawTitlePrincipalsFile;
-      _logger.LogDebug($"ReadFilterMoviesAsync, path: {path}");
+      _logger.LogInformation($"ReadFilterMoviesAsync, path: {path}");
 
       bool isFirstLine = true;
 
@@ -248,7 +248,7 @@ namespace altgraph_data_app.processor
     private async Task CreateWriteMovieSeedAsync()
     {
       string path = _imdbPathsOptions.MoviesSeedFile;
-      _logger.LogDebug($"CreateWriteMovieSeedAsync, path: {path}");
+      _logger.LogInformation($"CreateWriteMovieSeedAsync, path: {path}");
 
       List<SeedDocument> indexDocs = new List<SeedDocument>();
       foreach (var movie in _movies)

@@ -7,6 +7,7 @@ namespace altgraph_data_app.common.dao
 {
   public class CosmosAsyncDao
   {
+    private const int MAX_CONCURRENCY = 100;
     private CosmosClient _cosmosClient;
     private Database? _database = null;
     private Container? _container = null;
@@ -56,53 +57,42 @@ namespace altgraph_data_app.common.dao
       }
 
       List<Task> tasks = new List<Task>(items.Count);
-      //int count = 0;
-      int maxConcurrency = 100;
+      int count = 0;
+      object countLock = new object();
 
-      using (SemaphoreSlim concurrencySemaphore = new SemaphoreSlim(maxConcurrency))
+      using (SemaphoreSlim concurrencySemaphore = new SemaphoreSlim(MAX_CONCURRENCY))
       {
         foreach (T item in items)
         {
-          // if (count % 10000 == 0)
-          // {
-          //   _logger.LogInformation($"Processed {count} items out of {items.Count}.");
-          // }
-
           concurrencySemaphore.Wait();
 
-          // try
-          // {
-          //   await _container.CreateItemAsync<T>(item, new PartitionKey(item.Pk));
-          // }
-          // catch (CosmosException ex) when (ex.StatusCode != HttpStatusCode.Conflict)
-          // {
-          //   _logger.LogError($"Exception {ex.Message}.");
-          // }
-          // catch (CosmosException ex) when (ex.StatusCode == HttpStatusCode.Conflict)
-          // {
-          //   //do nothing
-          // }
-          // catch (Exception ex)
-          // {
-          //   _logger.LogError($"Exception {ex.Message}.");
-          // }
-
-          //count++;
           tasks.Add(_container.CreateItemAsync(item, new PartitionKey(item.Pk))
             .ContinueWith(itemResponse =>
           {
-            // if (!itemResponse.IsCompletedSuccessfully)
-            // {
-            //   AggregateException innerExceptions = itemResponse.Exception.Flatten();
-            //   if (innerExceptions.InnerExceptions.FirstOrDefault(innerEx => innerEx is CosmosException) is CosmosException cosmosException)
-            //   {
-            //     Console.WriteLine($"Received {cosmosException.StatusCode} ({cosmosException.Message}).");
-            //   }
-            //   else
-            //   {
-            //     Console.WriteLine($"Exception {innerExceptions.InnerExceptions.FirstOrDefault()}.");
-            //   }
-            // }
+            lock (countLock)
+            {
+              count++;
+            }
+            if (count % 10000 == 0)
+            {
+              _logger.LogInformation($"Processed {count} items out of {items.Count}.");
+            }
+            if (!itemResponse.IsCompletedSuccessfully)
+            {
+              AggregateException innerExceptions = itemResponse.Exception.Flatten();
+              if (innerExceptions.InnerExceptions.FirstOrDefault(innerEx => innerEx is CosmosException) is CosmosException cosmosException && cosmosException.StatusCode != HttpStatusCode.Conflict)
+              {
+                Console.WriteLine($"Received {cosmosException.StatusCode} ({cosmosException.Message}).");
+              }
+              else if (innerExceptions.InnerExceptions.FirstOrDefault(innerEx => innerEx is CosmosException) is CosmosException cosmosException1 && cosmosException1.StatusCode == HttpStatusCode.Conflict)
+              {
+                //do nothing
+              }
+              else
+              {
+                Console.WriteLine($"Exception {innerExceptions.InnerExceptions.FirstOrDefault()}.");
+              }
+            }
             concurrencySemaphore.Release();
           }));
         }

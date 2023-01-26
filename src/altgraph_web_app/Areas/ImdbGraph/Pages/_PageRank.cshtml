@@ -3,9 +3,11 @@
 
   </pre>
   <h4 class="text-center text-muted">Vertex PageRanks</h4>
-
+  <div class="d-flex justify-content-center">
+    <label id="pageRankLoadingProgressLabel" for="pageRankLoadingProgress" style="display: none">Calculating PageRank: </label>
+    <progress id="pageRankLoadingProgress" style="display: none"></progress>
+  </div>
   <div id="tableDiv" class="container d-flex align-items-center justify-content-center">
-
     <table class="table table-striped" id="rankTable" name="rankTable">
       <thead>
         <tr>
@@ -24,44 +26,45 @@
 <script>
   $(document).ready(function () {
     var startMs = new Date().getTime();
-    @* var formFunction = "" + [[${ formObject.formFunction }]];
-        console.log("imdb_page_ranks.html onready, formFunction: " + formFunction); *@
-      @* var count = $("#value1").val().trim(); *@
     var count = "@Model.Value1";
     if (count === "") {
       count = "50";
     }
-    @* var url = "/get_page_ranks/" + count; *@
-      fetch("?handler=PageRanks&count=" + count)
-        .then((response) => {
-          return response.json();
-        })
-        .then((rankArray) => {
-          @* $.get(
-              url,
-              function (rankArray) { *@
+
+    $('#graphLoadingProgressLabel').hide();
+    $('#graphLoadingProgress').hide();
+
+    $('#pageRankLoadingProgressLabel').show();
+    $('#pageRankLoadingProgress').show();
+
+    fetch("?handler=PageRanks&count=" + count)
+      .then((response) => {
+        return response.json();
+      })
+      .then((rankArray) => {
         var finishMs = new Date().getTime();
-          var elapsedMs = finishMs - startMs;
-          $('#elapsedMs').val(elapsedMs);
-          //console.log(rankArray);
-          for (let i = 0; i < rankArray.length; i++) {
-            var rank = rankArray[i];
-            var vertex = rank['key'];
-            var value = rank['value'];
-            if (vertex.startsWith("tt")) {
-              link = "https://www.imdb.com/title/" + vertex;
-            }
-            else {
-              link = "https://www.imdb.com/name/" + vertex;
-            }
-            var comment = commentForVertex(vertex);
-            var row = "<tr> <td>" + (i + 1) + "</td> <td><a href=\"" + link + "\">" + vertex + "</td> <td>" + value + "</td> <td>" +
-              comment + "</td> </tr>";
-            //console.log(row);
-            $("#rankTable").find('tbody').append($(row));
+        var elapsedMs = finishMs - startMs;
+        $('#elapsedMs').val(elapsedMs);
+        for (let i = 0; i < rankArray.length; i++) {
+          var rank = rankArray[i];
+          var vertex = rank['key'];
+          var value = rank['value'];
+          if (vertex.startsWith("tt")) {
+            link = "https://www.imdb.com/title/" + vertex;
           }
+          else {
+            link = "https://www.imdb.com/name/" + vertex;
+          }
+          var comment = commentForVertex(vertex);
+          var row = "<tr> <td>" + (i + 1) + "</td> <td><a href=\"" + link + "\">" + vertex + "</td> <td>" + value + "</td> <td>" +
+            comment + "</td> </tr>";
+          $("#rankTable").find('tbody').append($(row));
         }
-        );
+
+        $('#pageRankLoadingProgressLabel').hide();
+        $('#pageRankLoadingProgress').hide();
+      }
+      );
 
     function commentForVertex(vertex) {
       var comment = "";

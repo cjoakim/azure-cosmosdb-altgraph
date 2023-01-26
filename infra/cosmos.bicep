@@ -6,7 +6,10 @@ param cosmosSqlDatabaseName string
 param keyVaultName string
 param location string
 param logAnalyticsWorkspaceName string
-//param managedIdentityName string
+param cosmosImdbGraphContainerName string
+param cosmosImdbSeedContainerName string
+param cosmosDatabaseThroughput int
+param cosmosDatabaseMaxThroughput int
 
 resource cosmosDatabaseAccount 'Microsoft.DocumentDB/databaseAccounts@2022-08-15' = {
   name: cosmosDatabaseAccountName
@@ -25,7 +28,7 @@ resource cosmosDatabaseAccount 'Microsoft.DocumentDB/databaseAccounts@2022-08-15
     enableAutomaticFailover: false
     enableMultipleWriteLocations: false
     apiProperties: {}
-    capabilities: [ { name: 'EnableServerless' } ]
+    capabilities: []
   }
 
   resource database 'sqlDatabases@2022-05-15' = {
@@ -33,11 +36,42 @@ resource cosmosDatabaseAccount 'Microsoft.DocumentDB/databaseAccounts@2022-08-15
     properties: {
       resource: { id: cosmosSqlDatabaseName }
     }
-    resource container 'containers' = {
+    resource throughputSettings 'throughputSettings@2022-05-15' = {
+      name: 'default'
+      properties: {
+        resource: {
+          throughput: cosmosDatabaseThroughput
+          autoscaleSettings: {
+            maxThroughput: cosmosDatabaseMaxThroughput
+          }
+        }
+      }
+    }
+    resource npmContainer 'containers' = {
       name: cosmosNpmContainerName
       properties: {
         resource: {
           id: cosmosNpmContainerName
+          partitionKey: { paths: [ cosmosContainerPartitionKey ] }
+        }
+        options: {}
+      }
+    }
+    resource imdbGraphContainer 'containers' = {
+      name: cosmosImdbGraphContainerName
+      properties: {
+        resource: {
+          id: cosmosImdbGraphContainerName
+          partitionKey: { paths: [ cosmosContainerPartitionKey ] }
+        }
+        options: {}
+      }
+    }
+    resource imdbSeedcontainer 'containers' = {
+      name: cosmosImdbSeedContainerName
+      properties: {
+        resource: {
+          id: cosmosImdbSeedContainerName
           partitionKey: { paths: [ cosmosContainerPartitionKey ] }
         }
         options: {}

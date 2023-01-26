@@ -17,20 +17,16 @@ namespace altgraph_web_app.Areas.ImdbGraph.Pages;
 public class IndexModel : PageModel
 {
   private readonly ILogger<IndexModel> _logger;
-  [BindProperty]
+  [BindProperty(SupportsGet = true)]
   public FormFunctionEnum FormFunction { get; set; } = FormFunctionEnum.GraphStats;
-  [BindProperty]
+  [BindProperty(SupportsGet = true)]
   public string Value1 { get; set; } = string.Empty;
-  [BindProperty]
+  [BindProperty(SupportsGet = true)]
   public string? Value2 { get; set; } = string.Empty;
-  [BindProperty]
+  [BindProperty(SupportsGet = true)]
   public string? ElapsedMs { get; set; } = string.Empty;
   [BindProperty(SupportsGet = true)]
   public string? EdgesStruct { get; set; } = string.Empty;
-  //[BindProperty(SupportsGet = true)]
-  //public GraphStats? GraphStats { get; set; } = null;
-  //[BindProperty(SupportsGet = true)]
-  //public string? VertexInfo { get; set; } = string.Empty;
   [BindProperty(SupportsGet = true)]
   public long? GraphLoadingMaxProgress { get; set; } = 0;
   private long? graphLoadingProgress { get; set; } = 0;
@@ -206,9 +202,14 @@ public class IndexModel : PageModel
   {
     _logger.LogDebug($"OnGetStarNetwork, vertex: {vertex}, degree: {degree}");
 
+    long startMs = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+
     if (degree != null)
     {
       JStarNetwork? star = _jGraph.StarNetworkFor(vertex, int.Parse(degree));
+
+      ElapsedMs = $"{DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() - startMs} ms";
+
       if (star != null)
       {
         return new JsonResult(star.AsEdgesStruct());
@@ -221,8 +222,12 @@ public class IndexModel : PageModel
   {
     _logger.LogDebug($"OnGetShortestPath, v1: {v1}, v2: {v2}");
 
+    long startMs = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+
     EdgesStruct? edgesStruct =
                 _jGraph.GetShortestPathAsEdgesStruct(v1, v2);
+
+    ElapsedMs = $"{DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() - startMs} ms";
 
     if (edgesStruct != null)
     {
@@ -235,10 +240,13 @@ public class IndexModel : PageModel
   {
     _logger.LogDebug($"OnGetPageRanks, count: {count}");
 
+    long startMs = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+
     if (count != null)
     {
       List<JRank>? ranks = _jGraph.SortedPageRanks(int.Parse(count));
 
+      ElapsedMs = $"{DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() - startMs} ms";
       return new JsonResult(ranks);
     }
     return null;

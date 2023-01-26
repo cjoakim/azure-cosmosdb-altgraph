@@ -5,9 +5,10 @@ param location string
 #disable-next-line no-unused-params
 param principalId string = ''
 param containerAppWebAppObject object = {}
-param containerAppDataAppObject object = {}
 param resourceGroupName string = ''
 param resourceTokenParam string = ''
+param cosmosDatabaseThroughput int
+param cosmosDatabaseMaxThroughput int
 
 var resourceToken = resourceTokenParam == '' ? toLower(uniqueString(subscription().id, environmentName, location)) : resourceTokenParam
 
@@ -66,7 +67,10 @@ module cosmosDeployment 'cosmos.bicep' = {
     keyVaultName: keyVaultDeployment.outputs.keyVaultName
     location: location
     logAnalyticsWorkspaceName: loggingDeployment.outputs.logAnalyticsWorkspaceName
-    //managedIdentityName: managedIdentityDeployment.outputs.managedIdentityName
+    cosmosImdbGraphContainerName: names.outputs.cosmosImdbGraphContainerName
+    cosmosImdbSeedContainerName: names.outputs.cosmosImdbSeedContainerName
+    cosmosDatabaseThroughput: cosmosDatabaseThroughput
+    cosmosDatabaseMaxThroughput: cosmosDatabaseMaxThroughput
   }
 }
 
@@ -105,7 +109,6 @@ module acaDeployment 'container-app.bicep' = {
     location: location
     managedIdentityName: managedIdentityDeployment.outputs.managedIdentityName
     containerAppWebAppObject: containerAppWebAppObject
-    containerAppDataAppObject: containerAppDataAppObject
     cosmosDatabaseAccountConnectionStringKeySecret: keyVault.getSecret(cosmosDeployment.outputs.cosmosDatabaseAccountConnectionStringKeySecretName)
     redisCacheConnectionStringKeySecret: keyVault.getSecret(redisCacheDeployment.outputs.redisCacheConnectionStringKeySecretName)
     logAnalyticsWorkspaceName: loggingDeployment.outputs.logAnalyticsWorkspaceName
