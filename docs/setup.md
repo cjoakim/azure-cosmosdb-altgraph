@@ -89,8 +89,6 @@ This process transforms the raw data into a format suitable for loading
 into CosmosDB for the AltGraph reference applications.
 
 ```
-> cd src/altgraph_data_app
-
 > .\npm_wrangling_process.ps1
 
 > .\imdb_wrangling_process.ps1
