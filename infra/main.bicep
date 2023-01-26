@@ -8,6 +8,8 @@ param containerAppWebAppObject object = {}
 param containerAppDataAppObject object = {}
 param resourceGroupName string = ''
 param resourceTokenParam string = ''
+param cosmosDatabaseThroughput int
+param cosmosDatabaseMaxThroughput int
 
 var resourceToken = resourceTokenParam == '' ? toLower(uniqueString(subscription().id, environmentName, location)) : resourceTokenParam
 
@@ -66,7 +68,10 @@ module cosmosDeployment 'cosmos.bicep' = {
     keyVaultName: keyVaultDeployment.outputs.keyVaultName
     location: location
     logAnalyticsWorkspaceName: loggingDeployment.outputs.logAnalyticsWorkspaceName
-    //managedIdentityName: managedIdentityDeployment.outputs.managedIdentityName
+    cosmosImdbGraphContainerName: names.outputs.cosmosImdbGraphContainerName
+    cosmosImdbSeedContainerName: names.outputs.cosmosImdbSeedContainerName
+    cosmosDatabaseThroughput: cosmosDatabaseThroughput
+    cosmosDatabaseMaxThroughput: cosmosDatabaseMaxThroughput
   }
 }
 

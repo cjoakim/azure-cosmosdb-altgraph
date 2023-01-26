@@ -17,20 +17,16 @@ namespace altgraph_web_app.Areas.ImdbGraph.Pages;
 public class IndexModel : PageModel
 {
   private readonly ILogger<IndexModel> _logger;
-  [BindProperty]
+  [BindProperty(SupportsGet = true)]
   public FormFunctionEnum FormFunction { get; set; } = FormFunctionEnum.GraphStats;
-  [BindProperty]
+  [BindProperty(SupportsGet = true)]
   public string Value1 { get; set; } = string.Empty;
-  [BindProperty]
+  [BindProperty(SupportsGet = true)]
   public string? Value2 { get; set; } = string.Empty;
-  [BindProperty]
+  [BindProperty(SupportsGet = true)]
   public string? ElapsedMs { get; set; } = string.Empty;
   [BindProperty(SupportsGet = true)]
   public string? EdgesStruct { get; set; } = string.Empty;
-  //[BindProperty(SupportsGet = true)]
-  //public GraphStats? GraphStats { get; set; } = null;
-  //[BindProperty(SupportsGet = true)]
-  //public string? VertexInfo { get; set; } = string.Empty;
   [BindProperty(SupportsGet = true)]
   public long? GraphLoadingMaxProgress { get; set; } = 0;
   private long? graphLoadingProgress { get; set; } = 0;

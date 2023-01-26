@@ -7,19 +7,49 @@ namespace altgraph_shared_app.Models.Imdb
   {
     [JsonPropertyName("nconst")]
     public string NConst { get; set; } = string.Empty;
+    private string _primaryName = string.Empty;
     [JsonPropertyName("primaryName")]
-    public string PrimaryName { get; set; } = string.Empty;
+    public string PrimaryName
+    {
+      get
+      {
+        return _primaryName;
+      }
+      set
+      {
+        _primaryName = value;
+        if (_primaryName != null)
+        {
+          PrimaryNameWords = _primaryName.Split(' ').ToList();
+        }
+      }
+    }
     [JsonPropertyName("primaryNameWords")]
-    public List<string> PrimaryNameWords { get; set; } = new List<string>();
+    public List<string> PrimaryNameWords { get; private set; } = new List<string>();
     [JsonPropertyName("birthYear")]
     public string BirthYear { get; set; } = string.Empty;
     [JsonPropertyName("deathYear")]
     public string DeathYear { get; set; } = string.Empty;
+    private string _primaryProfession = string.Empty;
     [JsonPropertyName("primaryProfession")]
-    public string PrimaryProfession { get; set; } = string.Empty;
+    public string PrimaryProfession
+    {
+      get
+      {
+        return _primaryProfession;
+      }
+      set
+      {
+        _primaryProfession = value;
+        if (_primaryProfession != null)
+        {
+          PrimaryProfessionWords = _primaryProfession.Split(',').ToList();
+        }
+      }
+    }
     [JsonPropertyName("primaryProfessionWords")]
-    public List<string> PrimaryProfessionWords { get; set; } = new List<string>();
-    [JsonPropertyName("knownForTitles")]
+    public List<string> PrimaryProfessionWords { get; private set; } = new List<string>();
+    [JsonPropertyName("titles")]
     public HashSet<string> Titles { get; set; } = new HashSet<string>();
     [JsonPropertyName("titleCount")]
     public string TitleCount { get; set; } = "0";

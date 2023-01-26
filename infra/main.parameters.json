@@ -29,6 +29,12 @@
         "cpu": 1,
         "memory": "2.0Gi"
       }
+    },
+    "cosmosDatabaseThroughput": {
+      "value": 9400
+    },
+    "cosmosDatabaseMaxThroughput": {
+      "value": 10000
     }
   }
 }
