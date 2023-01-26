@@ -21,15 +21,6 @@
         "memory": "2.0Gi"
       }
     },
-    "containerAppDataAppObject": {
-      "value": {
-        "name": "altgraph-data-app",
-        "image": "ghcr.io/jordanbean-msft/azure-cosmosdb-altgraph/altgraph-data-app:release-0.1.0",
-        "appId": "altgraph-data-app",
-        "cpu": 1,
-        "memory": "2.0Gi"
-      }
-    },
     "cosmosDatabaseThroughput": {
       "value": 9400
     },

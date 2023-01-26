@@ -9,13 +9,3 @@ services:
       REDIS__CONNECTIONSTRING:                  $REDIS__CONNECTIONSTRING
       COSMOS__CONNECTIONSTRING:                 $COSMOS__CONNECTIONSTRING
     restart: always
-    depends_on:
-      init:
-        condition: service_completed_successfully
-  init:
-    image: ghcr.io/jordanbean-msft/azure-cosmosdb-altgraph/altgraph-data-app:release-0.1.0
-    #image: altgraph-data-app:release-0.1.1
-    environment:
-      REDIS__CONNECTIONSTRING:                  $REDIS__CONNECTIONSTRING
-      COSMOS__CONNECTIONSTRING:                 $COSMOS__CONNECTIONSTRING
-    command: ["npm_load_cosmos"]

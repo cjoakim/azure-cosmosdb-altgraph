@@ -1,5 +1,4 @@
 param containerAppWebAppObject object
-param containerAppDataAppObject object
 param location string
 param containerAppEnvironmentName string
 param managedIdentityName string
@@ -99,33 +98,6 @@ resource containerApp 'Microsoft.App/containerApps@2022-06-01-preview' = {
           ]
         }
       ]
-      initContainers: [
-        {
-          args: [
-            'npm_load_cosmos'
-          ]
-          name: containerAppDataAppObject.appId
-          image: containerAppDataAppObject.image
-          resources: {
-            cpu: containerAppDataAppObject.cpu
-            memory: containerAppDataAppObject.memory
-          }
-          env: [
-            {
-              name: 'COSMOS__CONNECTIONSTRING'
-              secretRef: cosmosDatabaseAccountConnectionStringKeySecretName
-            }
-            {
-              name: 'REDIS__CONNECTIONSTRING'
-              secretRef: redisCacheConnectionStringKeySecretName
-            }
-          ]
-        }
-      ]
-      scale: {
-        minReplicas: 1
-        maxReplicas: 1
-      }
     }
   }
 }

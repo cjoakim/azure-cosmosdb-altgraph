@@ -2,6 +2,10 @@
   <pre>
   </pre>
   <h4 class="text-center text-muted">IMDb Network</h4>
+  <div class="d-flex justify-content-center">
+    <label id="networkLoadingProgressLabel" for="networkLoadingProgress" style="display: none">Calculating network: </label>
+    <progress id="networkLoadingProgress" style="display: none"></progress>
+  </div>
   <h5 class="d-flex justify-content-center" id="vertexInfo" name="vertexInfo"></h5>
   <partial name="_Graph" />
 </div>
@@ -59,6 +63,12 @@
       .scaleOrdinal()
       .domain(["library", "author", "maintainer"])
       .range(["#75739F", "#41A368", "#FE9922"]);
+    
+    $('#graphLoadingProgressLabel').hide();
+    $('#graphLoadingProgress').hide();
+
+    $('#networkLoadingProgressLabel').show();
+    $('#networkLoadingProgress').show();
 
     fetch("?handler=StarNetwork&vertex=" + "@Model.Value1" + "&degree=" + "@Model.Value2")
       .then((response) => {
@@ -96,8 +106,8 @@
 
         generateGraphViz(nodes, edges);
 
-        $('#graphLoadingProgressLabel').hide();
-        $('#graphLoadingProgress').hide();
+        $('#networkLoadingProgressLabel').hide();
+        $('#networkLoadingProgress').hide();
       });
 
     function generateGraphViz(nodes, edges) {

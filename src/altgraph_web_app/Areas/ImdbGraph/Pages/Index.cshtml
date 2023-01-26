@@ -56,40 +56,9 @@
 </div>
 <script>
   $(document).ready(function () {
-    @* var intervalId;
-
-
-    function updateGraphLoadingProgress() {
-      var myHeaders = new Headers();
-      myHeaders.append('pragma', 'no-cache');
-      myHeaders.append('cache-control', 'no-cache');
-
-      var myInit = {
-        method: 'GET',
-        headers: myHeaders,
-      };
-      fetch("?handler=Progress", myInit)
-        .then((response) => {
-          return response.json();
-        })
-        .then((progress) => {
-          //$('#graphLoadingProgress').max = "@Model.GraphLoadingMaxProgress";
-          $("#graphLoadingProgress").value = progress;
-          if (progress == "@Model.GraphLoadingMaxProgress") {
-            stopGraphLoadingProgress();
-          }
-        }
-        );
-    }
-    function stopGraphLoadingProgress() {
-      $('#graphLoadingProgressLabel').hide();
-      $('#graphLoadingProgress').hide();
-      clearInterval(intervalId);
-    } *@
     $('#searchForm').on('submit', function () {
       $('#graphLoadingProgressLabel').show();
       $('#graphLoadingProgress').show();
-      intervalId = setInterval(updateGraphLoadingProgress, 5000);
     });
   });
 </script>

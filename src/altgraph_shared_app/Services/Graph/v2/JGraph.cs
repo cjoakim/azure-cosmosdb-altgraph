@@ -234,6 +234,9 @@ namespace altgraph_shared_app.Services.Graph.v2
       if (Graph != null && Graph is IBidirectionalGraph<string, Edge<string>>)
       {
         PageRankAlgorithm<string, Edge<string>> pr = new PageRankAlgorithm<string, Edge<string>>((IBidirectionalGraph<string, Edge<string>>)Graph);
+        pr.MaxIterations = 100;
+        pr.Damping = 0.85;
+        pr.Tolerance = 1.0e-4;
         pr.Compute();
         return pr.Ranks;
       }

@@ -2,6 +2,10 @@
   <pre>
   </pre>
   <h4 class="text-center text-muted">Shortest Path between Two Vertices</h4>
+  <div class="d-flex justify-content-center">
+    <label id="shortestPathLoadingProgressLabel" for="shortestPathLoadingProgress" style="display: none">Calculating shortest path: </label>
+    <progress id="shortestPathLoadingProgress" style="display: none"></progress>
+  </div>
   <h5 class="d-flex justify-content-center" id="vertexInfo" name="vertexInfo"></h5>
 
   <div id="graph_stats" class="container d-flex align-items-center justify-content-center">
@@ -74,6 +78,12 @@
     var typeScale = d3.scaleOrdinal()
       .domain(["library", "author", "maintainer"])
       .range(["#75739F", "#41A368", "#FE9922"]);
+        
+    $('#graphLoadingProgressLabel').hide();
+    $('#graphLoadingProgress').hide();
+
+    $('#shortestPathLoadingProgressLabel').show();
+    $('#shortestPathLoadingProgress').show();
 
     fetch("?handler=ShortestPath&v1=" + "@Model.Value1" + "&v2=" + "@Model.Value2")
       .then((response) => {
@@ -81,7 +91,6 @@
       })
       .then((responseData) => {
         const data = responseData;
-        @* $('#elapsedMs').val("" + data['elapsedMs']); *@
         var dataEdges = data['edges'];
         console.log("dataEdges length: " + dataEdges.length);
         var d3NodesSet = new Set();
@@ -134,9 +143,9 @@
         });
 
         generateGraphViz(nodes, edges);
-
-        $('#graphLoadingProgressLabel').hide();
-        $('#graphLoadingProgress').hide();
+    
+        $('#shortestPathLoadingProgressLabel').hide();
+        $('#shortestPathLoadingProgress').hide();
       }
       );
 

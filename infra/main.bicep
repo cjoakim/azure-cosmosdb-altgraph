@@ -5,7 +5,6 @@ param location string
 #disable-next-line no-unused-params
 param principalId string = ''
 param containerAppWebAppObject object = {}
-param containerAppDataAppObject object = {}
 param resourceGroupName string = ''
 param resourceTokenParam string = ''
 param cosmosDatabaseThroughput int
@@ -110,7 +109,6 @@ module acaDeployment 'container-app.bicep' = {
     location: location
     managedIdentityName: managedIdentityDeployment.outputs.managedIdentityName
     containerAppWebAppObject: containerAppWebAppObject
-    containerAppDataAppObject: containerAppDataAppObject
     cosmosDatabaseAccountConnectionStringKeySecret: keyVault.getSecret(cosmosDeployment.outputs.cosmosDatabaseAccountConnectionStringKeySecretName)
     redisCacheConnectionStringKeySecret: keyVault.getSecret(redisCacheDeployment.outputs.redisCacheConnectionStringKeySecretName)
     logAnalyticsWorkspaceName: loggingDeployment.outputs.logAnalyticsWorkspaceName
