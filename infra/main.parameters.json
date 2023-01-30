@@ -14,7 +14,7 @@
     "containerAppWebAppObject": {
       "value": {
         "name": "altgraph-web-app",
-        "image": "ghcr.io/jordanbean-msft/azure-cosmosdb-altgraph/altgraph-web-app:release-0.2.0",
+        "image": "ghcr.io/jordanbean-msft/azure-cosmosdb-altgraph/altgraph-web-app:release-0.3.0",
         "appId": "altgraph-web-app",
         "appPort": 80,
         "cpu": 1,
