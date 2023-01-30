@@ -6,11 +6,11 @@ $movieMinMinutes = 30
 
 echo "========================"
 echo "imdb_wrangle_raw_data..."
-dotnet run --project src/altgraph_data_app imdb_wrangle_raw_data $startingYear $movieMinMinutes > out/imdb_wrangle_raw_data.txt
+dotnet run imdb_wrangle_raw_data $startingYear $movieMinMinutes > out/imdb_wrangle_raw_data.txt
 
 echo "====================="
 echo "imdb_build_triples..."
-dotnet run --project src/altgraph_data_app imdb_build_triples > out/imdb_build_triples.txt
+dotnet run imdb_build_triples > out/imdb_build_triples.txt
 
 echo "done"
 

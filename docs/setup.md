@@ -89,8 +89,6 @@ This process transforms the raw data into a format suitable for loading
 into CosmosDB for the AltGraph reference applications.
 
 ```
-> .\npm_wrangling_process.ps1
-
 > .\imdb_wrangling_process.ps1
 
 > .\npm_load_cosmos.ps1
@@ -145,15 +143,16 @@ from DockerHub and runs it on your host.
 ### Running AltGraph - in an Azure Container App - via Azure Developer CLI
 
 ```
-
 > azd init
 
 > azd provision
-
-... after the Azure Container Apps is provisioned, visit the `containerAppFQDN` at the fqdn
-... shown in the deployment output. Allow one-minute for the ACA to start.
-
 ```
+
+_NOTE: the `azd provision` step will take approximately 40 minutes to complete (mostly due to creating the Redis cache)._
+
+Now follow the steps in the [Environment Variables](#environment-variables) & [Wrangle the Raw Data, load CosmosDB](#wrangle-the-raw-data-load-cosmosdb) sections above to load the data.
+
+After the Azure Container Apps is provisioned, visit the `containerAppFQDN` at the FQDN shown in the deployment output. Allow one minute for the ACA to start.
 
 ### Running AltGraph - in an Azure Container App - via Az CLI
 
@@ -172,3 +171,7 @@ Set the following environment varibles (substitute your environment name (prefix
 
 > az deployment create --template-file main.bicep --parameters main.parameters.json --location SouthCentralUS --parameters environmentName=$env:AZURE_ENV_NAME location=$env:AZURE_LOCATION principalId=$env:AZURE_PRINCIPAL_ID
 ```
+
+_NOTE: the `az deployment create` step will take approximately 40 minutes to complete (mostly due to creating the Redis cache)._
+
+Now follow the steps in the [Environment Variables](#environment-variables) & [Wrangle the Raw Data, load CosmosDB](#wrangle-the-raw-data-load-cosmosdb) sections above to load the data.

@@ -35,16 +35,8 @@ resource cosmosDatabaseAccount 'Microsoft.DocumentDB/databaseAccounts@2022-08-15
     name: cosmosSqlDatabaseName
     properties: {
       resource: { id: cosmosSqlDatabaseName }
-    }
-    resource throughputSettings 'throughputSettings@2022-05-15' = {
-      name: 'default'
-      properties: {
-        resource: {
-          throughput: cosmosDatabaseThroughput
-          autoscaleSettings: {
-            maxThroughput: cosmosDatabaseMaxThroughput
-          }
-        }
+      options: {
+        throughput: cosmosDatabaseThroughput
       }
     }
     resource npmContainer 'containers' = {
@@ -54,7 +46,9 @@ resource cosmosDatabaseAccount 'Microsoft.DocumentDB/databaseAccounts@2022-08-15
           id: cosmosNpmContainerName
           partitionKey: { paths: [ cosmosContainerPartitionKey ] }
         }
-        options: {}
+        options: {
+          throughput: cosmosDatabaseThroughput
+        }
       }
     }
     resource imdbGraphContainer 'containers' = {
@@ -64,7 +58,9 @@ resource cosmosDatabaseAccount 'Microsoft.DocumentDB/databaseAccounts@2022-08-15
           id: cosmosImdbGraphContainerName
           partitionKey: { paths: [ cosmosContainerPartitionKey ] }
         }
-        options: {}
+        options: {
+          throughput: cosmosDatabaseThroughput
+        }
       }
     }
     resource imdbSeedcontainer 'containers' = {
@@ -74,7 +70,9 @@ resource cosmosDatabaseAccount 'Microsoft.DocumentDB/databaseAccounts@2022-08-15
           id: cosmosImdbSeedContainerName
           partitionKey: { paths: [ cosmosContainerPartitionKey ] }
         }
-        options: {}
+        options: {
+          throughput: cosmosDatabaseThroughput
+        }
       }
     }
   }

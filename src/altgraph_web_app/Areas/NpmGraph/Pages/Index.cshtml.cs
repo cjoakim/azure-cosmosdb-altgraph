@@ -40,7 +40,6 @@ public class IndexModel : PageModel
     _authorRepository = new AuthorRepository(authorRepository);
     _tripleRepository = new TripleRepository(tripleRepository);
     _cache = cache;
-    _logger = logger;
     _cacheOptions = cacheOptions.Value;
     _pathsOptions = pathsOptions.Value;
     _npmOptions = npmOptions.Value;
