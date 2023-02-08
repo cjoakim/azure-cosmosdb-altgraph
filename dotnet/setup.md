@@ -145,6 +145,8 @@ regarding web application UI usage.
 This approach downloads Docker container **ghcr.io/jordanbean-msft/azure-cosmosdb-altgraph/altgraph-web-app:release-\*.\*.\***
 from DockerHub and runs it on your host.
 
+Navigate to http://localhost:8080 with your browser.
+
 ### Running AltGraph - in an Azure Container App - via Azure Developer CLI
 
 ```
