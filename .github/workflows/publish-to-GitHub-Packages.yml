@@ -1,4 +1,4 @@
-name: Publish altgraph-web-app & altgraph-data-app to GitHub Packages
+name: Publish C# altgraph-web-app & altgraph-data-app to GitHub Packages
 
 on:
   push:
@@ -8,8 +8,8 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  WEB_APP_IMAGE_NAME: ${{ github.repository }}/altgraph-web-app
-  DATA_APP_IMAGE_NAME: ${{ github.repository }}/altgraph-data-app
+  WEB_APP_IMAGE_NAME: ${{ github.repository }}/dotnet/src/altgraph-web-app-csharp
+  DATA_APP_IMAGE_NAME: ${{ github.repository }}/dotnet/src/altgraph-data-app-csharp
 
 jobs:
   build-and-push-web-app-image:
@@ -24,7 +24,7 @@ jobs:
         uses: ./.github/actions/build-and-publish-image
         with:
           image_name: ${{ env.WEB_APP_IMAGE_NAME }}
-          pathToDockerfile: src/Dockerfile-web-app
+          pathToDockerfile: dotnet/src/Dockerfile-web-app
           registry: ${{ env.REGISTRY }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
   build-and-push-web-data-image:
@@ -39,6 +39,6 @@ jobs:
         uses: ./.github/actions/build-and-publish-image
         with:
           image_name: ${{ env.DATA_APP_IMAGE_NAME }}
-          pathToDockerfile: src/Dockerfile-data-app
+          pathToDockerfile: dotnet/src/Dockerfile-data-app
           registry: ${{ env.REGISTRY }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}

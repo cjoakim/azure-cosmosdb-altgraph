@@ -2,7 +2,7 @@
 
 ---
 
-## CosmosDB Live TV
+## Cosmos DB Live TV
 
 - https://www.gotcosmos.com/tv
 
@@ -26,7 +26,7 @@
 
 ## Spring 
 
-### Spring Data for CosmosDB SQL API
+### Spring Data for Cosmos DB SQL API
 
 - https://github.com/Azure/azure-sdk-for-java
 - https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/cosmos/azure-spring-data-cosmos

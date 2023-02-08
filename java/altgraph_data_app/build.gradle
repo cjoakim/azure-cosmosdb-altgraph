@@ -1,0 +1,76 @@
+// Gradle build file for this subproject.
+// Chris Joakim, Microsoft, November 2022
+
+plugins {
+    id 'org.springframework.boot' version '2.7.1'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'org.cjoakim.graph'
+version = '2.0.0'
+sourceCompatibility = '1.8'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+	set('springCloudAzureVersion', "4.2.0")
+}
+
+// https://learn.microsoft.com/en-us/azure/azure-sql/database/connect-query-java?view=azuresql
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'com.azure.spring:spring-cloud-azure-starter-data-cosmos'
+    // implementation 'com.azure:azure-cosmos:4.38.0'
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+    implementation 'org.jgrapht:jgrapht-core:1.5.1'
+
+    implementation 'com.microsoft.sqlserver:mssql-jdbc:12.1.0.jre11-preview'
+    implementation 'org.apache.commons:commons-csv:1.9.0'
+
+    // https://search.maven.org/artifact/com.google.guava/guava/31.1-jre/bundle
+    implementation 'com.google.guava:guava:31.1-jre'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "com.azure.spring:spring-cloud-azure-dependencies:${springCloudAzureVersion}"
+	}
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs += ['-Xlint:deprecation']
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+tasks.register('uberJar', Jar) {
+    archiveClassifier = 'altgraph-wrangling'
+    duplicatesStrategy = 'include'
+    manifest {
+        attributes 'Main-Class': "org.cjoakim.cosmos.altgraph.data.DataCommandLineApp"
+    }
+    from sourceSets.main.output
+    dependsOn configurations.runtimeClasspath
+    from {
+        configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
+    }
+}

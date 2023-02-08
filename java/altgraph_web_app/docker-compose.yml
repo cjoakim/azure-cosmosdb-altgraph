@@ -1,0 +1,32 @@
+version: '3.7'
+services:
+
+  web:
+    image: cjoakim/azure-cosmosdb-altgraph-v2
+    ports:
+      - "8080:8080"
+    environment:
+      AZURE_REDISCACHE_HOST:                  $AZURE_REDISCACHE_HOST
+      AZURE_REDISCACHE_PORT:                  $AZURE_REDISCACHE_PORT
+      AZURE_REDISCACHE_KEY:                   $AZURE_REDISCACHE_KEY
+      AZURE_COSMOSDB_SQL_URI:                 $AZURE_COSMOSDB_SQL_URI
+      AZURE_COSMOSDB_SQL_RW_KEY1:             $AZURE_COSMOSDB_SQL_RW_KEY1
+      AZURE_COSMOSDB_SQL_DB:                  $AZURE_COSMOSDB_SQL_DB
+      AZURE_COSMOSDB_SQL_MAX_DEG_PAR:         $AZURE_COSMOSDB_SQL_MAX_DEG_PAR
+    restart: always
+
+# Notes:
+# docker push cjoakim/azure-cosmosdb-altgraph-v2
+# docker pull cjoakim/azure-cosmosdb-altgraph-v2
+# docker-compose up -d
+# docker ps
+# docker logs 15f5ed0fa248
+# docker-compose stop
+# docker kill 00ee9d43f4bb
+# docker run -it cjoakim/azure-cosmosdb-altgraph-v2
+# docker image inspect cjoakim/azure-cosmosdb-altgraph-v2
+# docker exec -it 4416fe3e9f7f /bin/bash
+# docker exec -it ef93e41d6caa ls -al /app
+# docker exec -it ef93e41d6caa ls /usr/bin
+# DockerHub:
+# docker push cjoakim/azure-cosmosdb-altgraph-v2

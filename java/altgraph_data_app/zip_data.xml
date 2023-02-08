@@ -1,0 +1,23 @@
+<project name="zipdata" default="zipdata" basedir=".">
+
+    <description>
+        Ant script to create a zip files of the wrangled data in the data/imdb_refined/ directory.
+        The zip files will be stored in GitHub because the unzippled json files are too large.
+        Chris Joakim, Microsoft, November 2022
+        ant -f zip_data.xml
+    </description>
+
+    <target name="zipdata" >
+        <delete file="data/imdb_refined/movies.zip" />
+        <delete file="data/imdb_refined/people.zip" />
+        <delete file="data/imdb_refined/triples.zip" />
+        <delete file="data/imdb_refined/movies_seed.zip" />
+
+        <zip zipfile="data/imdb_refined/movies.zip"      basedir="data/imdb_refined"  includes="movies.json" />
+        <zip zipfile="data/imdb_refined/people.zip"      basedir="data/imdb_refined"  includes="people.json" />
+        <zip zipfile="data/imdb_refined/sm_triples.zip"  basedir="data/imdb_refined"  includes="sm_triples.json" />
+        <zip zipfile="data/imdb_refined/movies_seed.zip" basedir="data/imdb_refined"  includes="movies_seed.json" />
+
+        <echo message="done." />
+    </target>
+</project>

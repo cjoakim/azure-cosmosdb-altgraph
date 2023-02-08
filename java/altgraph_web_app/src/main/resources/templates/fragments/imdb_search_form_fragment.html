@@ -1,0 +1,23 @@
+<div th:fragment="search_form" class="d-flex justify-content-center">
+    <form class="d-flex align-items-center" id="searchForm" name="searchForm" th:object="${formObject}" th:action="@{/post_imdb_graph_form}" method="POST">
+        <span>&nbsp;&nbsp;&nbsp;</span>
+        <a href="https://docs.microsoft.com/en-us/azure/?product=featured" target="_blank">
+            <img th:src="@{/images/cosmos-logo-110.png}" alt="Cosmos DB Logo">
+        </a>
+
+        <select th:field="${formObject.formFunction}" name="formFunction" id="formFunction" class="form-select">
+            <option value="imdb_stats">Graph Stats</option>
+            <option value="imdb_page_rank">PageRank</option>
+            <option value="imdb_network">Network</option>
+            <option value="imdb_shortest_path">Shortest Path</option>
+        </select>
+        &nbsp;
+        <input type="text" th:field="${formObject.value1}" id="value1" name="value1" class="form-control me-2" placeholder="" aria-label="value 1">
+        <input type="text" th:field="${formObject.value2}" id="value2" name="value2" class="form-control me-2" placeholder="" aria-label="value 2">
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+        <span>&nbsp;&nbsp;</span>
+        <input type="text" th:field="${formObject.elapsedMs}"   id="elapsedMs"  name="elapsedMs"  class="form-control me-3" placeholder="Elapsed ms">
+        <input type="hidden" th:field="${formObject.sessionId}" id="sessionId"  name="sessionId">
+        <span>&nbsp;&nbsp;</span>
+    </form>
+</div>
