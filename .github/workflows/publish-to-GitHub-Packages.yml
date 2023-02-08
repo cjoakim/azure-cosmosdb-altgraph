@@ -27,6 +27,7 @@ jobs:
           pathToDockerfile: dotnet/src/Dockerfile-web-app
           registry: ${{ env.REGISTRY }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
+          pathToSource: dotnet/src
   build-and-push-web-data-image:
     runs-on: ubuntu-latest
     permissions:
