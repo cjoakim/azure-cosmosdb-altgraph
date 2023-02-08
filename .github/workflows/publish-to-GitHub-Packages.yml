@@ -8,8 +8,8 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  WEB_APP_IMAGE_NAME: ${{ github.repository }}/dotnet/src/altgraph-web-app-csharp
-  DATA_APP_IMAGE_NAME: ${{ github.repository }}/dotnet/src/altgraph-data-app-csharp
+  WEB_APP_IMAGE_NAME: ${{ github.repository }}/altgraph-web-app-csharp
+  DATA_APP_IMAGE_NAME: ${{ github.repository }}/altgraph-data-app-csharp
 
 jobs:
   build-and-push-web-app-image:
