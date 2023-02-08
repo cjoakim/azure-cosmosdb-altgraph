@@ -1,0 +1,78 @@
+<div>
+  <pre>
+
+  </pre>
+  <h4 class="text-center text-muted">Vertex PageRanks</h4>
+  <div class="d-flex justify-content-center">
+    <label id="pageRankLoadingProgressLabel" for="pageRankLoadingProgress" style="display: none">Calculating PageRank: </label>
+    <progress id="pageRankLoadingProgress" style="display: none"></progress>
+  </div>
+  <div id="tableDiv" class="container d-flex align-items-center justify-content-center">
+    <table class="table table-striped" id="rankTable" name="rankTable">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Vertex</th>
+          <th>Value</th>
+          <th>Comment</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    var startMs = new Date().getTime();
+    var count = "@Model.Value1";
+    if (count === "") {
+      count = "50";
+    }
+
+    $('#graphLoadingProgressLabel').hide();
+    $('#graphLoadingProgress').hide();
+
+    $('#pageRankLoadingProgressLabel').show();
+    $('#pageRankLoadingProgress').show();
+
+    fetch("?handler=PageRanks&count=" + count)
+      .then((response) => {
+        return response.json();
+      })
+      .then((rankArray) => {
+        var finishMs = new Date().getTime();
+        var elapsedMs = finishMs - startMs;
+        $('#elapsedMs').val(elapsedMs);
+        for (let i = 0; i < rankArray.length; i++) {
+          var rank = rankArray[i];
+          var vertex = rank['key'];
+          var value = rank['value'];
+          if (vertex.startsWith("tt")) {
+            link = "https://www.imdb.com/title/" + vertex;
+          }
+          else {
+            link = "https://www.imdb.com/name/" + vertex;
+          }
+          var comment = commentForVertex(vertex);
+          var row = "<tr> <td>" + (i + 1) + "</td> <td><a href=\"" + link + "\">" + vertex + "</td> <td>" + value + "</td> <td>" +
+            comment + "</td> </tr>";
+          $("#rankTable").find('tbody').append($(row));
+        }
+
+        $('#pageRankLoadingProgressLabel').hide();
+        $('#pageRankLoadingProgress').hide();
+      }
+      );
+
+    function commentForVertex(vertex) {
+      var comment = "";
+      if (vertex === "nm0000102") { comment = "kevin bacon **"; }
+      if (vertex === "nm0000210") { comment = "julia roberts **"; }
+      if (vertex === "nm2225369") { comment = "jennifer lawrence **"; }
+      return comment;
+    }
+
+  });
+</script>

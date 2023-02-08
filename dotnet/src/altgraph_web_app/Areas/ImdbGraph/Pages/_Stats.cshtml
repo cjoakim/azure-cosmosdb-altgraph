@@ -1,0 +1,87 @@
+<div>
+  <pre>
+    </pre>
+  <h4 class="text-center text-muted">Graph and CLR Statistics</h4>
+  <div id="graph_stats" class="container d-flex align-items-center justify-content-center">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Date</td>
+          <td id="date"></td>
+        </tr>
+        <tr>
+          <td>In-Memory Vertex Count</td>
+          <td id="vertex_count"></td>
+        </tr>
+        <tr>
+          <td>In-Memory Edge Count</td>
+          <td id="edge_count"></td>
+        </tr>
+        <tr>
+          <td>Working Set Total MB</td>
+          <td id="total_mb"></td>
+        </tr>
+        <tr>
+          <td>Free Memory MB</td>
+          <td id="free_mb"></td>
+        </tr>
+        <tr>
+          <td>Pct Free</td>
+          <td id="pct_free"></td>
+        </tr>
+        <tr>
+          <td>Peak Memory Usage MB</td>
+          <td id="max_mb"></td>
+        </tr>
+        <tr>
+          <td>Elapsed Ms</td>
+          <td id="elapsedTd"></td>
+        </tr>
+        <tr>
+          <td>Refresh Date</td>
+          <td id="refreshDate"></td>
+        </tr>
+        <tr>
+          <td>Refresh Source</td>
+          <td id="refreshSource"></td>
+        </tr>
+        <tr>
+          <td>Refresh Ms</td>
+          <td id="refreshMs"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    fetch("?handler=GraphStats&flag=false")
+      .then((response) => {
+        return response.json();
+      })
+      .then((responseData) => {
+        const data = responseData;
+        console.log(data);
+        $('#date').text(data['date']);
+        $('#vertex_count').text(data['vertexCount'].toLocaleString("en-US"));
+        $('#edge_count').text(data['edgeCount'].toLocaleString("en-US"));
+        $('#total_mb').text(data['totalMb'].toLocaleString("en-US"));
+        $('#free_mb').text(data['freeMb'].toLocaleString("en-US"));
+        $('#max_mb').text(data['maxMb'].toLocaleString("en-US"));
+        $('#pct_free').text(data['pctFree']);
+        $('#elapsedMs').val("" + data['elapsedMs']);
+        $('#elapsedTd').text("" + data['elapsedMs'].toLocaleString("en-US"));
+        $('#refreshDate').text(data['refreshDate']);
+        $('#refreshSource').text(data['refreshSource']);
+        $('#refreshMs').text(data['refreshMs']);
+      }
+      );
+  });
+</script>
