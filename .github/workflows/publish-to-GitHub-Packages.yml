@@ -42,3 +42,4 @@ jobs:
           pathToDockerfile: dotnet/src/Dockerfile-data-app
           registry: ${{ env.REGISTRY }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
+          pathToSource: dotnet/src
