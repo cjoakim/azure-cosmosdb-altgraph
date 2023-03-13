@@ -55,12 +55,12 @@ spring.redis.password=${AZURE_REDISCACHE_KEY}
 spring.redis.ssl=true
 
 # Spring Data Cosmos DB
-spring.cloud.azure.cosmos.endpoint=${AZURE_COSMOSDB_SQL_URI}
-spring.cloud.azure.cosmos.key=${AZURE_COSMOSDB_SQL_RW_KEY1}
-spring.cloud.azure.cosmos.database=${AZURE_COSMOSDB_SQL_DB}
+spring.cloud.azure.cosmos.endpoint=${AZURE_COSMOSDB_NOSQL_URI}
+spring.cloud.azure.cosmos.key=${AZURE_COSMOSDB_NOSQL_RW_KEY1}
+spring.cloud.azure.cosmos.database=${AZURE_COSMOSDB_NOSQL_DB}
 spring.cloud.azure.cosmos.populate-query-metrics=true
 azure.cosmos.queryMetricsEnabled=true
-azure.cosmos.maxDegreeOfParallelism=${AZURE_COSMOSDB_SQL_MAX_DEG_PAR}
+azure.cosmos.maxDegreeOfParallelism=${AZURE_COSMOSDB_NOSQL_MAX_DEG_PAR}
 azure.cosmos.regions=eastus
 ```
 
