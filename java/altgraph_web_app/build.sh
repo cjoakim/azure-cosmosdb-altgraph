@@ -1,16 +1,19 @@
 #!/bin/bash
 
 # Compile this app and produce an uberJar file.
-# Chris Joakim, Microsoft, November 2022
+# Chris Joakim, Microsoft, December 2023
+
+echo "gradle version..."
+gradle -v
 
 echo "clean..."
-gradle clean
+gradle clean --warning-mode none
 
 echo "build..."
-gradle build
+gradle build --warning-mode none
 
 echo "uberJar..."
-gradle uberJar
+gradle uberJar --warning-mode none
 
 echo "dir of build\libs..."
 ls -al build/libs/

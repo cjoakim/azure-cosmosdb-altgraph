@@ -5,10 +5,42 @@
 - git source control system
 - Java JDK, Microsoft OpenJDK 17 is recommended
   - https://docs.microsoft.com/en-us/java/openjdk/download
-- Gradle Build tool 
+- Gradle Build Tool 
   - https://gradle.org/releases/
 - A Java IDE is recommended, such as JetBrains IntelliJ or Visual Studio Code
 - Docker desktop is optional, but it may be the simplest way to run AltGraph yourself
+
+- This repo has been tested with **Gradle 8.5 and Java 17**, as shown below
+
+```
+PS ...\altgraph_web_app> java -version
+openjdk version "17.0.7" 2023-04-18 LTS
+OpenJDK Runtime Environment Microsoft-7626293 (build 17.0.7+7-LTS)
+OpenJDK 64-Bit Server VM Microsoft-7626293 (build 17.0.7+7-LTS, mixed mode, sharing)
+PS ...\altgraph_web_app>
+PS ...\altgraph_web_app> gradle -version
+
+------------------------------------------------------------
+Gradle 8.5
+------------------------------------------------------------
+
+Build time:   2023-11-29 14:08:57 UTC
+Revision:     28aca86a7180baa17117e0e5ba01d8ea9feca598
+
+Kotlin:       1.9.20
+Groovy:       3.0.17
+Ant:          Apache Ant(TM) version 1.10.13 compiled on January 4 2023
+JVM:          17.0.7 (Microsoft 17.0.7+7-LTS)
+OS:           Windows 11 10.0 amd64
+```
+
+See the comments at the bottom of these two scripts which show
+what the expected build output looks like:
+
+```
+altgraph_data_app/build.ps1
+altgraph_web_app/build.ps1
+```
 
 ## Azure PaaS Services
 
